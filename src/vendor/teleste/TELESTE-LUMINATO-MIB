@@ -831,7 +831,7 @@
 			STATUS current
 			DESCRIPTION			
 				""
-			INDEX { INTEGER }
+			INDEX { ifExtIndex }
 			::= { ifExtTable 1 }
 
 		

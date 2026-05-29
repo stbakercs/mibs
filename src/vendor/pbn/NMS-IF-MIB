@@ -274,26 +274,26 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
 
  --ifSfpParameterTable
              ifSfpParameterTable OBJECT-TYPE
-                 SYNTAX  SEQUENCE OF ifSfpParameterEntry
+                 SYNTAX  SEQUENCE OF IfSfpParameterEntry
                  ACCESS  not-accessible
                  STATUS  mandatory
                  DESCRIPTION
                           "A list of sfp property table entries."
                  ::= { nmsIfObjects 7 }
 
-             ifSfpParameterEntry OBJECT-TYPE
-                 SYNTAX ifSfpParameterEntry
+             ifSfpParameterRow OBJECT-TYPE
+                 SYNTAX IfSfpParameterEntry
                  ACCESS  not-accessible
                  STATUS  mandatory
                  DESCRIPTION
                           "A collection of additional objects in the
                           sfp property table."
-                 INDEX { IfIndex }
+                 INDEX { ifSfpIfIndex }
              ::= { ifSfpParameterTable 1 }
 
-             ifSfpParameterEntry ::=
+             IfSfpParameterEntry ::=
                  SEQUENCE {
-                     IfIndex
+                     ifSfpIfIndex
                          INTEGER,
                      txPower
                          INTEGER,
@@ -307,13 +307,13 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
                          INTEGER                           
                  }
 
-             IfIndex OBJECT-TYPE
+             ifSfpIfIndex OBJECT-TYPE
                  SYNTAX  INTEGER
                  ACCESS  read-only
                  STATUS  mandatory
                  DESCRIPTION
                          "The only diid of port in System."
-                 ::= { ifSfpParameterEntry 1 } 
+                 ::= { ifSfpParameterRow 1 } 
         
              txPower OBJECT-TYPE
                  SYNTAX  INTEGER
@@ -321,7 +321,7 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
                  STATUS  mandatory
                  DESCRIPTION
                          "The tx power of optical module. The unit is 0.1DBm."
-                 ::= { ifSfpParameterEntry 2 } 
+                 ::= { ifSfpParameterRow 2 } 
     
              rxPower OBJECT-TYPE
                  SYNTAX  INTEGER
@@ -329,7 +329,7 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
                  STATUS  mandatory
                  DESCRIPTION
                          "The rx power of optical module. The unit is 0.1DBm."
-                 ::= { ifSfpParameterEntry 3 } 
+                 ::= { ifSfpParameterRow 3 } 
      
              temperature OBJECT-TYPE
                  SYNTAX  INTEGER
@@ -337,7 +337,7 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
                  STATUS  mandatory
                  DESCRIPTION
                          "Sfp module temperature. The unit is 1/256 degree."
-                 ::= { ifSfpParameterEntry 4 } 
+                 ::= { ifSfpParameterRow 4 } 
     
              voltage OBJECT-TYPE
                  SYNTAX  INTEGER
@@ -345,7 +345,7 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
                  STATUS  mandatory
                  DESCRIPTION
                          "Sfp module volt. The unit is 0.1mV."
-                 ::= { ifSfpParameterEntry 5 } 
+                 ::= { ifSfpParameterRow 5 } 
     
              curr OBJECT-TYPE
                  SYNTAX  INTEGER
@@ -353,7 +353,7 @@ nmsIfObjects   OBJECT IDENTIFIER ::= { nmsIfMIB 1 }
                  STATUS  mandatory
                  DESCRIPTION
                          "Sfp module bias current. The unit is 2mA."
-                 ::= { ifSfpParameterEntry 6 }
+                 ::= { ifSfpParameterRow 6 }
               
               
               
