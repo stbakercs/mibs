@@ -1,0 +1,3 @@
+# Excluded from JSON mibdump pass only (nt/t still compile).
+# pysmi cannot codegen table columns with sub-IDs above 999 without
+# changing OIDs (moduleStatusEntry uses sub-IDs 4104+).

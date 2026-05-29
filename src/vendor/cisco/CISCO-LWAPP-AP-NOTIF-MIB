@@ -1,0 +1,139 @@
+-- *****************************************************************
+-- CISCO-LWAPP-AP-NOTIF-MIB.my
+--
+-- DOWNSTREAM-ONLY MIB MODULE
+-- This module is NOT published by Cisco.  It exists in this MIB
+-- repository solely to break a circular IMPORTS dependency between
+-- the Cisco-published modules CISCO-LWAPP-AP-MIB and
+-- CISCO-LWAPP-DOT11-MIB, in which:
+--
+--   * CISCO-LWAPP-AP-MIB imported cldRegulatoryDomain
+--     FROM CISCO-LWAPP-DOT11-MIB (for the trap defined below); and
+--   * CISCO-LWAPP-DOT11-MIB imports cLApSysMacAddress and
+--     cLApDot11IfSlotId FROM CISCO-LWAPP-AP-MIB (as INDEX columns
+--     for sparse extensions of cLApTable).
+--
+-- The second direction is structural (sparse-table INDEX reuse) and
+-- cannot be removed without duplicating OBJECT-TYPE definitions and
+-- creating OID collisions.  The first direction was an organizational
+-- coupling: a single NOTIFICATION-TYPE in CISCO-LWAPP-AP-MIB
+-- referenced one object from CISCO-LWAPP-DOT11-MIB in its OBJECTS
+-- clause.  That notification has been relocated here so that
+-- CISCO-LWAPP-AP-MIB no longer needs to import from
+-- CISCO-LWAPP-DOT11-MIB.
+--
+-- BEHAVIOR CHANGE: the OID of
+-- ciscoLwappApIfRegulatoryDomainMismatchNotif has changed.
+--   Old OID (upstream):     ciscoLwappApMIB.0.1
+--                           ( { ciscoLwappApMIBNotifs 1 } )
+--   New OID (this fork):    ciscoLwappApMIB.100.0.1
+--                           ( { ciscoLwappApNotifMIBNotifs 1 } )
+-- Network management stations that were configured to match the
+-- old trap OID will need to be reconfigured.
+--
+-- The trap's varbind list (cLApName, cLApDot11IfType,
+-- cLApDot11IfRegDomain, cldRegulatoryDomain) and its DESCRIPTION
+-- are preserved verbatim from the upstream definition.
+-- *****************************************************************
+
+CISCO-LWAPP-AP-NOTIF-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY,
+    NOTIFICATION-TYPE
+        FROM SNMPv2-SMI
+    MODULE-COMPLIANCE,
+    NOTIFICATION-GROUP
+        FROM SNMPv2-CONF
+    ciscoLwappApMIB,
+    cLApName,
+    cLApDot11IfType,
+    cLApDot11IfRegDomain
+        FROM CISCO-LWAPP-AP-MIB
+    cldRegulatoryDomain
+        FROM CISCO-LWAPP-DOT11-MIB;
+
+
+ciscoLwappApNotifMIB MODULE-IDENTITY
+    LAST-UPDATED    "202605180000Z"
+    ORGANIZATION    "pysnmp-mibs maintainers (downstream fork)"
+    CONTACT-INFO
+            "This module is maintained as part of the pysnmp-mibs
+            repository.  It is not a Cisco-published module.  See
+            the module DESCRIPTION for the rationale and for the OID
+            relocation it implies."
+    DESCRIPTION
+        "Companion module to CISCO-LWAPP-AP-MIB.  Hosts the
+        ciscoLwappApIfRegulatoryDomainMismatchNotif NOTIFICATION-TYPE,
+        which was relocated from CISCO-LWAPP-AP-MIB in order to break
+        a circular IMPORTS dependency between CISCO-LWAPP-AP-MIB and
+        CISCO-LWAPP-DOT11-MIB.  See the comment header at the top of
+        this file for the full rationale and for the OID change this
+        relocation introduces."
+    REVISION        "202605180000Z"
+    DESCRIPTION
+        "Initial downstream revision.  Relocates
+        ciscoLwappApIfRegulatoryDomainMismatchNotif from
+        CISCO-LWAPP-AP-MIB to this module."
+    ::= { ciscoLwappApMIB 100 }
+
+
+ciscoLwappApNotifMIBNotifs       OBJECT IDENTIFIER
+    ::= { ciscoLwappApNotifMIB 0 }
+
+ciscoLwappApNotifMIBConform      OBJECT IDENTIFIER
+    ::= { ciscoLwappApNotifMIB 2 }
+
+ciscoLwappApNotifMIBCompliances  OBJECT IDENTIFIER
+    ::= { ciscoLwappApNotifMIBConform 1 }
+
+ciscoLwappApNotifMIBGroups       OBJECT IDENTIFIER
+    ::= { ciscoLwappApNotifMIBConform 2 }
+
+
+-- ********************************************************************
+-- *  Notifications
+-- ********************************************************************
+
+ciscoLwappApIfRegulatoryDomainMismatchNotif NOTIFICATION-TYPE
+    OBJECTS         {
+                        cLApName,
+                        cLApDot11IfType,
+                        cLApDot11IfRegDomain,
+                        cldRegulatoryDomain
+                    }
+    STATUS          current
+    DESCRIPTION
+        "This notification  is generated if an AP radio's regulatory
+        domain doesn't match the country the controller is configured
+        for.  Due to the mismatch, the AP will fail to associate with
+        the controller."
+   ::= { ciscoLwappApNotifMIBNotifs 1 }
+
+
+-- ********************************************************************
+-- *  Conformance
+-- ********************************************************************
+
+ciscoLwappApRegDomainNotifsGroup NOTIFICATION-GROUP
+   NOTIFICATIONS    {
+                        ciscoLwappApIfRegulatoryDomainMismatchNotif
+                    }
+    STATUS          current
+    DESCRIPTION
+        "Notification group containing the relocated regulatory
+        domain mismatch notification."
+    ::= { ciscoLwappApNotifMIBGroups 1 }
+
+ciscoLwappApNotifMIBCompliance MODULE-COMPLIANCE
+    STATUS          current
+    DESCRIPTION
+        "The compliance statement for entities that implement the
+        relocated regulatory domain mismatch notification."
+    MODULE          -- this module
+        MANDATORY-GROUPS {
+                            ciscoLwappApRegDomainNotifsGroup
+                        }
+    ::= { ciscoLwappApNotifMIBCompliances 1 }
+
+END
