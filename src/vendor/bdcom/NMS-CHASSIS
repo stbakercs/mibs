@@ -49,7 +49,7 @@
 			nmss3512(108),
 			nmss6508(109)
                    }
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Chassis type."
@@ -57,7 +57,7 @@
 
                nmschassisVersion OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Chassis hardware revision level, or an empty
@@ -66,7 +66,7 @@
 
                nmschassisId OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-write
+                   MAX-ACCESS  read-write
                    STATUS  mandatory
                    DESCRIPTION
                            "Unique ID string. Defaults to chassis serial
@@ -75,7 +75,7 @@
 
                nmsromSysVersion OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "ROM system software version, or an empty
@@ -84,7 +84,7 @@
 
                nmsprocessorRam OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Bytes of RAM available to CPU."
@@ -92,7 +92,7 @@
 
                nmsnvRAMSize OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Bytes of non-volatile configuration memory."
@@ -100,7 +100,7 @@
 
                nmsnvRAMUsed OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Bytes of non-volatile configuration memory
@@ -109,7 +109,7 @@
 
                nmsconfigRegister OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Value of configuration register."
@@ -117,7 +117,7 @@
 
                nmsconfigRegNext OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Value of configuration register at next
@@ -126,7 +126,7 @@
 
                nmscardTable OBJECT-TYPE
                    SYNTAX  SEQUENCE OF NMSCardTableEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "Chassis card table."
@@ -134,7 +134,7 @@
 
                nmscardTableEntry OBJECT-TYPE
                    SYNTAX NMSCardTableEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "Chassis card table."
@@ -185,7 +185,7 @@
 
                nmscardIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Index into cardTable (not physical chassis
@@ -297,7 +297,7 @@
 						pci-2GigaEthernet-SFP-1000M(267),
 						pci-2GigaEthernet-1000M(268)
 					}
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Functional type of this card."
@@ -305,7 +305,7 @@
 
                nmscardDescr OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Text description of this card."
@@ -313,7 +313,7 @@
 
                nmscardSerial OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "The serial number of this card, or 0 if unavailable."
@@ -321,7 +321,7 @@
 
                nmscardHwVersion OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Hardware revision level of this card, or an
@@ -330,7 +330,7 @@
 
                nmscardSwVersion OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Version of the firmware or microcode
@@ -340,7 +340,7 @@
 
                nmscardSlotNumber OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Slot number relative to the containing card or 
@@ -350,7 +350,7 @@
 
                nmscardContainedByIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "cardIndex of the parent card which
@@ -366,7 +366,7 @@
                           down(3),
                           standby(4)
                       }
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "The operational status of the card.
@@ -381,7 +381,7 @@
 
                nmscardSlots OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Number of slots on this card, or 0 if no
@@ -390,7 +390,7 @@
                    ::= { nmscardTableEntry 10 }    
                     nmscardCPUUtilization OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "CPU Utilization of Card. unit:1%"
@@ -398,14 +398,14 @@
 
                    nmscardMEMUtilization OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Memory Utilization of Card. unit:1%"
                    ::= { nmscardTableEntry 12 }
                    nmscardTemperature OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Temperature of Card. unit: C"
@@ -413,20 +413,20 @@
 
                    nmscardVoltage OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Voltage of Card. unit: V"
                    ::= { nmscardTableEntry 14 }       
                    nmscardPorts OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "prots contained on the card"
                    ::= { nmscardTableEntry 15 }
                    nmscardGenType OBJECT-TYPE
-                   SYNTAX  INTEGER{
+                   SYNTAX  INTEGER {
                    	controlBoard(1), 
 					geponBoard(2) ,
 					uplinkBoard(3)  ,
@@ -434,7 +434,7 @@
 					other(5)   ,
 					vacant(6)
 					}
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "the card genenral type"
@@ -446,7 +446,7 @@
 
                nmschassisSlots OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Number of slots in this chassis, or -1 of
@@ -455,7 +455,7 @@
 
                nmscardIfIndexTable OBJECT-TYPE
                    SYNTAX  SEQUENCE OF NMSCardIfIndexEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "Chassis card table."
@@ -463,7 +463,7 @@
 
                nmscardIfIndexEntry OBJECT-TYPE
                    SYNTAX NMSCardIfIndexEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "Chassis card table."
@@ -487,7 +487,7 @@
 
                nmscardIfIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "matches RFC1213/RFC2233 ifTable IfIndex"
@@ -495,7 +495,7 @@
                    
                nmscardIfPortNumber OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Chassis port number, unique per port on a 
@@ -504,7 +504,7 @@
 
                nmscardIfSlotNumber OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "nmscardIndex of the card in the Chassis 
@@ -521,7 +521,7 @@
                            db-44(6),
                            db-60(7)                         
                    }
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Interface connector type currently
@@ -531,7 +531,7 @@
                    ::= { nmscardIfIndexEntry 4 }   
                    nmscardIfCardIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "nmscardIndex of the card in the Chassis 
@@ -543,7 +543,7 @@
 
                nmssysUpTimeAtLastChassisChange OBJECT-TYPE
                    SYNTAX  TimeTicks
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Time in seconds100 from the last cold
@@ -563,7 +563,7 @@
                     ::= { nmschassis 14 }
 
                 nmsAuxTable OBJECT-TYPE
-                    SYNTAX		SEQUENCE OF nmsAuxEntry
+                    SYNTAX		SEQUENCE OF NmsAuxEntry
                     MAX-ACCESS	not-accessible
                     STATUS		current
                     DESCRIPTION
@@ -571,7 +571,7 @@
                     ::= { nmschassis 15 }
 
                 nmsAuxEntry               OBJECT-TYPE
-                    SYNTAX		nmsAuxEntry 
+                    SYNTAX NmsAuxEntry 
                     MAX-ACCESS	not-accessible
                     STATUS		current
                     DESCRIPTION
@@ -579,7 +579,7 @@
                     INDEX	{ nmsAuxIndex }
                     ::= { nmsAuxTable 1 }
 
-                nmsAuxEntry ::=
+                NmsAuxEntry ::=
                     SEQUENCE {
                         nmsAuxIndex   Gauge32,
                         nmsAuxClass   INTEGER,
@@ -605,7 +605,7 @@
                     ::= {  nmsAuxEntry 2}
 
                 nmsAuxClass   OBJECT-TYPE
-                    SYNTAX		INTEGER{power(1),fan(2)} 
+                    SYNTAX		INTEGER {power(1),fan(2)} 
                     MAX-ACCESS	read-only
                     STATUS		current
                     DESCRIPTION
@@ -613,7 +613,7 @@
                     ::= {  nmsAuxEntry 3 }
 
                 nmsAuxMode  OBJECT-TYPE
-                    SYNTAX		INTEGER{ active(1),backup(2),loadshare(3)}
+                    SYNTAX		INTEGER { active(1),backup(2),loadshare(3)}
                     MAX-ACCESS	read-only
                     STATUS		current
                     DESCRIPTION
@@ -621,7 +621,7 @@
                     ::= {  nmsAuxEntry 4}
 
                 nmsAuxState  OBJECT-TYPE
-                    SYNTAX		INTEGER{ ok(1),failure(2)}
+                    SYNTAX		INTEGER { ok(1),failure(2)}
                     MAX-ACCESS	read-only
                     STATUS		current
                     DESCRIPTION
@@ -629,23 +629,23 @@
                     ::= {  nmsAuxEntry 5}        
 
      nmssubcardTable OBJECT-TYPE
-                   SYNTAX  SEQUENCE OF nmssubcardTableEntry
-                   ACCESS  not-accessible
+                   SYNTAX  SEQUENCE OF NmssubcardTableEntry
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "Chassis subcard table."
                    ::= { nmschassis 16 }
 
                nmssubcardTableEntry OBJECT-TYPE
-                   SYNTAX nmssubcardTableEntry
-                   ACCESS  not-accessible
+                   SYNTAX NmssubcardTableEntry
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "Chassis subcard table."
                    INDEX { nmssubcardIndex }
                ::= { nmssubcardTable 1 }
 
-               nmssubcardTableEntry ::=
+               NmssubcardTableEntry ::=
                    SEQUENCE {
                        nmssubcardIndex
                            INTEGER,
@@ -681,7 +681,7 @@
 
                nmssubcardIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Index into subcardTable (not physical chassis
@@ -692,10 +692,10 @@
                    SYNTAX  INTEGER {
 						unknown(0),
 						scc-serial(1),
-						ethernet-10M(2),
+						ethernet-10M(2)
 	
 					}
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Functional type of this subcard."
@@ -703,7 +703,7 @@
 
                nmssubcardDescr OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Text description of this subcard."
@@ -711,7 +711,7 @@
 
                nmssubcardSerial OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "The serial number of this subcard, or 0 if unavailable."
@@ -719,7 +719,7 @@
 
                nmssubcardHwVersion OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Hardware revision level of this subcard, or an
@@ -728,7 +728,7 @@
 
                nmssubcardSwVersion OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Version of the firmware or microcode
@@ -738,7 +738,7 @@
 
                nmssubcardShelfNumber OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Slot number relative to the containing subcard or 
@@ -748,7 +748,7 @@
 
                nmssubcardContainedByIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "subcardIndex of the parent subcard which
@@ -764,7 +764,7 @@
                           down(3),
                           standby(4)
                       }
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "The operational status of the subcard.
@@ -779,7 +779,7 @@
 
                nmssubcardSlots OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Number of slots on this subcard, or 0 if no
@@ -788,7 +788,7 @@
                    ::= { nmssubcardTableEntry 10 }
                nmssubcardContainedByShelf OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            ""
@@ -796,14 +796,14 @@
 
                    nmssubcardSlotNumber OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            ""
                    ::= { nmssubcardTableEntry 12 }
                    nmssubcardPorts OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            ""
@@ -811,13 +811,13 @@
                       
                   nmsHumidity OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Value of chassis humidity."
                    ::= { nmschassis 17 }
                   nmsSysErrorNum OBJECT-TYPE
-                   SYNTAX  INTEGER{      
+                   SYNTAX  INTEGER {      
                    		sys-ok(0)
                         TLB-modification-exception(1),                                                    
        					load-or-instruction-fetch-TLB-miss-exception (2),       
@@ -830,21 +830,21 @@
         				trap-exception(13),                                                      
         				deadlock-software-exception(16)
         			}
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Value of sys error number."
                    ::= { nmschassis 18 }
                   nmsElectricCurrent  OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Value of electric current."
                    ::= { nmschassis 19 }
                          nmsVoltageCurrent  OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Value of electric current."

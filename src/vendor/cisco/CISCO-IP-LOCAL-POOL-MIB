@@ -118,7 +118,6 @@ CIpLocalPoolGroupNameOrNull ::= TEXTUAL-CONVENTION
     SYNTAX          OCTET STRING (SIZE (0..48))
 
 CIpLocalPoolPercentage ::= TEXTUAL-CONVENTION
-    DISPLAY-HINT    "d-2"
     STATUS          current
     DESCRIPTION
         "A percentage associated with the addresses used in a IP local

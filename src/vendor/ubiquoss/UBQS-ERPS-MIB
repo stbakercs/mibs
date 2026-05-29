@@ -94,7 +94,7 @@ ubiErpsMIBNotifications  OBJECT IDENTIFIER				::= { ubiErpsMIBNotificationPrefix
     					  ubiErpsSwitchEastIf,
     					  ubiErpsSwitchEastIfState,
     					  ubiErpsSwitchWestIf,
-    					  ubiErpsSwitchWestIfState,
+    					  ubiErpsSwitchWestIfState
     					 }
     	STATUS          current
     	DESCRIPTION
@@ -544,7 +544,7 @@ ubiErpsMIBNotifications  OBJECT IDENTIFIER				::= { ubiErpsMIBNotificationPrefix
     	SYNTAX      INTEGER {      
     		none(1),
     		east(2),
-    		west(3),    	
+    		west(3)    	
     	}
     	MAX-ACCESS  read-write
     	STATUS      current
@@ -791,8 +791,9 @@ ubiErpsMIBGroups  		OBJECT IDENTIFIER		::= { ubiErpsMIBConformance 2 }
 -- units of conformance
 
 	ubiErpsBaseGroup OBJECT-GROUP
-    	OBJECTS         {   
-                    }
+    	OBJECTS {
+                ubiErpsBaseTable
+        }
     	STATUS          current
     	DESCRIPTION
         	""

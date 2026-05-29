@@ -28,7 +28,7 @@ WLSX-WLAN-MIB DEFINITIONS ::= BEGIN
            FROM SNMPv2-TC
 
        ifIndex
-           FROM RFC1213-MIB
+           FROM IF-MIB
 
 	   ArubaEnableValue,
 	   ArubaFrameType,
@@ -49,7 +49,9 @@ WLSX-WLAN-MIB DEFINITIONS ::= BEGIN
 	   ArubaHTMode,
 	   ArubaPortSpeed,
 	   ArubaHTExtChannel,
-       ArubaFlexRadioMode
+       ArubaFlexRadioMode,
+	   ArubaDual5GMode,
+	   ArubaSplit5GMode
 	   		FROM ARUBA-TC
 
        OBJECT-GROUP
@@ -234,7 +236,7 @@ WLSX-WLAN-MIB DEFINITIONS ::= BEGIN
          wlanAPFlexRadioMode        ArubaFlexRadioMode,
          wlanAPdot11aAntennaGain10x	Integer32,
          wlanAPdot11gAntennaGain10x	Integer32,
-         wlanAPDual5GMode           ArubaEnableValue,
+         wlanAPDual5GMode           ArubaDual5GMode,
          wlanAPActiveIpAddress      DisplayString(SIZE(0..45)),
          wlanAPSplit5GMode          ArubaSplit5GMode
    }

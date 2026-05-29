@@ -24,9 +24,9 @@ IMPORTS
     E7SnmpVers,
     E7EtherType,
     E7Pbit,
-    E7BondedInterfaceIndex
-    E7OperStatus
-    E7XdslGrpOperStatus 
+    E7BondedInterfaceIndex,
+    E7OperStatus,
+    E7XdslGrpOperStatus
                     FROM E7-TC;
 
     e7ResourceModule MODULE-IDENTITY
@@ -1498,15 +1498,14 @@ e7VdslBondedInterfaceEntry OBJECT-TYPE
 
 E7VdslBondedInterfaceEntry ::= SEQUENCE {
     e7VdslBondedInterfaceIndex        E7BondedInterfaceIndex,
-    e7VdslBondedInterfaceName         DisplayString
-    e7VdslBondedInterfaceAdminStatus  E7AdminStatus 
-    e7VdslBondedInterfaceOperStatus   E7OperStatus
-    e7VdslBondedInterfaceBondState    E7XdslGrpOperStatus
-    e7VdslBondedInterfaceDSRate       Integer32
-    e7VdslBondedInterfaceUSRate       Integer32
-    e7VdslBondedInterfaceActPorts     DisplayString 
-    e7VdslBondedInterfaceInActPorts   DisplayString 
-    
+    e7VdslBondedInterfaceName         DisplayString,
+    e7VdslBondedInterfaceAdminStatus  E7AdminStatus,
+    e7VdslBondedInterfaceOperStatus   E7OperStatus,
+    e7VdslBondedInterfaceBondState    E7XdslGrpOperStatus,
+    e7VdslBondedInterfaceDSRate       Integer32,
+    e7VdslBondedInterfaceUSRate       Integer32,
+    e7VdslBondedInterfaceActPorts     DisplayString,
+    e7VdslBondedInterfaceInActPorts   DisplayString
     }
 
 e7VdslBondedInterfaceIndex OBJECT-TYPE

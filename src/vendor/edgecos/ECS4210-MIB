@@ -7504,7 +7504,7 @@ diffServIpAceSourcePortBitmask OBJECT-TYPE
     ::= { diffServIpAceEntry 15 }
 
 diffServIpAceDestPortOp OBJECT-TYPE
-    SYNTAX      INTEGER{
+    SYNTAX      INTEGER {
                 noOperator(1),
                 equal(2),
                 range(3)
@@ -14097,7 +14097,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
          cpuCurrentUti            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The current CPU utilization in percent in the past 5 seconds."
@@ -14106,7 +14106,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuStatMaxUti            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The maximum CPU utilization in percent in the past 60 seconds."
@@ -14115,7 +14115,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuStatAvgUti            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The average CPU utilization in percent in the past 60 seconds."
@@ -14123,7 +14123,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
         cpuPeakTime            OBJECT-TYPE
             SYNTAX      DisplayString
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The time when the CPU utilization reaches cpuUtiRisingThreshold
@@ -14134,7 +14134,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuPeakDuration       OBJECT-TYPE
             SYNTAX      INTEGER
             UNITS       "second"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The duration from the CPU utilization reaches cpuUtiRisingThreshold
@@ -14144,7 +14144,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuUtiRisingThreshold            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                 "The rising threshold of the cpu utilization."
@@ -14153,7 +14153,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuUtiFallingThreshold           OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                 "The falling threshold of the cpu utilization."
@@ -14163,7 +14163,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
          memoryTotal    OBJECT-TYPE
             SYNTAX      INTEGER
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The total amount of the memory in kilobytes."
@@ -14171,7 +14171,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
           memoryAllocated       OBJECT-TYPE
             SYNTAX      INTEGER
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The amount of the memory allocated in kilobytes."
@@ -14179,7 +14179,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
           memoryFreed    OBJECT-TYPE
             SYNTAX      INTEGER
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The amount of the free memory in kilobytes."
@@ -14187,7 +14187,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
          memoryFreedInPercent         OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "the memory freed in proportion to the total memory."
@@ -14196,7 +14196,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
          memoryUtiRisingThreshold            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                  "The rising threshold of the memory utilization."
@@ -14205,7 +14205,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
          memoryUtiFallingThreshold            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                  "The falling threshold of the memory utilization."
@@ -14264,7 +14264,7 @@ mvrDomainStatus OBJECT-TYPE
         ::= { mvrDomainEntry 2}
 
 mvrDomainRunningStatus OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             active(1),
             inactive(2)
@@ -14342,7 +14342,7 @@ mvrDomainIfIndex   OBJECT-TYPE
         ::= { mvrDomainPortEntry 2 }
 
 mvrDomainPortType   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             none(0),
             source(1),
@@ -14362,7 +14362,7 @@ mvrDomainPortImmediateLeave   OBJECT-TYPE
         ::= { mvrDomainPortEntry 4 }
 
 mvrDomainPortActive   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             active(1),
             inactive(2)
@@ -14420,7 +14420,7 @@ mvrProfileName   OBJECT-TYPE
         ::= { mvrProfileCtlEntry 2 }
 
 mvrProfileCtlAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -14493,7 +14493,7 @@ mvrProfileGroupEndIPAddress   OBJECT-TYPE
         ::= { mvrProfileGroupCtlEntry 4 }
 
 mvrProfileGroupCtlAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -14551,7 +14551,7 @@ mvrProfileId   OBJECT-TYPE
         ::= { mvrDomainAssociatedProfileEntry 2 }
 
 mvrProfileAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -14706,7 +14706,7 @@ mvrProxyQueryInterval OBJECT-TYPE
         ::= { mvrMgt 29 }
 
 mvrSourcePortmode OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             dynamic(0),
             forward(1)

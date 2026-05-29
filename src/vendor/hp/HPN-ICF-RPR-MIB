@@ -20,7 +20,7 @@ HPN-ICF-RPR-MIB DEFINITIONS ::= BEGIN
             FROM IF-MIB
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB
-        RowStatus, TruthValue
+        RowStatus, TruthValue, MacAddress
             FROM SNMPv2-TC;
 
         hpnicfRpr MODULE-IDENTITY
@@ -43,6 +43,8 @@ HPN-ICF-RPR-MIB DEFINITIONS ::= BEGIN
 --
 -- Textual conventions
 --
+
+    HpnicfRprTrapIp ::= OCTET STRING (SIZE(4))
 
     HpnicfRprRingletID ::= TEXTUAL-CONVENTION
         STATUS current
@@ -1288,7 +1290,7 @@ HPN-ICF-RPR-MIB DEFINITIONS ::= BEGIN
             hpnicfRprTrapTopoMacAddress
                 MacAddress,
             hpnicfRprTrapIpAddress
-                InetAddress
+                HpnicfRprTrapIp
         }
 
     hpnicfRprTrapIfIndex OBJECT-TYPE
@@ -1318,7 +1320,7 @@ HPN-ICF-RPR-MIB DEFINITIONS ::= BEGIN
         ::= { hpnicfRprTrapVarEntry 3 }
 
     hpnicfRprTrapIpAddress OBJECT-TYPE
-        SYNTAX InetAddress
+        SYNTAX HpnicfRprTrapIp
         MAX-ACCESS accessible-for-notify
         STATUS current
         DESCRIPTION

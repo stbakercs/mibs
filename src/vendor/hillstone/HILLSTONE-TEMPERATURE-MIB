@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneTemperature
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212	
+		FROM SNMPv2-SMI	
         RowStatus		
 		FROM SNMPv2-TC;
 
@@ -32,30 +32,13 @@ IMPORTS
 hillstoneTemperatureObjects OBJECT IDENTIFIER ::= { hillstoneTemperature 1 }
 
 hillstoneTemperatureNumber OBJECT-TYPE
-    SYNTAX Integer32
+    SYNTAX INTEGER
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
 	"The number of temperatures."
     ::= { hillstoneTemperatureObjects 1 } 
 
-hillstoneTemperatureTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneTemperatureEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "This table contains all the TEMPERATURE data."
-::= { hillstoneTemperatureObjects 2 }
-
-HillstoneTemperatureEntry OBJECT-TYPE
-	SYNTAX HillstoneTemperatureEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-		"Define the parameters of TEMPERATURE."
-INDEX { hillstoneTemperatureIndex }
-::= { hillstoneTemperatureTable 1 }
-	
 HillstoneTemperatureEntry ::=
 SEQUENCE { 
 	hillstoneTemperatureIndex
@@ -65,30 +48,47 @@ SEQUENCE {
 	hillstoneTemperatureValue
 		INTEGER
 	}
+hillstoneTemperatureTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneTemperatureEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "This table contains all the TEMPERATURE data."
+::= { hillstoneTemperatureObjects 2 }
+
+hillstoneTemperatureEntry OBJECT-TYPE
+	SYNTAX HillstoneTemperatureEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"Define the parameters of TEMPERATURE."
+INDEX { hillstoneTemperatureIndex }
+::= { hillstoneTemperatureTable 1 }
+	
 
 hillstoneTemperatureIndex OBJECT-TYPE
 	SYNTAX INTEGER 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The TEMPERATURE index ."
-::= { HillstoneTemperatureEntry 1 }
+::= { hillstoneTemperatureEntry 1 }
 
 hillstoneTemperatureDescr OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The TEMPERATURE description ."
-::= { HillstoneTemperatureEntry 2 }
+::= { hillstoneTemperatureEntry 2 }
 
 hillstoneTemperatureValue OBJECT-TYPE
 	SYNTAX INTEGER
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The TEMPERATURE value ."
-::= { HillstoneTemperatureEntry 3 }
+::= { hillstoneTemperatureEntry 3 }
 
 
 END

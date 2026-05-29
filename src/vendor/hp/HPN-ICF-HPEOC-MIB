@@ -616,7 +616,7 @@ hpnicfHPEOCTemplate OBJECT IDENTIFIER ::= { hpnicfHPEOC 3 }
 --
 
 hpnicfHPEOCTemplateGlobalTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF hpnicfHPEOCTemplateGlobalEntry
+    SYNTAX      SEQUENCE OF HpnicfHPEOCTemplateGlobalEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -627,7 +627,7 @@ hpnicfHPEOCTemplateGlobalTable OBJECT-TYPE
     ::= { hpnicfHPEOCTemplate 1 }
 
 hpnicfHPEOCTemplateGlobalEntry OBJECT-TYPE
-    SYNTAX      hpnicfHPEOCTemplateGlobalEntry
+    SYNTAX      HpnicfHPEOCTemplateGlobalEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -640,7 +640,7 @@ hpnicfHPEOCTemplateGlobalEntry OBJECT-TYPE
         }
     ::= { hpnicfHPEOCTemplateGlobalTable 1 }
 
-hpnicfHPEOCTemplateGlobalEntry ::= SEQUENCE
+HpnicfHPEOCTemplateGlobalEntry ::= SEQUENCE
     {
         hpnicfHPEOCTemplateIndex            Integer32,
         hpnicfHPEOCTemplateType             Integer32,
@@ -665,7 +665,7 @@ hpnicfHPEOCTemplateIndex OBJECT-TYPE
     ::= { hpnicfHPEOCTemplateGlobalEntry 1 }
 
 hpnicfHPEOCTemplateType OBJECT-TYPE
-    SYNTAX      Integer32
+    SYNTAX      INTEGER
         {
             switch(1),
             gateway(2)
@@ -774,7 +774,7 @@ hpnicfHPEOCTemplateRowStatus OBJECT-TYPE
 --
 
 hpnicfHPEOCTemplateSwitchTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF hpnicfHPEOCTemplateSwitchEntry
+    SYNTAX      SEQUENCE OF HpnicfHPEOCTemplateSwitchEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -785,7 +785,7 @@ hpnicfHPEOCTemplateSwitchTable OBJECT-TYPE
     ::= { hpnicfHPEOCTemplate 2 }
 
 hpnicfHPEOCTemplateSwitchEntry OBJECT-TYPE
-    SYNTAX      hpnicfHPEOCTemplateSwitchEntry
+    SYNTAX HpnicfHPEOCTemplateSwitchEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -799,7 +799,7 @@ hpnicfHPEOCTemplateSwitchEntry OBJECT-TYPE
         }
     ::= { hpnicfHPEOCTemplateSwitchTable 1 }
 
-hpnicfHPEOCTemplateSwitchEntry ::= SEQUENCE
+HpnicfHPEOCTemplateSwitchEntry ::= SEQUENCE
     {
         hpnicfHPEOCTemplateUniIndex            Integer32,
         hpnicfHPEOCTemplateUniSpeed            INTEGER,
@@ -981,7 +981,7 @@ hpnicfHPEOCCnuAccess OBJECT IDENTIFIER ::= { hpnicfHPEOC 4 }
 --
 
 hpnicfHPEOCCnuAccessTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF hpnicfHPEOCCnuAccessEntry
+    SYNTAX      SEQUENCE OF HpnicfHPEOCCnuAccessEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -992,7 +992,7 @@ hpnicfHPEOCCnuAccessTable OBJECT-TYPE
     ::= { hpnicfHPEOCCnuAccess 1 }
 
 hpnicfHPEOCCnuAccessEntry OBJECT-TYPE
-    SYNTAX      hpnicfHPEOCCnuAccessEntry
+    SYNTAX HpnicfHPEOCCnuAccessEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -1006,7 +1006,7 @@ hpnicfHPEOCCnuAccessEntry OBJECT-TYPE
     ::= { hpnicfHPEOCCnuAccessTable 1 }
 
 
-hpnicfHPEOCCnuAccessEntry ::= SEQUENCE
+HpnicfHPEOCCnuAccessEntry ::= SEQUENCE
     {
         hpnicfHPEOCCnuAccessIndex        Integer32,
         hpnicfHPEOCCnuHFID               DisplayString,
@@ -1052,7 +1052,7 @@ hpnicfHPEOCManuInfo OBJECT-TYPE
     ::= { hpnicfHPEOCCnuAccessEntry 3 }
     
 hpnicfHPEOCCnuType OBJECT-TYPE
-    SYNTAX      Integer32
+    SYNTAX      INTEGER
         {
             switch(1),
             gateway(2)
@@ -1066,11 +1066,11 @@ hpnicfHPEOCCnuType OBJECT-TYPE
     ::= { hpnicfHPEOCCnuAccessEntry 4 }   
    
 hpnicfHPEOCCnuSwitchType OBJECT-TYPE
-    SYNTAX      Integer32
+    SYNTAX      INTEGER
         {
             rtl8306e(1),
             ar8236(2),
-            mv6061(3)
+            mv6061(3),
             mv6031(4)
         }
     MAX-ACCESS  read-write

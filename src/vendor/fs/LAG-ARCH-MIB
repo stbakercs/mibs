@@ -18,8 +18,8 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 -- -------------------------------------------------------------
 
 	lagTrunkGroupTable OBJECT-TYPE
-		SYNTAX SEQUENCE OF lagTrunkGroupEntry
-		ACCESS not-accessible
+		SYNTAX SEQUENCE OF LagTrunkGroupEntry
+		MAX-ACCESS not-accessible
 		STATUS mandatory
 		DESCRIPTION
 			"A table that contains the Trunk Group Table Entry rule
@@ -28,8 +28,8 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 	::= { lagArchTrunkGroup 1 }
 
 	lagTrunkGroupTableEntry OBJECT-TYPE
-		SYNTAX lagTrunkGroupEntry
-		ACCESS not-accessible
+		SYNTAX LagTrunkGroupEntry
+		MAX-ACCESS not-accessible
 		STATUS mandatory
 		DESCRIPTION
 			"A list of the rules applied to the entries of the Trunk Group 
@@ -38,7 +38,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 		INDEX { lagTrunkGroupTableAggIndex }
 	::= { lagTrunkGroupTable 1 }
 
-	lagTrunkGroupEntry ::=
+	LagTrunkGroupEntry ::=
 		SEQUENCE {
 			lagTrunkGroupTableAggIndex	INTEGER,
 			lagTrunkGroupTableRule INTEGER
@@ -46,7 +46,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 
 	lagTrunkGroupTableAggIndex OBJECT-TYPE
 		SYNTAX INTEGER
-		ACCESS not-accessible
+		MAX-ACCESS not-accessible
 		STATUS mandatory
 		DESCRIPTION
 			"The unique identifier allocated to this Aggregator by the 
@@ -67,7 +67,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 			destIP(5),
 			srcXORDestIP(6)
 		}
-		ACCESS read-write
+		MAX-ACCESS read-write
 		STATUS mandatory
 		DESCRIPTION
 			" The Rule to be applied to this Link Aggregator's Trunk Group
@@ -90,8 +90,8 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 	::= { lagTrunkGroupTableEntry 2 }
 
 	lagLinkStateTable OBJECT-TYPE
-		SYNTAX SEQUENCE OF lagLinkStateTableEntry
-		ACCESS not-accessible
+		SYNTAX SEQUENCE OF LagLinkStateEntry
+		MAX-ACCESS not-accessible
 		STATUS mandatory
 		DESCRIPTION
 			"A table that contains the Link State Table Entry
@@ -99,8 +99,8 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 	::= { lagArchTrunkGroup 2 }
 
 	lagLinkStateTableEntry OBJECT-TYPE
-		SYNTAX lagLinkStateTableEntry
-		ACCESS not-accessible
+		SYNTAX LagLinkStateEntry
+		MAX-ACCESS not-accessible
 		STATUS mandatory
 		DESCRIPTION
 			"A list of the link states. This is indexed by the ifIndex of the 
@@ -108,7 +108,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 		INDEX { lagLinkStateAggIndex }
 	::= { lagLinkStateTable 1 }
 
-	lagLinkStateTableEntry ::=
+	LagLinkStateEntry ::=
 		SEQUENCE {
 			lagLinkStateAggIndex	INTEGER,
 			lagLinkState INTEGER,
@@ -117,7 +117,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 
 	lagLinkStateAggIndex OBJECT-TYPE
 		SYNTAX INTEGER
-		ACCESS not-accessible
+		MAX-ACCESS not-accessible
 		STATUS mandatory
 		DESCRIPTION
 			"The unique identifier allocated to this Aggregator by the 
@@ -130,7 +130,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 			up(1),
 			down(2)
 		}
-		ACCESS read-write
+		MAX-ACCESS read-write
 		STATUS mandatory
 		DESCRIPTION
 			" The state of this Link Aggregator port."
@@ -141,7 +141,7 @@ LAG-ARCH-MIB DEFINITIONS ::= BEGIN
 			true(1),
 			false(2)
 		}
-		ACCESS read-write
+		MAX-ACCESS read-write
 		STATUS mandatory
 		DESCRIPTION
 			" The state of this Link Aggregator port. Indicating whether

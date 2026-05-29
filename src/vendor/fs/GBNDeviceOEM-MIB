@@ -99,7 +99,7 @@
       }
 
     oemArchIfaceUnit OBJECT-TYPE
-        SYNTAX Integer32 (1..4)
+        SYNTAX INTEGER (1..4)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -112,7 +112,7 @@
         ::= { oemArchIfaceEntry 1 }
 
     oemArchIfacePort OBJECT-TYPE
-        SYNTAX Integer32 (1..26)
+        SYNTAX INTEGER (1..26)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -121,7 +121,7 @@
         ::= { oemArchIfaceEntry 2 }
 
     oemArchIfaceLLWHPort OBJECT-TYPE
-        SYNTAX Integer32 (8193..8296)
+        SYNTAX INTEGER (8193..8296)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -134,7 +134,7 @@
         ::= { oemArchIfaceEntry 3 }
 
     oemArchIfaceIfIndex OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -321,7 +321,7 @@
       ::= { oemArchIfaceEntry 17 }
       
    oemArchIfaceLinkUpTime OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION

@@ -79,7 +79,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 1 }
 
     radioEnable OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 enabled   (1),
                 eisabled  (2)
         } 
@@ -89,7 +89,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 2 }
 
    radioLinkMode OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 master (1),
                 slave  (2),
                 spectral (3)
@@ -100,7 +100,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 3 }
 
     radioDuplex OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 halfDuplex (1),
                 fullDuplex (2)
         } 
@@ -131,7 +131,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 7 }
 
     gpsSync OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 off (1),
                 on  (2)
         } 
@@ -148,7 +148,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 9 }
 
     rxGain OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 low  (1),
                 high (2)
         } 
@@ -158,7 +158,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 10 }
 
     maxTxModRate OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
             qPSK-SISO-1-4x (0),
             qPSK-SISO-1x   (1),
             qPSK-MIMO-2x   (2),
@@ -172,7 +172,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 11 }
 
     modRateControl OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 manual    (1),
                 automatic (2)
         }
@@ -182,7 +182,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 12 }
 
     ethDPortLinkSpeed OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
             auto          (1),
             half-10Mbps   (2),
             half-100Mbps  (3),
@@ -210,7 +210,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 15 }
 
     ethFlowControl OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 off (1),
                 on  (2)
         }         
@@ -220,7 +220,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 16 }
    
     ethMcastFilter OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 off (1),
                 on  (2)
         }         
@@ -230,7 +230,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberConfigEntry 17 }
 
     ethTrackRFLink OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 disabled (0),
                 use-Timers (1),
                 enabled  (2)
@@ -404,7 +404,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberStatusEntry 1 }
 
     curTXModRate OBJECT-TYPE
-       SYNTAX     Integer32 {
+       SYNTAX     INTEGER {
             qPSK-SISO-1-4x (0),
             qPSK-SISO-1x   (1),
             qPSK-MIMO-2x   (2),
@@ -523,7 +523,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberStatusEntry 17 }
 
     remoteTXModRate OBJECT-TYPE
-       SYNTAX     Integer32 {
+       SYNTAX     INTEGER {
             qPSK-SISO-1-4x (0),
             qPSK-SISO-1x   (1),
             qPSK-MIMO-2x   (2),
@@ -586,7 +586,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberStatusEntry 25 }
 
     radioLinkState OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 down (0),
                 up   (1)
         }         
@@ -596,7 +596,7 @@ UBNT-AirFIBER-MIB DEFINITIONS ::= BEGIN
         ::= { airFiberStatusEntry 26 }
 
     ethDataPortState OBJECT-TYPE
-        SYNTAX     Integer32 {
+        SYNTAX     INTEGER {
                 down (0),
                 up   (1)
         }         

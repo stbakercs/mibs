@@ -1809,7 +1809,7 @@
 				tx10gLaserBias
 					DisplayString,
 				tx10gTemperature
-					DisplayString,
+					DisplayString
 			 }
 			              
 		rx10gLaserPower OBJECT-TYPE
@@ -2330,7 +2330,7 @@
 --  onuTxPowerOffTable                        
 -- ***********************************************************
  				              
-		TxPowerOltPortId OBJECT-TYPE
+		txPowerOltPortId OBJECT-TYPE
 			SYNTAX Integer32
 			MAX-ACCESS read-write
 			STATUS current
@@ -2338,7 +2338,7 @@
 				"TX-Power PortIndex"
 			::= { onu10gTxPowerOff 1 }
                
-        TxPowerOnuId OBJECT-TYPE
+        txPowerOnuId OBJECT-TYPE
 			SYNTAX Integer32
 			MAX-ACCESS read-write
 			STATUS current
@@ -2346,7 +2346,7 @@
 				"TX-Power OnuId"
 			::= { onu10gTxPowerOff 2 }
 			
-		TxPowerTimeOut OBJECT-TYPE
+		txPowerTimeOut OBJECT-TYPE
 			SYNTAX Integer32
 			MAX-ACCESS read-write
 			STATUS current

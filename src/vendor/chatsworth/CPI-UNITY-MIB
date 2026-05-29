@@ -96,7 +96,7 @@ hwAddress OBJECT-TYPE
         "PDU hardware MAC address."
     ::= { systemInfo 3 }
 
-configuration OBJECT IDENTIFIER ::= { cpiPDU 2 }
+pduConfiguration OBJECT IDENTIFIER ::= { cpiPDU 2 }
 
 logInterval OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -104,7 +104,7 @@ logInterval OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The time interval in seconds for logging metrics (disabled if < 10)."
-    ::= { configuration 1 }
+    ::= { econnectConfiguration 1 }
 
 alarmInterval OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -112,7 +112,7 @@ alarmInterval OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The time interval in seconds for alarm cycle (disabled if < 10)."
-    ::= { configuration 2 }
+    ::= { econnectConfiguration 2 }
 
 logDifference OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -120,7 +120,7 @@ logDifference OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The current difference in 1/100 Amps that triggers logging metrics."
-    ::= { configuration 3 }
+    ::= { pduConfiguration 3 }
 
 pduIP OBJECT-TYPE
     SYNTAX IpAddress
@@ -128,9 +128,9 @@ pduIP OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU IP address."
-    ::= { configuration 4 }
+    ::= { pduConfiguration 4 }
 
-netOptions OBJECT IDENTIFIER ::= { configuration 5 }
+netOptions OBJECT IDENTIFIER ::= { pduConfiguration 5 }
 
 autoIP OBJECT-TYPE
     SYNTAX Integer32 (0..1)
@@ -196,25 +196,25 @@ httpsEnable OBJECT-TYPE
         "Enable HTTPS Service, 0=disable and 1=enable."
     ::= { netOptions 8 }
 
-subnetMask OBJECT-TYPE
+subnetMaskCfgPdu OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "PDU Subnet Mask."
-    ::= { configuration 6 }
+    ::= { pduConfiguration 6 }
 
-gateway OBJECT-TYPE
+gatewayPdu OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "PDU Gateway Address."
-    ::= { configuration 7 }
+    ::= { pduConfiguration 7 }
 
-dnsHosts OBJECT IDENTIFIER ::= { configuration 8 }
+dnsHosts OBJECT IDENTIFIER ::= { pduConfiguration 8 }
 
-dns1 OBJECT-TYPE
+dns1Pdu OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -222,7 +222,7 @@ dns1 OBJECT-TYPE
         "PDU DNS 1 IP."
     ::= { dnsHosts 1 }
 
-dns2 OBJECT-TYPE
+dns2Pdu OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -230,7 +230,7 @@ dns2 OBJECT-TYPE
         "PDU DNS 2 IP."
     ::= { dnsHosts 2 }
 
-dns3 OBJECT-TYPE
+dns3Pdu OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -238,7 +238,7 @@ dns3 OBJECT-TYPE
         "PDU DNS 3 IP."
     ::= { dnsHosts 3 }
 
-snmpHosts OBJECT IDENTIFIER ::= { configuration 9 }
+snmpHosts OBJECT IDENTIFIER ::= { pduConfiguration 9 }
 
 snmpHost1 OBJECT-TYPE
     SYNTAX IpAddress
@@ -270,9 +270,9 @@ pduIPv6 OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU IPV6 address."
-    ::= { configuration 10 }
+    ::= { pduConfiguration 10 }
 
-netOptionsIPv6 OBJECT IDENTIFIER ::= { configuration 11 }
+netOptionsIPv6 OBJECT IDENTIFIER ::= { pduConfiguration 11 }
 
 autoIPv6 OBJECT-TYPE
     SYNTAX Integer32 (0..1)
@@ -306,7 +306,7 @@ linkLocalEnable OBJECT-TYPE
         "Enable IPV6 Link-Local, 0=disable and 1=enable."
     ::= { netOptionsIPv6 4 }
 
-globalAddrEnable OBJECT-TYPE
+ipv6GlobalAddrEnable OBJECT-TYPE
     SYNTAX Integer32 (0..1)
     MAX-ACCESS read-write
     STATUS current
@@ -320,7 +320,7 @@ subnetMaskIPv6 OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU IPV6 Subnet Mask."
-    ::= { configuration 12 }
+    ::= { pduConfiguration 12 }
 
 gatewayIPv6 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -328,9 +328,9 @@ gatewayIPv6 OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU IPV6 Gateway Address."
-    ::= { configuration 13 }
+    ::= { pduConfiguration 13 }
 
-dnsHostIPv6 OBJECT IDENTIFIER ::= { configuration 14 }
+dnsHostIPv6 OBJECT IDENTIFIER ::= { pduConfiguration 14 }
 
 dns1IPv6 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -356,7 +356,7 @@ dns3IPv6 OBJECT-TYPE
         "PDU DNS 4 for IPV6."
     ::= { dnsHostIPv6 3 }
 
-snmpHostsIPv6 OBJECT IDENTIFIER ::= { configuration 15 }
+snmpHostsIPv6 OBJECT IDENTIFIER ::= { pduConfiguration 15 }
 
 snmpHost1IPv6 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -382,7 +382,7 @@ snmpHost3IPv6 OBJECT-TYPE
         "SNMP Host 3 IPV6."
     ::= { snmpHostsIPv6 3 }
 
-receptacleControl OBJECT IDENTIFIER ::= { configuration 16 }
+receptacleControl OBJECT IDENTIFIER ::= { pduConfiguration 16 }
 
 outlet1Ctrl OBJECT-TYPE
     SYNTAX Integer32 (0..1)
@@ -576,7 +576,7 @@ outlet24Ctrl OBJECT-TYPE
         "Outlet24 power state, 0=OFF, 1=ON."
     ::= { receptacleControl 24 }
 
-receptacleONdelay OBJECT IDENTIFIER ::= { configuration 17 }
+receptacleONdelay OBJECT IDENTIFIER ::= { pduConfiguration 17 }
 
 outlet1ONdly OBJECT-TYPE
     SYNTAX Integer32 (0..255)
@@ -770,7 +770,7 @@ outlet24ONdly OBJECT-TYPE
         "Outlet24 power-on delay in seconds."
     ::= { receptacleONdelay 24 }
 
-receptacleResetDelay OBJECT IDENTIFIER ::= { configuration 18 }
+receptacleResetDelay OBJECT IDENTIFIER ::= { pduConfiguration 18 }
 
 outlet1RESdly OBJECT-TYPE
     SYNTAX Integer32 (0..255)
@@ -964,7 +964,7 @@ outlet24RESdly OBJECT-TYPE
         "Outlet24 reset delay in seconds."
     ::= { receptacleResetDelay 24 }
 
-maxCurrentLimits OBJECT IDENTIFIER ::= { configuration 19 }
+maxCurrentLimits OBJECT IDENTIFIER ::= { pduConfiguration 19 }
 
 xy1MaxCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1014,7 +1014,7 @@ zx2MaxCurr OBJECT-TYPE
         "Maximum current that ZX2 can draw in 1/100 Amps, 0=ignore."
     ::= { maxCurrentLimits 6 }
 
-minCurrentLimits OBJECT IDENTIFIER ::= { configuration 20 }
+minCurrentLimits OBJECT IDENTIFIER ::= { pduConfiguration 20 }
 
 xy1MinCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1064,7 +1064,7 @@ zx2MinCurr OBJECT-TYPE
         "Minimum current that ZX2 should draw in 1/100 Amps, 0=ignore."
     ::= { minCurrentLimits 6 }
 
-warnHiCurrentLimits OBJECT IDENTIFIER ::= { configuration 21 }
+warnHiCurrentLimits OBJECT IDENTIFIER ::= { pduConfiguration 21 }
 
 xy1WarnHiCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1114,7 +1114,7 @@ zx2WarnHiCurr OBJECT-TYPE
         "Warning upper current limit that ZX2 can draw in 1/100 Amps, 0=ignore."
     ::= { warnHiCurrentLimits 6 }
 
-warnLoCurrentLimits OBJECT IDENTIFIER ::= { configuration 22 }
+warnLoCurrentLimits OBJECT IDENTIFIER ::= { pduConfiguration 22 }
 
 xy1WarnLoCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1164,7 +1164,7 @@ zx2WarnLoCurr OBJECT-TYPE
         "Warning lower current limit that ZX2 can draw in 1/100 Amps, 0=ignore."
     ::= { warnLoCurrentLimits 6 }
 
-maxVoltageLimits OBJECT IDENTIFIER ::= { configuration 24 }
+maxVoltageLimits OBJECT IDENTIFIER ::= { pduConfiguration 24 }
 
 xy1MaxVolt OBJECT-TYPE
     SYNTAX Integer32 (0..3120)
@@ -1214,7 +1214,7 @@ zx2MaxVolt OBJECT-TYPE
         "Maximum voltage that ZX2 can reach up to in volts, 0=ignore."
     ::= { maxVoltageLimits 6 }
 
-minVoltageLimits OBJECT IDENTIFIER ::= { configuration 25 }
+minVoltageLimits OBJECT IDENTIFIER ::= { pduConfiguration 25 }
 
 xy1MinVolt OBJECT-TYPE
     SYNTAX Integer32 (0..3120)
@@ -1264,7 +1264,7 @@ zx2MinVolt OBJECT-TYPE
         "Minimum voltage that ZX2 can sag in volts, 0=ignore."
     ::= { minVoltageLimits 6 }
 
-warnHiVoltageLimits OBJECT IDENTIFIER ::= { configuration 26 }
+warnHiVoltageLimits OBJECT IDENTIFIER ::= { pduConfiguration 26 }
 
 xy1WarnHiVolt OBJECT-TYPE
     SYNTAX Integer32 (0..3120)
@@ -1314,7 +1314,7 @@ zx2WarnHiVolt OBJECT-TYPE
         "Warning High voltage in volts that ZX2 can reach before triggering warning notifications, 0=ignore."
     ::= { warnHiVoltageLimits 6 }
 
-warnLoVoltageLimits OBJECT IDENTIFIER ::= { configuration 27 }
+warnLoVoltageLimits OBJECT IDENTIFIER ::= { pduConfiguration 27 }
 
 xy1WarnLoVolt OBJECT-TYPE
     SYNTAX Integer32 (0..3120)
@@ -1364,7 +1364,7 @@ zx2WarnLoVolt OBJECT-TYPE
         "Warning Low voltage in volts that ZX2 can sag before triggering notifications, 0=ignore."
     ::= { warnLoVoltageLimits 6 }
 
-receptacleMaxCurrent OBJECT IDENTIFIER ::= { configuration 28 }
+receptacleMaxCurrent OBJECT IDENTIFIER ::= { pduConfiguration 28 }
 
 outlet1MaxCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1558,7 +1558,7 @@ outlet24MaxCurr OBJECT-TYPE
         "Outlet24 maximum current in 1/100 Amps."
     ::= { receptacleMaxCurrent 24 }
 
-receptacleMinCurrent OBJECT IDENTIFIER ::= { configuration 29 }
+receptacleMinCurrent OBJECT IDENTIFIER ::= { pduConfiguration 29 }
 
 outlet1MinCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1752,7 +1752,7 @@ outlet24MinCurr OBJECT-TYPE
         "Outlet24 minimum current in 1/100 Amps."
     ::= { receptacleMinCurrent 24 }
 
-receptacleWarnHiCurrent OBJECT IDENTIFIER ::= { configuration 30 }
+receptacleWarnHiCurrent OBJECT IDENTIFIER ::= { pduConfiguration 30 }
 
 outlet1WarnHiCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -1946,7 +1946,7 @@ outlet24WarnHiCurr OBJECT-TYPE
         "Outlet24 warning high current in 1/100 Amps."
     ::= { receptacleWarnHiCurrent 24 }
 
-receptacleWarnLoCurrent OBJECT IDENTIFIER ::= { configuration 31 }
+receptacleWarnLoCurrent OBJECT IDENTIFIER ::= { pduConfiguration 31 }
 
 outlet1WarnLoCurr OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
@@ -2140,7 +2140,7 @@ outlet24WarnLoCurr OBJECT-TYPE
         "Outlet24 warning low current in 1/100 Amps."
     ::= { receptacleWarnLoCurrent 24 }
 
-maxTempLimits OBJECT IDENTIFIER ::= { configuration 32 }
+maxTempLimits OBJECT IDENTIFIER ::= { pduConfiguration 32 }
 
 maxTempProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..20000)
@@ -2158,7 +2158,7 @@ maxTempProbe2 OBJECT-TYPE
         "Maximum temperature for Probe 2 in 1/100 of degrees Fahrenheit, 0=ignore."
     ::= { maxTempLimits 2 }
 
-minTempLimits OBJECT IDENTIFIER ::= { configuration 33 }
+minTempLimits OBJECT IDENTIFIER ::= { pduConfiguration 33 }
 
 minTempProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..20000)
@@ -2176,7 +2176,7 @@ minTempProbe2 OBJECT-TYPE
         "Minimum temperature for Probe 2 in 1/100 of degrees Fahrenheit, 0=ignore."
     ::= { minTempLimits 2 }
 
-warnHiTempLimits OBJECT IDENTIFIER ::= { configuration 34 }
+warnHiTempLimits OBJECT IDENTIFIER ::= { pduConfiguration 34 }
 
 warnHiTempProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..20000)
@@ -2194,7 +2194,7 @@ warnHiTempProbe2 OBJECT-TYPE
         "Warning High temperature for Probe 2 in 1/100 of degrees Fahrenheit, 0=ignore."
     ::= { warnHiTempLimits 2 }
 
-warnLoTempLimits OBJECT IDENTIFIER ::= { configuration 35 }
+warnLoTempLimits OBJECT IDENTIFIER ::= { pduConfiguration 35 }
 
 warnLoTempProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..20000)
@@ -2212,7 +2212,7 @@ warnLoTempProbe2 OBJECT-TYPE
         "Warning Low temperature for Probe 2 in 1/100 of degrees Fahrenheit, 0=ignore."
     ::= { warnLoTempLimits 2 }
 
-maxHumidityLimits OBJECT IDENTIFIER ::= { configuration 36 }
+maxHumidityLimits OBJECT IDENTIFIER ::= { pduConfiguration 36 }
 
 maxHumidProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..10000)
@@ -2230,7 +2230,7 @@ maxHumidProbe2 OBJECT-TYPE
         "Maximum humidity for Probe 2 in 1/100  of %, 0=ignore."
     ::= { maxHumidityLimits 2 }
 
-minHumidityLimits OBJECT IDENTIFIER ::= { configuration 37 }
+minHumidityLimits OBJECT IDENTIFIER ::= { pduConfiguration 37 }
 
 minHumidProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..10000)
@@ -2248,7 +2248,7 @@ minHumidProbe2 OBJECT-TYPE
         "Minimum humidity for Probe 2 in 1/100  of %, 0=ignore."
     ::= { minHumidityLimits 2 }
 
-warnHiHumidityLimits OBJECT IDENTIFIER ::= { configuration 38 }
+warnHiHumidityLimits OBJECT IDENTIFIER ::= { pduConfiguration 38 }
 
 warnHiHumidProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..10000)
@@ -2266,7 +2266,7 @@ warnHiHumidProbe2 OBJECT-TYPE
         "Warning High humidity for Probe 2 in 1/100  of %, 0=ignore."
     ::= { warnHiHumidityLimits 2 }
 
-warnLoHumidityLimits OBJECT IDENTIFIER ::= { configuration 39 }
+warnLoHumidityLimits OBJECT IDENTIFIER ::= { pduConfiguration 39 }
 
 warnLoHumidProbe1 OBJECT-TYPE
     SYNTAX Integer32 (0..10000)
@@ -2290,7 +2290,7 @@ pduName OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU Name."
-    ::= { configuration 40 }
+    ::= { pduConfiguration 40 }
 
 pduDescrip OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -2298,9 +2298,9 @@ pduDescrip OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU Description."
-    ::= { configuration 41 }
+    ::= { pduConfiguration 41 }
 
-receptacleNames OBJECT IDENTIFIER ::= { configuration 42 }
+receptacleNames OBJECT IDENTIFIER ::= { pduConfiguration 42 }
 
 outlet1Name OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -2494,7 +2494,7 @@ outlet24Name OBJECT-TYPE
         "Outlet24 Name."
     ::= { receptacleNames 24 }
 
-receptacleDescrips OBJECT IDENTIFIER ::= { configuration 43 }
+receptacleDescrips OBJECT IDENTIFIER ::= { pduConfiguration 43 }
 
 outlet1Descrip OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -2688,7 +2688,7 @@ outlet24Descrip OBJECT-TYPE
         "Outlet24 Description."
     ::= { receptacleDescrips 24 }
 
-groupNames OBJECT IDENTIFIER ::= { configuration 50 }
+groupNames OBJECT IDENTIFIER ::= { pduConfiguration 50 }
 
 group1Name OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -2818,7 +2818,7 @@ group16Name OBJECT-TYPE
         "Name for GROUP 16 of receptacles."
     ::= { groupNames 16 }
 
-groupMaps OBJECT IDENTIFIER ::= { configuration 51 }
+groupMaps OBJECT IDENTIFIER ::= { pduConfiguration 51 }
 
 group1Map OBJECT-TYPE
     SYNTAX OCTET STRING (SIZE (0..256))
@@ -2954,7 +2954,7 @@ dispTimeout OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Inactivity timeout in minutes to blank the local display (minimum is 1 minute)."
-    ::= { configuration 55 }
+    ::= { pduConfiguration 55 }
 
 loginTimeout OBJECT-TYPE
     SYNTAX Integer32 (1..60)
@@ -2962,7 +2962,7 @@ loginTimeout OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Inactivity timeout in minutes to terminate a logged in session (minimum is 1 minute)."
-    ::= { configuration 56 }
+    ::= { pduConfiguration 56 }
 
 dispBrightness OBJECT-TYPE
     SYNTAX Integer32 (0..9)
@@ -2970,9 +2970,9 @@ dispBrightness OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The relative brightness of the local display (0 in min, 9 is max)."
-    ::= { configuration 57 }
+    ::= { pduConfiguration 57 }
 
-pduOptions OBJECT IDENTIFIER ::= { configuration 58 }
+pduOptions OBJECT IDENTIFIER ::= { pduConfiguration 58 }
 
 inputTop OBJECT-TYPE
     SYNTAX Integer32 (0..1)
@@ -3094,7 +3094,7 @@ sumAmp OBJECT-TYPE
         "Display the sum of the current across branches, 1 = enable, 0 = disable."
     ::= { pduOptions 15 }
 
-httpPorts OBJECT IDENTIFIER ::= { configuration 59 }
+httpPorts OBJECT IDENTIFIER ::= { pduConfiguration 59 }
 
 httpPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3112,7 +3112,7 @@ httpsPort OBJECT-TYPE
         "Port for secure HTTPS access."
     ::= { httpPorts 2 }
 
-sshPorts OBJECT IDENTIFIER ::= { configuration 60 }
+sshPorts OBJECT IDENTIFIER ::= { pduConfiguration 60 }
 
 sshPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3130,7 +3130,7 @@ telnetPort OBJECT-TYPE
         "Port for non secure Telnet access."
     ::= { sshPorts 2 }
 
-snmpPorts OBJECT IDENTIFIER ::= { configuration 61 }
+snmpPorts OBJECT IDENTIFIER ::= { pduConfiguration 61 }
 
 snmpQueryPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3148,7 +3148,7 @@ snmpTrapPort OBJECT-TYPE
         "Port for SNMP trap."
     ::= { snmpPorts 2 }
 
-smtpPorts OBJECT IDENTIFIER ::= { configuration 62 }
+smtpPorts OBJECT IDENTIFIER ::= { pduConfiguration 62 }
 
 smtpSendPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3172,7 +3172,7 @@ rfcTimeServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "RFC Time Server Address."
-    ::= { configuration 63 }
+    ::= { pduConfiguration 63 }
 
 ntpTimeServer OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3180,7 +3180,7 @@ ntpTimeServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "NTP Time Server Address."
-    ::= { configuration 64 }
+    ::= { pduConfiguration 64 }
 
 smtpServer OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3188,7 +3188,7 @@ smtpServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Email Server Address."
-    ::= { configuration 65 }
+    ::= { pduConfiguration 65 }
 
 snmpReadComm OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3196,7 +3196,7 @@ snmpReadComm OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Read Community."
-    ::= { configuration 66 }
+    ::= { pduConfiguration 66 }
 
 snmpWriteComm OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3204,7 +3204,7 @@ snmpWriteComm OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Write Community."
-    ::= { configuration 67 }
+    ::= { pduConfiguration 67 }
 
 snmpUSMuserName OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3212,9 +3212,9 @@ snmpUSMuserName OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP USM User Name."
-    ::= { configuration 68 }
+    ::= { pduConfiguration 68 }
 
-snmpSecurityLevelAlgorithm OBJECT IDENTIFIER ::= { configuration 69 }
+snmpSecurityLevelAlgorithm OBJECT IDENTIFIER ::= { pduConfiguration 69 }
 
 snmpSecurityLevel OBJECT-TYPE
     SYNTAX Integer32 (0..4)
@@ -3247,7 +3247,7 @@ snmpAuthPasswd OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Authentication Password."
-    ::= { configuration 70 }
+    ::= { pduConfiguration 70 }
 
 snmpPrivPasswd OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3255,7 +3255,7 @@ snmpPrivPasswd OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Privacy Password."
-    ::= { configuration 71 }
+    ::= { pduConfiguration 71 }
 
 snmpContextName OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3263,7 +3263,7 @@ snmpContextName OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Context Name."
-    ::= { configuration 72 }
+    ::= { pduConfiguration 72 }
 
 snmpEngineID OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3271,7 +3271,7 @@ snmpEngineID OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Engine ID."
-    ::= { configuration 73 }
+    ::= { pduConfiguration 73 }
 
 snmpLocAuthKey OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3279,7 +3279,7 @@ snmpLocAuthKey OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Local Authentication Key."
-    ::= { configuration 74 }
+    ::= { pduConfiguration 74 }
 
 snmpLocPrivKey OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3287,7 +3287,7 @@ snmpLocPrivKey OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SNMP Local Privacy Key."
-    ::= { configuration 75 }
+    ::= { pduConfiguration 75 }
 
 smtpUserName OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3295,7 +3295,7 @@ smtpUserName OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU Email User Login Name."
-    ::= { configuration 76 }
+    ::= { pduConfiguration 76 }
 
 smtpUserPasswd OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3303,7 +3303,7 @@ smtpUserPasswd OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU Email User Login Password."
-    ::= { configuration 77 }
+    ::= { pduConfiguration 77 }
 
 smtpEmailAddr OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3311,9 +3311,9 @@ smtpEmailAddr OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "PDU Email address."
-    ::= { configuration 78 }
+    ::= { pduConfiguration 78 }
 
-smtpEmailDestinations OBJECT IDENTIFIER ::= { configuration 79 }
+smtpEmailDestinations OBJECT IDENTIFIER ::= { pduConfiguration 79 }
 
 smtpEmailDestination1 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3345,7 +3345,7 @@ smtpServOptions OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "SMTP Server Options."
-    ::= { configuration 80 }
+    ::= { pduConfiguration 80 }
 
 radiusServer OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3353,7 +3353,7 @@ radiusServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Radius Authentication Server."
-    ::= { configuration 81 }
+    ::= { pduConfiguration 81 }
 
 radiusSHSecret OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3361,7 +3361,7 @@ radiusSHSecret OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Radius Shared Secret."
-    ::= { configuration 82 }
+    ::= { pduConfiguration 82 }
 
 radiusNASServer OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3369,9 +3369,9 @@ radiusNASServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Radius Network Access Service."
-    ::= { configuration 83 }
+    ::= { pduConfiguration 83 }
 
-radiusNASPorts OBJECT IDENTIFIER ::= { configuration 84 }
+radiusNASPorts OBJECT IDENTIFIER ::= { pduConfiguration 84 }
 
 radiusPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3395,7 +3395,7 @@ adServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Active Directory Server."
-    ::= { configuration 85 }
+    ::= { pduConfiguration 85 }
 
 adDomain OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3403,9 +3403,9 @@ adDomain OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Active Directory Domain."
-    ::= { configuration 86 }
+    ::= { pduConfiguration 86 }
 
-adAllPorts OBJECT IDENTIFIER ::= { configuration 87 }
+adAllPorts OBJECT IDENTIFIER ::= { pduConfiguration 87 }
 
 adPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3423,7 +3423,7 @@ adResvPort OBJECT-TYPE
         "Alternate or reserved port for Active Directory Authentication."
     ::= { adAllPorts 2 }
 
-envProbeNames OBJECT IDENTIFIER ::= { configuration 88 }
+envProbeNames OBJECT IDENTIFIER ::= { pduConfiguration 88 }
 
 probe1Name OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3441,7 +3441,7 @@ probe2Name OBJECT-TYPE
         "Name for Environmental Probe 2."
     ::= { envProbeNames 2 }
 
-dLogOptions OBJECT IDENTIFIER ::= { configuration 89 }
+dLogOptions OBJECT IDENTIFIER ::= { pduConfiguration 89 }
 
 dLogEnable OBJECT-TYPE
     SYNTAX Integer32 (0..1)
@@ -3545,7 +3545,7 @@ dLogCycle OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The time interval in minutes for internal data logging to occur."
-    ::= { configuration 90 }
+    ::= { pduConfiguration 90 }
 
 dLogFullWarnLevel OBJECT-TYPE
     SYNTAX Integer32 (50..100)
@@ -3553,7 +3553,7 @@ dLogFullWarnLevel OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The warning threshold for percentage of storage full (min=50, max=100)."
-    ::= { configuration 91 }
+    ::= { pduConfiguration 91 }
 
 netdLogServer OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3561,7 +3561,7 @@ netdLogServer OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The network address for the data log server."
-    ::= { configuration 92 }
+    ::= { pduConfiguration 92 }
 
 netdLogPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
@@ -3569,7 +3569,7 @@ netdLogPort OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The port used by the data log server."
-    ::= { configuration 93 }
+    ::= { pduConfiguration 93 }
 
 netdLogUser OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3577,7 +3577,7 @@ netdLogUser OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The user name to access the data log server."
-    ::= { configuration 94 }
+    ::= { pduConfiguration 94 }
 
 netdLogPasswd OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3585,7 +3585,7 @@ netdLogPasswd OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The user password to access the data log server."
-    ::= { configuration 95 }
+    ::= { pduConfiguration 95 }
 
 netdLogDestdir OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3593,7 +3593,7 @@ netdLogDestdir OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The destination directory in the data log server."
-    ::= { configuration 96 }
+    ::= { pduConfiguration 96 }
 
 netdLogOptions OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3601,9 +3601,9 @@ netdLogOptions OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "The options string when accessing the data log server."
-    ::= { configuration 97 }
+    ::= { pduConfiguration 97 }
 
-snmpTrapHosts OBJECT IDENTIFIER ::= { configuration 98 }
+snmpTrapHosts OBJECT IDENTIFIER ::= { pduConfiguration 98 }
 
 snmpTrapHost1 OBJECT-TYPE
     SYNTAX IpAddress
@@ -3629,7 +3629,7 @@ snmpTrapHost3 OBJECT-TYPE
         "SNMP Trap Host 3 IP address."
     ::= { snmpTrapHosts 3 }
 
-snmpTrapHostsIPv6 OBJECT IDENTIFIER ::= { configuration 99 }
+snmpTrapHostsIPv6 OBJECT IDENTIFIER ::= { pduConfiguration 99 }
 
 snmpTrapHost1IPv6 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
@@ -3661,7 +3661,7 @@ lnkAttachCount OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Count of secondary PDUs that are attached to the link."
-    ::= { configuration 100 }
+    ::= { pduConfiguration 100 }
 
 metrics OBJECT IDENTIFIER ::= { cpiPDU 3 }
 
@@ -5424,10 +5424,10 @@ cpiMIBGroupsObjects OBJECT-GROUP
         httpEnable,
         httpsEnable,
         subnetMask,
-        gateway,
-        dns1,
-        dns2,
-        dns3,
+        gatewayPdu,
+        dns1Pdu,
+        dns2Pdu,
+        dns3Pdu,
         snmpHost1,
         snmpHost2,
         snmpHost3,
@@ -5435,7 +5435,7 @@ cpiMIBGroupsObjects OBJECT-GROUP
         autoIPv6,
         autoDNSIPv6,
         ipv6Enable,
-        linkLocalEnable,
+        ipv6LinkLocalEnable,
         globalAddrEnable,
         subnetMaskIPv6,
         gatewayIPv6,
@@ -6076,13 +6076,13 @@ unity OBJECT IDENTIFIER ::= { products 10 }
 
 econnect OBJECT IDENTIFIER ::= { unity 1 }
 
-configuration OBJECT IDENTIFIER ::= { econnect 1 }
+econnectConfiguration OBJECT IDENTIFIER ::= { econnect 1 }
 
-network OBJECT IDENTIFIER ::= { configuration 1 }
+network OBJECT IDENTIFIER ::= { econnectConfiguration 1 }
 
 ipv4 OBJECT IDENTIFIER ::= { network 1 }
 
-ipV4Enable OBJECT-TYPE
+econnectIpV4Enable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6090,7 +6090,7 @@ ipV4Enable OBJECT-TYPE
         "Controls whether the IPv4 network interface is enabled."
     ::= { ipv4 1 }
 
-pduIP OBJECT-TYPE
+econnectPduIP OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -6098,7 +6098,7 @@ pduIP OBJECT-TYPE
         "Set or get the IPv4 address of the PDU."
     ::= { ipv4 2 }
 
-autoIP OBJECT-TYPE
+econnectAutoIP OBJECT-TYPE
     SYNTAX INTEGER { static(0), dynamic(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6107,7 +6107,7 @@ autoIP OBJECT-TYPE
          DHCP server or is set statically."
     ::= { ipv4 3 }
 
-autoDNS OBJECT-TYPE
+econnectAutoDNS OBJECT-TYPE
     SYNTAX INTEGER { static(0), dynamic(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6116,7 +6116,7 @@ autoDNS OBJECT-TYPE
         a DHCP server or are set statically."
     ::= { ipv4 4 }
 
-subnetMask OBJECT-TYPE
+subnetMaskCfgEconnect OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -6126,7 +6126,7 @@ subnetMask OBJECT-TYPE
         network bits set to 1 and all the hosts bits set to 0."
     ::= { ipv4 5 }
 
-gateway OBJECT-TYPE
+gatewayEconnect OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -6134,7 +6134,7 @@ gateway OBJECT-TYPE
         "Set or get the IPv4 address of the gateway router for the PDU."
     ::= { ipv4 6 }
 
-dns1 OBJECT-TYPE
+dns1Econnect OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -6142,7 +6142,7 @@ dns1 OBJECT-TYPE
         "Set or get the IPv4 address of the first DNS entry for the PDU."
     ::= { ipv4 7 }
 
-dns2 OBJECT-TYPE
+dns2Econnect OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -6150,7 +6150,7 @@ dns2 OBJECT-TYPE
         "Set or get the IPv4 address of the second DNS entry for the PDU."
     ::= { ipv4 8 }
 
-dns3 OBJECT-TYPE
+dns3Econnect OBJECT-TYPE
     SYNTAX IpAddress
     MAX-ACCESS read-write
     STATUS current
@@ -6168,7 +6168,7 @@ ipV6Enable OBJECT-TYPE
         "Controls whether the IPv6 network interface is enabled."
     ::= { ipv6 1 }
 
-linkLocalEnable OBJECT-TYPE
+ipv6LinkLocalEnable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6176,7 +6176,7 @@ linkLocalEnable OBJECT-TYPE
         "Controls whether the IPv6 link-local address is enabled."
     ::= { ipv6 2 }
 
-globalAddrEnable OBJECT-TYPE
+ecIpv6GlobalAddrEnable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6184,7 +6184,7 @@ globalAddrEnable OBJECT-TYPE
         "Controls whether the IPv6 global address is enabled."
     ::= { ipv6 3 }
 
-pduIPv6 OBJECT-TYPE
+ipv6PduAddress OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6192,7 +6192,7 @@ pduIPv6 OBJECT-TYPE
         "Set or get the IPv6 address of the PDU."
     ::= { ipv6 4 }
 
-autoIPv6 OBJECT-TYPE
+ipv6AutoDns OBJECT-TYPE
     SYNTAX INTEGER { static(0), dynamic(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6254,27 +6254,27 @@ dns3v6 OBJECT-TYPE
 
 time OBJECT IDENTIFIER ::= { network 3 }
 
-rfcTimeServer OBJECT-TYPE
+networkRfcTimeServer OBJECT-TYPE
     SYNTAX      DisplayString
-    MAX-ACCESS  read-write
+    MAX-ACCESS read-write
     STATUS      current
     DESCRIPTION
         "Set or get the IP address of the RFC Time Server."
     ::= { time 1 }
 
-ntpTimeServer OBJECT-TYPE
+networkNtpTimeServer OBJECT-TYPE
     SYNTAX      DisplayString
-    MAX-ACCESS  read-write
+    MAX-ACCESS read-write
     STATUS      current
     DESCRIPTION
         "Set or get the IP address of the NTP Time Server."
     ::= { time 2 }
 
-interfaces OBJECT IDENTIFIER ::= { configuration 2 }
+interfaces OBJECT IDENTIFIER ::= { econnectConfiguration 2 }
 
 snmp OBJECT IDENTIFIER ::= { interfaces 1 }
 
-snmpEnable OBJECT-TYPE
+ecSnmpEnable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6282,9 +6282,9 @@ snmpEnable OBJECT-TYPE
         "Controls whether the SNMP network service is enabled."
     ::= { snmp 1 }
 
-snmpHosts OBJECT IDENTIFIER ::= { snmp 2 }
+ecSnmpHosts OBJECT IDENTIFIER ::= { snmp 2 }
 
-snmpHostOnly OBJECT-TYPE
+ecSnmpHostOnly OBJECT-TYPE
     SYNTAX INTEGER { any(0), listed(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6292,34 +6292,34 @@ snmpHostOnly OBJECT-TYPE
         "Controls whether access to the SNMP service responsed to
         the listed hosts (snmpHost1, snmpHost2, snmpHost3) or
         to any host requesting data."
-    ::= { snmpHosts 1 }
+    ::= { ecSnmpHosts 1 }
 
-snmpHost1 OBJECT-TYPE
+ecSnmpHost1 OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "Set or get the IPv4 address of the first host the SNMP service
         will reply to."
-    ::= { snmpHosts 2 }
+    ::= { ecSnmpHosts 2 }
 
-snmpHost2 OBJECT-TYPE
+ecSnmpHost2 OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "Set or get the IPv4 address of the second host the SNMP service
         will reply to."
-    ::= { snmpHosts 3 }
+    ::= { ecSnmpHosts 3 }
 
-snmpHost3 OBJECT-TYPE
+ecSnmpHost3 OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "Set or get the IPv4 address of the third host the SNMP service
         will reply to."
-    ::= { snmpHosts 4 }
+    ::= { ecSnmpHosts 4 }
    
 snmpHostIPv61 OBJECT-TYPE
     SYNTAX DisplayString
@@ -6328,7 +6328,7 @@ snmpHostIPv61 OBJECT-TYPE
     DESCRIPTION
         "Set or get the IPv6 address of the first host the SNMP service
         will reply to."
-    ::= { snmpHosts 5 }
+    ::= { ecSnmpHosts 5 }
 
 snmpHostIPv62 OBJECT-TYPE
     SYNTAX DisplayString
@@ -6337,7 +6337,7 @@ snmpHostIPv62 OBJECT-TYPE
     DESCRIPTION
         "Set or get the IPv6 address of the first host the SNMP service
         will reply to."
-    ::= { snmpHosts 6 }
+    ::= { ecSnmpHosts 6 }
 
 snmpHostIPV63 OBJECT-TYPE
     SYNTAX DisplayString
@@ -6346,9 +6346,9 @@ snmpHostIPV63 OBJECT-TYPE
     DESCRIPTION
         "Set or get the IPv6 address of the first host the SNMP service
         will reply to."
-    ::= { snmpHosts 7 }
+    ::= { ecSnmpHosts 7 }
 
-snmpQueryPort OBJECT-TYPE
+ecSnmpQueryPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6356,7 +6356,7 @@ snmpQueryPort OBJECT-TYPE
         "Set or get the port for SNMP query access."
     ::= { snmp 3 }
 
-snmpTrapPort OBJECT-TYPE
+ecSnmpTrapPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6364,7 +6364,7 @@ snmpTrapPort OBJECT-TYPE
         "Set or get the port for SNMP traps."
     ::= { snmp 4 }
 
-snmpReadComm OBJECT-TYPE
+ecSnmpReadComm OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6372,7 +6372,7 @@ snmpReadComm OBJECT-TYPE
         "Set or get the SNMP Read Community."
     ::= { snmp 5 }
 
-snmpWriteComm OBJECT-TYPE
+ecSnmpWriteComm OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6380,7 +6380,7 @@ snmpWriteComm OBJECT-TYPE
         "Set or get the SNMP Write Community."
     ::= { snmp 6 }
 
-snmpUSMuserName OBJECT-TYPE
+ecSnmpUSMuserName OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6388,7 +6388,7 @@ snmpUSMuserName OBJECT-TYPE
         "Set or get the SNMP USM User Name."
     ::= { snmp 7 }
 
-snmpSecurityLevel OBJECT-TYPE
+ecSnmpSecurityLevel OBJECT-TYPE
     SYNTAX INTEGER { v1(0), v2c(1), v3(2), v3Auth(3), v3AuthPriv(4) }
     MAX-ACCESS read-write
     STATUS current
@@ -6397,7 +6397,7 @@ snmpSecurityLevel OBJECT-TYPE
         3 = v3 with authentication only, 4 = v3 with authentication and privacy"
     ::= { snmp 8 }
 
-snmpAuthAlgo OBJECT-TYPE
+ecSnmpAuthAlgo OBJECT-TYPE
     SYNTAX INTEGER { sha(0), md5(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6405,7 +6405,7 @@ snmpAuthAlgo OBJECT-TYPE
         "Set or get the Authentication Algorithm for SNMP."
     ::= { snmp 9 }
 
-snmpPrivAlgo OBJECT-TYPE
+ecSnmpPrivAlgo OBJECT-TYPE
     SYNTAX INTEGER { des(0), aes(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6413,7 +6413,7 @@ snmpPrivAlgo OBJECT-TYPE
         "Get or get the Privacy Algorithm for SNMP."
     ::= { snmp 10 }
 
-snmpAuthPasswd OBJECT-TYPE
+ecSnmpAuthPasswd OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6421,7 +6421,7 @@ snmpAuthPasswd OBJECT-TYPE
         "Set or Get the SNMP Authentication Password."
     ::= { snmp 11 }
 
-snmpPrivPasswd OBJECT-TYPE
+ecSnmpPrivPasswd OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6429,7 +6429,7 @@ snmpPrivPasswd OBJECT-TYPE
         "Set or get the SNMP Privacy Password."
     ::= { snmp 12 }
 
-snmpContextName OBJECT-TYPE
+ecSnmpContextName OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6437,7 +6437,7 @@ snmpContextName OBJECT-TYPE
         "Set or get the SNMP Context Name."
     ::= { snmp 13 }
 
-snmpEngineID OBJECT-TYPE
+ecSnmpEngineID OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6445,7 +6445,7 @@ snmpEngineID OBJECT-TYPE
         "Set or get the SNMP Engine ID."
     ::= { snmp 14 }
 
-snmpLocAuthKey OBJECT-TYPE
+ecSnmpLocAuthKey OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6453,7 +6453,7 @@ snmpLocAuthKey OBJECT-TYPE
         "Set or get the SNMP Local Authentication Key."
     ::= { snmp 15 }
 
-snmpLocPrivKey OBJECT-TYPE
+ecSnmpLocPrivKey OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6461,31 +6461,31 @@ snmpLocPrivKey OBJECT-TYPE
         "Set or get the SNMP Local Privacy Key."
     ::= { snmp 16 }
 
-snmpTrapHosts OBJECT IDENTIFIER ::= { snmp 17 }
+ecSnmpTrapHosts OBJECT IDENTIFIER ::= { snmp 17 }
 
-snmpTrapHost1 OBJECT-TYPE
+ecSnmpTrapHost1 OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "Set or get the IPv4 address of the first SNMP Trap Host."
-    ::= { snmpTrapHosts 1 }
+    ::= { ecSnmpTrapHosts 1 }
 
-snmpTrapHost2 OBJECT-TYPE
+ecSnmpTrapHost2 OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "Set or get the IPv4 address of the second SNMP Trap Host."
-    ::= { snmpTrapHosts 2 }
+    ::= { ecSnmpTrapHosts 2 }
 
-snmpTrapHost3 OBJECT-TYPE
+ecSnmpTrapHost3 OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
         "Set or get the IPv4 address of the third SNMP Trap Host."
-    ::= { snmpTrapHosts 3 }
+    ::= { ecSnmpTrapHosts 3 }
 
 snmpTrapHostIPv61 OBJECT-TYPE
     SYNTAX DisplayString
@@ -6493,7 +6493,7 @@ snmpTrapHostIPv61 OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Set or get the IPv6 address of the first SNMP Trap Host."
-    ::= { snmpTrapHosts 4 }
+    ::= { ecSnmpTrapHosts 4 }
 
 snmpTrapHostIPv62 OBJECT-TYPE
     SYNTAX DisplayString
@@ -6501,7 +6501,7 @@ snmpTrapHostIPv62 OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Set or get the IPv6 address of the second SNMP Trap Host."
-    ::= { snmpTrapHosts 5 }
+    ::= { ecSnmpTrapHosts 5 }
 
 snmpTrapHostIPv63 OBJECT-TYPE
     SYNTAX DisplayString
@@ -6509,7 +6509,7 @@ snmpTrapHostIPv63 OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "Set or get the IPv6 address of the third SNMP Trap Host."
-    ::= { snmpTrapHosts 6 }
+    ::= { ecSnmpTrapHosts 6 }
 
 snmpControl OBJECT IDENTIFIER ::= { snmp 18 }
 
@@ -6523,7 +6523,7 @@ enableEASSNMPControl OBJECT-TYPE
 
 http OBJECT IDENTIFIER ::= { interfaces 2 }
 
-enableWeb OBJECT-TYPE
+ecEnableWeb OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6531,7 +6531,7 @@ enableWeb OBJECT-TYPE
         "Controls whether the web interface is enabled."
     ::= { http 1 }
 
-httpEnable OBJECT-TYPE
+ecHttpEnable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6539,7 +6539,7 @@ httpEnable OBJECT-TYPE
         "Controls whether the HTTP service is enabled."
     ::= { http 2 }
 
-httpsEnable OBJECT-TYPE
+ecHttpsEnable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6547,7 +6547,7 @@ httpsEnable OBJECT-TYPE
         "Controls whether the HTTPS service is enabled."
     ::= { http 3 }
 
-httpPort OBJECT-TYPE
+ecHttpPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6555,7 +6555,7 @@ httpPort OBJECT-TYPE
         "Set or get the port for unsecure HTTP access."
     ::= { http 4 }
 
-httpsPort OBJECT-TYPE
+ecHttpsPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6573,7 +6573,7 @@ enableSMTP OBJECT-TYPE
         "Controls whether the mail notification service is enabled.."
     ::= { smtp 1 }
 
-smtpSendPort OBJECT-TYPE
+ecSmtpSendPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6581,7 +6581,7 @@ smtpSendPort OBJECT-TYPE
         "Set or get the port for SMTP send."
     ::= { smtp 2 }
 
-smtpReceivePort OBJECT-TYPE
+ecSmtpReceivePort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6589,7 +6589,7 @@ smtpReceivePort OBJECT-TYPE
         "Set or get the port for SMTP Receive."
     ::= { smtp 3 }
 
-smtpServer OBJECT-TYPE
+ecSmtpServer OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6597,7 +6597,7 @@ smtpServer OBJECT-TYPE
         "Set or get the IP address of the e-mail server."
     ::= { smtp 4 }
 
-smtpUserName OBJECT-TYPE
+ecSmtpUserName OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6605,7 +6605,7 @@ smtpUserName OBJECT-TYPE
         "Set or get the PDU e-mail user login name."
     ::= { smtp 5 }
 
-smtpUserPasswd OBJECT-TYPE
+ecSmtpUserPasswd OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6613,7 +6613,7 @@ smtpUserPasswd OBJECT-TYPE
         "Set or get the PDU e-mail user login password."
     ::= { smtp 6 }
 
-smtpEmailAddr OBJECT-TYPE
+ecSmtpEmailAddr OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6621,7 +6621,7 @@ smtpEmailAddr OBJECT-TYPE
         "Set or get the PDU e-mail address."
     ::= { smtp 7 }
 
-smtpEmailDestination1 OBJECT-TYPE
+ecSmtpEmailDestination1 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6629,7 +6629,7 @@ smtpEmailDestination1 OBJECT-TYPE
         "Set or get the e-mail address of the first recipient."
     ::= { smtp 8 }
 
-smtpEmailDestination2 OBJECT-TYPE
+ecSmtpEmailDestination2 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6637,7 +6637,7 @@ smtpEmailDestination2 OBJECT-TYPE
         "Set or get the e-mail address of the second recipient."
     ::= { smtp 9 }
 
-smtpEmailDestination3 OBJECT-TYPE
+ecSmtpEmailDestination3 OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6645,7 +6645,7 @@ smtpEmailDestination3 OBJECT-TYPE
         "Set or get the e-mail address of the third recipient."
     ::= { smtp 10 }
 
-smtpServOptions OBJECT-TYPE
+ecSmtpServOptions OBJECT-TYPE
     SYNTAX Integer32 (0..2)
     MAX-ACCESS read-write
     STATUS current
@@ -6653,7 +6653,7 @@ smtpServOptions OBJECT-TYPE
         "Set or get the SMTP server options."
     ::= { smtp 11 }
 
-logging OBJECT IDENTIFIER ::= { configuration 3 }
+logging OBJECT IDENTIFIER ::= { econnectConfiguration 3 }
 
 logEnable OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
@@ -6663,7 +6663,7 @@ logEnable OBJECT-TYPE
         "Controls whether the data logging feature is enabled."
     ::= { logging 1 }
 
-logInterval OBJECT-TYPE
+ecLogInterval OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6671,7 +6671,7 @@ logInterval OBJECT-TYPE
         "Set or get the time interval in seconds for logging metrics (disabled if < 10)."
     ::= { logging 2 }
 
-logDifference OBJECT-TYPE
+ecLogDifference OBJECT-TYPE
     SYNTAX Integer32 (0..2000)
     MAX-ACCESS read-write
     STATUS current
@@ -6679,7 +6679,7 @@ logDifference OBJECT-TYPE
         "Set or get the current difference in 1/100 Amps that triggers logging metrics."
     ::= { logging 3 }
 
-netservdLog OBJECT-TYPE
+ecNetservdLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6687,7 +6687,7 @@ netservdLog OBJECT-TYPE
         "Controls sending the data logs to log server over network."
     ::= { logging 4 }
 
-autonetLog OBJECT-TYPE
+ecAutonetLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6695,7 +6695,7 @@ autonetLog OBJECT-TYPE
         "Controls whether automatic transfer to log server every 6 hours is enabled."
     ::= { logging 5 }
 
-stdmeterdLog OBJECT-TYPE
+ecStdmeterdLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6703,7 +6703,7 @@ stdmeterdLog OBJECT-TYPE
         "Controls whether logging of branch, receptacle and environmental metrics is enabled."
     ::= { logging 6 }
 
-groupmeterdLog OBJECT-TYPE
+ecGroupmeterdLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6711,7 +6711,7 @@ groupmeterdLog OBJECT-TYPE
         "Controls whether logging of grouped receptacle metrics is enabled."
     ::= { logging 7 }
 
-alarmdLog OBJECT-TYPE
+ecAlarmdLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6719,7 +6719,7 @@ alarmdLog OBJECT-TYPE
         "Controls whether logging of alarm events is enabled."
     ::= { logging 8 }
 
-userlogindLog OBJECT-TYPE
+ecUserlogindLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6727,7 +6727,7 @@ userlogindLog OBJECT-TYPE
         "Control whether logging of user login events is enabled."
     ::= { logging 9 }
 
-usersetupdLog OBJECT-TYPE
+ecUsersetupdLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6735,7 +6735,7 @@ usersetupdLog OBJECT-TYPE
         "Control whether logging of user setup change events is enabled."
     ::= { logging 10 }
 
-fwupdatedLog OBJECT-TYPE
+ecFwupdatedLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6743,7 +6743,7 @@ fwupdatedLog OBJECT-TYPE
         "Control whether the logging of firmware updates is enabled."
     ::= { logging 11 }
 
-setupchangedLog OBJECT-TYPE
+ecSetupchangedLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6751,7 +6751,7 @@ setupchangedLog OBJECT-TYPE
         "Control whether the logging of setup change events is enabled."
     ::= { logging 12 }
 
-recepchangedLog OBJECT-TYPE
+ecRecepchangedLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6759,7 +6759,7 @@ recepchangedLog OBJECT-TYPE
         "Control whether logging of receptacle state changes is enabled."
     ::= { logging 13 }
 
-pduopchangedLog OBJECT-TYPE
+ecPduopchangedLog OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -6767,7 +6767,7 @@ pduopchangedLog OBJECT-TYPE
         "Control whether logging of PDU operation and state changes is enabled."
     ::= { logging 14 }
 
-dLogCycle OBJECT-TYPE
+ecDLogCycle OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6775,7 +6775,7 @@ dLogCycle OBJECT-TYPE
         "Set or get the time interval in minutes for internal data logging to occur."
     ::= { logging 15 }
 
-dLogFullWarnLevel OBJECT-TYPE
+ecDLogFullWarnLevel OBJECT-TYPE
     SYNTAX Integer32 (50..100)
     MAX-ACCESS read-write
     STATUS current
@@ -6783,7 +6783,7 @@ dLogFullWarnLevel OBJECT-TYPE
         "Set or get the warning threshold for percentage of storage full (min=50, max=100)."
     ::= { logging 16 }
 
-netdLogServer OBJECT-TYPE
+ecNetdLogServer OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6791,7 +6791,7 @@ netdLogServer OBJECT-TYPE
         "Set or get the network address for the data server."
     ::= { logging 17 }
 
-netdLogPort OBJECT-TYPE
+ecNetdLogPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6799,7 +6799,7 @@ netdLogPort OBJECT-TYPE
         "Set or get the port used by the data server."
     ::= { logging 18 }
 
-netdLogUser OBJECT-TYPE
+ecNetdLogUser OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6807,7 +6807,7 @@ netdLogUser OBJECT-TYPE
         "Set or get the user name to access the data server."
     ::= { logging 19 }
 
-netdLogPasswd OBJECT-TYPE
+ecNetdLogPasswd OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6815,7 +6815,7 @@ netdLogPasswd OBJECT-TYPE
         "Set or get the user password to access the data server."
     ::= { logging 20 }
 
-netdLogDestdir OBJECT-TYPE
+ecNetdLogDestdir OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6823,7 +6823,7 @@ netdLogDestdir OBJECT-TYPE
         "Get or get the destination directory in the data server."
     ::= { logging 21 }
 
-netdLogOptions OBJECT-TYPE
+ecNetdLogOptions OBJECT-TYPE
     SYNTAX DisplayString (SIZE (0..64))
     MAX-ACCESS read-write
     STATUS current
@@ -6863,7 +6863,7 @@ sysLogCentralServerPort OBJECT-TYPE
         "Get or set the port for the central syslog server."
     ::= { logging 26 }
 
-accesscontrol OBJECT IDENTIFIER ::= { configuration 4 }
+accesscontrol OBJECT IDENTIFIER ::= { econnectConfiguration 4 }
 
 ldap OBJECT IDENTIFIER ::= { accesscontrol 1 }
 
@@ -6875,7 +6875,7 @@ enableADAuth OBJECT-TYPE
         "Controls whether the Active Directory authentication is enabled."
     ::= { ldap 1 }
 
-adServer OBJECT-TYPE
+ecAdServer OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6883,7 +6883,7 @@ adServer OBJECT-TYPE
         "Set or get the IP address of the Active Directory Server."
     ::= { ldap 2 }
 
-adDomain OBJECT-TYPE
+ecAdDomain OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6891,7 +6891,7 @@ adDomain OBJECT-TYPE
         "Set or get the Active Directory Domain."
     ::= { ldap 3 }
     
-adPort OBJECT-TYPE
+ecAdPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6899,7 +6899,7 @@ adPort OBJECT-TYPE
         "Set or get the port for Active Directory authentication."
     ::= { ldap 4 }
 
-adResvPort OBJECT-TYPE
+ecAdResvPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6917,7 +6917,7 @@ enableRadiusAuth OBJECT-TYPE
         "Controls whether radius authentication is enabled."
     ::= { radius 1 }
 
-radiusServer OBJECT-TYPE
+ecRadiusServer OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6925,7 +6925,7 @@ radiusServer OBJECT-TYPE
         "Set or get the IP address of the Radius Authentication Server."
     ::= { radius 2 }
 
-radiusSHSecret OBJECT-TYPE
+ecRadiusSHSecret OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6933,7 +6933,7 @@ radiusSHSecret OBJECT-TYPE
         "Set or get the Radius Shared Secret."
     ::= { radius 3 }
 
-radiusNASServer OBJECT-TYPE
+ecRadiusNASServer OBJECT-TYPE
     SYNTAX DisplayString
     MAX-ACCESS read-write
     STATUS current
@@ -6941,7 +6941,7 @@ radiusNASServer OBJECT-TYPE
         "Set or get the Radius Network Access Service."
     ::= { radius 4 }
 
-radiusPort OBJECT-TYPE
+ecRadiusPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -6949,7 +6949,7 @@ radiusPort OBJECT-TYPE
         "Set or get the port for radius authentication."
     ::= { radius 5 }
 
-nasPort OBJECT-TYPE
+ecNasPort OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -7069,9 +7069,9 @@ cardradiusPort3 OBJECT-TYPE
         "Set or get the port for Tertiary Radius Card Authentication."
     ::= { radius 20 }
     
-pdu OBJECT IDENTIFIER ::= { configuration 6 }
+pdu OBJECT IDENTIFIER ::= { econnectConfiguration 6 }
 
-inputTop OBJECT-TYPE
+ecInputTop OBJECT-TYPE
     SYNTAX INTEGER { bottom(0), top(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -7079,7 +7079,7 @@ inputTop OBJECT-TYPE
         "Set or get the input cord entry orientation."
     ::= { pdu 1 }
 
-celsiusTemp OBJECT-TYPE
+ecCelsiusTemp OBJECT-TYPE
     SYNTAX INTEGER { fahrenheit(0), celsius(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -7087,7 +7087,7 @@ celsiusTemp OBJECT-TYPE
         "Set or get the temperature units."
     ::= { pdu 2 }
 
-shareRole OBJECT-TYPE
+ecShareRole OBJECT-TYPE
     SYNTAX INTEGER { backup(0), shared(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -7095,7 +7095,7 @@ shareRole OBJECT-TYPE
         "Controls whether to allow sharing of PDU Primary and Alternate Roles."
     ::= { pdu 3 }
 
-missingPDUNotify OBJECT-TYPE
+ecMissingPDUNotify OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -7103,7 +7103,7 @@ missingPDUNotify OBJECT-TYPE
         "Controls whether to notify when a PDU is missing from the link."
     ::= { pdu 4 }
 
-roleChangeNotify OBJECT-TYPE
+ecRoleChangeNotify OBJECT-TYPE
     SYNTAX INTEGER { disabled(0), enabled(1) }
     MAX-ACCESS read-write
     STATUS current
@@ -7111,7 +7111,7 @@ roleChangeNotify OBJECT-TYPE
         "Control whether to notify when a PDU changes role in the link."
     ::= { pdu 5 }
 
-dispTimeout OBJECT-TYPE
+ecDispTimeout OBJECT-TYPE
     SYNTAX Integer32 (1..90)
     MAX-ACCESS read-write
     STATUS current
@@ -7119,7 +7119,7 @@ dispTimeout OBJECT-TYPE
         "Set or get the inactivity timeout in minutes to blank the local display (minimum is 1 minute)."
     ::= { pdu 6 }
 
-loginTimeout OBJECT-TYPE
+ecLoginTimeout OBJECT-TYPE
     SYNTAX Integer32 (1..60)
     MAX-ACCESS read-write
     STATUS current
@@ -7127,7 +7127,7 @@ loginTimeout OBJECT-TYPE
         "Set or get the inactivity timeout in minutes to terminate a logged in session (minimum is 1 minute)."
     ::= { pdu 7 }
 
-dispBrightness OBJECT-TYPE
+ecDispBrightness OBJECT-TYPE
     SYNTAX Integer32 (0..9)
     MAX-ACCESS read-write
     STATUS current
@@ -7143,9 +7143,9 @@ sumAmps OBJECT-TYPE
         "Control whether the PDU displays the amperage sum of all branchs."
     ::= { pdu 9 }
 
-alerts OBJECT IDENTIFIER ::= { configuration 7 }
+alerts OBJECT IDENTIFIER ::= { econnectConfiguration 7 }
 
-alarmInterval OBJECT-TYPE
+ecAlarmInterval OBJECT-TYPE
     SYNTAX Integer32 (0..65535)
     MAX-ACCESS read-write
     STATUS current
@@ -7153,7 +7153,7 @@ alarmInterval OBJECT-TYPE
         "Set or get the time interval in seconds for alarm cycle (disabled if < 10)."
     ::= { alerts 1 }
     
-routing OBJECT IDENTIFIER ::= { configuration 8 }
+routing OBJECT IDENTIFIER ::= { econnectConfiguration 8 }
 
 eventLogRouting OBJECT IDENTIFIER ::= { routing 1 }
 
@@ -7910,7 +7910,7 @@ systeminfo OBJECT IDENTIFIER ::= { econnect 2 }
 cpiPduTableCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of PDUs being monitored by this PDU.  This is the 
@@ -7919,7 +7919,7 @@ cpiPduTableCount OBJECT-TYPE
 
 cpiPduTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU entries that are being monitored
@@ -7936,7 +7936,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduEntry OBJECT-TYPE
         SYNTAX      CpiPduEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -7973,7 +7973,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -7981,7 +7981,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduModel OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the model number of the PDU."
@@ -7989,7 +7989,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduName OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the user assigned name of the PDU."
@@ -7997,7 +7997,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduDescription OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the user assigned description of the PDU."
@@ -8005,7 +8005,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduHasBranchMonitor OBJECT-TYPE
         SYNTAX      INTEGER { notsupported(0), supported(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "An indicator if the PDU supports monitoring voltage, and current on branches in the PDU."
@@ -8013,7 +8013,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduHasOutletMonitor OBJECT-TYPE
         SYNTAX      INTEGER { notsupported(0), supported(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "An indicator if the PDU supports monitoring current on the individual outlets in the PDU."
@@ -8021,7 +8021,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduHasOutletControl OBJECT-TYPE
         SYNTAX      INTEGER { notsupported(0), supported(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "An indicator if the PDU supports control (turn on/off) individual outlets in the PDU."
@@ -8029,7 +8029,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduNumberBranches OBJECT-TYPE
         SYNTAX      Integer32 (0..6)
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the number of branches (breakers) in the PDU."
@@ -8037,7 +8037,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduNumberOutlets OBJECT-TYPE
         SYNTAX      Integer32 (0..48)
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the number of outlets in the PDU."
@@ -8045,7 +8045,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduOutOfService OBJECT-TYPE
         SYNTAX      INTEGER { inservice(0), outofservice(1) }
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get whether the PDU is in-service."
@@ -8053,7 +8053,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduVersion OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the firmware version number of the PDU."
@@ -8061,7 +8061,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduUpgrade OBJECT-TYPE
         SYNTAX      INTEGER { no(0), yes(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "An indicator if the PDU firmware is being upgraded."
@@ -8069,7 +8069,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduChainRole OBJECT-TYPE
         SYNTAX      INTEGER { secondary(0), primary(1), alternate(2) }
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Get the role of the PDU in a daisy chain."
@@ -8077,7 +8077,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduIp OBJECT-TYPE
         SYNTAX      IpAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get IP address of the PDU."
@@ -8085,7 +8085,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduIpv6 OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the IPv6 address of the PDU."
@@ -8093,7 +8093,7 @@ cpiPduTable OBJECT-TYPE
 
     cpiPduTotalPower OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the power in volt-amps for the entire PDU."
@@ -8101,7 +8101,7 @@ cpiPduTable OBJECT-TYPE
         
     cpiPduCabinetId OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get/set the name of the cabinet the PDU is in."
@@ -8109,7 +8109,7 @@ cpiPduTable OBJECT-TYPE
         
     cpiPduSerialNum OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the serial number of the PDU."
@@ -8120,7 +8120,7 @@ branch OBJECT IDENTIFIER ::= { econnect 3 }
 cpiLineTableCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of PDU input lines being monitored by this PDU.  
@@ -8130,7 +8130,7 @@ cpiLineTableCount OBJECT-TYPE
 
 cpiPduLineTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduLineEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU line entries that are being
@@ -8146,7 +8146,7 @@ cpiPduLineTable OBJECT-TYPE
 
     cpiPduLineEntry OBJECT-TYPE
         SYNTAX      CpiPduLineEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8170,7 +8170,7 @@ cpiPduLineTable OBJECT-TYPE
 
     cpiPduLineMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU that owns the input line."
@@ -8178,7 +8178,7 @@ cpiPduLineTable OBJECT-TYPE
 
     cpiPduLineId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the ID of the input line on the PDU."
@@ -8186,7 +8186,7 @@ cpiPduLineTable OBJECT-TYPE
 
     cpiPduLineCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get current draw in 1/100 amp of the line on the PDU.  Convert the value by dividing by 100."
@@ -8195,7 +8195,7 @@ cpiPduLineTable OBJECT-TYPE
 cpiBranchTableCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of PDU branches being monitored by this PDU.  This is the 
@@ -8204,7 +8204,7 @@ cpiBranchTableCount OBJECT-TYPE
 
 cpiPduBranchTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduBranchEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU branch entries that are being
@@ -8220,7 +8220,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchEntry OBJECT-TYPE
         SYNTAX      CpiPduBranchEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8250,7 +8250,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU that owns the branch."
@@ -8258,7 +8258,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the ID of the branch on the owning PDU."
@@ -8266,7 +8266,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the current draw in 1/100 amp of the branch on the PDU.  Convert the value by dividing by 100."
@@ -8274,7 +8274,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchMaxCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the maximum current draw in 1/100 amp of the branch on the PDU.  Convert the value by dividing by 100."
@@ -8282,7 +8282,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchVoltage OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the voltage in 1/10 volts of the branch on the PDU.  Convert the value by dividing by 10."
@@ -8290,7 +8290,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchPower OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the power in volt-amps for the branch."
@@ -8298,7 +8298,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchPowerFactor OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the power factor for the branch."
@@ -8306,7 +8306,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchStatus OBJECT-TYPE
         SYNTAX      INTEGER { noalarm(0), warning(1), alarm(2) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the alarm status of the branch."
@@ -8314,7 +8314,7 @@ cpiPduBranchTable OBJECT-TYPE
 
     cpiPduBranchEnergy OBJECT-TYPE
         SYNTAX      Counter64
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the branch energy accumulated in decaVA-secs, divide by 360 to obtain VA-hr."
@@ -8322,7 +8322,7 @@ cpiPduBranchTable OBJECT-TYPE
 
 cpiPduBranchAlertTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduBranchAlertEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU branch alert entries that are
@@ -8338,7 +8338,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertEntry OBJECT-TYPE
         SYNTAX      CpiPduBranchAlertEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8370,7 +8370,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
     
     cpiPduBranchAlertMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -8378,7 +8378,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertBranchId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the branch ID on the PDU."
@@ -8386,7 +8386,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertWarnLoCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8396,7 +8396,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertWarnHiCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8406,7 +8406,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertLoCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8416,7 +8416,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertHiCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8426,7 +8426,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertCriticalCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the critical current draw in 1/100 amp of the 
@@ -8435,7 +8435,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertWarnLoVolt OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the minimum voltage that the branch can reach 
@@ -8445,7 +8445,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertWarnHiVolt OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the maximum voltage that the branch can reach 
@@ -8455,7 +8455,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertLoVolt OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the minimum voltage that the branch can reach 
@@ -8465,7 +8465,7 @@ cpiPduBranchAlertTable OBJECT-TYPE
 
     cpiPduBranchAlertHiVolt OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the maximum voltage that the branch can reach 
@@ -8475,26 +8475,18 @@ cpiPduBranchAlertTable OBJECT-TYPE
         
     cpiPduBranchAlertIndex OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Index for branch aler"
         ::= { cpiPduBranchAlertEntry 12 }
         
-    cpiPduBranchAlertIndex OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Index for branch alert."
-        ::= { cpiPduBranchAlertEntry 13 }
-
 outlet OBJECT IDENTIFIER ::= { econnect 4 }
 
 cpiOutletTableCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of PDU outlets being monitored by this PDU. This 
@@ -8503,7 +8495,7 @@ cpiOutletTableCount OBJECT-TYPE
 
 cpiPduOutletTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduOutletEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU outlet entries that are being
@@ -8519,7 +8511,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletEntry OBJECT-TYPE
         SYNTAX      CpiPduOutletEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8552,7 +8544,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the source PDU."
@@ -8560,7 +8552,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the ID of the outlet on the PDU."
@@ -8568,7 +8560,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletBranchId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the ID of the branch the outlet is associated with on the PDU."
@@ -8576,7 +8568,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletName OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the user supplied name of the outlet on the PDU."
@@ -8584,7 +8576,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletDescription OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the user supplied description of the outlet on the PDU."
@@ -8592,7 +8584,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the current draw in 1/100 amp of the outlet on the PDU.  Convert 
@@ -8601,7 +8593,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletVoltage OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the voltage in 1/10 volts of the outlet on the PDU.  Convert the 
@@ -8610,7 +8602,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletPower OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "The power in Volt-Amps of the outlet on the PDU."
@@ -8618,7 +8610,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletStatus OBJECT-TYPE
         SYNTAX      INTEGER { noalarm(0), warning(1), alarm(2) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the alarm status of the outlet."
@@ -8626,7 +8618,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletEnergy OBJECT-TYPE
         SYNTAX      Counter64
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the outlet energy accumulated in decaWatt-secs, divide by 360 to obtain Watt-hr."
@@ -8634,7 +8626,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletControl OBJECT-TYPE
         SYNTAX      INTEGER { off(0), on(1) }
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get power control to the outlet."
@@ -8642,7 +8634,7 @@ cpiPduOutletTable OBJECT-TYPE
 
     cpiPduOutletReset OBJECT-TYPE
         SYNTAX      INTEGER { nominal(0), reset(1) }
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get reset power to the outlet."
@@ -8650,7 +8642,7 @@ cpiPduOutletTable OBJECT-TYPE
 
 cpiPduOutletConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduOutletConfigEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU outlet configuration entries
@@ -8666,7 +8658,7 @@ cpiPduOutletConfigTable OBJECT-TYPE
 
     cpiPduOutletConfigEntry OBJECT-TYPE
         SYNTAX      CpiPduOutletConfigEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8692,7 +8684,7 @@ cpiPduOutletConfigTable OBJECT-TYPE
 
     cpiPduOutletConfigMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -8700,7 +8692,7 @@ cpiPduOutletConfigTable OBJECT-TYPE
 
     cpiPduOutletConfigOutletId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the ID of the outlet on the PDU."
@@ -8724,7 +8716,7 @@ cpiPduOutletConfigTable OBJECT-TYPE
 
 cpiPduOutletAlertTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduOutletAlertEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU outlet alert entries that are
@@ -8740,7 +8732,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertEntry OBJECT-TYPE
         SYNTAX      CpiPduOutletAlertEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8768,7 +8760,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -8776,7 +8768,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertOutletId OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the outlet ID on the PDU."
@@ -8784,7 +8776,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertWarnLoCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8794,7 +8786,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertWarnHiCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8804,7 +8796,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertLoCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8814,7 +8806,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertHiCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the current draw in 1/100 amp of the branch on 
@@ -8824,7 +8816,7 @@ cpiPduOutletAlertTable OBJECT-TYPE
 
     cpiPduOutletAlertCriticalCurrent OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the critical current draw in 1/100 amp of the 
@@ -8836,7 +8828,7 @@ sensors OBJECT IDENTIFIER ::= { econnect 5 }
 cpiPduSensorCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of PDU sensors being monitored by this PDU.  This is the 
@@ -8845,7 +8837,7 @@ cpiPduSensorCount OBJECT-TYPE
 
 cpiPduProbeTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduProbeEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU probes that are being monitored
@@ -8861,7 +8853,7 @@ cpiPduProbeTable OBJECT-TYPE
 
     cpiPduProbeEntry OBJECT-TYPE
         SYNTAX      CpiPduProbeEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -8885,7 +8877,7 @@ cpiPduProbeTable OBJECT-TYPE
 	
     cpiPduProbeMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -8893,7 +8885,7 @@ cpiPduProbeTable OBJECT-TYPE
 
     cpiPduProbeId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the probe ID on the PDU."
@@ -8901,7 +8893,7 @@ cpiPduProbeTable OBJECT-TYPE
 
     cpiPduProbeName OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the user defined name of the probe."
@@ -8909,7 +8901,7 @@ cpiPduProbeTable OBJECT-TYPE
 		
 cpiPduSensorTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduSensorEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU sensor entries that are being monitored
@@ -8925,7 +8917,7 @@ cpiPduSensorTable OBJECT-TYPE
 
     cpiPduSensorEntry OBJECT-TYPE
         SYNTAX      CpiPduSensorEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the 'cpiPduSensorTable'. 
@@ -8950,7 +8942,7 @@ cpiPduSensorTable OBJECT-TYPE
 
     cpiPduSensorMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -8958,7 +8950,7 @@ cpiPduSensorTable OBJECT-TYPE
 
     cpiPduSensorId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the sensor ID on the PDU."
@@ -8966,7 +8958,7 @@ cpiPduSensorTable OBJECT-TYPE
 
     cpiPduSensorName OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Set or get the user defined name of the sensor."
@@ -8974,7 +8966,7 @@ cpiPduSensorTable OBJECT-TYPE
 
     cpiPduSensorType OBJECT-TYPE
         SYNTAX      INTEGER { temperature(1), humidity(2) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the type of sensor for the entry."
@@ -8982,7 +8974,7 @@ cpiPduSensorTable OBJECT-TYPE
 
     cpiPduSensorValue OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the value of the sensor. For temperature the value is in degrees 
@@ -8991,7 +8983,7 @@ cpiPduSensorTable OBJECT-TYPE
 
 cpiPduSensorAlertTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiPduSensorAlertEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU sensor alert entries that are
@@ -9007,7 +8999,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertEntry OBJECT-TYPE
         SYNTAX      CpiPduSensorAlertEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the 'cpiPduSensorAlertTable'. 
@@ -9033,7 +9025,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -9041,7 +9033,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertSensorId OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the id of the sensor."
@@ -9049,7 +9041,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertWarnMin OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the minimum warning value of the sensor."
@@ -9057,7 +9049,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertWarnMax OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the maximum warning value of the sensor."
@@ -9065,7 +9057,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertMin OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the minimum alarm value of the sensor."
@@ -9073,7 +9065,7 @@ cpiPduSensorAlertTable OBJECT-TYPE
 
     cpiPduSensorAlertMax OBJECT-TYPE
         SYNTAX      Integer32
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Set or get the maximum alarm value of the sensor."
@@ -9084,7 +9076,7 @@ group OBJECT IDENTIFIER ::= { econnect 6 }
 cpiPduGroupCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of supported groups by the PDU. Value from 0 to 16."
@@ -9093,7 +9085,7 @@ cpiPduGroupCount OBJECT-TYPE
 cpiPduGroupOutletCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of outlets in the Group Outlet Table."
@@ -9101,7 +9093,7 @@ cpiPduGroupOutletCount OBJECT-TYPE
 
 cpiGroupTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiGroupEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU group entries that are being monitored
@@ -9114,7 +9106,7 @@ cpiGroupTable OBJECT-TYPE
 
     cpiGroupEntry OBJECT-TYPE
         SYNTAX      CpiGroupEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -9135,7 +9127,7 @@ cpiGroupTable OBJECT-TYPE
 
     cpiGroupEntryIndex OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "This is the index that indicates the row of the 'cpiPduTable'."
@@ -9143,7 +9135,7 @@ cpiGroupTable OBJECT-TYPE
 
     cpiGroupName OBJECT-TYPE
         SYNTAX      DisplayString
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Name for GROUP 1 of receptacles."
@@ -9152,7 +9144,7 @@ cpiGroupTable OBJECT-TYPE
 
 cpiGroupOutletTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiGroupOutletEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of PDU group entries.
@@ -9163,7 +9155,7 @@ cpiGroupOutletTable OBJECT-TYPE
 
     cpiGroupOutletEntry OBJECT-TYPE
         SYNTAX      CpiGroupOutletEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the
@@ -9186,7 +9178,7 @@ cpiGroupOutletTable OBJECT-TYPE
 
     cpiGroupOutletEntryIndex OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "This is the index that indicates the row of the 'cpiGroupOutletTable'."
@@ -9194,7 +9186,7 @@ cpiGroupOutletTable OBJECT-TYPE
 
     cpiGroupOutletGroupID OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Name for GROUP 1 of receptacles."
@@ -9202,7 +9194,7 @@ cpiGroupOutletTable OBJECT-TYPE
 
     cpiGroupOutletPDUMac OBJECT-TYPE
         SYNTAX		MacAddress
-        MAX-ACCESS	read-write
+        MAX-ACCESS read-write
         STATUS		current
         DESCRIPTION
             "MAC of PDU the outlet is on."
@@ -9210,7 +9202,7 @@ cpiGroupOutletTable OBJECT-TYPE
         
     cpiGroupOutletOutletId OBJECT-TYPE
         SYNTAX		Integer32
-        MAX-ACCESS	read-write
+        MAX-ACCESS read-write
         STATUS		current
         DESCRIPTION
             "The ID of the outlet on the PDU."
@@ -9221,7 +9213,7 @@ easData OBJECT IDENTIFIER ::= { econnect 7 }
 cpiEasCount OBJECT-TYPE
     SYNTAX      Unsigned32
     UNITS       "Count"
-    MAX-ACCESS  read-only
+    MAX-ACCESS read-only
     STATUS      current
     DESCRIPTION
         "Get the number of locks connected to the PDU.  This includes the PDUs on the daisy chain."
@@ -9229,7 +9221,7 @@ cpiEasCount OBJECT-TYPE
 	
 cpiEasConfigTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiEasConfigEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of electronic locks that are connected to the PDU
@@ -9246,7 +9238,7 @@ cpiEasConfigTable OBJECT-TYPE
 
     cpiEasConfigEntry OBJECT-TYPE
         SYNTAX      CpiEasConfigEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the 'cpiEasTable'. 
@@ -9271,7 +9263,7 @@ cpiEasConfigTable OBJECT-TYPE
 	
 	cpiEasConfigLockMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -9319,7 +9311,7 @@ cpiEasConfigTable OBJECT-TYPE
 	
 cpiEasTable OBJECT-TYPE
     SYNTAX      SEQUENCE OF CpiEasEntry
-    MAX-ACCESS  not-accessible
+    MAX-ACCESS not-accessible
     STATUS      current
     DESCRIPTION
         "This table contains a list of electronic locks that are connected to the PDU
@@ -9334,7 +9326,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiEasEntry OBJECT-TYPE
         SYNTAX      CpiEasEntry
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS not-accessible
         STATUS      current
         DESCRIPTION
             "This entry defines the columns to be populated in the 'cpiEasTable'. 
@@ -9362,7 +9354,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduLockMac OBJECT-TYPE
         SYNTAX      MacAddress
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the MAC address of the PDU."
@@ -9370,7 +9362,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduLockId OBJECT-TYPE
         SYNTAX      INTEGER { front(1), rear(2) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Get the lock ID on the PDU."
@@ -9378,7 +9370,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduEasStatus OBJECT-TYPE
         SYNTAX      INTEGER { inactive(0), ready(1), error(2) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Indicates if the Electronic Access Control system is ready, inactive, or in an error state.
@@ -9390,7 +9382,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduDoorStatus OBJECT-TYPE
         SYNTAX      INTEGER { closed(0), open(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Indicates if the door sensor is closed or open."
@@ -9398,7 +9390,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduLockStatus OBJECT-TYPE
         SYNTAX      INTEGER { closed(0), open(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Indicates if the lock is closed or open."
@@ -9406,7 +9398,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduForceStatus OBJECT-TYPE
         SYNTAX      INTEGER { normal(0), force(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Indicates if the cabinet was forced open by a command from the webUI or SNMP interfaces."
@@ -9414,7 +9406,7 @@ cpiEasTable OBJECT-TYPE
         
     cpiPduTamperStatus OBJECT-TYPE
         SYNTAX      INTEGER { normal(0), tamper(1) }
-        MAX-ACCESS  read-only
+        MAX-ACCESS read-only
         STATUS      current
         DESCRIPTION
             "Indicates if the cabinet is currently unlocked/opened without an authorization scan."
@@ -9422,7 +9414,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiEasError OBJECT-TYPE
             SYNTAX      Unsigned32
-            MAX-ACCESS  read-only
+            MAX-ACCESS read-only
             STATUS      current
             DESCRIPTION
                     "Gets the error code associated for the electronic lock system. The possible error codes are:
@@ -9439,7 +9431,7 @@ cpiEasTable OBJECT-TYPE
             
     cpiEasLockVer OBJECT-TYPE
             SYNTAX		DisplayString
-            MAX-ACCESS	read-only
+            MAX-ACCESS read-only
             STATUS		current
             DESCRIPTION
                     "Gets the version of the electronic lock control."
@@ -9447,7 +9439,7 @@ cpiEasTable OBJECT-TYPE
             
     cpiEasLockSerialNumber OBJECT-TYPE
             SYNTAX		DisplayString
-            MAX-ACCESS	read-only
+            MAX-ACCESS read-only
             STATUS		current
             DESCRIPTION
                     "Get the serial number of the electronic lock control."
@@ -9455,7 +9447,7 @@ cpiEasTable OBJECT-TYPE
 
     cpiPduLockCtrl OBJECT-TYPE
         SYNTAX      INTEGER { close(0), open(1) }
-        MAX-ACCESS  read-write
+        MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "Tells the system to open the locks on the cabinet."
@@ -9467,7 +9459,7 @@ trapInformation OBJECT IDENTIFIER ::= { traps 0 }
 
 trapInfoUserName OBJECT-TYPE
 	SYNTAX      DisplayString
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"The user Id associated with the action."
@@ -9475,7 +9467,7 @@ trapInfoUserName OBJECT-TYPE
 	
 trapInfoCardId OBJECT-TYPE
 	SYNTAX      DisplayString
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"The card Id associated with the action."
@@ -9483,7 +9475,7 @@ trapInfoCardId OBJECT-TYPE
 	
 trapInfoConfigName OBJECT-TYPE
 	SYNTAX      DisplayString
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"The configuration value that was changed."
@@ -9491,7 +9483,7 @@ trapInfoConfigName OBJECT-TYPE
 	
 trapInfoInterface OBJECT-TYPE
 	SYNTAX      INTEGER { serial(0), webgui(1), snmp(2), unkown(3), lcd(4), internal(5), bulk(6) }
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"An identifier for the affected interface."
@@ -9499,7 +9491,7 @@ trapInfoInterface OBJECT-TYPE
 
 trapInfoVarId OBJECT-TYPE
 	SYNTAX      OBJECT IDENTIFIER
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"An identifier for the value that was changed."
@@ -9507,7 +9499,7 @@ trapInfoVarId OBJECT-TYPE
 	
 trapInfoBootType  OBJECT-TYPE
 	SYNTAX      INTEGER { cold(0), warm(1), restart(2), reboot(3) }
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"Indicates that type of boot up occurring. A Cold boot is done from a complete power off. A Warm boot
@@ -9516,7 +9508,7 @@ trapInfoBootType  OBJECT-TYPE
 	
 trapInfoProgress OBJECT-TYPE
 	SYNTAX Integer32 (0..100)
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"Indicates the percent complete of an operation."
@@ -9524,7 +9516,7 @@ trapInfoProgress OBJECT-TYPE
 	
 trapInfoResult OBJECT-TYPE
 	SYNTAX      INTEGER { success(0), failure(1) }
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"Indicates the result of an operation."
@@ -9532,7 +9524,7 @@ trapInfoResult OBJECT-TYPE
 	
 trapInfoErrorCode OBJECT-TYPE
 	SYNTAX      INTEGER
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"Indicates the error code of an operation.  See the operation for details.
@@ -9553,7 +9545,7 @@ trapInfoErrorCode OBJECT-TYPE
 	
 trapInfoGroupName OBJECT-TYPE
 	SYNTAX      DisplayString
-	MAX-ACCESS  not-accessible
+	MAX-ACCESS not-accessible
 	STATUS      current
 	DESCRIPTION
 		"The user group Id associated with the action."

@@ -5304,10 +5304,7 @@ aclEgressProfileTable OBJECT-TYPE
 	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
-		"The temperatureConfIndex indicates temperature sensor point where:
-		1 - is a sensing point near DC/DC power brick
-		2 - is a sensing point near Analog Front End (AFE) chip
-		3 - is a sensing point near CPU."
+		"The temperatureConfIndex indicates temperature sensor point (1=DC/DC brick, 2=AFE, 3=CPU)."
 	::= { temperatureConfEntry 1 }
 
 	temperatureConfHighThreshold OBJECT-TYPE
@@ -8469,9 +8466,7 @@ aclEgressProfileTable OBJECT-TYPE
 	MAX-ACCESS read-write
 	STATUS current
 	DESCRIPTION
-		"0 - auto :become a query channel after received query.
-    1 - static : always a query channel;
-    2 - edge : drop query"
+		"0=auto: become query channel after received query; 1=static: always query channel; 2=edge: drop query."
 	::= { igmpmldGenniPortEntry 1 }
 
 
@@ -10372,8 +10367,8 @@ aclEgressProfileTable OBJECT-TYPE
 
 	ospfRedistributeStaticMetricType OBJECT-TYPE
 	SYNTAX  INTEGER{
-			1(1),
-			2(2)
+			extType1(1),
+			extType2(2)
 	}
 	MAX-ACCESS  read-write
 	STATUS  current
@@ -10408,8 +10403,8 @@ aclEgressProfileTable OBJECT-TYPE
 
 	ospfRedistributeRipMetricType OBJECT-TYPE
 	SYNTAX  INTEGER{
-			1(1),
-			2(2)
+			extType1(1),
+			extType2(2)
 	}
 	MAX-ACCESS  read-write
 	STATUS  current
@@ -14362,6 +14357,13 @@ aclEgressProfileTable OBJECT-TYPE
 
 -- Access Control Table
 
+        AccessCtrlEntry ::=
+        	SEQUENCE {
+        	accessCtrlService	INTEGER,
+			accessCtrlEnable	INTEGER,
+			accessCtrlPort		INTEGER
+           	}
+
         accessCtrlTable OBJECT-TYPE
         SYNTAX SEQUENCE OF AccessCtrlEntry
         MAX-ACCESS not-accessible
@@ -14379,20 +14381,13 @@ aclEgressProfileTable OBJECT-TYPE
         INDEX { accessCtrlService }
         ::= { accessCtrlTable 1 }
 
-        AccessCtrlEntry ::=
-        	SEQUENCE {
-        	accessCtrlService	INTEGER,
-			accessCtrlEnable	INTEGER,
-			accessCtrlPort		INTEGER
-           	}
-
         accessCtrlService OBJECT-TYPE
         SYNTAX  INTEGER {
             icmp(0),
             telnet(1),
             ftp(2),
             snmp(3),
-            web(4),
+            webService(4),
             https(5),
             ssh(6)
 		}
@@ -14479,7 +14474,7 @@ aclEgressProfileTable OBJECT-TYPE
           telnet(1),
           ftp(2),
           snmp(3),
-          web(4),
+          webService(4),
           https(5),
           ssh(6)
         }
@@ -14567,8 +14562,8 @@ aclEgressProfileTable OBJECT-TYPE
           icmp(0),
           telnet(1),
           ftp(2),
-          snmp(3)
-          web(4),
+          snmp(3),
+          webService(4),
           https(5),
           ssh(6)
         }
@@ -14866,7 +14861,7 @@ aclEgressProfileTable OBJECT-TYPE
         STATUS current
         DESCRIPTION
         	"Specifies target interface ifIndex for sysOperation.
-        	0 - represent the system, others: same as ifIndex definition
+        	Index 0 represents the system, others: same as ifIndex definition
         	10000: represent slot 1 system
         	20000: represent slot 2 system
         	40000: represent slot 4 system
@@ -16609,9 +16604,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 						dc(0),
 						ac(1),
 						battery(2),
-						"dc+ac"(3),
-						"dc+battery"(4),
-						"ac+battery"(5),
+						dcPlusAc(3),
+						dcPlusBattery(4),
+						acPlusBattery(5),
 						all(6)
 				}
 				MAX-ACCESS read-only
@@ -16748,7 +16743,7 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 				SYNTAX  INTEGER {
 						off(0),
 						on(1),
-						"-"(2)
+						dash(2)
 				}
 				MAX-ACCESS read-only
 				STATUS current
@@ -16989,23 +16984,6 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 
 -- Vdsl2LineProfileExtendedTable
 
-	vdsl2LineConfProfileExtendedTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF Vdsl2LineConfProfileExtendedEntry
-        MAX-ACCESS not-accessible
-        STATUS current
-        DESCRIPTION
-			"This table contains information on the VDSL2 line profile extension configuration."
-        ::= { vdsl2Profile 1 }
-
-	vdsl2LineConfProfileExtendedEntry OBJECT-TYPE
-        SYNTAX Vdsl2LineConfProfileExtendedEntry
-        MAX-ACCESS not-accessible
-        STATUS current
-        DESCRIPTION
-			"An entry extends the xdsl2LineConfProfEntry defined in RFC5650."
-        AUGMENTS { xdsl2LineConfProfEntry }
-        ::= { vdsl2LineConfProfileExtendedTable 1 }
-
 	Vdsl2LineConfProfileExtendedEntry ::=
 		SEQUENCE {
 			vdsl2LineConfProfileDpboEPsdID			INTEGER,
@@ -17044,6 +17022,25 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 			vdsl2LineConfProfileRocDynamicdtg		DisplayString,
 			vdsl2LineConfProfileAdsl2CustomPsd		DisplayString
            	}
+
+
+	vdsl2LineConfProfileExtendedTable OBJECT-TYPE
+        SYNTAX SEQUENCE OF Vdsl2LineConfProfileExtendedEntry
+        MAX-ACCESS not-accessible
+        STATUS current
+        DESCRIPTION
+			"This table contains information on the VDSL2 line profile extension configuration."
+        ::= { vdsl2Profile 1 }
+
+	vdsl2LineConfProfileExtendedEntry OBJECT-TYPE
+        SYNTAX Vdsl2LineConfProfileExtendedEntry
+        MAX-ACCESS not-accessible
+        STATUS current
+        DESCRIPTION
+			"An entry extends the xdsl2LineConfProfEntry defined in RFC5650."
+        INDEX { xdsl2LConfProfProfileName }
+        ::= { vdsl2LineConfProfileExtendedTable 1 }
+
 
 	vdsl2LineConfProfileDpboEPsdID OBJECT-TYPE
 		SYNTAX  INTEGER {
@@ -17693,8 +17690,7 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 	    DESCRIPTION
 	        "G.inp-specific value that overrules the traffic configuration setting.
 	        The possible values is 100 or 120 in unit of Hz.
-	        100 - 100Hz
-	        120 - 120Hz"
+	        Supported: 100Hz or 120Hz."
 	    ::= { vdsl2ChanConfProfileExEntry 24 }
 
 	vdsl2ChanConfProfGinpReinCfgFreqUs OBJECT-TYPE
@@ -17704,8 +17700,7 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 	    DESCRIPTION
 	        "G.inp-specific value that overrules the traffic configuration setting.
 	        The possible value is 100 or 120 in unit of Hz.
-	        100 - 100Hz
-	        120 - 120Hz"
+	        Supported: 100Hz or 120Hz."
 	    ::= { vdsl2ChanConfProfileExEntry 25 }
 
 	vdsl2ChanConfProfTpstcAdsl OBJECT-TYPE
@@ -18389,6 +18384,12 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 	-- Extended Line Bandplan Table --
 	----------------------------------
 
+	Xdsl2LineBandExtEntry ::=
+		SEQUENCE {
+			xdsl2LineBandTxPower			INTEGER
+			}
+
+
 	xdsl2LineBandExtTable OBJECT-TYPE
         SYNTAX SEQUENCE OF Xdsl2LineBandExtEntry
         MAX-ACCESS not-accessible
@@ -18403,13 +18404,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
         STATUS current
         DESCRIPTION
         	"An entry extends xdsl2LineBandEntry defined in RFC5650."
-        AUGMENTS { xdsl2LineBandEntry }
+        INDEX { ifIndex, xdsl2LineBand }
         ::= { xdsl2LineBandExtTable 1 }
 
-	Xdsl2LineBandExtEntry ::=
-		SEQUENCE {
-			xdsl2LineBandTxPower			INTEGER
-			}
 
 	xdsl2LineBandTxPower OBJECT-TYPE
 		SYNTAX INTEGER
@@ -18422,6 +18419,18 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
     ------------------------------
 	-- Extended channel status --
     ------------------------------
+
+        Xdsl2ChannelStatusExEntry ::=
+        	SEQUENCE {
+--          xdsl2ChanPrevTxRate							Unsigned32,
+            xdsl2ChannelActualRaMode    				Xdsl2StatusActualRaMode,
+       		xdsl2ChannelRtxMode    						Xdsl2StatusRtxMode,
+       		xdsl2ChannelRtxOverhead    					Unsigned32,
+       		xdsl2ChannelGinpFramingType					Unsigned32,
+       		xdsl2ChannelActualInpAgainstREIN			Unsigned32
+--     		xdsl2ChannelRSCodeWordPerDtu    			Unsigned32
+           }
+
 
 	xdsl2ChannelStatusExTable OBJECT-TYPE
         SYNTAX SEQUENCE OF Xdsl2ChannelStatusExEntry
@@ -18437,19 +18446,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
         STATUS current
         DESCRIPTION
         	"An entry of vdslChanExtendedTable."
-        AUGMENTS { xdsl2ChannelStatusEntry }
+        INDEX { ifIndex, xdsl2ChStatusUnit }
         ::= { xdsl2ChannelStatusExTable 1 }
 
-        Xdsl2ChannelStatusExEntry ::=
-        	SEQUENCE {
---          xdsl2ChanPrevTxRate							Unsigned32,
-            xdsl2ChannelActualRaMode    				Xdsl2StatusActualRaMode,
-       		xdsl2ChannelRtxMode    						Xdsl2StatusRtxMode,
-       		xdsl2ChannelRtxOverhead    					Unsigned32,
-       		xdsl2ChannelGinpFramingType					Unsigned32,
-       		xdsl2ChannelActualInpAgainstREIN			Unsigned32
---     		xdsl2ChannelRSCodeWordPerDtu    			Unsigned32
-           }
 
 --	xdsl2ChanPrevTxRate OBJECT-TYPE
 --		SYNTAX Unsigned32
@@ -18630,6 +18629,16 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 
     xdsl2ExtPM	OBJECT IDENTIFIER ::= { vdsl 6 }
 
+	Xdsl2ExtPMLineEntry  ::=
+		SEQUENCE {
+			xdsl2ExtPMLineFecs                 Unsigned32,
+			xdsl2ExtPMLineEs                   Unsigned32,
+			xdsl2ExtPMLineSes                  Unsigned32,
+			xdsl2ExtPMLineLoss                 Unsigned32,
+			xdsl2ExtPMLineUas                  Unsigned32
+			}
+
+
 	xdsl2ExtPMLineTable  OBJECT-TYPE
 		SYNTAX      SEQUENCE  OF  Xdsl2ExtPMLineEntry
 		MAX-ACCESS  not-accessible
@@ -18649,17 +18658,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 			One index of this table is an interface index where the
 			interface has an ifType of vdsl2(251). A second index of
        		this table is the termination unit."
-		AUGMENTS  { xdsl2PMLineCurrEntry }
+		INDEX { ifIndex, xdsl2PMLCurrUnit }
 		::= { xdsl2ExtPMLineTable 1 }
 
-	Xdsl2ExtPMLineEntry  ::=
-		SEQUENCE {
-			xdsl2ExtPMLineFecs                 Unsigned32,
-			xdsl2ExtPMLineEs                   Unsigned32,
-			xdsl2ExtPMLineSes                  Unsigned32,
-			xdsl2ExtPMLineLoss                 Unsigned32,
-			xdsl2ExtPMLineUas                  Unsigned32
-			}
 
 	xdsl2ExtPMLineFecs  OBJECT-TYPE
 		SYNTAX      Unsigned32
@@ -18725,6 +18726,15 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 	-- Extended PM line init counters
 	-------------------------------------------
 
+	Xdsl2ExtPMLineInitEntry  ::=
+		SEQUENCE {
+			xdsl2ExtPMLInitFullInits             Unsigned32,
+			xdsl2ExtPMLInitFailedFullInits       Unsigned32	--,
+--			xdsl2ExtPMLInitShortInits            Unsigned32,
+--			xdsl2ExtPMLInitFailedShortInits      Unsigned32
+			}
+
+
 	xdsl2ExtPMLineInitTable       OBJECT-TYPE
 		SYNTAX      SEQUENCE  OF  Xdsl2ExtPMLineInitEntry
 		MAX-ACCESS  not-accessible
@@ -18740,16 +18750,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 		STATUS      current
 		DESCRIPTION
 			"An entry extends xdsl2PMLineInitCurrEntry defined in RFC5650."
-		AUGMENTS  { xdsl2PMLineInitCurrEntry }
+		INDEX { ifIndex }
 		::= { xdsl2ExtPMLineInitTable 1 }
 
-	Xdsl2ExtPMLineInitEntry  ::=
-		SEQUENCE {
-			xdsl2ExtPMLInitFullInits             Unsigned32,
-			xdsl2ExtPMLInitFailedFullInits       Unsigned32	--,
---			xdsl2ExtPMLInitShortInits            Unsigned32,
---			xdsl2ExtPMLInitFailedShortInits      Unsigned32
-			}
 
 	xdsl2ExtPMLInitFullInits  OBJECT-TYPE
 		SYNTAX      Unsigned32
@@ -18789,6 +18792,17 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 	-- Extended PM channel counters
 	---------------------------------------------------
 
+	Xdsl2ExtPMChEntry  ::=
+		SEQUENCE {
+			xdsl2ExtPMChCodingViolations	Unsigned32,
+			xdsl2ExtPMChCorrectedBlocks		Unsigned32,
+			xdsl2ExtPMChUncorrectBlocks		Unsigned32,
+			xdsl2ExtPMChRtxCW				Unsigned32,
+			xdsl2ExtPMChRtxCorrectedCW		Unsigned32,
+			xdsl2ExtPMChRtxUncorrectedCW		Unsigned32
+			}
+
+
 	xdsl2ExtPMChTable        OBJECT-TYPE
 		SYNTAX      SEQUENCE  OF  Xdsl2ExtPMChEntry
 		MAX-ACCESS  not-accessible
@@ -18803,18 +18817,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 		STATUS      current
 		DESCRIPTION
 			"An entry extends xdsl2PMChCurrEntry defined in RFC5650"
-		AUGMENTS  { xdsl2PMChCurrEntry }
+		INDEX { ifIndex, xdsl2PMChCurrUnit }
 		::= { xdsl2ExtPMChTable 1 }
 
-	Xdsl2ExtPMChEntry  ::=
-		SEQUENCE {
-			xdsl2ExtPMChCodingViolations	Unsigned32,
-			xdsl2ExtPMChCorrectedBlocks		Unsigned32,
-			xdsl2ExtPMChUncorrectBlocks		Unsigned32,
-			xdsl2ExtPMChRtxCW				Unsigned32,
-			xdsl2ExtPMChRtxCorrectedCW		Unsigned32,
-			xdsl2ExtPMChRtxUncorrectedCW		Unsigned32
-			}
 
 	xdsl2ExtPMChCodingViolations  OBJECT-TYPE
 		SYNTAX      Unsigned32
@@ -21501,6 +21506,15 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 
 --	ifXExt		OBJECT IDENTIFIER ::= { ies5206 24 }
 
+	IfXExtEntry  ::=
+		SEQUENCE {
+			ifXExtHCInError		Counter64,
+			ifXExtHCInDrop		Counter64,
+			ifXExtHCOutError	Counter64,
+			ifXExtHCOutDrop		Counter64
+			}
+
+
 	ifXExtTable OBJECT-TYPE
     	SYNTAX      SEQUENCE OF IfXExtEntry
     	MAX-ACCESS  not-accessible
@@ -21515,16 +21529,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
         STATUS current
         DESCRIPTION
             "An entry to extend IfXEntry and ifIndex could be 1..24."
-		AUGMENTS  { ifXEntry }
+		INDEX { ifIndex }
 		::= { ifXExtTable 1 }
 
-	IfXExtEntry  ::=
-		SEQUENCE {
-			ifXExtHCInError		Counter64,
-			ifXExtHCInDrop		Counter64,
-			ifXExtHCOutError	Counter64,
-			ifXExtHCOutDrop		Counter64
-			}
 
 	ifXExtHCInError  OBJECT-TYPE
 		SYNTAX      Counter64
@@ -21562,6 +21569,13 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 -- gBondExt
 --------------------------------------------------------------------------------
 
+   GBondPortStatExtEntry ::=
+     SEQUENCE {
+       gBondPortStatExtStatus                INTEGER,
+       gBondPortStatExtLastSerialNum     	 PhysAddress
+     }
+
+
    gBondPortStatExtTable OBJECT-TYPE
      SYNTAX      SEQUENCE OF GBondPortStatExtEntry
      MAX-ACCESS  not-accessible
@@ -21576,14 +21590,9 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
      STATUS      current
      DESCRIPTION
        "An extended table of gBondPortStatEntry. ifIndex is 101..148."
-     AUGMENTS  { gBondPortStatEntry }
+     INDEX { ifIndex }
      ::= { gBondPortStatExtTable 1 }
 
-   GBondPortStatExtEntry ::=
-     SEQUENCE {
-       gBondPortStatExtStatus                INTEGER,
-       gBondPortStatExtLastSerialNum     	 PhysAddress
-     }
 
 	gBondPortStatExtStatus OBJECT-TYPE
 	  SYNTAX  INTEGER {
@@ -30872,26 +30881,28 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
     -- errdisPortSetup
 
     errdisPortTable OBJECT-TYPE
-    SYNTAX SEQUENCE OF errdisPortEntry
+    SYNTAX SEQUENCE OF ErrdisPortEntry
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
     "Genni Configure."
     ::= { errdis 5 }
 
+    ErrdisPortEntry ::=
+    SEQUENCE {
+      ifIndex             INTEGER,
+      errdisReason        INTEGER,
+      errdisPortThreshold INTEGER
+    }
+
     errdisPortEntry OBJECT-TYPE
-    SYNTAX errdisPortEntry
+    SYNTAX ErrdisPortEntry
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
     ""
-    INDEX { ifIndex, errdisReason}
+    INDEX { ifIndex, errdisReason }
     ::= { errdisPortTable 1 }
-
-    errdisPortEntry ::=
-    SEQUENCE {
-      errdisPortThreshold				INTEGER
-    }
 
     errdisPortThreshold OBJECT-TYPE
     SYNTAX INTEGER (20..2000)
@@ -30902,8 +30913,17 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
     ::= { errdisPortEntry 1 }
 
       -- errdis Status
+        ErrdisStatusEntry ::=
+      	SEQUENCE {
+      	  errdisStatusIfindex    INTEGER,
+      	  errdisStatusReason       INTEGER,
+          errdisStatusDetectMode    INTEGER,
+          errdisStatusDetectTime    DisplayString,
+          errdisStatusRecoveryTimeleft    INTEGER
+         }
+
 	    errdisStatusTable	OBJECT-TYPE
-        SYNTAX	SEQUENCE OF  errdisStatusEntry
+        SYNTAX	SEQUENCE OF ErrdisStatusEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
@@ -30911,21 +30931,12 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
         ::= { errdis 6 }
 
        	errdisStatusEntry OBJECT-TYPE
-        SYNTAX	errdisStatusEntry
+        SYNTAX	ErrdisStatusEntry
         ACCESS	not-accessible
         STATUS	mandatory
         DESCRIPTION    	"An entry in errdisStatusTable."
-        INDEX          	{ ifindex, errdisReason}
+        INDEX          	{ errdisStatusIfindex, errdisStatusReason }
         ::= { errdisStatusTable 1 }
-
-        errdisStatusEntry ::=
-      	SEQUENCE {
-      	  errdisStatusIfindex    INTEGER,
-      	  errdisStatusReason       INTEGER,
-          errdisStatusDetectMode    INTEGER,
-          errdisStatusDetectTime    DisplayString,
-          errdisStatusRecoveryTimeleft    INTEGER,
-         }
 
         errdisStatusIfindex OBJECT-TYPE
         SYNTAX  INTEGER
@@ -30946,8 +30957,8 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 
         errdisStatusDetectMode OBJECT-TYPE
         SYNTAX  INTEGER{
-        	None(0),
-        	Detected(1),
+        	none(0),
+        	detected(1)
         }
         ACCESS  read-only
         STATUS  current
@@ -31034,8 +31045,16 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 		  ::= { errdisTrapNotifications 2 }
 
       -- errdis Statistic
+        ErrdisStatisticEntry ::=
+      	SEQUENCE {
+      	  errdisStatisticIfindex    INTEGER,
+      	  errdisStatisticReason       INTEGER,
+          errdisStatisticDetected    INTEGER,
+          errdisStatisticRecovery    INTEGER
+         }
+
 	    errdisStatisticTable	OBJECT-TYPE
-        SYNTAX	SEQUENCE OF  errdisStatisticEntry
+        SYNTAX	SEQUENCE OF ErrdisStatisticEntry
         ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION
@@ -31043,20 +31062,12 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
         ::= { errdis 9 }
 
        	errdisStatisticEntry OBJECT-TYPE
-        SYNTAX	errdisStatisticEntry
+        SYNTAX	ErrdisStatisticEntry
         ACCESS	not-accessible
         STATUS	mandatory
         DESCRIPTION    	"An entry in errdisStatisticTable."
-        INDEX          	{ ifindex, errdisReason}
+        INDEX          	{ errdisStatisticIfindex, errdisStatisticReason }
         ::= { errdisStatisticTable 1 }
-
-        errdisStatisticEntry ::=
-      	SEQUENCE {
-      	  errdisStatisticIfindex    INTEGER,
-      	  errdisStatisticReason       INTEGER,
-          errdisStatisticDetected    INTEGER,
-          errdisStatisticRecovery    INTEGER
-         }
 
         errdisStatisticIfindex OBJECT-TYPE
         SYNTAX  INTEGER
@@ -31177,7 +31188,7 @@ tacacsplusAuthor		OBJECT IDENTIFIER ::= { tacacsplus 3 }
 	STATUS current
 	DESCRIPTION
 		""
-	INDEX { protectswitchGroupId }
+	INDEX { groupId }
 	::= { protectswitchStatusTable 1 }
 
 	ProtectswitchStatusEntry ::=

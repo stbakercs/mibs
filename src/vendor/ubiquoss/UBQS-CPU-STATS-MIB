@@ -54,7 +54,7 @@ ubiCpuStatsMIBConformance         OBJECT IDENTIFIER   ::= { ubiCpuStatsMIB 3 }
 
     ubiCpuStatsTable  OBJECT-TYPE
         SYNTAX      SEQUENCE OF UbiCpuStatsEntry
-        ACCESS      not-accessible
+        MAX-ACCESS      not-accessible
         STATUS      current
         DESCRIPTION
         "The table of CPU queue counter"
@@ -62,7 +62,7 @@ ubiCpuStatsMIBConformance         OBJECT IDENTIFIER   ::= { ubiCpuStatsMIB 3 }
 
     ubiCpuStatsEntry OBJECT-TYPE 
         SYNTAX      UbiCpuStatsEntry
-        ACCESS      not-accessible
+        MAX-ACCESS      not-accessible
         STATUS      current
         DESCRIPTION
         "An entry in the CPU queue counter table, representing
@@ -79,7 +79,7 @@ ubiCpuStatsMIBConformance         OBJECT IDENTIFIER   ::= { ubiCpuStatsMIB 3 }
 
     ubiCpuStatsIndex OBJECT-TYPE
         SYNTAX INTEGER
-        ACCESS not-accessible
+        MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
         "Index of CPU queue counter table"
@@ -87,7 +87,7 @@ ubiCpuStatsMIBConformance         OBJECT IDENTIFIER   ::= { ubiCpuStatsMIB 3 }
 
     ubiCpuStatsInPkts OBJECT-TYPE
         SYNTAX Counter64
-        ACCESS read-only
+        MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
         "received packet counter of CPU queue"
@@ -95,7 +95,7 @@ ubiCpuStatsMIBConformance         OBJECT IDENTIFIER   ::= { ubiCpuStatsMIB 3 }
     
     ubiCpuStatsDropPkts OBJECT-TYPE
         SYNTAX Counter64
-        ACCESS read-only
+        MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
         "dropped packet counter of CPU queue"

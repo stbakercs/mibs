@@ -2251,7 +2251,7 @@
 				pm10gOltQueueStatsDroppedBytes
 					Counter64,
 				pm10gOltQueueStatsDroppedFrames
-					Counter64,
+					Counter64
 			 }      
 			 
 		pm10gOltQueueStatsRxOctets OBJECT-TYPE
@@ -2375,13 +2375,6 @@
 				"10G HQOS Queue0 Stats : Dropped Frames"
 			::= { pm10gHqosQueueStatsEntry 4 }
 
-        pm10gHqosQueue0Bytes OBJECT-TYPE
-			SYNTAX Counter64
-			MAX-ACCESS read-only
-			STATUS current
-			DESCRIPTION
-				"10G HQOS Queue0 Stats : Bytes"
-			::= { pm10gHqosQueueStatsEntry 5 }
 		
 		pm10gHqosQueue1Frames OBJECT-TYPE
 			SYNTAX Counter64

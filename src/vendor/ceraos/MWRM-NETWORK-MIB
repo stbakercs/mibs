@@ -15476,7 +15476,7 @@ genTraps OBJECT IDENTIFIER ::= { microwave-radio 11 }
 --                 NG Traps Section
 -- ###########################################################
 
-alarmTrap TRAP-TYPE
+alarmNgTrap TRAP-TYPE
 		ENTERPRISE microwave-radio
 		VARIABLES { genEquipCurrentAlarmCounter,
 					genEquipCurrentAlarmRaisedTimeT,
@@ -15494,7 +15494,7 @@ alarmTrap TRAP-TYPE
 		DESCRIPTION "NG Alarm network trap"
 		::= 2000
 
-heartbeatTrap TRAP-TYPE
+heartbeatNgTrap TRAP-TYPE
 		ENTERPRISE microwave-radio
 		VARIABLES { genEquipCurrentAlarmCounter,
 					genEquipTrapCfgMgrCLLI

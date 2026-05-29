@@ -59,7 +59,7 @@ stackEnableConfig OBJECT-TYPE
     ::= { gbnDeviceStackMib 2 }
 
 stackUnitMax OBJECT-TYPE
-    SYNTAX Integer32
+    SYNTAX INTEGER
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
@@ -106,7 +106,7 @@ StackPortVirtualLinkEntry ::=
         }
 
 stackPortVirtualLinkPhyPort OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -114,7 +114,7 @@ stackPortVirtualLinkPhyPort OBJECT-TYPE
     ::= { stackPortVirtualLinkEntry 1 }
 
 stackPortVirtualLinkDevice OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -122,7 +122,7 @@ stackPortVirtualLinkDevice OBJECT-TYPE
     ::= { stackPortVirtualLinkEntry 2 }
 
 stackPortVirtualLinkSlot OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -130,7 +130,7 @@ stackPortVirtualLinkSlot OBJECT-TYPE
     ::= { stackPortVirtualLinkEntry 3 }
 
 stackPortVirtualLinkPortNum OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -231,7 +231,7 @@ StackMemberEntry ::=
         }
 
 stackMemberUnit OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -250,7 +250,7 @@ stackMemberMode OBJECT-TYPE
     ::= { stackMemberEntry 2 }
 
 stackMemberNewUnit OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -258,7 +258,7 @@ stackMemberNewUnit OBJECT-TYPE
     ::= { stackMemberEntry 3 }
 
 stackMemberPriorityRunning OBJECT-TYPE
-    SYNTAX      Integer32 (0..255)    
+    SYNTAX INTEGER (0..255)    
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -266,7 +266,7 @@ stackMemberPriorityRunning OBJECT-TYPE
     ::= { stackMemberEntry 4 }
 
 stackMemberPriorityConfig OBJECT-TYPE
-    SYNTAX      Integer32 (0..255)    
+    SYNTAX INTEGER (0..255)    
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION
@@ -282,7 +282,7 @@ stackMemberReboot OBJECT-TYPE
     ::= { stackMemberEntry 6 }
 
 stackMemberVirtualLink1Hop OBJECT-TYPE
-    SYNTAX      Integer32
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -290,7 +290,7 @@ stackMemberVirtualLink1Hop OBJECT-TYPE
     ::= { stackMemberEntry 7 }
 
 stackMemberVirtualLink2Hop OBJECT-TYPE
-    SYNTAX      Integer32
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -314,7 +314,7 @@ stackLinkdownDelay OBJECT-TYPE
     ::= { gbnDeviceStackMib 6 }
 
 stackHelloTimeOut OBJECT-TYPE
-    SYNTAX Integer32 (1..32)
+    SYNTAX INTEGER (1..32)
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
@@ -322,7 +322,7 @@ stackHelloTimeOut OBJECT-TYPE
     ::= { gbnDeviceStackMib 7 }
 
 stackLacpMadDomain OBJECT-TYPE
-    SYNTAX Integer32 (0..255)
+    SYNTAX INTEGER (0..255)
     MAX-ACCESS read-write
     STATUS current
     DESCRIPTION
@@ -357,7 +357,7 @@ StackLacpMadEntry ::=
         }
 
 lacpMadChannelGroup OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
@@ -400,7 +400,7 @@ StackMadExcludeEntry ::=
         }
 
 madExcludePort OBJECT-TYPE
-    SYNTAX      Integer32 
+    SYNTAX INTEGER
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION

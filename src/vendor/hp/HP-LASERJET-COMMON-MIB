@@ -2,6 +2,13 @@
 
 HP-LASERJET-COMMON-MIB DEFINITIONS ::= BEGIN
 
+IMPORTS
+    enterprises
+        FROM SNMPv2-SMI;
+
+-- HP LaserJet floating-point values (4-byte IEEE); legacy REAL type unsupported
+HpLjFloat ::= OCTET STRING (SIZE(4))
+
 hp OBJECT IDENTIFIER ::= { enterprises 11 }
 nm OBJECT IDENTIFIER ::= { hp 2 }
 hpsystem OBJECT IDENTIFIER ::= { nm 3 }
@@ -295,7 +302,6 @@ intray4                                OBJECT IDENTIFIER ::=  { intrays 4 }
 intray5                                OBJECT IDENTIFIER ::=  { intrays 5 } 
 intray6                                OBJECT IDENTIFIER ::=  { intrays 6 }
 intray7                                OBJECT IDENTIFIER ::=  { intrays 7 }  
-outbin3                                OBJECT IDENTIFIER ::=  { outbins 3 } 
 media-size                             OBJECT IDENTIFIER ::=  { print-media 5 } 
 prtInput                               OBJECT IDENTIFIER ::=  { printmib 8 } 
 prtInputTable                          OBJECT IDENTIFIER ::=  { prtInput 2 } 
@@ -459,7 +465,7 @@ on-off-line OBJECT-TYPE
 ::= { status-system 5 }
                
                
-continue OBJECT-TYPE
+continueAction OBJECT-TYPE
     SYNTAX  INTEGER {
 		   eInitiateAction(1)
 		   }
@@ -558,7 +564,7 @@ status-controller OBJECT-TYPE
                 warning condition."
 ::= { status-system 23 }
 
-auto-continue OBJECT-TYPE
+auto-continueAction OBJECT-TYPE
     SYNTAX  INTEGER {
 		   eOff(1),
 		   eOn(2)
@@ -5332,16 +5338,6 @@ prtalerttime OBJECT-TYPE
 	Refer to Standard Printer MIB for more details."
 ::= { prtAlertEntry 9 }
                
-               
-status-controller OBJECT-TYPE
-    SYNTAX  OCTET STRING
-    ACCESS  read-only
-    STATUS  optional
-    DESCRIPTION
-                "Indicates if the hardware controller sub-system in a
-                warning condition."
-::= { status-system 23 }
-               
 job-input-auto-continue-timeout OBJECT-TYPE
     SYNTAX  INTEGER(-1..3600)
     ACCESS  read-write
@@ -9869,7 +9865,7 @@ held-job-enable OBJECT-TYPE
     DESCRIPTION
                 "Enables or disables Job Retention (Job Hold).  The valid
                 values are eDisabled and eEnabled.  (Specifying an
-                invalid mode causes an <badValue>
+                invalid mode causes a badValue
                 error to be returned.) When eDisabled is specified all
                 Job Retention (Hold, Proof, Store, PIN Printing) is
                 disabled.  When eEnabled is specified, the Job Retention
@@ -9883,7 +9879,7 @@ held-job-enable OBJECT-TYPE
                
                
 usage-printer-total-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-only
     STATUS  optional
     DESCRIPTION
@@ -9892,7 +9888,7 @@ usage-printer-total-charge OBJECT-TYPE
                
                
 usage-average-toner-coverage OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-only
     STATUS  optional
     DESCRIPTION
@@ -9964,7 +9960,7 @@ scanned-media-simplex-count OBJECT-TYPE
                 The 5 usage (simplex/duplex count, simplex/duplex click
                 charge and paper size total) objects described here and 
                 below detail the usage for the scanner for each paper 
-                size defined in the PCL Implementor's Guide and in the 
+                size defined in the PCL Implementors Guide and in the 
                 Media Size Table in the hpmib.txt.  The OID binding is 
                 based on the click attribute and paper size.
                 For example:
@@ -9991,7 +9987,7 @@ scanned-media-simplex-count OBJECT-TYPE
                 y : paper size as defined in the Media Size Table in the
                 hpmib.txt 
                 
-                		The click charge objects are of data type real and have a single
+                		The click charge objects are floating-point and have a single
                 		digit of precision. Setting these objects to more than a single
                 		digit of precision will cause truncation at a single digit, for
                 		example, if click charge is set to 15.475 and later retrieved with
@@ -10000,7 +9996,7 @@ scanned-media-simplex-count OBJECT-TYPE
                
                
 scanned-media-simplex-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-write
     STATUS  optional
     DESCRIPTION
@@ -10020,7 +10016,7 @@ scanned-media-duplex-count OBJECT-TYPE
                
                
 scanned-media-duplex-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-write
     STATUS  optional
     DESCRIPTION
@@ -10030,7 +10026,7 @@ scanned-media-duplex-charge OBJECT-TYPE
                
                
 scanned-media-total-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-only
     STATUS  optional
     DESCRIPTION
@@ -10040,7 +10036,7 @@ scanned-media-total-charge OBJECT-TYPE
                
                
 usage-scanner-total-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-only
     STATUS  optional
     DESCRIPTION
@@ -12745,7 +12741,7 @@ media-size-count OBJECT-TYPE
                 The value of this object is persistent across a power cycle.  
                 
                 The index for these objects, the last number of the OID, uniquely identifies the paper size.  This value 
-                corresponds to the page sizes listed below.  These values are also documented in the PCL Implementor's Guide 
+                corresponds to the page sizes listed below.  These values are also documented in the PCL Implementors Guide 
                 and the PML Master MIB.  
                 
                 1 US-Executive  
@@ -14629,7 +14625,7 @@ printed-media-simplex-count OBJECT-TYPE
                 The 5 usage (simplex/duplex count, simplex/duplex click
                 charge and paper size total) objects described here and
                 below detail the usage for the printer for each paper
-                size defined in the PCL Implementor's Guide and in the
+                size defined in the PCL Implementors Guide and in the
                 Media Size Table in the hpmib.txt.  The OID binding is
                 based on the click attribute and paper size.
                 For example:
@@ -14659,7 +14655,7 @@ printed-media-simplex-count OBJECT-TYPE
                
                
 printed-media-simplex-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-write
     STATUS  optional
     DESCRIPTION
@@ -14679,7 +14675,7 @@ printed-media-duplex-count OBJECT-TYPE
                
                
 printed-media-duplex-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-write
     STATUS  optional
     DESCRIPTION
@@ -14690,7 +14686,7 @@ printed-media-duplex-charge OBJECT-TYPE
                
                
 printed-media-total-charge OBJECT-TYPE
-    SYNTAX  real
+    SYNTAX  HpLjFloat
     ACCESS  read-only
     STATUS  optional
     DESCRIPTION

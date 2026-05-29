@@ -107,9 +107,9 @@ temp-msg TRAP-TYPE
 
  InEntry ::=
     SEQUENCE {
-        in
+        inputState
             OnOff,
-        in-name
+        inputName
             DisplayString, 
                 citrwS
                     StatCit,
@@ -120,7 +120,7 @@ temp-msg TRAP-TYPE
 -- parametry pro cteni vstupu
 --
 --OID 1.3.6.1.4.1.18248.16.2.1.1.1.1- len-in                 
-in  OBJECT-TYPE
+inputState OBJECT-TYPE
         SYNTAX          OnOff
         ACCESS          read-only
         STATUS          current
@@ -130,7 +130,7 @@ in  OBJECT-TYPE
 -- parametry pro cteni nastaveni jmena vstupu
 --  
 --OID 1.3.6.1.4.1.18248.16.2.1.1.2.1- len-in 
-in-name OBJECT-TYPE
+inputName OBJECT-TYPE
     SYNTAX DisplayString
         ACCESS read-write
         STATUS current

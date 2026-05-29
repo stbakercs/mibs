@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneDNS
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212;	
+		FROM SNMPv2-SMI;	
 
           -- textual conventions
 
@@ -38,28 +38,11 @@ hillstoneDnsSrvWorkMode OBJECT-TYPE
 		client(1),
 		relay(2)
 	}
-    ACCESS read-only
+    MAX-ACCESS read-only
     STATUS current
     DESCRIPTION 
 	"The dns server work mode"
     ::= { hillstoneDnsMibObjects 1 }
-
-hillstoneDnsDomainTable OBJECT-TYPE
-    SYNTAX SEQUENCE OF HillstoneDnsDomainEntry
-    MAX-ACCESS not-accessible
-    STATUS current
-    DESCRIPTION
-	"The table is used in domain informatioin of this dns server"
-    ::= { hillstoneDnsMibObjects 2 }
-
-HillstoneDnsDomainEntry OBJECT-TYPE
-    SYNTAX HillstoneDnsDomainEntry
-    MAX-ACCESS not-accessible
-    STATUS current
-    DESCRIPTION
-	"The entry is used in domain informatioin of this dns server"
-    INDEX { hillstoneDnsDomainIdx }
-    ::= { hillstoneDnsDomainTable 1 } 
 
 HillstoneDnsDomainEntry ::=
     SEQUENCE{
@@ -68,6 +51,23 @@ HillstoneDnsDomainEntry ::=
 	hillstoneDnsDomainName
 	    DisplayString
 	}
+hillstoneDnsDomainTable OBJECT-TYPE
+    SYNTAX SEQUENCE OF HillstoneDnsDomainEntry
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION
+	"The table is used in domain informatioin of this dns server"
+    ::= { hillstoneDnsMibObjects 2 }
+
+hillstoneDnsDomainEntry OBJECT-TYPE
+    SYNTAX HillstoneDnsDomainEntry
+    MAX-ACCESS not-accessible
+    STATUS current
+    DESCRIPTION
+	"The entry is used in domain informatioin of this dns server"
+    INDEX { hillstoneDnsDomainIdx }
+    ::= { hillstoneDnsDomainTable 1 } 
+
 
 hillstoneDnsDomainIdx OBJECT-TYPE
     SYNTAX INTEGER
@@ -75,7 +75,7 @@ hillstoneDnsDomainIdx OBJECT-TYPE
     STATUS current
     DESCRIPTION
 	"The index of this table"
-    ::= { HillstoneDnsDomainEntry 1 }
+    ::= { hillstoneDnsDomainEntry 1 }
     
 hillstoneDnsDomainName OBJECT-TYPE
     SYNTAX DisplayString
@@ -83,10 +83,17 @@ hillstoneDnsDomainName OBJECT-TYPE
     STATUS current
     DESCRIPTION
 	"Dns domain name."
-    ::= { HillstoneDnsDomainEntry 2 }
+    ::= { hillstoneDnsDomainEntry 2 }
     
 
 -- static dns
+HillstoneStaticDnsServAddressEntry ::=
+    SEQUENCE{
+	hillstoneStaticDnsServIdx
+	    INTEGER,
+	hillstoneStaticDnsIpAddr
+	    IpAddress
+	}
 hillstoneStaticDnsServAddressTable OBJECT-TYPE
     SYNTAX SEQUENCE OF HillstoneStaticDnsServAddressEntry
     MAX-ACCESS not-accessible
@@ -95,7 +102,7 @@ hillstoneStaticDnsServAddressTable OBJECT-TYPE
 	"The table is used in static domain informatioin of this Static dns server"
     ::= { hillstoneDnsMibObjects 3 }
 
-HillstoneStaticDnsServAddressEntry OBJECT-TYPE
+hillstoneStaticDnsServAddressEntry OBJECT-TYPE
     SYNTAX HillstoneStaticDnsServAddressEntry
     MAX-ACCESS not-accessible
     STATUS current
@@ -104,13 +111,6 @@ HillstoneStaticDnsServAddressEntry OBJECT-TYPE
     INDEX { hillstoneStaticDnsServIdx }
     ::= { hillstoneStaticDnsServAddressTable 1 } 
 
-HillstoneStaticDnsServAddressEntry ::=
-    SEQUENCE{
-	hillstoneStaticDnsServIdx
-	    INTEGER,
-	hillstoneStaticDnsIpAddr
-	    IpAddress
-	}
 
 hillstoneStaticDnsServIdx OBJECT-TYPE
     SYNTAX INTEGER
@@ -118,7 +118,7 @@ hillstoneStaticDnsServIdx OBJECT-TYPE
     STATUS current
     DESCRIPTION
 	"The index of this Dns server table."
-    ::= { HillstoneStaticDnsServAddressEntry 1 }
+    ::= { hillstoneStaticDnsServAddressEntry 1 }
     
 hillstoneStaticDnsIpAddr OBJECT-TYPE
     SYNTAX IpAddress
@@ -126,20 +126,27 @@ hillstoneStaticDnsIpAddr OBJECT-TYPE
     STATUS current
     DESCRIPTION
 	"Dns server ip address."
-    ::= { HillstoneStaticDnsServAddressEntry 2 }
+    ::= { hillstoneStaticDnsServAddressEntry 2 }
     
     
 --  DDns 
+HillstoneDynamicDnsServAddressEntry ::=
+    SEQUENCE{
+	hillstoneDynamicDnsServIdx
+	    INTEGER,
+	hillstoneDynamicDnsIpAddr
+	    IpAddress
+	}
 hillstoneDynamicDnsServAddressTable OBJECT-TYPE
-    SYNTAX SEQUENCE OF HillstoneStaticDnsServAddressEntry
+    SYNTAX SEQUENCE OF HillstoneDynamicDnsServAddressEntry
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
 	"The table is used in static domain informatioin of this Dynamic dns server"
     ::= { hillstoneDnsMibObjects 4 }
 
-HillstoneStaticDnsServAddressEntry OBJECT-TYPE
-    SYNTAX HillstoneStaticDnsServAddressEntry
+hillstoneDynamicDnsServAddressEntry OBJECT-TYPE
+    SYNTAX HillstoneDynamicDnsServAddressEntry
     MAX-ACCESS not-accessible
     STATUS current
     DESCRIPTION
@@ -147,13 +154,6 @@ HillstoneStaticDnsServAddressEntry OBJECT-TYPE
     INDEX { hillstoneDynamicDnsServIdx }
     ::= { hillstoneDynamicDnsServAddressTable 1 } 
 
-HillstoneStaticDnsServAddressEntry ::=
-    SEQUENCE{
-	hillstoneDynamicDnsServIdx
-	    INTEGER,
-	hillstoneDynamicDnsIpAddr
-	    IpAddress
-	}
 
 hillstoneDynamicDnsServIdx OBJECT-TYPE
     SYNTAX INTEGER
@@ -161,7 +161,7 @@ hillstoneDynamicDnsServIdx OBJECT-TYPE
     STATUS current
     DESCRIPTION
 	"The index of this Dns server table."
-    ::= { HillstoneStaticDnsServAddressEntry 1 }
+    ::= { hillstoneDynamicDnsServAddressEntry 1 }
     
 hillstoneDynamicDnsIpAddr OBJECT-TYPE
     SYNTAX IpAddress
@@ -169,7 +169,7 @@ hillstoneDynamicDnsIpAddr OBJECT-TYPE
     STATUS current
     DESCRIPTION
 	"Dns server ip address."
-    ::= { HillstoneStaticDnsServAddressEntry 2 }
+    ::= { hillstoneDynamicDnsServAddressEntry 2 }
     
 
 END

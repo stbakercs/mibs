@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneModule
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212	
+		FROM SNMPv2-SMI	
         RowStatus		
 		FROM SNMPv2-TC;
 
@@ -32,30 +32,13 @@ IMPORTS
 hillstoneModuleObjects OBJECT IDENTIFIER ::= { hillstoneModule 1 }
 
 hillstoneSlotNumber OBJECT-TYPE
-    SYNTAX Integer32
+    SYNTAX INTEGER
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
 	"The number of slots."
     ::= { hillstoneModuleObjects 1 } 
 
-hillstoneModuleTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneModuleEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "This table contains all the module data."
-::= { hillstoneModuleObjects 2 }
-
-HillstoneModuleEntry OBJECT-TYPE
-	SYNTAX HillstoneModuleEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-		"Define the parameters of module."
-INDEX { hillstoneSlotIndex }
-::= { hillstoneModuleTable 1 }
-	
 HillstoneModuleEntry ::=
 SEQUENCE { 
 	hillstoneSlotIndex
@@ -71,14 +54,31 @@ SEQUENCE {
 	hillstoneModuleSN
 		DisplayString
 	}
+hillstoneModuleTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneModuleEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "This table contains all the module data."
+::= { hillstoneModuleObjects 2 }
+
+hillstoneModuleEntry OBJECT-TYPE
+	SYNTAX HillstoneModuleEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"Define the parameters of module."
+INDEX { hillstoneSlotIndex }
+::= { hillstoneModuleTable 1 }
+	
 
 hillstoneSlotIndex OBJECT-TYPE
 	SYNTAX INTEGER 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot index of the module."
-::= { HillstoneModuleEntry 1 }
+::= { hillstoneModuleEntry 1 }
 
 hillstoneSlotType OBJECT-TYPE
 	SYNTAX INTEGER
@@ -86,19 +86,19 @@ hillstoneSlotType OBJECT-TYPE
 		internal(0),
 		external(1)
 	} 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot type of the module."
-::= { HillstoneModuleEntry 2 }
+::= { hillstoneModuleEntry 2 }
 
 hillstoneSlotDescr OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot description of the module."
-::= { HillstoneModuleEntry 3 }
+::= { hillstoneModuleEntry 3 }
 
 hillstoneSlotState OBJECT-TYPE
 	SYNTAX INTEGER
@@ -117,27 +117,27 @@ hillstoneSlotState OBJECT-TYPE
 		error(11),
 		unsupported(12)
 	} 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot state of the module."
-::= { HillstoneModuleEntry 4 }
+::= { hillstoneModuleEntry 4 }
 
 hillstoneModuleType OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS  read-only
+	MAX-ACCESS  read-only
 	STATUS current
 	DESCRIPTION
 	    "The module type."
-::= { HillstoneModuleEntry 5 }
+::= { hillstoneModuleEntry 5 }
   
 hillstoneModuleSN OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS  read-only
+	MAX-ACCESS  read-only
 	STATUS current
 	DESCRIPTION
 	    "The module serial number."
-::= { HillstoneModuleEntry 6 }
+::= { hillstoneModuleEntry 6 }
 
 
 END

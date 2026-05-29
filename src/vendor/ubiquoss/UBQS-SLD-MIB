@@ -110,7 +110,7 @@ ubiSldGlobal              			OBJECT IDENTIFIER		::= { ubiSldMIBObjects 1 }
 		::= { ubiSldGlobal 2 }   
 
 	ubiSldRecoveryTime		OBJECT-TYPE
-		SYNTAX		Integer32 {         
+		SYNTAX		INTEGER {
 			disable(0)
 		}                        
 		UNITS		"minutes"
@@ -200,7 +200,7 @@ ubiSldGlobal              			OBJECT IDENTIFIER		::= { ubiSldMIBObjects 1 }
 		::= { ubiSldIfEntry 2 }
 		
 	ubiSldIfRecoveryTime		OBJECT-TYPE
-		SYNTAX		Integer32 {      
+		SYNTAX		INTEGER {
 			disable(0)
 		}       
 		UNITS		"minutes"
@@ -309,8 +309,8 @@ ubiSldMIBGroups  	 	OBJECT IDENTIFIER			::= { ubiSldMIBConformance 2 }
 
 
 	ubiSldGroup OBJECT-GROUP
-    	OBJECTS         {    
-				
+    	OBJECTS {
+                ubiSldEnabled
         }   
 
     	STATUS          current

@@ -855,14 +855,14 @@ ubiIgmpSnoopCacheLastReporter OBJECT-TYPE
 
     ubiIgmpProxyRoutingIfMRouteCountTable OBJECT-TYPE
         SYNTAX	SEQUENCE OF ProxyRoutingIfMRouteCountEntry
-        ACCESS	not-accessible
+        MAX-ACCESS	not-accessible
         STATUS	mandatory
         DESCRIPTION	"Multicast mroute count table for interface (IGMPRT)"
     ::= { ubiIgmpProxyRoutingMIBObjects 1 }
 
     ubiIgmpProxyRoutingIfMRouteCountEntry OBJECT-TYPE
         SYNTAX  ProxyRoutingIfMRouteCountEntry
-        ACCESS  not-accessible
+        MAX-ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION	"Multicast mroute count entry for interface (IGMPRT)"
         INDEX   { IfIndex }
@@ -889,14 +889,14 @@ ubiIgmpSnoopCacheLastReporter OBJECT-TYPE
 
 	ubiIgmpProxyRoutingOutIfMRouteTable OBJECT-TYPE
         SYNTAX	SEQUENCE OF ProxyRoutingOutIfMRouteEntry
-        ACCESS	not-accessible
+        MAX-ACCESS	not-accessible
         STATUS	mandatory
         DESCRIPTION	"Multicast mroute table for interface (IGMPRT)"
     ::= { ubiIgmpProxyRoutingMIBObjects 2 }
 
     ubiIgmpProxyRoutingOutIfMRouteEntry OBJECT-TYPE
         SYNTAX  ProxyRoutingOutIfMRouteEntry
-        ACCESS  not-accessible
+        MAX-ACCESS  not-accessible
         STATUS  mandatory
         DESCRIPTION	"Multicast mroute entry for interface (IGMPRT)"
         INDEX   { IfIndex, ubiIgmpProxyRoutingOutIfMRouteGroup, ubiIgmpProxyRoutingOutIfMRouteSource }

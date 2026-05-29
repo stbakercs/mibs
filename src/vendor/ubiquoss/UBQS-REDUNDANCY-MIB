@@ -129,7 +129,7 @@ ubiRedundancyMIBConformance				OBJECT IDENTIFIER	 	::= { ubiRedundancyMIB 4 }
                                                           
 	ubiRedundancyConnectionStateNotification NOTIFICATION-TYPE
     	OBJECTS     { 
-    					ubiRedundancyConnectionState,
+    					ubiRedundancyConnectionState
     	}
     	STATUS          current
     	DESCRIPTION
@@ -139,7 +139,7 @@ ubiRedundancyMIBConformance				OBJECT IDENTIFIER	 	::= { ubiRedundancyMIB 4 }
    	
    	ubiRedundancySyncNotification NOTIFICATION-TYPE
     	OBJECTS     { 
-    					ubiRedundancySyncState,
+    					ubiRedundancySyncState
     	}
     	STATUS          current
     	DESCRIPTION
@@ -150,7 +150,7 @@ ubiRedundancyMIBConformance				OBJECT IDENTIFIER	 	::= { ubiRedundancyMIB 4 }
    		
 	ubiRedundancySyncStateChangeNotification NOTIFICATION-TYPE
     	OBJECTS     { 
-    					ubiRedundancySyncState,
+    					ubiRedundancySyncState
     	}
     	STATUS          current
     	DESCRIPTION
@@ -220,7 +220,7 @@ ubiRedundancy					OBJECT IDENTIFIER		::= { ubiRedundancyObjects 1 }
 	UbiRedundancyEntry ::= SEQUENCE {        
 		ubiRedundancyIsActivePreferred				TruthValue,          
 		ubiRedundancyState							RedundancyState,
-		ubiRedundancyConnectionState				INTEGER, 
+		ubiRedundancyConnectionState				INTEGER 
        }
 
  	ubiRedundancyIsActivePreferred OBJECT-TYPE
@@ -287,7 +287,7 @@ ubiRedundancy					OBJECT IDENTIFIER		::= { ubiRedundancyObjects 1 }
 	UbiRedundancySyncEntry ::= SEQUENCE {        
 		ubiRedundancySyncState					INTEGER,
 		ubiRedundancySyncNotificationEnabled	TruthValue,
-		ubiRedundancySyncStateChangeNotificationEnabled	TruthValue,
+		ubiRedundancySyncStateChangeNotificationEnabled	TruthValue
 		}
 	
 	ubiRedundancySyncState OBJECT-TYPE
@@ -693,8 +693,9 @@ ubiRedundancyMIBGroups  OBJECT IDENTIFIER			::= { ubiRedundancyMIBConformance 2 
 -- units of conformance
 
 	ubiRedundancyMIBRedundancyGroup OBJECT-GROUP
-    	OBJECTS         {
-                    	}
+    	OBJECTS {
+                ubiRedundancyReload
+        }
     	STATUS          current
     	DESCRIPTION
         	"The collection of objects which are used to get the
@@ -702,8 +703,9 @@ ubiRedundancyMIBGroups  OBJECT IDENTIFIER			::= { ubiRedundancyMIBConformance 2 
     	::= { ubiRedundancyMIBGroups 1 }
     	
     ubiRedundancyMIBSwitchoverGroup OBJECT-GROUP
-    	OBJECTS         {
-                    	}
+    	OBJECTS {
+                ubiRedundancyReload
+        }
     	STATUS          current
     	DESCRIPTION
         	"The collection of objects which are used to get the
@@ -711,8 +713,9 @@ ubiRedundancyMIBGroups  OBJECT IDENTIFIER			::= { ubiRedundancyMIBConformance 2 
     	::= { ubiRedundancyMIBGroups 2 }
 
 	ubiRedundancyMIBNotificationGroup OBJECT-GROUP
-    	OBJECTS         {
-                    	}
+    	OBJECTS {
+                ubiRedundancyReload
+        }
         STATUS          current
     	DESCRIPTION
         	"The collection of objects which are 

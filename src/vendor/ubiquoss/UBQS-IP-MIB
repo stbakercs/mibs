@@ -126,7 +126,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 			ubiIpAddrIfIndex					InterfaceIndex,  
 			ubiIpAddrPrefixLen                  InetAddressPrefixLength,
 			ubiIpAddrStatus						INTEGER, 
-			ubiIpAddrRowstatus					RowStatus,     
+			ubiIpAddrRowstatus					RowStatus     
 	}
   
  	ubiIpAddrType OBJECT-TYPE
@@ -235,7 +235,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 			ubiInetRouteDistance				Integer32,
 			ubiInetRouteTag						Unsigned32,  
 			ubiInetRouteNextHopName				DisplayString,
-			ubiInetRouteRowstatus				RowStatus,     
+			ubiInetRouteRowstatus				RowStatus     
 	}
             
             
@@ -381,7 +381,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
  	ubiInetRouteStatus OBJECT-TYPE
     	SYNTAX          INTEGER {
     		active(1),
-    		inactive(2),
+    		inactive(2)
     	}
     	MAX-ACCESS      read-only
     	STATUS          current    
@@ -587,7 +587,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 			ip(2),
 			ipv6(3)
 		}       
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current	 
 		DESCRIPTION
 			"The protocol to use."
@@ -595,7 +595,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 
 	ubiPingSendTarget	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current	 
 		DESCRIPTION
 			"The address of the device to be pinged."
@@ -603,7 +603,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 		
 	ubiPingSendRepeat	OBJECT-TYPE
 		SYNTAX		Integer32
-		ACCESS		read-write        
+		MAX-ACCESS		read-write        
 		STATUS		current
 		DESCRIPTION
 			"Specifies the number of ping packets to send 
@@ -613,7 +613,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 		
 	ubiPingSendPacketSize	OBJECT-TYPE
 		SYNTAX		Integer32(0..60000)
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the size of ping packets to send 
@@ -624,7 +624,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 	ubiPingSendTimeout	OBJECT-TYPE
 		SYNTAX		Integer32 
 		UNITS "seconds"
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the amount of time to wait for a response."      
@@ -634,7 +634,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 	ubiPingSendInterval	OBJECT-TYPE
 		SYNTAX		Integer32
 		UNITS "seconds"
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the amount of time to wait before 
@@ -643,7 +643,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 
 	ubiPingSendSrcAddr	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the sender IP address for sending packets."
@@ -651,7 +651,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 		
 	ubiPingSendTTL	OBJECT-TYPE
 		SYNTAX		Integer32
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the TTL."
@@ -659,7 +659,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
                                   
 	ubiPingSendTos	OBJECT-TYPE
 		SYNTAX		Integer32
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the Type Of Service."      
@@ -671,7 +671,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 			do(1),
 			dont(2)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Specifies the DF bit in IP header. dont(2) means 
@@ -682,7 +682,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 		SYNTAX		INTEGER {
 			send(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Send the ping packets when value is set to 
@@ -694,7 +694,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 -- ubiPingResults                             
  	ubiPingSendCompleted	OBJECT-TYPE
 		SYNTAX		TruthValue
-		ACCESS		accessible-for-notify
+		MAX-ACCESS		accessible-for-notify
 		STATUS		current
 		DESCRIPTION
 			"Set to true when all the packets in this sequence have been
@@ -703,7 +703,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 
 	ubiPingSendPackets	OBJECT-TYPE
 		SYNTAX		Counter32
-		ACCESS		accessible-for-notify
+		MAX-ACCESS		accessible-for-notify
 		STATUS		current
 		DESCRIPTION
 			"The total number of the sending ping."
@@ -711,7 +711,7 @@ ubiPingMIBNotifications  	OBJECT IDENTIFIER		::= { ubiIpMIBNotificationPrefix 2 
 
 	ubiPingReceivedPackets	OBJECT-TYPE
 		SYNTAX		Counter32
-		ACCESS		accessible-for-notify
+		MAX-ACCESS		accessible-for-notify
 		STATUS		current
 		DESCRIPTION
 			"The total number of the received ping."

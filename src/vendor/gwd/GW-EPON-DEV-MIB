@@ -330,11 +330,11 @@ GW-EPON-DEV-MIB	DEFINITIONS ::= BEGIN
 		powerModuleType     INTEGER,
 		powerVoltage        INTEGER,
 		powerCurrent        INTEGER,
-		PowerVOLTHighThreshold    INTEGER,
-		PowerVOLTLowThreshold     INTEGER, 
-		PowerAlarmInfo       INTEGER,
-		PowerAlarmID        INTEGER,
-		PowerClearAlarmID    INTEGER
+		powerVoltHighThreshold    INTEGER,
+		powerVoltLowThreshold     INTEGER, 
+		powerAlarmInfo       INTEGER,
+		powerAlarmId        INTEGER,
+		powerClearAlarmId    INTEGER
 	}
 	
 	powerIndex     OBJECT-TYPE 

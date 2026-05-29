@@ -74,7 +74,7 @@ ubiNtpMaster           			OBJECT IDENTIFIER 	::= { ubiNtpSystem 4 }
 						
 	ubiNtpInterval	OBJECT-TYPE	
 		SYNTAX		Integer32   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"NTP client mode polling interval (default 64seconds)"
@@ -91,7 +91,7 @@ ubiNtpMaster           			OBJECT IDENTIFIER 	::= { ubiNtpSystem 4 }
 			enable(1),
 			disable(2)
 		}   
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION		
 				"Flag that enable NTP master mode"
@@ -99,7 +99,7 @@ ubiNtpMaster           			OBJECT IDENTIFIER 	::= { ubiNtpSystem 4 }
 
 	ubiNtpMasterStratum	OBJECT-TYPE	
 		SYNTAX		Integer32(1..15)   
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION		
 				"To configure NTP stratum"
@@ -136,7 +136,7 @@ ubiNtpMaster           			OBJECT IDENTIFIER 	::= { ubiNtpSystem 4 }
      
 	ubiNtpServerAddrType	OBJECT-TYPE	
 		SYNTAX		InetAddressType 
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"IP address type of the time server"
@@ -145,7 +145,7 @@ ubiNtpMaster           			OBJECT IDENTIFIER 	::= { ubiNtpSystem 4 }
     
 	ubiNtpServerAddr	OBJECT-TYPE	
 		SYNTAX		InetAddress 
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"IP address of time server"
@@ -153,7 +153,7 @@ ubiNtpMaster           			OBJECT IDENTIFIER 	::= { ubiNtpSystem 4 }
 
 	ubiNtpServerRowStatus	OBJECT-TYPE	
 		SYNTAX		RowStatus   
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION		
 				"NTP time server rowstatus"
@@ -192,8 +192,9 @@ ubiNtpMIBGroups      	OBJECT IDENTIFIER ::= { ubiNtpMIBConformance 2 }
  
 -- units of conformance
 	ubiNtpMIBGroup OBJECT-GROUP
-        OBJECTS {        
-        		        		}
+        OBJECTS {
+                ubiNtpCurrentStratum
+        }
     	STATUS          current
     	DESCRIPTION
         	 "ubiquoss NTP."

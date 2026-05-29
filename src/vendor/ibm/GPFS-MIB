@@ -52,14 +52,14 @@ gpfsClusterConfigTable OBJECT-TYPE
 -- Node tables
 
 gpfsNodeStatusTable OBJECT-TYPE
-	SYNTAX		SEQUENCE OF GpfsNodeEntry
+	SYNTAX		SEQUENCE OF GpfsNodeStatusEntry
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"This table contains the list of nodes belonging to this cluster."
 	::= { gpfsMIBObjects 4 }
 
 gpfsNodeConfigTable OBJECT-TYPE
-	SYNTAX		SEQUENCE OF GpfsNodeEntry
+	SYNTAX		SEQUENCE OF GpfsNodeConfigEntry
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"This table contains the list of nodes belonging to this cluster."
@@ -118,16 +118,6 @@ gpfsDiskPerfTable OBJECT-TYPE
 -- Cluster Data
 -- ------------
 
-gpfsClusterStatusEntry OBJECT-TYPE
-	SYNTAX		GpfsClusterStatusEntry
-	MAX-ACCESS	read-only
-	STATUS		current
-	DESCRIPTION	"A conceptual row of the gpfsClusterTable containing information about a particular cluster."
-	INDEX		{
-				gpfsClusterName,
-			}
-	::= { gpfsClusterStatusTable 1 }
-
 GpfsClusterStatusEntry ::= SEQUENCE {
 -- From SDR:
         gpfsClusterName               OCTET STRING,
@@ -140,15 +130,13 @@ GpfsClusterStatusEntry ::= SEQUENCE {
         gpfsClusterNumFileSystems     Unsigned32
 }
 
-gpfsClusterConfigEntry OBJECT-TYPE
-	SYNTAX		GpfsClusterConfigEntry
-	MAX-ACCESS	read-only
+gpfsClusterStatusEntry OBJECT-TYPE
+	SYNTAX		GpfsClusterStatusEntry
+	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A conceptual row of the gpfsClusterTable containing information about a particular cluster."
-	INDEX		{
-				gpfsClusterConfigName,
-			}
-	::= { gpfsClusterConfigTable 1 }
+	INDEX		{ gpfsClusterName }
+	::= { gpfsClusterStatusTable 1 }
 
 GpfsClusterConfigEntry ::= SEQUENCE {
 -- From SDR:
@@ -168,6 +156,14 @@ GpfsClusterConfigEntry ::= SEQUENCE {
         gpfsClusterMinMissedPingTimeout    Unsigned32,
         gpfsClusterMaxMissedPingTimeout    Unsigned32
 }
+
+gpfsClusterConfigEntry OBJECT-TYPE
+	SYNTAX		GpfsClusterConfigEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"A conceptual row of the gpfsClusterTable containing information about a particular cluster."
+	INDEX		{ gpfsClusterConfigName }
+	::= { gpfsClusterConfigTable 1 }
 
 -- gpfsClusterStatusEntry fields
 --------------------------------
@@ -302,26 +298,6 @@ gpfsClusterMaxMissedPingTimeout OBJECT-TYPE
 -- Node name, ID, and type are from SDR file
 -- all other node data from EE "get nodes" command
 
-gpfsNodeStatusEntry OBJECT-TYPE
-	SYNTAX		GpfsNodeStatusEntry
-	MAX-ACCESS	read-only
-	STATUS		current
-	DESCRIPTION	"A conceptual row of the gpfsNodeTable containing information about a particular node currently associated with the cluster."
-	INDEX		{
-				gpfsNodeName,
-			}
-	::= { gpfsNodeStatusTable 1 }
-
-gpfsNodeConfigEntry OBJECT-TYPE
-	SYNTAX		GpfsNodeConfigEntry
-	MAX-ACCESS	read-only
-	STATUS		current
-	DESCRIPTION	"A conceptual row of the gpfsNodeTable containing information about a particular node currently associated with the cluster."
-	INDEX		{
-				gpfsNodeConfigName,
-			}
-	::= { gpfsNodeConfigTable 1 }
-
 GpfsNodeStatusEntry ::= SEQUENCE {
 -- From SDR:
 	gpfsNodeName		OCTET STRING,
@@ -360,6 +336,26 @@ GpfsNodeConfigEntry ::= SEQUENCE {
         gpfsNodeNsdServerWaitTimeForMount  Unsigned32,
         gpfsNodeUnmountOnDiskFail      OCTET STRING
 }
+
+gpfsNodeStatusEntry OBJECT-TYPE
+	SYNTAX		GpfsNodeStatusEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"A conceptual row of the gpfsNodeTable containing information about a particular node currently associated with the cluster."
+	INDEX		{
+				gpfsNodeName
+			}
+	::= { gpfsNodeStatusTable 1 }
+
+gpfsNodeConfigEntry OBJECT-TYPE
+	SYNTAX		GpfsNodeConfigEntry
+	MAX-ACCESS	not-accessible
+	STATUS		current
+	DESCRIPTION	"A conceptual row of the gpfsNodeTable containing information about a particular node currently associated with the cluster."
+	INDEX		{
+				gpfsNodeConfigName
+			}
+	::= { gpfsNodeConfigTable 1 }
 
 -- gpfsNodeStatusEntry fields
 -- --------------------------
@@ -551,7 +547,7 @@ gpfsFileSystemStatusEntry OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION	"A conceptual row of the gpfsFileSystemStatusTable containing information about a particular file system currently associated with the cluster."
 	INDEX		{
-				gpfsFileSystemName,
+				gpfsFileSystemName
 			}
 	::= { gpfsFileSystemStatusTable 1 }
 
@@ -561,7 +557,7 @@ gpfsFileSystemPerfEntry OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION	"A conceptual row of the gpfsFileSystemPerfTable containing performance information about a particular file system currently associated with the cluster."
 	INDEX		{
-				gpfsFileSystemPerfName,
+				gpfsFileSystemPerfName
 			}
 	::= { gpfsFileSystemPerfTable 1 }
 
@@ -866,7 +862,7 @@ gpfsStgPoolEntry OBJECT-TYPE
 	DESCRIPTION	"A conceptual row of the gpfsStgPoolTable containing information about a particular storage pool."
 	INDEX		{
 				gpfsStgPoolFSName,
-				gpfsStgPoolName,
+				gpfsStgPoolName
                          }
 	::= { gpfsStgPoolTable 1 }
 
@@ -923,16 +919,28 @@ gpfsStgPoolNumDisks OBJECT-TYPE
 -- Disk Data
 -- ---------
 
+GpfsDiskStatusEntry ::= SEQUENCE {
+-- From SDR:
+	gpfsDiskFSName			OCTET STRING,
+	gpfsDiskStgPoolName		OCTET STRING,
+	gpfsDiskName			OCTET STRING,
+-- Disk data from EE "get fs" command
+	gpfsDiskStatus			OCTET STRING,
+	gpfsDiskAvailability		OCTET STRING,
+	gpfsDiskTotalSpaceL		Unsigned32,
+	gpfsDiskTotalSpaceH		Unsigned32,
+	gpfsDiskFullBlockFreeSpaceL	Unsigned32,
+	gpfsDiskFullBlockFreeSpaceH	Unsigned32,
+	gpfsDiskSubBlockFreeSpaceL	Unsigned32,
+	gpfsDiskSubBlockFreeSpaceH	Unsigned32
+}
+
 gpfsDiskStatusEntry OBJECT-TYPE
 	SYNTAX		GpfsDiskStatusEntry
-	MAX-ACCESS	read-only
+	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A conceptual row of the gpfsStgPoolDiskTable containing information about a particular disk currently associated."
-	INDEX		{
-				gpfsDiskFSName,
-				gpfsDiskStgPoolName,
-				gpfsDiskName,
-			}
+	INDEX		{ gpfsDiskFSName, gpfsDiskStgPoolName, gpfsDiskName }
 	::= { gpfsDiskStatusTable 1 }
 
 gpfsDiskConfigEntry OBJECT-TYPE
@@ -943,7 +951,7 @@ gpfsDiskConfigEntry OBJECT-TYPE
 	INDEX		{
 				gpfsDiskConfigFSName,
 				gpfsDiskConfigStgPoolName,
-				gpfsDiskConfigName,
+				gpfsDiskConfigName
 			}
 	::= { gpfsDiskConfigTable 1 }
 
@@ -956,30 +964,10 @@ gpfsDiskPerfEntry OBJECT-TYPE
 	INDEX		{
 				gpfsDiskPerfFSName,
 				gpfsDiskPerfStgPoolName,
-				gpfsDiskPerfName,
+				gpfsDiskPerfName
 			}
 	::= { gpfsDiskPerfTable 1 }
 
-
--- Disk status data
-
-GpfsDiskStatusEntry ::= SEQUENCE {
--- From SDR:
-	gpfsDiskName			OCTET STRING,
-	gpfsDiskFSName			OCTET STRING,
-	gpfsDiskStgPoolName		OCTET STRING,
--- Disk data from EE "get fs" command
-	gpfsDiskStatus			OCTET STRING,
-	gpfsDiskAvailability		OCTET STRING,
---	gpfsDiskFailureGroupId		Unsigned32,
-
-	gpfsDiskTotalSpaceL		Unsigned32,
-	gpfsDiskTotalSpaceH		Unsigned32,
-	gpfsDiskFullBlockFreeSpaceL	Unsigned32,
-	gpfsDiskFullBlockFreeSpaceH	Unsigned32,
-	gpfsDiskSubBlockFreeSpaceL	Unsigned32,
-	gpfsDiskSubBlockFreeSpaceH	Unsigned32
-}
 
 gpfsDiskName OBJECT-TYPE
 	SYNTAX		OCTET STRING
@@ -1301,7 +1289,7 @@ gpfsNodeIpAddress OBJECT-TYPE
 	"A string that represents the IP address." 
     ::= { gpfsTempObjs 1 }
 
-gpfsDiskName OBJECT-TYPE
+gpfsTrapDiskName OBJECT-TYPE
     SYNTAX	OCTET STRING 
     MAX-ACCESS	read-only
     STATUS	current
@@ -1309,7 +1297,7 @@ gpfsDiskName OBJECT-TYPE
 	"The disk name."
     ::= { gpfsTempObjs 2 }
 
-gpfsDiskStatus OBJECT-TYPE
+gpfsTrapDiskStatus OBJECT-TYPE
     SYNTAX	OCTET STRING
     MAX-ACCESS	read-only
     STATUS	current
@@ -1317,7 +1305,7 @@ gpfsDiskStatus OBJECT-TYPE
 	"The status of a disk (NotInUse, InUse, Suspended, BeingFormatted, BeingAdded, BeingEmptied, BeingDeleted, BeingDeleted-p, ReferencesBeingRemoved, BeingReplaced or Replacement)."
     ::= { gpfsTempObjs 3 }
 
-gpfsDiskAvailability OBJECT-TYPE
+gpfsTrapDiskAvailability OBJECT-TYPE
     SYNTAX	OCTET STRING
     MAX-ACCESS	read-only
     STATUS	current
@@ -1332,21 +1320,21 @@ gpfsDiskFailureGroupName OBJECT-TYPE
 	"The disk's failure group name."
     ::= { gpfsTempObjs 5 }
 
-gpfsDiskMetadata OBJECT-TYPE
+gpfsTrapDiskMetadata OBJECT-TYPE
     SYNTAX	OCTET STRING
     MAX-ACCESS	read-only
     STATUS	current
     DESCRIPTION	"Indicates whether the disk holds metadata."
     ::= { gpfsTempObjs 6 }
 
-gpfsDiskData OBJECT-TYPE
+gpfsTrapDiskData OBJECT-TYPE
     SYNTAX	OCTET STRING
     MAX-ACCESS	read-only
     STATUS	current
     DESCRIPTION	"Indicates whether the disk holds data."
     ::= { gpfsTempObjs 7 }
 
-gpfsFileSystemName OBJECT-TYPE
+gpfsTrapFileSystemName OBJECT-TYPE
     SYNTAX	OCTET STRING
     MAX-ACCESS	read-only
     STATUS	current
@@ -1459,7 +1447,7 @@ gpfsStgPoolUtil OBJECT-TYPE
 	"The storage pool utilization by unit of percent."
     ::= { gpfsTempObjs 21 }
 
-gpfsStgPoolName OBJECT-TYPE
+gpfsTrapStgPoolName OBJECT-TYPE
     SYNTAX	OCTET STRING
     MAX-ACCESS	read-only
     STATUS	current
@@ -1516,10 +1504,10 @@ gpfsChangeDiskTrap NOTIFICATION-TYPE
 	gpfsFileSystemName,
 	gpfsDiskName,
 	gpfsDiskStatus,
-	gpfsDiskAvailability,
+	gpfsTrapDiskAvailability,
 	gpfsDiskFailureGroupName,
-	gpfsDiskMetadata,
-	gpfsDiskData
+	gpfsTrapDiskMetadata,
+	gpfsTrapDiskData
     }
     STATUS	current
     DESCRIPTION
@@ -1642,8 +1630,8 @@ gpfsHungThreadTrap NOTIFICATION-TYPE
 
 gpfsStgPoolUtilizationTrap NOTIFICATION-TYPE
 	OBJECTS {
-	  gpfsFileSystemName,
-	  gpfsStgPoolName,
+	  gpfsTrapFileSystemName,
+	  gpfsTrapStgPoolName,
 	  gpfsStgPoolUtil
 	}
 	STATUS current

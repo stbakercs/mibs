@@ -75,13 +75,23 @@ etSlotsEntry  OBJECT-TYPE
 	STATUS  mandatory
 	DESCRIPTION
 	"A slot entry containing low level information of an Ethernet the card in the slot."
-        INDEX   { INTEGER }
+        INDEX   { etSlotIndex }
 	::=   { etSlotsTable 1 }
 
 EtSlotsEntry ::= SEQUENCE {
-	etSlotPollStruct 
+	etSlotIndex
+		      INTEGER,
+	etSlotPollStruct
 		      OCTET STRING
 	}
+
+etSlotIndex OBJECT-TYPE
+	SYNTAX  INTEGER
+	ACCESS  not-accessible
+	STATUS  mandatory
+	DESCRIPTION
+	"Slot number for this Ethernet module entry."
+	::=  { etSlotsEntry 1 }
 
 etSlotPollStruct OBJECT-TYPE
 	SYNTAX  OCTET STRING
@@ -89,6 +99,6 @@ etSlotPollStruct OBJECT-TYPE
 	STATUS  mandatory
 	DESCRIPTION
 	"A structure holding in internal representation, the detailed status of the Ethernet module in this slot"
-	::=  { etSlotsEntry 1 }
+	::=  { etSlotsEntry 2 }
 
 END

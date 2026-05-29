@@ -41,7 +41,7 @@
 
 ------------------------------------------------------------------------------
 --  define groups in gbn-TACACS-MIB
-        PriServerIP OBJECT-TYPE
+        priServerIP OBJECT-TYPE
         SYNTAX IpAddress
         MAX-ACCESS read-write
         STATUS current
@@ -49,7 +49,7 @@
             "ip address of primary tacacs+ server."
         ::= { gbnTacacsMib 1 }
 
-        SecServerIP OBJECT-TYPE
+        secServerIP OBJECT-TYPE
         SYNTAX IpAddress
         MAX-ACCESS read-write
         STATUS current
@@ -57,7 +57,7 @@
             "ip address of secondary tacacs+ server."
         ::= { gbnTacacsMib 2 }
 
-        PriServerKey OBJECT-TYPE
+        priServerKey OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
@@ -65,7 +65,7 @@
             "key of primary tacacs+ server."
         ::= { gbnTacacsMib 3 }
 
-        SecServerKey OBJECT-TYPE
+        secServerKey OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
@@ -73,32 +73,32 @@
             "key of secondary tacacs+ server."
         ::= { gbnTacacsMib 4 }
 
-        PriServerPort OBJECT-TYPE
-        SYNTAX Integer32
+        priServerPort OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "tcp port of primary tacacs+ server, range is from 1 to 65535, default is 49."
         ::= { gbnTacacsMib 5 }
 
-        SecServerPort OBJECT-TYPE
-        SYNTAX Integer32
+        secServerPort OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "tcp port of secondary tacacs+ server, range is from 1 to 65535, default is 49."
         ::= { gbnTacacsMib 6 }
 
-        PriServerTimeout OBJECT-TYPE
-        SYNTAX Integer32
+        priServerTimeout OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "timeout of connection to primary tacacs+ server, range is from 1 to 70, default is 5 seconds."
         ::= { gbnTacacsMib 7 }
 
-        SecServerTimeout OBJECT-TYPE
-        SYNTAX Integer32
+        secServerTimeout OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION

@@ -21,27 +21,17 @@ IMPORTS
 
    products        OBJECT IDENTIFIER ::= { my 1 }
 
-   switch          OBJECT IDENTIFIER ::= { products 1 }
+   switchBranch          OBJECT IDENTIFIER ::= { products 1 }
    
    router          OBJECT IDENTIFIER ::= { products 2 }
 
    wireless        OBJECT IDENTIFIER ::= { products 3 }
    
-switchMib MODULE-IDENTITY
-        LAST-UPDATED "200203190000Z"
-        ORGANIZATION "$Company$"
-        CONTACT-INFO
-                " 
-                Tel: $Telephone$ 
-
-                E-mail: $E-mail$"
+switchMib OBJECT-IDENTITY
+        STATUS current
         DESCRIPTION
-                "The Structure of Management Information for the
-                 My enterprise."
-        REVISION      "200203190000Z"
-        DESCRIPTION
-                "Initial version of this MIB module."
-        ::= { switch 10 }        
+                "Switch product MIB subtree."
+        ::= { switchBranch 10 }
 
 mySwitchProducts OBJECT-IDENTITY
         STATUS  current
@@ -93,21 +83,11 @@ myExperiment OBJECT-IDENTITY
 
 
 -- ****************************** router ***********************************
-routerMib MODULE-IDENTITY
-        LAST-UPDATED "200501060000Z"
-        ORGANIZATION "$Company$"
-        CONTACT-INFO
-                " 
-                Tel: $Telephone$ 
-
-                E-mail: $E-mail$"
+routerMib OBJECT-IDENTITY
+        STATUS current
         DESCRIPTION
-                "The Structure of Management Information for the
-                 My enterprise."
-        REVISION      "200501060000Z"
-        DESCRIPTION
-                "Initial version of this MIB module."
-        ::= { router 1 }        
+                "Router product MIB subtree."
+        ::= { router 1 }
 
 myRouterProducts OBJECT-IDENTITY
         STATUS  current
@@ -118,21 +98,11 @@ myRouterProducts OBJECT-IDENTITY
         ::= { routerMib 1 }
 
 -- ****************************** wireless ***********************************
-wirelessMib MODULE-IDENTITY
-        LAST-UPDATED "200707040000Z"
-        ORGANIZATION "$Company$"
-        CONTACT-INFO
-                " 
-                Tel: $Telephone$ 
-
-                E-mail: $E-mail$"
+wirelessMib OBJECT-IDENTITY
+        STATUS current
         DESCRIPTION
-                "The Structure of Management Information for the
-                 My enterprise."
-        REVISION      "200707040000Z"
-        DESCRIPTION
-                "Initial version of this MIB module."
-        ::= { wireless 1 }        
+                "Wireless product MIB subtree."
+        ::= { wireless 1 }
 
 myWirelessProducts OBJECT-IDENTITY
         STATUS  current

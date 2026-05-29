@@ -58,7 +58,7 @@
         ::= { gbnMacAuthenMib 2 }
 
         offlineTimer OBJECT-TYPE
-        SYNTAX Integer32 (30..3600)
+        SYNTAX INTEGER (30..3600)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -66,7 +66,7 @@
         ::= { gbnMacAuthenMib 3 }
 
         quietTimer OBJECT-TYPE
-        SYNTAX Integer32 (30..3600)
+        SYNTAX INTEGER (30..3600)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -159,7 +159,7 @@
 	    ::= { macAuthenPortEntry 2 }
 
      guestVlan OBJECT-TYPE
-        SYNTAX Integer32 (0..4094)
+        SYNTAX INTEGER (0..4094)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -167,7 +167,7 @@
 	    ::= { macAuthenPortEntry 3 }
 
      maxUsers OBJECT-TYPE
-        SYNTAX Integer32 (1..256)
+        SYNTAX INTEGER (1..256)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -175,7 +175,7 @@
 	    ::= { macAuthenPortEntry 4 }
 	    
      rateLimit OBJECT-TYPE
-        SYNTAX Integer32 (10..300)
+        SYNTAX INTEGER (10..300)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -183,7 +183,7 @@
 	    ::= { macAuthenPortEntry 5 }
 
      rateLimitTimer OBJECT-TYPE
-        SYNTAX Integer32 (30..3600)
+        SYNTAX INTEGER (30..3600)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -218,7 +218,7 @@
         ::= { gbnMacAuthenMib 10 }
 
         questVlanReauthTimer OBJECT-TYPE
-        SYNTAX Integer32 (30..3600)
+        SYNTAX INTEGER (30..3600)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -293,7 +293,7 @@
 	    ::= { macUsersEntry 3 }
 
 	userVlan OBJECT-TYPE
-	    SYNTAX      Integer32 (1..4094)
+	    SYNTAX INTEGER (1..4094)
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION
@@ -309,7 +309,7 @@
 	    ::= { macUsersEntry 5 }
 
 	userPriority OBJECT-TYPE
-	    SYNTAX      Integer32 (0..7)
+	    SYNTAX INTEGER (0..7)
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION
@@ -325,7 +325,7 @@
 	    ::= { macUsersEntry 7 }
 
 	userRate OBJECT-TYPE
-	    SYNTAX      Integer32
+	    SYNTAX INTEGER
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION
@@ -333,7 +333,7 @@
 	    ::= { macUsersEntry 8 }
 
 	userPeakRate OBJECT-TYPE
-	    SYNTAX      Integer32
+	    SYNTAX INTEGER
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION
@@ -341,7 +341,7 @@
 	    ::= { macUsersEntry 9 }
 
 	userBasicRate OBJECT-TYPE
-	    SYNTAX      Integer32
+	    SYNTAX INTEGER
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION

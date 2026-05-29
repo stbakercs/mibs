@@ -335,6 +335,14 @@ HPNSADIMM-MIB DEFINITIONS ::= BEGIN
 --                      hpnsaDIMMHPSerialNumber          <hpnsa.21.3.1.2.3>
 -- *************************************************************************
 
+   hpnsaDIMMHPLocalTable OBJECT-TYPE
+      SYNTAX SEQUENCE OF HPnsaDIMMHPLocalEntry
+      ACCESS not-accessible
+      STATUS mandatory
+      DESCRIPTION
+	 "HP reserved DIMM data area."
+   ::= { hpnsaDIMMTable 2 }
+
    hpnsaDIMMHPLocalEntry OBJECT-TYPE
       SYNTAX HPnsaDIMMHPLocalEntry
       ACCESS not-accessible
@@ -342,7 +350,7 @@ HPNSADIMM-MIB DEFINITIONS ::= BEGIN
       DESCRIPTION
 	 "A description of the HP reserved DIMM data area."
       INDEX { hpnsaDIMMHPSlotIndex }
-   ::= { hpnsaDIMMTable 2 }
+   ::= { hpnsaDIMMHPLocalTable 1 }
 
    HPnsaDIMMHPLocalEntry ::= SEQUENCE {
       hpnsaDIMMHPSlotIndex        INTEGER,
@@ -366,7 +374,7 @@ HPNSADIMM-MIB DEFINITIONS ::= BEGIN
 	 "HP product number for the selected DIMM as an ASCII string."
    ::= { hpnsaDIMMHPLocalEntry 2 }
 
-   hpnsaDIMMSerialNumber OBJECT-TYPE
+   hpnsaDIMMHPSerialNumber OBJECT-TYPE
       SYNTAX INTEGER 
       ACCESS read-only
       STATUS mandatory

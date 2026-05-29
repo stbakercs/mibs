@@ -264,7 +264,7 @@ HP-ICF-XRRP DEFINITIONS ::= BEGIN
                       must be consistently defined across the routers that 
                       form this XRRP instance. When read, it always returns an 
                       Octet String of length zero."
-        DEFVAL { NULL }
+        DEFVAL { ''H }
         ::= { hpicfXrrpInstanceEntry 5 }
 
     hpicfXrrpInstanceAdvertiseInterval OBJECT-TYPE

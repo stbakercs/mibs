@@ -8,9 +8,9 @@ CISCOSB-BRIDGEMIBOBJECTS-MIB DEFINITIONS ::= BEGIN
 IMPORTS
     switch001                                                      	 FROM CISCOSB-MIB
     OBJECT-TYPE, MODULE-IDENTITY, TimeTicks, Counter32               FROM SNMPv2-SMI
-    TruthValue, DisplayString, RowStatus                             FROM SNMPv2-TC
+    TruthValue, DisplayString, RowStatus, MacAddress                 FROM SNMPv2-TC
     Counter                                                          FROM RFC1155-SMI
-    BridgeId, Timeout, dot1dBasePort, dot1dStpPort, MacAddress       FROM BRIDGE-MIB
+    BridgeId, Timeout, dot1dBasePort, dot1dStpPort                   FROM BRIDGE-MIB
     InterfaceIndex, ifIndex, InterfaceIndexOrZero                    FROM IF-MIB
     PortList                                                         FROM Q-BRIDGE-MIB
     SnmpAdminString                                                  FROM SNMP-FRAMEWORK-MIB;

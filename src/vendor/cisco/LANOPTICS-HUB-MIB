@@ -108,7 +108,7 @@ snSlotsEntry  OBJECT-TYPE
     DESCRIPTION
     "A slot entry containing a high and low 
      level description of the module in the slot."
-    INDEX                 { INTEGER }
+    INDEX                 { snCardName }
     ::=   { snSlotsTable 1 }
 
 SnSlotsEntry ::= SEQUENCE {
@@ -258,13 +258,23 @@ snHubSplitEntry  OBJECT-TYPE
     SYNTAX                SnHubSplitEntry
     ACCESS                not-accessible
     STATUS                mandatory
-    INDEX                 { INTEGER }
+    INDEX                 { snHubSplitIndex }
     ::=   { snHubSplitTable 1 }
 
 SnHubSplitEntry ::= SEQUENCE {
+       snHubSplitIndex
+                 INTEGER,
        snHubSplitStatus
-                 INTEGER    
+                 INTEGER
     }
+
+snHubSplitIndex    OBJECT-TYPE
+    SYNTAX      INTEGER
+    ACCESS      not-accessible
+    STATUS      mandatory
+    DESCRIPTION
+           "Index of this split module entry."
+    ::=  { snHubSplitEntry 1 }
 
 snHubSplitStatus    OBJECT-TYPE
     SYNTAX      INTEGER {
@@ -276,7 +286,7 @@ snHubSplitStatus    OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION 
            "This variable describes the status of this split module."
-    ::=  { snHubSplitEntry 1 }
+    ::=  { snHubSplitEntry 2 }
 
 snHubPSTable   OBJECT-TYPE
     SYNTAX                SEQUENCE OF SnHubPSEntry
@@ -290,14 +300,23 @@ snHubPSEntry  OBJECT-TYPE
      SYNTAX                SnHubPSEntry
      ACCESS                not-accessible
      STATUS                mandatory
-     INDEX                 { INTEGER }
+     INDEX                 { snHubPSIndex }
      ::=   { snHubPSTable 1 }
 
 SnHubPSEntry ::= SEQUENCE {
+    snHubPSIndex
+                 INTEGER,
     snHubPSStatus
-                 INTEGER    
+                 INTEGER
     }
 
+snHubPSIndex    OBJECT-TYPE
+    SYNTAX      INTEGER
+    ACCESS      not-accessible
+    STATUS      mandatory
+    DESCRIPTION
+               "Index of this power supply entry."
+    ::=  { snHubPSEntry 1 }
 
 snHubPSStatus    OBJECT-TYPE
     SYNTAX      INTEGER {
@@ -309,7 +328,7 @@ snHubPSStatus    OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION 
                "This variable describes the status of this Power Supply."
-    ::=  { snHubPSEntry 1 }
+    ::=  { snHubPSEntry 2 }
 
 
 snHubFanTable   OBJECT-TYPE
@@ -324,13 +343,23 @@ snHubFanEntry  OBJECT-TYPE
     SYNTAX                SnHubFanEntry
     ACCESS                not-accessible
     STATUS                mandatory
-    INDEX                 { INTEGER }
+    INDEX                 { snHubFanIndex }
     ::=   { snHubFanTable 1 }
 
 SnHubFanEntry ::= SEQUENCE {
+      snHubFanIndex
+                 INTEGER,
       snHubFanStatus
-                 INTEGER    
+                 INTEGER
     }
+
+snHubFanIndex    OBJECT-TYPE
+    SYNTAX      INTEGER
+    ACCESS      not-accessible
+    STATUS      mandatory
+    DESCRIPTION
+               "Index of this fan entry."
+    ::=  { snHubFanEntry 1 }
 
 snHubFanStatus    OBJECT-TYPE
     SYNTAX      INTEGER {
@@ -342,7 +371,7 @@ snHubFanStatus    OBJECT-TYPE
     STATUS      mandatory
     DESCRIPTION 
                "This variable describes the status of this Fan."
-    ::=  { snHubFanEntry 1 }
+    ::=  { snHubFanEntry 2 }
 
 snHubSlotsTable   OBJECT-TYPE
     SYNTAX                SEQUENCE OF SnHubSlotsEntry
@@ -356,10 +385,12 @@ snHubSlotsEntry  OBJECT-TYPE
     SYNTAX                SnHubSlotsEntry
     ACCESS                not-accessible
     STATUS                mandatory
-    INDEX                 { INTEGER }
+    INDEX                 { snHubSlotsIndex }
     ::=   { snHubSlotsTable 1 }
 
 SnHubSlotsEntry ::= SEQUENCE {
+             snHubSlotsIndex
+                 INTEGER,
              snHubSlotConnected
                  INTEGER,
              snHubSlotFreqError
@@ -367,6 +398,14 @@ SnHubSlotsEntry ::= SEQUENCE {
              snHubSlotRevChanged
                  INTEGER
     }
+
+snHubSlotsIndex    OBJECT-TYPE
+    SYNTAX      INTEGER
+    ACCESS      not-accessible
+    STATUS      mandatory
+    DESCRIPTION
+               "Index of this hub slot entry."
+    ::=  { snHubSlotsEntry 1 }
 
 snHubSlotConnected    OBJECT-TYPE
     SYNTAX      INTEGER {
@@ -378,7 +417,7 @@ snHubSlotConnected    OBJECT-TYPE
     DESCRIPTION 
                "This variable signifies that this entire slot
                 was disconnected or reconnected by a management entity."
-    ::=  { snHubSlotsEntry 1 }
+    ::=  { snHubSlotsEntry 2 }
 
 snHubSlotFreqError    OBJECT-TYPE
     SYNTAX      INTEGER {
@@ -391,7 +430,7 @@ snHubSlotFreqError    OBJECT-TYPE
     DESCRIPTION 
                "This variable signifies that this slot frequency
                 differs from the back-plane's."
-    ::=  { snHubSlotsEntry 2 }
+    ::=  { snHubSlotsEntry 3 }
 
 snHubSlotRevChanged    OBJECT-TYPE
     SYNTAX      INTEGER {
@@ -403,7 +442,7 @@ snHubSlotRevChanged    OBJECT-TYPE
     DESCRIPTION 
     "This variable signifies that this slot SW revision
      has changed."
-    ::=  { snHubSlotsEntry 3 }
+    ::=  { snHubSlotsEntry 4 }
 
    snCompanionHW OBJECT-TYPE
    	     SYNTAX  INTEGER
@@ -452,13 +491,33 @@ snGenPortsEntry  OBJECT-TYPE
     DESCRIPTION
     "An I/O port entry. Each byte of the I/O address is represented
      by one index digit; e.g, instance 255.12 is I/O address (port) 0xFF0C."
-    INDEX                 { INTEGER, INTEGER }
+    INDEX                 { snGenPortAddrHigh, snGenPortAddrLow }
     ::=   { snGenPortsTable 1 }
 
 SnGenPortsEntry ::= SEQUENCE {
+        snGenPortAddrHigh
+        INTEGER,
+        snGenPortAddrLow
+        INTEGER,
         snPortValue
         BITMAP
     }
+
+snGenPortAddrHigh   OBJECT-TYPE
+    SYNTAX                INTEGER (0..255)
+    ACCESS                not-accessible
+    STATUS                mandatory
+    DESCRIPTION
+    "High byte of the I/O port address."
+    ::=  { snGenPortsEntry 1 }
+
+snGenPortAddrLow   OBJECT-TYPE
+    SYNTAX                INTEGER (0..255)
+    ACCESS                not-accessible
+    STATUS                mandatory
+    DESCRIPTION
+    "Low byte of the I/O port address."
+    ::=  { snGenPortsEntry 2 }
 
 snPortValue   OBJECT-TYPE
     SYNTAX                BITMAP
@@ -466,6 +525,6 @@ snPortValue   OBJECT-TYPE
     STATUS                mandatory
     DESCRIPTION
     "The I/O port value."
-    ::=   { snGenPortsEntry 1 }
+    ::=   { snGenPortsEntry 3 }
 
 END

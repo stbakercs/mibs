@@ -7,9 +7,7 @@ IMPORTS
 
     TEXTUAL-CONVENTION, DisplayString, TruthValue
 	FROM SNMPv2-TC
-
-	NetworkAddress
-	FROM SNMPv2-SMI;
+;
 
 teltonika MODULE-IDENTITY
     LAST-UPDATED "201307240000Z"
@@ -27,90 +25,90 @@ teltonika MODULE-IDENTITY
 --
 -- a collection of objects to represent RUT2xx status.
 
-static   OBJECT IDENTIFIER ::= { teltonika 1}
+teltonikaStatic   OBJECT IDENTIFIER ::= { teltonika 1}
 
-ModemImei OBJECT-TYPE
+modemImei OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx modem IMEI"
-    ::= { static 1 }
+    ::= { teltonikaStatic 1 }
 
-ModemModel OBJECT-TYPE
+modemModel OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx modem model"
-    ::= { static 2 }
+    ::= { teltonikaStatic 2 }
 
-ModemManufacturer OBJECT-TYPE
+modemManufacturer OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx modem manufacturer"
-    ::= { static 3 }
+    ::= { teltonikaStatic 3 }
 
-ModemRevision OBJECT-TYPE
+modemRevision OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx modem revision"
-    ::= { static 4 }
+    ::= { teltonikaStatic 4 }
 
-ModemSerial OBJECT-TYPE
+modemSerial OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx modem serial number"
-    ::= { static 5 }
+    ::= { teltonikaStatic 5 }
 
-Imsi OBJECT-TYPE
+modemImsi OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx IMSI"
-    ::= { static 6 }
+    ::= { teltonikaStatic 6 }
 
-RouterName OBJECT-TYPE
+routerDisplayName OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx router name"
-    ::= { static 7 }
+    ::= { teltonikaStatic 7 }
 
-ProductCode OBJECT-TYPE
+productCode OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx router product code"
-    ::= { static 8 }
+    ::= { teltonikaStatic 8 }
 
-BatchNumber OBJECT-TYPE
+batchNumber OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx router batch number"
-    ::= { static 9 }
+    ::= { teltonikaStatic 9 }
 
-HardwareRevision OBJECT-TYPE
+hardwareRevision OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "RUT2xx router hardware revision"
-    ::= { static 10 }
+    ::= { teltonikaStatic 10 }
 
 gsm   OBJECT IDENTIFIER ::= { teltonika 2 }
-SimState OBJECT-TYPE
+simState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -118,7 +116,7 @@ SimState OBJECT-TYPE
             "RUT2xx SIM status"
     ::= { gsm 1 }
 
-PinState OBJECT-TYPE
+pinState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -126,7 +124,7 @@ PinState OBJECT-TYPE
             "RUT2xx PIN status"
     ::= { gsm 2 }
 
-NetState OBJECT-TYPE
+netState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -134,7 +132,7 @@ NetState OBJECT-TYPE
             "RUT2xx mobile network registration status"
     ::= { gsm 3 }
 
-Signal OBJECT-TYPE
+signalLevel OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -142,7 +140,7 @@ Signal OBJECT-TYPE
             "RUT2xx signal level"
     ::= { gsm 4 }
 
-Operator OBJECT-TYPE
+mobileOperator OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -150,7 +148,7 @@ Operator OBJECT-TYPE
             "RUT2xx operator currently in use"
     ::= { gsm 5 }
 
-OperatorNumber OBJECT-TYPE
+operatorNumber OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -158,7 +156,7 @@ OperatorNumber OBJECT-TYPE
             "RUT2xx operator number (MCC+MNC)"
     ::= { gsm 6 }
 
-ConnectionState OBJECT-TYPE
+connState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -166,7 +164,7 @@ ConnectionState OBJECT-TYPE
             "RUT2xx data session connection state"
     ::= { gsm 7 }
 
-ConnectionType OBJECT-TYPE
+connType OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -174,7 +172,7 @@ ConnectionType OBJECT-TYPE
             "RUT2xx data session connection type"
     ::= { gsm 8 }
 
-Temperature OBJECT-TYPE
+moduleTemperature OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -182,7 +180,7 @@ Temperature OBJECT-TYPE
             "RUT2xx module temperature"
     ::= { gsm 9 }
 
-ReceivedToday OBJECT-TYPE
+receivedToday OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -190,7 +188,7 @@ ReceivedToday OBJECT-TYPE
             "RUT2xx 3G connection received bytes today"
     ::= { gsm 10 }
 
-SentToday OBJECT-TYPE
+sentToday OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -198,7 +196,7 @@ SentToday OBJECT-TYPE
             "RUT2xx 3G connection sent bytes today"
     ::= { gsm 11 }
 
-ReceivedYesterday OBJECT-TYPE
+receivedYesterday OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -206,7 +204,7 @@ ReceivedYesterday OBJECT-TYPE
             "RUT2xx 3G connection received bytes yesterday"
     ::= { gsm 12 }
 
-SentYesterday OBJECT-TYPE
+sentYesterday OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -214,7 +212,7 @@ SentYesterday OBJECT-TYPE
             "RUT2xx 3G connection sent bytes yesterday"
     ::= { gsm 13 }
 
-FirmwareVersion OBJECT-TYPE
+firmwareVersion OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -222,7 +220,7 @@ FirmwareVersion OBJECT-TYPE
             "RUT2xx firmware version"
     ::= { gsm 14 }
 
-SimSlot OBJECT-TYPE
+simSlot OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -230,7 +228,7 @@ SimSlot OBJECT-TYPE
             "RUT2xx sim slot in use"
     ::= { gsm 15 }
 
-RouterUptime OBJECT-TYPE
+routerUpTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -238,7 +236,7 @@ RouterUptime OBJECT-TYPE
             "RUT2xx router uptime"
     ::= { gsm 16 }
 
-ConnectionUptime OBJECT-TYPE
+connectionUptime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -246,7 +244,7 @@ ConnectionUptime OBJECT-TYPE
             "RUT2xx mobile connection uptime"
     ::= { gsm 17 }
 
-MobileIP OBJECT-TYPE
+mobileIp OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -254,7 +252,7 @@ MobileIP OBJECT-TYPE
             "RUT2xx mobile connection IP"
     ::= { gsm 18 }
 
-Sent OBJECT-TYPE
+sentBytes OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -262,7 +260,7 @@ Sent OBJECT-TYPE
             "RUT2xx bytes sent"
     ::= { gsm 19 }
 
-Received OBJECT-TYPE
+receivedBytes OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -270,7 +268,7 @@ Received OBJECT-TYPE
             "RUT2xx bytes received"
     ::= { gsm 20 }
 
-CellID OBJECT-TYPE
+cellId OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -278,7 +276,7 @@ CellID OBJECT-TYPE
             "RUT2xx cellid parameter"
     ::= { gsm 21 }
 
-SINR OBJECT-TYPE
+sinrLevel OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -286,7 +284,7 @@ SINR OBJECT-TYPE
             "RUT2xx LTE sinr level"
     ::= { gsm 22 }
 
-RSRP OBJECT-TYPE
+rsrpLevel OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -294,7 +292,7 @@ RSRP OBJECT-TYPE
             "RUT2xx LTE rsrp level"
     ::= { gsm 23 }
 
-RSRQ OBJECT-TYPE
+rsrqLevel OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -316,13 +314,13 @@ trapConnectionType NOTIFICATION-TYPE
             "RUT2xx Connection type trap"
     ::= { trap 2 }
 
-trapDigitalInput NOTIFICATION-TYPE
+trapdigitalInput NOTIFICATION-TYPE
     STATUS  current
     DESCRIPTION
             "RUT2xx Digital input trap"
     ::= { trap 3 }
 
-trapDigitalInputStatus NOTIFICATION-TYPE
+trapdigitalInputStatus NOTIFICATION-TYPE
     STATUS  current
     DESCRIPTION
             "RUT2xx Digital input status"
@@ -342,7 +340,7 @@ trapDigitalOutputStatus NOTIFICATION-TYPE
 
 rut2xx   OBJECT IDENTIFIER ::= { teltonika 5 }
 
-DigitalInput OBJECT-TYPE
+digitalInput OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -366,7 +364,7 @@ hotspot4	OBJECT IDENTIFIER ::= { hotspot 4 }
 --
 --
 
-hotSpotId OBJECT-TYPE
+hotSpot1Id OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -374,7 +372,7 @@ hotSpotId OBJECT-TYPE
             "Rut2xx hot spot id"
     ::= { hotspot1 1 }
 
-hotSpotSsid OBJECT-TYPE
+hotSpot1Ssid OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -382,7 +380,7 @@ hotSpotSsid OBJECT-TYPE
             "Rut2xx hot spot ssid"
     ::= { hotspot1 2 }
 
-hotSpotEnableState OBJECT-TYPE
+hotSpot1EnableState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -390,7 +388,7 @@ hotSpotEnableState OBJECT-TYPE
             "RUT2xx hot spot enable status"
     ::= { hotspot1 3 }
 
-hotSpotIP OBJECT-TYPE
+hotSpot1IP OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -398,7 +396,7 @@ hotSpotIP OBJECT-TYPE
             "RUT2xx hot spot ip address"
     ::= { hotspot1 4 }
 
-hotSpotDownloadBandWidth OBJECT-TYPE
+hotSpot1DownloadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -406,7 +404,7 @@ hotSpotDownloadBandWidth OBJECT-TYPE
             "RUT2xx hot spot download band width"
     ::= { hotspot1 5 }
 
-hotSpotUploadBandWidth OBJECT-TYPE
+hotSpot1UploadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -414,7 +412,7 @@ hotSpotUploadBandWidth OBJECT-TYPE
             "RUT2xx hot spot upload band width"
     ::= { hotspot1 6 }
 
-hotSpotUsers OBJECT-TYPE
+hotSpot1UserCount OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -422,7 +420,7 @@ hotSpotUsers OBJECT-TYPE
             "RUT2xx hot spot existing users"
     ::= { hotspot1 7 }
 
-hotSpotUsersPass OBJECT-TYPE
+hotSpot1UserPasswords OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -430,7 +428,7 @@ hotSpotUsersPass OBJECT-TYPE
             "RUT2xx hot spot users passwords"
     ::= { hotspot1 8 }
 
-hotSpotUsersActive OBJECT-TYPE
+hotSpot1UsersActive OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -438,7 +436,7 @@ hotSpotUsersActive OBJECT-TYPE
             "RUT2xx hot spot active users"
     ::= { hotspot1 9 }
 
-hotSpotUsersMac OBJECT-TYPE
+hotSpot1UsersMac OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -446,7 +444,7 @@ hotSpotUsersMac OBJECT-TYPE
             "RUT2xx hot spot user mac"
     ::= { hotspot1 10 }
 
-hotSpotUsersIp OBJECT-TYPE
+hotSpot1UsersIp OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -454,7 +452,7 @@ hotSpotUsersIp OBJECT-TYPE
             "RUT2xx hot spot user ip address"
     ::= { hotspot1 11 }
 
-hotSpotUsersStartTime OBJECT-TYPE
+hotSpot1UsersStartTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -462,7 +460,7 @@ hotSpotUsersStartTime OBJECT-TYPE
             "RUT2xx hot spot user connection to hotspot time"
     ::= { hotspot1 12 }
 
-hotSpotUsersUseTime OBJECT-TYPE
+hotSpot1UsersUseTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -470,7 +468,7 @@ hotSpotUsersUseTime OBJECT-TYPE
             "RUT2xx hot spot user active time"
     ::= { hotspot1 13 }
 
-hotSpotUsersDownload OBJECT-TYPE
+hotSpot1UsersDownload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -478,7 +476,7 @@ hotSpotUsersDownload OBJECT-TYPE
             "RUT2xx hot spot user downloaded data"
     ::= { hotspot1 14 }
 
-hotSpotUsersUpload OBJECT-TYPE
+hotSpot1UsersUpload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -486,7 +484,7 @@ hotSpotUsersUpload OBJECT-TYPE
             "RUT2xx hot spot user uploaded data"
     ::= { hotspot1 15 }
 
-hotSpotEndTime OBJECT-TYPE
+hotSpot1EndTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -499,7 +497,7 @@ hotSpotEndTime OBJECT-TYPE
 --
 --
 
-hotSpotId OBJECT-TYPE
+hotSpot2Id OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -507,7 +505,7 @@ hotSpotId OBJECT-TYPE
             "Rut2xx hot spot id"
     ::= { hotspot2 1 }
 
-hotSpotSsid OBJECT-TYPE
+hotSpot2Ssid OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -515,7 +513,7 @@ hotSpotSsid OBJECT-TYPE
             "Rut2xx hot spot ssid"
     ::= { hotspot2 2 }
 
-hotSpotEnableState OBJECT-TYPE
+hotSpot2EnableState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -523,7 +521,7 @@ hotSpotEnableState OBJECT-TYPE
             "RUT2xx hot spot enable state"
     ::= { hotspot2 3 }
 
-hotSpotIP OBJECT-TYPE
+hotSpot2IP OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -531,7 +529,7 @@ hotSpotIP OBJECT-TYPE
             "RUT2xx hot spot ip address"
     ::= { hotspot2 4 }
 
-hotSpotDownloadBandWidth OBJECT-TYPE
+hotSpot2DownloadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -539,7 +537,7 @@ hotSpotDownloadBandWidth OBJECT-TYPE
             "RUT2xx hot spot download band width"
     ::= { hotspot2 5 }
 
-hotSpotUploadBandWidth OBJECT-TYPE
+hotSpot2UploadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -547,7 +545,7 @@ hotSpotUploadBandWidth OBJECT-TYPE
             "RUT2xx hot spot upload band width"
     ::= { hotspot2 6 }
 
-hotSpotUsers OBJECT-TYPE
+hotSpot2UserCount OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -555,7 +553,7 @@ hotSpotUsers OBJECT-TYPE
             "RUT2xx hot spot existing users"
     ::= { hotspot2 7 }
 
-hotSpotUsersPass OBJECT-TYPE
+hotSpot2UserPasswords OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -563,7 +561,7 @@ hotSpotUsersPass OBJECT-TYPE
             "RUT2xx hot spot users passwords"
     ::= { hotspot2 8 }
 
-hotSpotUsersActive OBJECT-TYPE
+hotSpot2UsersActive OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -571,7 +569,7 @@ hotSpotUsersActive OBJECT-TYPE
             "RUT2xx hot spot active users"
     ::= { hotspot2 9 }
 
-hotSpotUsersMac OBJECT-TYPE
+hotSpot2UsersMac OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -579,7 +577,7 @@ hotSpotUsersMac OBJECT-TYPE
             "RUT2xx hot spot user mac"
     ::= { hotspot2 10 }
 
-hotSpotUsersIp OBJECT-TYPE
+hotSpot2UsersIp OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -587,7 +585,7 @@ hotSpotUsersIp OBJECT-TYPE
             "RUT2xx hot spot user ip address"
     ::= { hotspot2 11 }
 
-hotSpotUsersStartTime OBJECT-TYPE
+hotSpot2UsersStartTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -595,7 +593,7 @@ hotSpotUsersStartTime OBJECT-TYPE
             "RUT2xx hot spot user connection to hotspot time"
     ::= { hotspot2 12 }
 
-hotSpotUsersUseTime OBJECT-TYPE
+hotSpot2UsersUseTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -603,7 +601,7 @@ hotSpotUsersUseTime OBJECT-TYPE
             "RUT2xx hot spot user active time"
     ::= { hotspot2 13 }
 
-hotSpotUsersDownload OBJECT-TYPE
+hotSpot2UsersDownload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -611,7 +609,7 @@ hotSpotUsersDownload OBJECT-TYPE
             "RUT2xx hot spot user downloaded data"
     ::= { hotspot2 14 }
 
-hotSpotUsersUpload OBJECT-TYPE
+hotSpot2UsersUpload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -619,7 +617,7 @@ hotSpotUsersUpload OBJECT-TYPE
             "RUT2xx hot spot user uploaded data"
     ::= { hotspot2 15 }
 
-hotSpotEndTime OBJECT-TYPE
+hotSpot2EndTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -632,7 +630,7 @@ hotSpotEndTime OBJECT-TYPE
 --
 --
 
-hotSpotId OBJECT-TYPE
+hotSpot3Id OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -640,7 +638,7 @@ hotSpotId OBJECT-TYPE
             "Rut2xx hot spot id"
     ::= { hotspot3 1 }
 
-hotSpotSsid OBJECT-TYPE
+hotSpot3Ssid OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -648,7 +646,7 @@ hotSpotSsid OBJECT-TYPE
             "Rut2xx hot spot ssid"
     ::= { hotspot3 2 }
 
-hotSpotEnableState OBJECT-TYPE
+hotSpot3EnableState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -656,7 +654,7 @@ hotSpotEnableState OBJECT-TYPE
             "RUT2xx hot spot enable state"
     ::= { hotspot3 3 }
 
-hotSpotIP OBJECT-TYPE
+hotSpot3IP OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -664,7 +662,7 @@ hotSpotIP OBJECT-TYPE
             "RUT2xx hot spot ip address"
     ::= { hotspot3 4 }
 
-hotSpotDownloadBandWidth OBJECT-TYPE
+hotSpot3DownloadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -672,7 +670,7 @@ hotSpotDownloadBandWidth OBJECT-TYPE
             "RUT2xx hot spot download band width"
     ::= { hotspot3 5 }
 
-hotSpotUploadBandWidth OBJECT-TYPE
+hotSpot3UploadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -680,7 +678,7 @@ hotSpotUploadBandWidth OBJECT-TYPE
             "RUT2xx hot spot upload band width"
     ::= { hotspot3 6 }
 
-hotSpotUsers OBJECT-TYPE
+hotSpot3UserCount OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -688,7 +686,7 @@ hotSpotUsers OBJECT-TYPE
             "RUT2xx hot spot existing users"
     ::= { hotspot3 7 }
 
-hotSpotUsersPass OBJECT-TYPE
+hotSpot3UserPasswords OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -696,7 +694,7 @@ hotSpotUsersPass OBJECT-TYPE
             "RUT2xx hot spot users passwords"
     ::= { hotspot3 8 }
 
-hotSpotUsersActive OBJECT-TYPE
+hotSpot3UsersActive OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -704,7 +702,7 @@ hotSpotUsersActive OBJECT-TYPE
             "RUT2xx hot spot active users"
     ::= { hotspot3 9 }
 
-hotSpotUsersMac OBJECT-TYPE
+hotSpot3UsersMac OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -712,7 +710,7 @@ hotSpotUsersMac OBJECT-TYPE
             "RUT2xx hot spot user mac"
     ::= { hotspot3 10 }
 
-hotSpotUsersIp OBJECT-TYPE
+hotSpot3UsersIp OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -720,7 +718,7 @@ hotSpotUsersIp OBJECT-TYPE
             "RUT2xx hot spot user ip address"
     ::= { hotspot3 11 }
 
-hotSpotUsersStartTime OBJECT-TYPE
+hotSpot3UsersStartTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -728,7 +726,7 @@ hotSpotUsersStartTime OBJECT-TYPE
             "RUT2xx hot spot user connection to hotspot time"
     ::= { hotspot3 12 }
 
-hotSpotUsersUseTime OBJECT-TYPE
+hotSpot3UsersUseTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -736,7 +734,7 @@ hotSpotUsersUseTime OBJECT-TYPE
             "RUT2xx hot spot user active time"
     ::= { hotspot3 13 }
 
-hotSpotUsersDownload OBJECT-TYPE
+hotSpot3UsersDownload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -744,7 +742,7 @@ hotSpotUsersDownload OBJECT-TYPE
             "RUT2xx hot spot user downloaded data"
     ::= { hotspot3 14 }
 
-hotSpotUsersUpload OBJECT-TYPE
+hotSpot3UsersUpload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -752,7 +750,7 @@ hotSpotUsersUpload OBJECT-TYPE
             "RUT2xx hot spot user uploaded data"
     ::= { hotspot3 15 }
 
-hotSpotEndTime OBJECT-TYPE
+hotSpot3EndTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -765,7 +763,7 @@ hotSpotEndTime OBJECT-TYPE
 --
 --
 
-hotSpotId OBJECT-TYPE
+hotSpot4Id OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -773,7 +771,7 @@ hotSpotId OBJECT-TYPE
             "Rut2xx hot spot id"
     ::= { hotspot4 1 }
 
-hotSpotSsid OBJECT-TYPE
+hotSpot4Ssid OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -781,7 +779,7 @@ hotSpotSsid OBJECT-TYPE
         "Rut2xx hot spot ssid"
     ::= { hotspot4 2 }
 
-hotSpotEnableState OBJECT-TYPE
+hotSpot4EnableState OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -789,7 +787,7 @@ hotSpotEnableState OBJECT-TYPE
             "RUT2xx hot spot enable state"
     ::= { hotspot4 3 }
 
-hotSpotIP OBJECT-TYPE
+hotSpot4IP OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -797,7 +795,7 @@ hotSpotIP OBJECT-TYPE
             "RUT2xx hot spot ip address"
     ::= { hotspot4 4 }
 
-hotSpotDownloadBandWidth OBJECT-TYPE
+hotSpot4DownloadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -805,7 +803,7 @@ hotSpotDownloadBandWidth OBJECT-TYPE
             "RUT2xx hot spot download band width"
     ::= { hotspot4 5 }
 
-hotSpotUploadBandWidth OBJECT-TYPE
+hotSpot4UploadBandWidth OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -813,7 +811,7 @@ hotSpotUploadBandWidth OBJECT-TYPE
             "RUT2xx hot spot upload band width"
     ::= { hotspot4 6 }
 
-hotSpotUsers OBJECT-TYPE
+hotSpot4UserCount OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -821,7 +819,7 @@ hotSpotUsers OBJECT-TYPE
             "RUT2xx hot spot existing users"
     ::= { hotspot4 7 }
 
-hotSpotUsersPass OBJECT-TYPE
+hotSpot4UserPasswords OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -829,7 +827,7 @@ hotSpotUsersPass OBJECT-TYPE
             "RUT2xx hot spot users passwords"
     ::= { hotspot4 8 }
 
-hotSpotUsersActive OBJECT-TYPE
+hotSpot4UsersActive OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -837,7 +835,7 @@ hotSpotUsersActive OBJECT-TYPE
             "RUT2xx hot spot active users"
     ::= { hotspot4 9 }
 
-hotSpotUsersMac OBJECT-TYPE
+hotSpot4UsersMac OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -845,7 +843,7 @@ hotSpotUsersMac OBJECT-TYPE
             "RUT2xx hot spot user mac"
     ::= { hotspot4 10 }
 
-hotSpotUsersIp OBJECT-TYPE
+hotSpot4UsersIp OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -853,7 +851,7 @@ hotSpotUsersIp OBJECT-TYPE
             "RUT2xx hot spot user ip address"
     ::= { hotspot4 11 }
 
-hotSpotUsersStartTime OBJECT-TYPE
+hotSpot4UsersStartTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -861,7 +859,7 @@ hotSpotUsersStartTime OBJECT-TYPE
             "RUT2xx hot spot user connection to hotspot time"
     ::= { hotspot4 12 }
 
-hotSpotUsersUseTime OBJECT-TYPE
+hotSpot4UsersUseTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -869,7 +867,7 @@ hotSpotUsersUseTime OBJECT-TYPE
             "RUT2xx hot spot user active time"
     ::= { hotspot4 13 }
 
-hotSpotUsersDownload OBJECT-TYPE
+hotSpot4UsersDownload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -877,7 +875,7 @@ hotSpotUsersDownload OBJECT-TYPE
             "RUT2xx hot spot user downloaded data"
     ::= { hotspot4 14 }
 
-hotSpotUsersUpload OBJECT-TYPE
+hotSpot4UsersUpload OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current
@@ -885,7 +883,7 @@ hotSpotUsersUpload OBJECT-TYPE
             "RUT2xx hot spot user uploaded data"
     ::= { hotspot4 15 }
 
-hotSpotEndTime OBJECT-TYPE
+hotSpot4EndTime OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (0..255))
     MAX-ACCESS  read-only
     STATUS      current

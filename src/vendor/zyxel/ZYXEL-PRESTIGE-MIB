@@ -49,7 +49,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- The system group
 	sysRasFWVersion OBJECT-TYPE
 		SYNTAX  DisplayString
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"Current ras firmware version, N/A means information 
@@ -58,7 +58,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	sysHWVersion OBJECT-TYPE
 		SYNTAX  DisplayString
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"Current hardware version, N/A means information 
@@ -67,7 +67,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	sysModemVersion OBJECT-TYPE
 		SYNTAX  DisplayString
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"Current modem code version, N/A means information 
@@ -76,7 +76,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	sysSysName OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Choose a descriptive name for identification purposes. 
@@ -87,7 +87,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	sysLocation OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The geographic location (up to 30 characters) of your 
@@ -96,7 +96,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	sysConatctPersion OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The name (up to 30 characters) of the person in charge 
@@ -109,7 +109,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Set this object to Yes to enable IP routing.  You must 
@@ -122,7 +122,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Turn on/off bridging for protocols not supported (e.g., 
@@ -132,7 +132,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	sysDomainName OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The domain name of the LAN. If this object is empty,
@@ -145,7 +145,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"If yes reset prestige."
@@ -167,7 +167,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Enable or disable the Dynamic DNS service."
@@ -178,7 +178,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			other(1),          -- none of the following
 			dyndns(2)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The choice of your dynamic DNS client."
@@ -186,7 +186,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ddnsHost OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The domain name assigned to your prestige by
@@ -195,7 +195,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ddnsEmail OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Your e-mail address."
@@ -203,7 +203,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ddnsUser OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The user name assigned to you."
@@ -211,7 +211,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ddnsPassword OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..29))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The password assigned to you."
@@ -223,7 +223,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Enabling the wildcard feature for your host 
@@ -253,7 +253,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	inProtocolFilterSet OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..8))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specified the protocol filter set for
@@ -262,7 +262,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	inDeviceFilterSet OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..8))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specified the device filter set for
@@ -271,7 +271,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	outProtocolFilterSet OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..8))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specified the protocol filter set for
@@ -280,7 +280,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	outDeviceFilterSet OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..8))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specified the device filter set for
@@ -314,7 +314,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			server(2),
 			relay(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"If it is set to Server, your Prestige can assign 
@@ -332,7 +332,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	dhcpStartIpAddr OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specifies the first of the contiguous 
@@ -341,7 +341,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	dhcpPoolSize OBJECT-TYPE
 		SYNTAX  INTEGER 
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specifies the size, or count, of the IP 
@@ -350,7 +350,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	dhcpPrimaryDnsServer OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The DNS server addresses that you enter in this
@@ -360,7 +360,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	dhcpSecondaryDnsServer OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The DNS server addresses that you enter in this
@@ -371,7 +371,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	dhcpRemoteDhcpServer OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"If Relay is selected in the dhcpStatus pbject above, 
@@ -383,7 +383,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- the LAN TCP/IP group
 	lanIpAddress OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"IP address of your Prestige in dotted decimal notation"
@@ -391,7 +391,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	lanIpSubnetMask OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The subnet mask specifies the network number 
@@ -405,7 +405,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			in(3),
 			out(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"RIP (Routing Information Protocol) allows a router 
@@ -425,7 +425,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			rip2B(3),
 			rip2M(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object controls the format and the broadcasting 
@@ -445,7 +445,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			igmpv1(2),
 			igmpv2(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The Prestige supports both IGMP version 1 (IGMP-v1) 
@@ -460,7 +460,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- the Wireless LAN table
  	wlanTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF LanWirelessEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
 			"A list of ip static route entries."
@@ -468,7 +468,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	wlanEntry OBJECT-TYPE
 		SYNTAX  LanWirelessEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
         	"An wireless lan entry containing comment 
@@ -512,7 +512,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			active(2),
 			inactive(3)			
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object allows you to activate/deactivate this 
@@ -521,7 +521,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 						
 	wlanCardID OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The Card ID indicates the wireless lan card number."
@@ -529,7 +529,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 		
 	wlanESSID OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..31))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The ESSID(Extended Service Set Identification) is a 
@@ -544,7 +544,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Select Yes to hide the ESSID in so a station can not obtain 
@@ -555,7 +555,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	wlanChannelID OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The range of radio frequencies used by IEEE 802.11b wireless 
@@ -564,7 +564,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	wlanRTSThreshold OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"Select this option to enable RTS/CTS handshake. Data with its 
@@ -576,7 +576,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 		
 	wlanFragThreshold OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The threshold (number of bytes) for the fragmentation boundary for
@@ -590,7 +590,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			WEP-64-bit(3),
 			WEP-128-bit(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"WEP (Wired Equivalent Privacy) encrypts data frames before transmitting 
@@ -601,7 +601,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 		
 	wlanDefaultKey OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The default transmit WEP key."
@@ -609,7 +609,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 		
 	wlanWepKey1 OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE(0..26))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The WEP key #1 value for WEP encryption.  If you chose WepKey-64-bit, 
@@ -620,7 +620,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	wlanWepKey2 OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE(0..26))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The WEP key #2 value for WEP encryption. If you chose WepKey-64-bit, 
@@ -631,7 +631,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	wlanWepKey3 OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE(0..26))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The WEP key #3 value for WEP encryption.If you chose WepKey-64-bit, 
@@ -642,7 +642,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	wlanWepKey4 OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE(0..26))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The WEP key #4 value for WEP encryption. If you chose WepKey-64-bit, 
@@ -669,7 +669,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- the IP static table
 	ipStaticRouteTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF IpStaticRouteEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
 			"A list of ip static route entries."
@@ -677,7 +677,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ipStaticRouteEntry OBJECT-TYPE
 		SYNTAX  IpStaticRouteEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
         	"An ip static route entry containing comment object for a 
@@ -706,7 +706,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 		}
 	ipStaticRouteIndex OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"The index of ip static route entry."
@@ -714,7 +714,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	ipStaticRouteName OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..10))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The descriptive name for this route. This is for 
@@ -727,7 +727,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object allows you to activate/deactivate this 
@@ -736,7 +736,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ipStaticRouteDestIpAddr OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specifies the IP network address of the 
@@ -749,7 +749,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ipStaticRouteSubnetMask OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The subnet mask specifies the network number 
@@ -758,7 +758,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ipStaticRouteGatewayIpAddr OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The gateway is an immediate neighbor of your Prestige 
@@ -770,7 +770,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	ipStaticRouteMetric OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"Metric represents the 'cost' of transmission for 
@@ -788,7 +788,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"This parameter determines if the Prestige will 
@@ -808,21 +808,11 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- the Bridge static table
 	bridgeStaticRouteTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF BridgeStaticRouteEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
 			"A list of bridge static route entries."
 		::= { prestigeStaticRoute 2 }
-
-	bridgeStaticRouteEntry OBJECT-TYPE
-		SYNTAX  BridgeStaticRouteEntry
-		ACCESS  not-accessible
-		STATUS  mandatory
-		DESCRIPTION
-        	"An bridge static route entry containing comment 
-        	object for a particular bridge static route."
-		INDEX   { bridgeStaticRouteIndex }
-		::= { bridgeStaticRouteTable 1 }
 
 	BridgeStaticRouteEntry ::=
 		SEQUENCE {
@@ -833,16 +823,26 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			bridgeStaticRouteActiveStatus
 				INTEGER,
 			bridgeStaticRouteEtherAddr
-				PhysAddress,
+				OCTET STRING,
 			bridgeStaticRouteIpAddr
 				IpAddress,
 			bridgeStaticRouteGatewayNode
 				INTEGER
 		}
 
+	bridgeStaticRouteEntry OBJECT-TYPE
+		SYNTAX  BridgeStaticRouteEntry
+		MAX-ACCESS  not-accessible
+		STATUS  mandatory
+		DESCRIPTION
+        	"An bridge static route entry containing comment 
+        	object for a particular bridge static route."
+		INDEX   { bridgeStaticRouteIndex }
+		::= { bridgeStaticRouteTable 1 }
+
 	bridgeStaticRouteIndex OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"The index of bridge static route entry."
@@ -850,7 +850,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	bridgeStaticRouteName OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..10))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The descriptive name for this route. This is for 
@@ -863,7 +863,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object allows you to activate/deactivate this 
@@ -871,8 +871,8 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 		::= { bridgeStaticRouteEntry 3 }
 
 	bridgeStaticRouteEtherAddr OBJECT-TYPE
-		SYNTAX  PhysAddress
-		ACCESS  read-write
+		SYNTAX  OCTET STRING
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specifies the the MAC address of the 
@@ -882,7 +882,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	bridgeStaticRouteIpAddr OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"If available, this object specifies the IP address 
@@ -892,7 +892,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	bridgeStaticRouteGatewayNode OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object specifies the number of the remote node 
@@ -910,7 +910,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- the filter set table
 	filterSetTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF FilterSetEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
 			"A list of filter set entries.  The number of
@@ -919,7 +919,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterSetEntry OBJECT-TYPE
 		SYNTAX  FilterSetEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
         	"An filter set entry containing comment object for a 
@@ -937,7 +937,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	filterSetIndex OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"The index of filter set."
@@ -945,7 +945,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterSetComment OBJECT-TYPE
 		SYNTAX  DisplayString (SIZE (0..15))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The descriptive name or comment of filter set"
@@ -955,7 +955,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	-- the filter rule table
 	filterRuleTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF FilterRuleEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
 			"A list of filter rule entries.  The number of
@@ -965,7 +965,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleEntry OBJECT-TYPE
 		SYNTAX  FilterRuleEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  mandatory
 		DESCRIPTION
         	"An filter rule entry containing TCP/IP and/or generic
@@ -1023,7 +1023,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleIndex OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"The index of rule set."
@@ -1035,7 +1035,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object activates/deactivates the filter rule."
@@ -1047,7 +1047,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			tcpIp(2),
 			generic(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"There are two types of filter rules: TCP/IP and Generic.
@@ -1070,7 +1070,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleIpProtocol OBJECT-TYPE
 		SYNTAX  INTEGER (0..255)
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, protocol refers to the upper layer 
@@ -1084,7 +1084,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, If Yes, the rule applies to packet 
@@ -1096,7 +1096,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleDestIpAddr OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, it's the destination IP Address of 
@@ -1107,7 +1107,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleDestIpMask OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, it's the IP mask apply to the 
@@ -1117,7 +1117,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleDestPort OBJECT-TYPE
 		SYNTAX  INTEGER (0..65535)
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, it's the destination port of 
@@ -1133,7 +1133,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			less(4),
 			greater(5)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, this object select the comparison
@@ -1144,7 +1144,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleSourceIpAddr OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, it's the source IP Address of 
@@ -1155,7 +1155,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleSourceIpMask OBJECT-TYPE
 		SYNTAX  IpAddress
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, it's the IP mask apply to the 
@@ -1165,7 +1165,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleSourcePort OBJECT-TYPE
 		SYNTAX  INTEGER (0..65535)
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, it's the source port of the 
@@ -1181,7 +1181,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			less(4),
 			greater(5)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, this object select the comparison
@@ -1196,7 +1196,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For TCP/IP filter, this object is applicable only when 
@@ -1208,7 +1208,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleGenericOffset OBJECT-TYPE
 		SYNTAX  INTEGER (0..255)
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For generic filter, this object is the starting byte of 
@@ -1218,7 +1218,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleGenericLength OBJECT-TYPE
 		SYNTAX  INTEGER (0..8)
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For generic filter, this object is byte count of the data 
@@ -1228,7 +1228,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleGenericMask OBJECT-TYPE
 		SYNTAX  OCTET STRING (SIZE (6))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For generic filter, this object is the Mask apply to the 
@@ -1238,7 +1238,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 
 	filterRuleGenericValue OBJECT-TYPE
 		SYNTAX  OCTET STRING (SIZE (6))
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"For generic filter, this object is the value to compare 
@@ -1252,7 +1252,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			yes(2),
 			no(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"If yes, a matching packet is passed to the next filter 
@@ -1267,7 +1267,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			atcNotMatch(3),
 			both(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"* None : 
@@ -1288,7 +1288,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			forward(3),
 			drop(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object select the action for a matching packet. If 
@@ -1303,7 +1303,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 			forward(3),
 			drop(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"This object select the action for a packet not matching
@@ -1316,7 +1316,7 @@ ZYXEL-PRESTIGE-MIB DEFINITIONS ::= BEGIN
 	
 	whyReboot       OBJECT-TYPE
 		SYNTAX	DisplayString 
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			"Send a message to the manager that the system is going to reboot.

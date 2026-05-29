@@ -203,7 +203,7 @@ mduOutputStatus OBJECT-TYPE
 		   off(0),
            on(1),
            shutdownActive(2),
-           shutdownImminent(3),
+           shutdownImminentState(3),
            restoreActive(4),
            overload(5),
            locked(6)
@@ -211,13 +211,7 @@ mduOutputStatus OBJECT-TYPE
     ACCESS     read-only
     STATUS     mandatory
     DESCRIPTION
-            "0=OFF
-			1=ON
-			2= Shutdown active (when a CS or a CR command is received but shutdown is not yet been executed and the "Imminent time" is not reached)
-			3= Shutdown imminent (S01 ÷ S08 code)
-			4= Restore active (when after that a CR command is received and the shutdown has been acted but the restore delay time is not expired)
-			5= Overload alarm (F01 ÷ F08 code)
-			6= Locked: OFF for overload (L01 ÷ L08 code)"
+            "0=OFF, 1=ON, 2=Shutdown active, 3=shutdown imminent state, 4=Restore active, 5=Overload alarm, 6=Locked OFF for overload"
     ::= { mduOutputSockets 5 }
 
 mduLowInputVoltage OBJECT-TYPE

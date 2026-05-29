@@ -654,7 +654,7 @@ sdsMIBConformance OBJECT IDENTIFIER
      SYNTAX DisplayString(SIZE(0..32))
      MAX-ACCESS    read-only
      STATUS         current
-     Description
+     DESCRIPTION
      			"Device part Number"
      	::= { adminInfo 27}
 
@@ -662,7 +662,7 @@ sdsMIBConformance OBJECT IDENTIFIER
  	     SYNTAX DisplayString(SIZE(0..32))
      MAX-ACCESS    read-only
      STATUS         current
-     Description
+     DESCRIPTION
      			"IOLAN Internal temperature"
      	::= { adminInfo 28}
 
@@ -18431,7 +18431,7 @@ ipsecRemoteNetmaskBit OBJECT-TYPE
                  discarded."
       ::= { ipv6AddressEth3Entry 2 }
       
-  ipv6AddressEth2Addr OBJECT-TYPE
+  ipv6AddressEth3Addr OBJECT-TYPE
       SYNTAX      Ipv4v6Address
       MAX-ACCESS  read-write
       STATUS      current
@@ -20654,7 +20654,7 @@ wwanStatsTxBytes OBJECT-TYPE
 -- sfpModuleTable
 --
   sfpModuleTable OBJECT-TYPE
-    SYNTAX		SEQUENCE OF sfpModuleEntry
+    SYNTAX		SEQUENCE OF SfpModuleEntry
     MAX-ACCESS	not-accessible
     STATUS		current
     DESCRIPTION
@@ -20778,7 +20778,7 @@ wwanStatsTxBytes OBJECT-TYPE
 		  mu(9),
 		  sg(10),
 		  opticalPigtail(11),
-		  MpoParallelOptic(12);
+		  mpoParallelOptic(12),
 		  hssdcII(32),
 		  copperPigtail(33),
 		  rj45(34)

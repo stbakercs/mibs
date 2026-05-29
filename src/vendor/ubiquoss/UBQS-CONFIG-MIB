@@ -117,7 +117,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 -- ***********************************************************
     ubiConfigInfoTable   OBJECT-TYPE
         SYNTAX          SEQUENCE  OF  UbiConfigInfoEntry
-        ACCESS          not-accessible
+        MAX-ACCESS          not-accessible
         STATUS          current 
         DESCRIPTION
                "The table of configuration file list 
@@ -127,7 +127,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 
     ubiConfigInfoEntry   OBJECT-TYPE
         SYNTAX          UbiConfigInfoEntry
-        ACCESS      	not-accessible
+        MAX-ACCESS      	not-accessible
         STATUS          current 
         DESCRIPTION
                 "The entry representing one element of configuration file list"
@@ -143,7 +143,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 
     ubiConfigName  OBJECT-TYPE
     	SYNTAX      DisplayString
-    	ACCESS      read-only
+    	MAX-ACCESS      read-only
     	STATUS      current 
      	DESCRIPTION
         	"Configuration file name or image name"
@@ -156,7 +156,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     		config(1),
     		image(2)
     	}       	
-    	ACCESS      read-only
+    	MAX-ACCESS      read-only
     	STATUS      current 
     	DESCRIPTION
         	"Configuration type
@@ -172,7 +172,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 			noCurrent(0),
 			currentConfig(1)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"Current configuration file status"
@@ -184,7 +184,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 			noNext(0),
 			nextConfig(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Next configuration file status"
@@ -202,7 +202,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 			fileInFlash(2),
 			fileInUsbFlash(3)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"The type of object to be erased.
@@ -214,7 +214,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 		
 	ubiConfigEraseFileName	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"If mode is 'configFile', configuration file name to be erased.
@@ -227,7 +227,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 			none(0),
 			excute(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Excute to erase configuration"
@@ -235,7 +235,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 		
 	ubiConfigEraseUsbPartNum	OBJECT-TYPE
 		SYNTAX		Integer32(0..9)
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"The number of USB flash partition which has a file to be erase.
@@ -247,7 +247,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 -- *********************************************************** 
 	ubiConfigSourceMethod	OBJECT-TYPE
     	SYNTAX		ConfigMethodType
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"configuration source control method
@@ -291,7 +291,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 
     ubiConfigSourceFileName  OBJECT-TYPE
        	SYNTAX      DisplayString
-       	ACCESS      read-write
+       	MAX-ACCESS      read-write
        	STATUS      current 
        	DESCRIPTION
         	"If not startup or running, source file name"
@@ -299,7 +299,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 	
 	ubiConfigSourceIpAddress  OBJECT-TYPE
        	SYNTAX      DisplayString
-       	ACCESS      read-write
+       	MAX-ACCESS      read-write
        	STATUS      current 
        	DESCRIPTION
         	"If tftp or ftp, ip address to be connected"
@@ -307,7 +307,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     
     ubiConfigSouceUserId	OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If ftp, server user id"
@@ -315,7 +315,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     	
     ubiConfigSourceUserPassword	OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If ftp, server user password"
@@ -323,7 +323,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     	
     ubiConfigSourcePartNum	OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If usbflash, system partition number"
@@ -331,7 +331,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     	
     ubiConfigDestinationMethod	OBJECT-TYPE
     	SYNTAX		ConfigMethodType
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"configuration destination control method
@@ -372,7 +372,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     	
     ubiConfigDestinationFileName	OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If startup or running, destination file name"
@@ -380,7 +380,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     
     ubiConfigDestinationIpAddress	OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If ftp or tftp, server ip address"
@@ -388,7 +388,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     	
     ubiConfigDestinationUserId		OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If ftp, server user id"
@@ -396,7 +396,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     	
     ubiConfigDestinationUserPassword	OBJECT-TYPE
     	SYNTAX		DisplayString
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"If ftp, server user password"
@@ -404,7 +404,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
  
  	ubiConfigDestinationPartNum	OBJECT-TYPE
  		SYNTAX		DisplayString
- 		ACCESS		read-write
+ 		MAX-ACCESS		read-write
  		STATUS		current
  		DESCRIPTION
  			"If usbflash, system partition number"
@@ -416,7 +416,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     		none(0),
     		excute(1)
     	}
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"excute to copy configuration"
@@ -427,7 +427,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 -- ***********************************************************
     ubiUsbConfigInfoTable   OBJECT-TYPE
         SYNTAX          SEQUENCE  OF  UbiUsbConfigInfoEntry
-        ACCESS          not-accessible
+        MAX-ACCESS          not-accessible
         STATUS          current 
         DESCRIPTION
                "The table of configuration file list 
@@ -437,7 +437,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 
     ubiUsbConfigInfoEntry   OBJECT-TYPE
         SYNTAX          UbiUsbConfigInfoEntry
-        ACCESS      	not-accessible
+        MAX-ACCESS      	not-accessible
         STATUS          current 
         DESCRIPTION
                 "The entry representing one element of configuration file list at usbflash"
@@ -454,7 +454,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     
     ubiUsbPartNum  OBJECT-TYPE
     	SYNTAX      Integer32(0..9)
-    	ACCESS      read-only
+    	MAX-ACCESS      read-only
     	STATUS      current 
     	DESCRIPTION
         	"The file system partition number for USB flash."
@@ -462,7 +462,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 
     ubiUsbConfigName  OBJECT-TYPE
     	SYNTAX      DisplayString
-    	ACCESS      read-only
+    	MAX-ACCESS      read-only
     	STATUS      current 
      	DESCRIPTION
         	"Configuration file name or image name"
@@ -475,7 +475,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
     		config(1),
     		image(2)
     	}       	
-    	ACCESS      read-only
+    	MAX-ACCESS      read-only
     	STATUS      current 
     	DESCRIPTION
         	"Configuration type
@@ -491,7 +491,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 			noCurrent(0),
 			currentConfig(1)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"Current configuration file status"
@@ -503,7 +503,7 @@ ubiConfigCopy				OBJECT IDENTIFIER ::= { ubiConfigMIBObjects 3 }
 			noNext(0),
 			nextConfig(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"Next configuration file status"

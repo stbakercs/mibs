@@ -683,7 +683,7 @@
 --
     shadowEvent OBJECT IDENTIFIER ::= { shadow 4 }
     
-	eventStatusChange NOTIFICATION-TYPE
+	eventStatusChangeNotify NOTIFICATION-TYPE
 		STATUS current
 		DESCRIPTION 
 			"The library status has changed."
@@ -693,7 +693,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {shadowEvent 1}
 
-	eventDoorOpen NOTIFICATION-TYPE
+	eventDoorOpenNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library door has been opened."
@@ -703,7 +703,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {shadowEvent 2}
 	
-	eventMailSlotAccessed NOTIFICATION-TYPE
+	eventMailSlotAccessedNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library mail slot has been accessed."
@@ -807,7 +807,7 @@
 		
 	--OLD Style Trap definitions      
 	
-	eventStatusChange TRAP-TYPE    
+	eventStatusChangeTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum, 
@@ -817,7 +817,7 @@
 			"The library status has changed."	
 		::=  1
 		
-	eventDoorOpen  TRAP-TYPE    
+	eventDoorOpenTrap  TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }		
@@ -825,7 +825,7 @@
 			"The library door has been opened."		
 		::= 2
 	
-	eventMailSlotAccessed TRAP-TYPE    
+	eventMailSlotAccessedTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -833,7 +833,7 @@
 			"The library mail slot has been accessed."	
 		::= 3
 	
-	eventFaultPosted TRAP-TYPE    
+	eventFaultPostedTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum,
@@ -844,7 +844,7 @@
 			"The library has posted a hard fault."		
 		::= 4
 			
-	eventRequestDriveClean TRAP-TYPE    
+	eventRequestDriveCleanTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -853,7 +853,7 @@
             data reliability."		
         ::= 5
 	
-	eventDriveError TRAP-TYPE    
+	eventDriveErrorTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -861,7 +861,7 @@
 			"One of the library tape drives has reported an error condition."
 		::= 6
 	
-	eventLoaderRetriesExcessive TRAP-TYPE    
+	eventLoaderRetriesExcessiveTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -869,7 +869,7 @@
 			"The library has detected excessive loader retries."
 		::= 7
 	
-	eventLoaderOK TRAP-TYPE    
+	eventLoaderOKTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -877,7 +877,7 @@
 			"The library has reverted to normal operation."
 		::= 8  
 	
-	eventLoaderPasswordChange TRAP-TYPE    
+	eventLoaderPasswordChangeTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -885,7 +885,7 @@
 			"An account password in the library has changed."
 		::= 9	 	
 		
- 	eventLoaderConfigChange TRAP-TYPE    
+ 	eventLoaderConfigChangeTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -893,7 +893,7 @@
 			"A logical library configuration setting has been changed."
 		::= 10
 
-	eventBrowserLogin TRAP-TYPE    
+	eventBrowserLoginTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -901,7 +901,7 @@
 			"Someone logged in via Web Browser"
 		::= 11
 
-  	eventBrowserLogout TRAP-TYPE    
+  	eventBrowserLogoutTrap TRAP-TYPE    
     	ENTERPRISE  shadowEvent
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }

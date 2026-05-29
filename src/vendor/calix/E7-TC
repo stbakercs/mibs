@@ -685,5 +685,25 @@ E7SnmpVers ::= TEXTUAL-CONVENTION
         v3(3)
     }
 
+E7OperStatus ::= TEXTUAL-CONVENTION
+    STATUS current
+    DESCRIPTION "operational status values"
+    SYNTAX INTEGER {
+        unknown(0),
+        up(1),
+        down(2),
+        testing(3)
+    }
+
+E7XdslGrpOperStatus ::= TEXTUAL-CONVENTION
+    STATUS current
+    DESCRIPTION "xDSL bonded group operational status values"
+    SYNTAX INTEGER {
+        unknown(0),
+        up(1),
+        down(2),
+        bonding(3)
+    }
+
 END
 

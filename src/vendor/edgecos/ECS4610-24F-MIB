@@ -5015,7 +5015,7 @@ vlanPortMode OBJECT-TYPE
                     Setting it to access(3) sets an access link."
         ::= { vlanPortEntry 2 }
 
---¡@SYS_CPNT_COMMUNITY_PRIVATE_VLAN¡@(use PVLAN_MGR API) start
+--ï¿½@SYS_CPNT_COMMUNITY_PRIVATE_VLANï¿½@(use PVLAN_MGR API) start
 vlanPortPrivateVlanType OBJECT-TYPE
         SYNTAX     INTEGER
                    {
@@ -12761,7 +12761,7 @@ ospfMultiProcessIfAuthKey OBJECT-TYPE
 
          When read, ospfIfAuthKey always returns an octet string of length zero.
          This is a private substitution for ospfIfAuthKey of RFC1253."
-    DEFVAL { none }
+    DEFVAL { "" }
     ::= { ospfMultiProcessIfEntry 16 }
 
 ospfMultiProcessIfStatus OBJECT-TYPE
@@ -13396,7 +13396,7 @@ ospfMultiProcessVirtIfAuthKey OBJECT-TYPE
 
          When read, ospfVirtIfAuthKey always returns an octet string of length
          zero. "
-    DEFVAL { none }
+    DEFVAL { "" }
     ::= { ospfMultiProcessVirtIfEntry 9 }
 
 ospfMultiProcessVirtIfStatus OBJECT-TYPE
@@ -16270,7 +16270,7 @@ mvrDomainStatus OBJECT-TYPE
         ::= { mvrDomainEntry 2}
 
 mvrDomainRunningStatus OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             active(1),
             inactive(2)
@@ -16348,7 +16348,7 @@ mvrDomainIfIndex   OBJECT-TYPE
         ::= { mvrDomainPortEntry 2 }
 
 mvrDomainPortType   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             none(0),
             source(1),
@@ -16368,7 +16368,7 @@ mvrDomainPortImmediateLeave   OBJECT-TYPE
         ::= { mvrDomainPortEntry 4 }
 
 mvrDomainPortActive   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             active(1),
             inactive(2)
@@ -16426,7 +16426,7 @@ mvrProfileName   OBJECT-TYPE
         ::= { mvrProfileCtlEntry 2 }
 
 mvrProfileCtlAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -16499,7 +16499,7 @@ mvrProfileGroupEndIPAddress   OBJECT-TYPE
         ::= { mvrProfileGroupCtlEntry 4 }
 
 mvrProfileGroupCtlAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -16553,7 +16553,7 @@ mvrProfileId   OBJECT-TYPE
         ::= { mvrDomainAssociatedProfileEntry 2 }
 
 mvrProfileAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -18628,7 +18628,7 @@ ipv6TunnelIndex OBJECT-TYPE
 
 
 ipv6TunnelNdRaSuppress OBJECT-TYPE
-        SYNTAX       Integer32
+        SYNTAX       INTEGER
 		{
 			do-not-suppress(1),
 			suppress(2)
@@ -18639,7 +18639,7 @@ ipv6TunnelNdRaSuppress OBJECT-TYPE
         ::= { ipv6TunnelEntry 2 }
 
 ipv6TunnelMode OBJECT-TYPE
-        SYNTAX       Integer32
+        SYNTAX       INTEGER
 		{
 			configured(1),
 			sixtofour(2),

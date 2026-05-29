@@ -2906,10 +2906,8 @@ ZYXEL-MGS3712-MIB DEFINITIONS ::= BEGIN
                       	""
         ::= { portBasedVlanPortListEntry 1 }
 --fault MIB    
-faultMIB MODULE-IDENTITY
-    LAST-UPDATED "200411031200Z" -- YYYY/MM/DD, HH/MM
-    ORGANIZATION "ZyXEL"
-    CONTACT-INFO ""
+faultMIB OBJECT-IDENTITY
+    STATUS current
     DESCRIPTION
             "Fault event table definitions"
     ::= { mgs3712 24 }
@@ -3253,10 +3251,8 @@ eventInstanceIdNumber OBJECT-TYPE
 
 
 -- fault Trap MIB     
-faultTrapsMIB MODULE-IDENTITY
-    LAST-UPDATED "200411011200Z" -- YYYY/MM/DD, HH/MM
-    ORGANIZATION "ZyXEL"
-    CONTACT-INFO ""
+	faultTrapsMIB OBJECT-IDENTITY
+    STATUS current
     DESCRIPTION
             "Fault event trap definitions"
     ::= { mgs3712 25 }  
@@ -5273,7 +5269,7 @@ eventClearedTrap NOTIFICATION-TYPE
 --  MRSTP Trap
 	mrstpNotifications     	OBJECT IDENTIFIER ::= { mrstp 2 }              
 	
-	 newRoot NOTIFICATION-TYPE
+	 mrstpNewRoot NOTIFICATION-TYPE
       OBJECTS {
         mrstpBridgeIndex
       }
@@ -8403,7 +8399,7 @@ eventClearedTrap NOTIFICATION-TYPE
 --MSTP Traps 
  	     mstpNotifications     	OBJECT IDENTIFIER ::= { mstp 70 }              
 	
-	     newRoot NOTIFICATION-TYPE
+	     mstpNewRoot NOTIFICATION-TYPE
          OBJECTS {
                 mstpXstId
          }
@@ -8412,7 +8408,7 @@ eventClearedTrap NOTIFICATION-TYPE
           ""
          ::= { mstpNotifications 1 }
       
-         topologyChange NOTIFICATION-TYPE
+         mstpTopologyChange NOTIFICATION-TYPE
          OBJECTS {
                 mstpXstId
          }

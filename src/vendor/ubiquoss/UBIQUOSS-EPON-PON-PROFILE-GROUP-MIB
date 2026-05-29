@@ -3806,19 +3806,17 @@
        ::= { ubiPonProfileMIBCompliances 1 }
 	                            
 -- compliance statements
-   	ubiPonProfileMIBGroup  OBJECT-GROUP
-		OBJECTS {     
-			-- TODO 
-               }
+   	ubiPonProfileMIBGroup  OBJECT-GROUP        OBJECTS {
+                oltServiceMapTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss qos profile information MIB"
         ::= { ubiPonProfileMIBGroups 1 }
      
-     ubiPonProfileMIBNotificationGroup    OBJECT-GROUP
-      	OBJECTS {     
-			-- TODO 
-               }
+     ubiPonProfileMIBNotificationGroup    OBJECT-GROUP        OBJECTS {
+                oltServiceMapTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss qos profile information Notifications"

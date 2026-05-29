@@ -113,11 +113,11 @@ tpSysInfoUpTime OBJECT-TYPE
 
 tpSysInfoSerialPort OBJECT-TYPE
  SYNTAX INTEGER{
-		9600(0), 					--config the baud rate as 9600
-		19200(1),					--config the baud rate as 19200
-		38400(2), 					--config the baud rate as 38400
-		57600(3),					--config the baud rate as 57600
-		115200(4)	 				--config the baud rate as 115200
+		baud9600(0),
+		baud19200(1),
+		baud38400(2),
+		baud57600(3),
+		baud115200(4)
 		}   
   MAX-ACCESS  read-write
   STATUS  current

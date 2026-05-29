@@ -356,7 +356,7 @@ fmSysUpTime OBJECT-TYPE
         "The 64bit time (in hundredths of a second) since the network management portion of the system was last re-initialized."
     ::= { fmSystemInfo 8 }
 
-fmLogRate OBJECT-TYPE
+fmLogRateGauge OBJECT-TYPE
     SYNTAX      Gauge32
     UNITS       "logs per second"
     MAX-ACCESS  read-only

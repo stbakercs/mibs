@@ -50,7 +50,7 @@
 ------------------------------------------------------------------------------
     ipPool      OBJECT IDENTIFIER ::= { gbnL3IPPoolMib 1 }
     ipPoolTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF  ipPoolEntry
+        SYNTAX SEQUENCE OF IpPoolEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -59,7 +59,7 @@
 
 
     ipPoolEntry  OBJECT-TYPE
-        SYNTAX ipPoolEntry 
+        SYNTAX IpPoolEntry 
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -67,7 +67,7 @@
         INDEX { ipPoolIndex }
         ::= { ipPoolTable 1 }
 
-        ipPoolEntry ::= SEQUENCE {
+        IpPoolEntry ::= SEQUENCE {
         ipPoolIndex         INTEGER(1..12),
         ipPoolName          DisplayString,
         ipPoolGatewayIp     IpAddress,
@@ -183,7 +183,7 @@
     
         
      ipPoolLeaseTime    OBJECT-TYPE
-        SYNTAX Integer32 
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -314,7 +314,7 @@
             "dhcp option 145: host version"
         ::= { ipPoolEntry 27 }
     ipSectionTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF ipSectionEntry
+        SYNTAX SEQUENCE OF IpSectionEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -322,7 +322,7 @@
         ::= { ipPool 2 }        
 
     ipSectionEntry  OBJECT-TYPE
-        SYNTAX ipSectionEntry 
+        SYNTAX IpSectionEntry 
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -330,7 +330,7 @@
         INDEX { ipPoolID,ipSectionID }
         ::= { ipSectionTable 1 }
 
-    ipSectionEntry ::= SEQUENCE {
+    IpSectionEntry ::= SEQUENCE {
         ipPoolID               INTEGER(1..12),   
         ipSectionID            INTEGER(1..8),   
         ipSectionStartIp       IpAddress,
@@ -373,7 +373,7 @@
         ::= { ipSectionEntry 4 }   
         
     ipSectionIpCount   OBJECT-TYPE
-        SYNTAX Integer32 
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -393,7 +393,7 @@
 --
 
     ipDisableTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF ipDisableEntry
+        SYNTAX SEQUENCE OF IpDisableEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -402,7 +402,7 @@
 
 
     ipDisableEntry  OBJECT-TYPE
-        SYNTAX ipDisableEntry 
+        SYNTAX IpDisableEntry 
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -410,7 +410,7 @@
         INDEX {ipDisableAddr}
         ::= { ipDisableTable 1 }
 
-    ipDisableEntry ::= SEQUENCE {
+    IpDisableEntry ::= SEQUENCE {
         ipDisableAddr          IpAddress,
         ipDisablePoolId        INTEGER(1..12),
         ipDisableStatus     INTEGER   

@@ -14038,7 +14038,7 @@ pethPseMainExtEntry OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "A set of objects that display and control the Main power of a PSE."
-    AUGMENTS    { pethMainPseEntry }
+
     ::= { pethPseMainExtTable 1 }
 
 PethPseMainExtEntry ::= SEQUENCE
@@ -14099,7 +14099,7 @@ pethPsePortExtEntry OBJECT-TYPE
     DESCRIPTION
         "A set of objects that display and control the power characteristics of
         a power Ethernet PSE port."
-    AUGMENTS    { pethPsePortEntry }
+
     ::= { pethPsePortExtTable 1 }
 
 PethPsePortExtEntry ::= SEQUENCE

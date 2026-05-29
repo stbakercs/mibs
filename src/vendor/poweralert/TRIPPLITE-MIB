@@ -255,7 +255,7 @@ tlUpsAlarmId OBJECT-TYPE
   ::= { tlUpsAlarmEntry 1 }
   
 tlUpsAlarmDescr OBJECT-TYPE
-  SYNTAX STRING
+  SYNTAX DisplayString
   MAX-ACCESS read-only
   STATUS current
   DESCRIPTION

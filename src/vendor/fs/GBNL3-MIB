@@ -109,7 +109,7 @@
 ------------------------------------------------------------------------------
 --
     gbnL3IpMiscNumLogicalPorts OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
@@ -171,7 +171,7 @@
         ::= { gbnL3IpMisc 5 }
 
     gbnL3IpMiscRouteECMPCount OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS  current
         DESCRIPTION
@@ -261,7 +261,7 @@
     }
 
     gbnL3IpSubnetIfIndex  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -294,7 +294,7 @@
         ::= { gbnL3IpSubnetEntry 3 }
 
     gbnL3IpSubnetVidIface  OBJECT-TYPE
-        SYNTAX Integer32 (0..4094)
+        SYNTAX INTEGER (0..4094)
         MAX-ACCESS read-create
         STATUS current
         DESCRIPTION
@@ -340,7 +340,7 @@
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
-            "×ÓÍøµÄÖ÷ipµØÖ·±í¡£"
+            "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½"
         ::= { gbnL3IpSubnet 4 }
 
     gbnL3IpSubnetPrimaryIpEntry OBJECT-TYPE
@@ -348,7 +348,7 @@
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
-            "×ÓÍøµÄÖ÷ipµØÖ·±í¡£"
+            "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½"
         INDEX { gbnL3IpSubnetPrimaryIpIfIndex}
         ::= { gbnL3IpSubnetPrimaryIpTable 1 }
 
@@ -358,11 +358,11 @@
     }
 
     gbnL3IpSubnetPrimaryIpIfIndex  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
-            "½Ó¿ÚµÄË÷Òý¡£"
+            "ï¿½Ó¿Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
         ::= { gbnL3IpSubnetPrimaryIpEntry 1 }
 
     gbnL3IpSubnetPrimaryIpIpAddr  OBJECT-TYPE
@@ -370,7 +370,7 @@
         MAX-ACCESS read-create
         STATUS current
         DESCRIPTION
-            "½Ó¿ÚµÄÖ÷ipµØÖ·¡£"
+            "ï¿½Ó¿Úµï¿½ï¿½ï¿½ipï¿½ï¿½Ö·ï¿½ï¿½"
         ::= { gbnL3IpSubnetPrimaryIpEntry 2 }
 
 ------------------------------------------------------------------------------
@@ -605,7 +605,7 @@
         ::= { gbnL3IpStaticRouteEntry 8 }
 
     gbnL3IpStaticVrId  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -615,7 +615,7 @@
 
 
     gbnL3IpStaticECMPIndex  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -624,7 +624,7 @@
         ::= { gbnL3IpStaticRouteEntry 10 }
 
     gbnL3IpStaticWCMPWeight  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-create
         STATUS current
         DESCRIPTION
@@ -782,7 +782,7 @@
         ::= { gbnL3IpRouteEntry 4 }
 
     gbnL3IpRouteIfIndex OBJECT-TYPE
-        SYNTAX  Integer32
+        SYNTAX INTEGER
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
@@ -870,7 +870,7 @@
         ::= { gbnL3IpRouteEntry 8 }
 
     gbnL3IpRouteMetric1 OBJECT-TYPE
-        SYNTAX  Integer32
+        SYNTAX INTEGER
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
@@ -980,7 +980,7 @@
         ::= { gbnL3IpRouteEntry 15 }
 
     gbnL3IpRouteVrId  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -1114,7 +1114,7 @@
     }
 
     gbnL3IpSubnetVrIfIndex  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -1123,7 +1123,7 @@
         ::= { gbnL3IpSubnetVrEntry 1 }
 
     gbnL3IpSubnetVrId  OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-create
         STATUS current
         DESCRIPTION

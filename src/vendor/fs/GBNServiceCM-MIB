@@ -60,7 +60,7 @@
         --Add gbn8021xCmConfTable MIB      2002/07/02     ouyangchunbo
         -------------------------------------------------------------------
         gbn8021xCmConfTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF gbn8021xCmConfEntry
+        SYNTAX SEQUENCE OF Gbn8021xCmConfEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -68,64 +68,64 @@
         ::= { gbn8021xCmMib 1 }
 
         gbn8021xCmConfEntry OBJECT-TYPE
-        SYNTAX gbn8021xCmConfEntry
+        SYNTAX Gbn8021xCmConfEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
             "A list of radius parameters."
-        INDEX { DomainIndex }
+        INDEX { domainIndex }
         ::= { gbn8021xCmConfTable 1 }
 
-        gbn8021xCmConfEntry ::= SEQUENCE {
-            DomainIndex    Integer32,
-            DomainName     DisplayString,
-            ServerName     DisplayString,
-            MaxLinks       Integer32,
-            CurrentLinks   Integer32,
+        Gbn8021xCmConfEntry ::= SEQUENCE {
+            domainIndex    Integer32,
+            domainName     DisplayString,
+            serverName     DisplayString,
+            maxLinks       Integer32,
+            currentLinks   Integer32,
             nActive        TruthValue,
             bCmUsed        TruthValue,
-            scheme          Integer32
+            domainScheme          Integer32
         }
 
-        DomainIndex OBJECT-TYPE
-        SYNTAX Integer32 (1..1024)
+        domainIndex OBJECT-TYPE
+        SYNTAX INTEGER (1..1024)
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
             "A simple index into 'gbn8021xCmConfTable'."
         ::= { gbn8021xCmConfEntry 1 }
 
-        DomainName OBJECT-TYPE
+        domainName OBJECT-TYPE
         SYNTAX DisplayString (SIZE(1..24))
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple DomainName of gbn8021xCmConfEntry."
+            " A simple domainName of gbn8021xCmConfEntry."
         ::= { gbn8021xCmConfEntry 2 }
         
-        ServerName OBJECT-TYPE
+        serverName OBJECT-TYPE
         SYNTAX DisplayString (SIZE(1..32))
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple ServerName of gbn8021xCmConfEntry."
+            " A simple serverName of gbn8021xCmConfEntry."
         ::= { gbn8021xCmConfEntry 3 }
         
-        MaxLinks OBJECT-TYPE
-        SYNTAX Integer32(1..640)
+        maxLinks OBJECT-TYPE
+        SYNTAX INTEGER (1..640)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { 1024:all }
-             A simple MaxLinks of  'gbn8021xCmConfTable'.0xFFFF means disable"
+            "DURABLE: 1024:all
+             A simple maxLinks of  'gbn8021xCmConfTable'.0xFFFF means disable"
         ::= { gbn8021xCmConfEntry 4 }
 
-        CurrentLinks OBJECT-TYPE
-        SYNTAX Integer32
+        currentLinks OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-             "A simple CurrentLinks of  'gbn8021xCmConfTable'."
+             "A simple currentLinks of  'gbn8021xCmConfTable'."
         ::= { gbn8021xCmConfEntry 5 }
 
         nActive OBJECT-TYPE
@@ -145,8 +145,8 @@
              "Status of the current Domain 1-used  2 - unused'."
         ::= { gbn8021xCmConfEntry 7 }
 
-        scheme OBJECT-TYPE
-          SYNTAX Integer32 {
+        domainScheme OBJECT-TYPE
+          SYNTAX INTEGER {
               radius(0),
               local(1),
               radiuslocal(2)
@@ -154,14 +154,14 @@
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-             "scheme of this domain.default is radius(0)'."
+             "domainScheme of this domain.default is radius(0)'."
         ::= { gbn8021xCmConfEntry 8 }
 
 
         gbn8021xEAPType OBJECT-TYPE
-          SYNTAX Integer32 {
-              eap-finish(1),
-              eap-transfer(2)  
+          SYNTAX INTEGER {
+              eapFinish(1),
+              eapTransfer(2)  
           }
         MAX-ACCESS read-write
         STATUS current
@@ -222,7 +222,7 @@
         ::= { gbnLocalUserEntry 2 }        
 
         localUserVlan OBJECT-TYPE
-        SYNTAX Integer32 (1..4094)
+        SYNTAX INTEGER (1..4094)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION

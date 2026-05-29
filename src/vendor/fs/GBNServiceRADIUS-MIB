@@ -43,7 +43,7 @@
         --Add gbnRadiusConfTable MIB      2002/07/02     ouyangchunbo
         -------------------------------------------------------------------
         gbnRadiusConfTable OBJECT-TYPE
-        SYNTAX SEQUENCE OF gbnRadiusConfEntry
+        SYNTAX SEQUENCE OF GbnRadiusConfEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
@@ -51,110 +51,105 @@
         ::= { gbnRadiusMib 1 }
 
         gbnRadiusConfEntry OBJECT-TYPE
-        SYNTAX gbnRadiusConfEntry
+        SYNTAX GbnRadiusConfEntry
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
             "A list of radius parameters."
-        INDEX { ServerIndex }
+        INDEX { serverIndex }
         ::= { gbnRadiusConfTable 1 }
 
-        gbnRadiusConfEntry ::= SEQUENCE {
-            ServerIndex     Integer32,
-            ServerName      DisplayString,
-            PrimServerIP    DisplayString,
-            PrimAuthPort    Integer32,
-            PrimAcctPort     Integer32,
-            SecServerIP     DisplayString,
-            SecAuthPort      Integer32,
-            SecAcctPort     Integer32,
-            Key             DisplayString,
+        GbnRadiusConfEntry ::= SEQUENCE {
+            serverIndex     Integer32,
+            serverName      DisplayString,
+            primServerIP    DisplayString,
+            primAuthPort    Integer32,
+            primAcctPort     Integer32,
+            secServerIP     DisplayString,
+            secAuthPort      Integer32,
+            secAcctPort     Integer32,
+            radiusKey             DisplayString,
             bRadiusUsed     TruthValue,
-            UserNameFormat   TruthValue,
-            RealAcctTime     Integer32,
+            userNameFormat   TruthValue,
+            realAcctTime     Integer32,
             bRealAcct     TruthValue,
             gbnRadiusClientIp DisplayString,
-            PrimAcctServerIP    DisplayString,
-            SecAcctServerIP     DisplayString,
+            primAcctServerIP    DisplayString,
+            secAcctServerIP     DisplayString,
             acctKey             DisplayString            
           }
 
-        ServerIndex OBJECT-TYPE
-        SYNTAX Integer32 (1..1024)
+        serverIndex OBJECT-TYPE
+        SYNTAX INTEGER (1..1024)
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
             "A simple index into 'gbnRadiusConfTable'."
         ::= { gbnRadiusConfEntry 1 }
 
-        ServerName OBJECT-TYPE
+        serverName OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple ServerName of gbnRadiusConfEntry."
+            " A simple serverName of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 2 }
 
-        PrimServerIP OBJECT-TYPE
+        primServerIP OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple PrimServerIP of gbnRadiusConfEntry."
+            " A simple primServerIP of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 3 }
 
-        PrimAuthPort OBJECT-TYPE
-        SYNTAX Integer32
+        primAuthPort OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { 1812:all }
-             The authenticate port of prime radius server"
+            "DURABLE: 1812:all. The authenticate port of prime radius server"
         ::= { gbnRadiusConfEntry 4 }
 
-        PrimAcctPort OBJECT-TYPE
-        SYNTAX Integer32
+        primAcctPort OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { 1813:all }
-             The account port of prime radius server"
+            "DURABLE: 1813:all. The account port of prime radius server"
         ::= { gbnRadiusConfEntry 5 }
 
 
-        SecServerIP OBJECT-TYPE
+        secServerIP OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple SecServerIP of gbnRadiusConfEntry."
+            " A simple secServerIP of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 6 }
 
-        SecAuthPort OBJECT-TYPE
-        SYNTAX Integer32
+        secAuthPort OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { 1812:all }
-             The authenticate port of second radius server"
+            "DURABLE: 1812:all. The authenticate port of second radius server"
         ::= { gbnRadiusConfEntry 7 }
 
-        SecAcctPort OBJECT-TYPE
-        SYNTAX Integer32
+        secAcctPort OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { 1813:all }
-             The account port of second radius server"
+            "DURABLE: 1813:all. The account port of second radius server"
         ::= { gbnRadiusConfEntry 8 }
 
-        Key OBJECT-TYPE
+        radiusKey OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { '' }
-             A simple Key of gbnRadiusConfEntry."
+            "DURABLE: empty. A simple radiusKey of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 9 }
 
         bRadiusUsed OBJECT-TYPE
@@ -165,7 +160,7 @@
              "Status of the current radius server 1-used  2 - unused."
         ::= { gbnRadiusConfEntry 10 }
 
-        UserNameFormat OBJECT-TYPE
+        userNameFormat OBJECT-TYPE
         SYNTAX TruthValue
         MAX-ACCESS read-write
         STATUS current
@@ -173,8 +168,8 @@
              "Status of user name format configuration 1-with domain  2-without domain."
         ::= { gbnRadiusConfEntry 11 }
 
-        RealAcctTime OBJECT-TYPE
-        SYNTAX Integer32
+        realAcctTime OBJECT-TYPE
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -197,20 +192,20 @@
             " A system IP address for RADIUS client to report who it is to the server."
         ::= { gbnRadiusConfEntry 14 }
 
-        PrimAcctServerIP OBJECT-TYPE
+        primAcctServerIP OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple PrimAcctServerIP of gbnRadiusConfEntry."
+            " A simple primAcctServerIP of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 15 }    
 
-        SecAcctServerIP OBJECT-TYPE
+        secAcctServerIP OBJECT-TYPE
         SYNTAX DisplayString
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            " A simple SecAcctServerIP of gbnRadiusConfEntry."
+            " A simple secAcctServerIP of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 16 }        
 
        acctKey OBJECT-TYPE
@@ -218,8 +213,7 @@
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-            "DURABLE: { '' }
-             A simple Key of gbnRadiusConfEntry."
+            "DURABLE: empty. A simple acctKey of gbnRadiusConfEntry."
         ::= { gbnRadiusConfEntry 17 }
 --
 -- END of admin-RADIUS-MIB                

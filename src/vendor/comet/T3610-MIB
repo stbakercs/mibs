@@ -21,7 +21,7 @@ comet      OBJECT IDENTIFIER ::= { enterprises 22626 }
 products   OBJECT IDENTIFIER ::= { comet 1 }
 t3610      OBJECT IDENTIFIER ::= { products 2 }
 values     OBJECT IDENTIFIER ::= { t3610 1 }
-global     OBJECT IDENTIFIER ::= { t3610 2 }
+t3610GlobalBranch OBJECT IDENTIFIER ::= { t3610 2 }
 valuesInt  OBJECT IDENTIFIER ::= { t3610 3 }
 settings   OBJECT IDENTIFIER ::= { t3610 4 }
 traps      OBJECT IDENTIFIER ::= { t3610 5 }
@@ -145,21 +145,21 @@ sensorName OBJECT-TYPE
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Device name"
-::= { global 1 }
+::= { t3610GlobalBranch 1 }
 
 serialNumber OBJECT-TYPE
 	SYNTAX		DisplayString (SIZE (0..16))
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Serial number"
-::= { global 2 }
+::= { t3610GlobalBranch 2 }
 
 deviceType OBJECT-TYPE
 	SYNTAX		INTEGER (0..65534)
 	ACCESS		read-only
 	STATUS		mandatory
 	DESCRIPTION	"Device type"
-::= { global 3 }
+::= { t3610GlobalBranch 3 }
 
 
 -----------------------------------------------------------------------

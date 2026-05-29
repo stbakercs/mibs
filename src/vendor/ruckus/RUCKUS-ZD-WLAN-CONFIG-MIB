@@ -249,7 +249,7 @@ ruckusZDWLANConfigWirelessWhiteListID OBJECT-TYPE
     STATUS current
     DESCRIPTION
         "make sure client isolation is enabled and then choose one id."
-    DEFVAL{none}
+
     ::= { ruckusZDWLANConfigEntry 29 }
 
 ruckusZDWLANConfigZeroITActivation OBJECT-TYPE

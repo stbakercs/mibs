@@ -140,8 +140,8 @@ ZYXEL-ZYWALL-ZLD-COMMON-MIB DEFINITIONS ::= BEGIN
 			"The trap indicates that the specified tunnel is disconnected."
 		::= { zldIpSecVPN 3 }
 
-	vpnStatus OBJECT-TYPE
-		SYNTAX  SEQUENCE OF vpnStatusEntry
+	vpnStatusTable OBJECT-TYPE
+		SYNTAX  SEQUENCE OF VPNStatusEntry
 		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
@@ -157,7 +157,7 @@ ZYXEL-ZYWALL-ZLD-COMMON-MIB DEFINITIONS ::= BEGIN
         		"An entry containing comment the information for on a particular 
                          configured VPN tunnel."
 		INDEX   { vpnIndex }
-		::= { vpnStatus 1 }
+		::= { vpnStatusTable 1 }
 	
 	VPNStatusEntry ::= SEQUENCE {
 		vpnIndex			Integer,

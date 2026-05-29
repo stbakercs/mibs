@@ -8,7 +8,7 @@ IMPORTS
     MODULE-IDENTITY, OBJECT-TYPE, TimeTicks, IpAddress,
           Counter32, Gauge32, Integer32     FROM SNMPv2-SMI
     SnmpAdminString                         FROM SNMP-FRAMEWORK-MIB
-    netSnmpExamples                         FROM NET-SNMP-EXAMPLES-MIB
+    netSnmp, netSnmpEnumerations            FROM NET-SNMP-MIB
 ;
 
 netSnmpPassExamples MODULE-IDENTITY
@@ -22,7 +22,7 @@ netSnmpPassExamples MODULE-IDENTITY
           email:    net-snmp-coders@lists.sourceforge.net"
     DESCRIPTION
 	"Example MIB objects for pass/pass-persist extension script"
-    ::= { netSnmpExamples 255 }
+    ::= { netSnmpEnumerations 255 }
 
 --
 -- Example scalars
@@ -74,14 +74,6 @@ netSnmpPassCounter64 OBJECT-TYPE
     STATUS      current
     DESCRIPTION "Example Counter64 object."
     ::= { netSnmpPassExamples 7 }
-
-netSnmpPassInteger64 OBJECT-TYPE
-    SYNTAX      Opaque
-    MAX-ACCESS  read-only
-    STATUS      current
-    DESCRIPTION "Example Opaque Integer64 object."
-    ::= { netSnmpPassExamples 8 }
-
 
 netSnmpPassOIDValue OBJECT IDENTIFIER
     ::= { netSnmpPassExamples 99 }

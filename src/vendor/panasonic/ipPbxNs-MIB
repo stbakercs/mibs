@@ -4,7 +4,7 @@
 -- *            (C)Panasonic System Networks Co., Ltd. 2011 *
 -- **********************************************************
 
-ipPbxNs-MIB DEFINITIONS ::= BEGIN
+IpPbxNsMIB DEFINITIONS ::= BEGIN
 
 IMPORTS
     enterprises
@@ -95,7 +95,7 @@ panaPbxNsAlmTrapStype OBJECT-TYPE
         It shows shelf type of physical shelf(physical) or virtual shelf(virtual)."
     ::= { panaPbxNsAlmTrap 7 }
 
-nsMainProc TRAP-TYPE
+nsMainProcTrap TRAP-TYPE
     ENTERPRISE panaPbxNsAlmTrap
     VARIABLES  { panaPbxNsAlmTrapDate, panaPbxNsAlmTrapTime, panaPbxNsAlmTrapLevel, panaPbxNsAlmTrapErr, panaPbxNsAlmTrapSub, panaPbxNsAlmTrapMes, panaPbxNsAlmTrapStype }
     DESCRIPTION

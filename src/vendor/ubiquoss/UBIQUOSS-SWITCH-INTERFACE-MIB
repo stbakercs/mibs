@@ -66,7 +66,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 -- ***********************************************************	
 	ubiSwitchPortTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSwitchPortEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of port"
@@ -74,7 +74,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 
 	ubiSwitchPortEntry OBJECT-TYPE
 		SYNTAX  UbiSwitchPortEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of port"
@@ -102,7 +102,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				gbic(4),
 				base1000T(5)
 		}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			""
@@ -113,7 +113,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				manual(1),
 				auto(2)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"administrator state"
@@ -126,7 +126,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				speed1000(3),
 				auto(4)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			""
@@ -138,7 +138,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				full(2),
 				auto(3)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			""
@@ -150,7 +150,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				speed100(2),
 				speed1000(3)
 		}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			""
@@ -161,7 +161,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				half(1),
 				full(2)
 		}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			""
@@ -169,7 +169,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 		
 	ubiSwitchPortLinkAggIfIndex	 OBJECT-TYPE  
 		SYNTAX  INTEGER 
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"ifindex of port-group"
@@ -178,7 +178,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
  			
  	ubiSwitchPortLinkAggIndex	 OBJECT-TYPE  
 		SYNTAX  INTEGER 
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"ubiLinkAggIndex of port-group"
@@ -192,7 +192,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 			dynamicPassive(2),
 			static(3)		
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"Link aggregation mode"
@@ -243,7 +243,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
        ::= { ubiLinkAggregationEntry 2 }
 
     ubiLinkAggType  OBJECT-TYPE
-       SYNTAX      Integer32
+       SYNTAX      INTEGER
        {
        		static(1),
        		dynamic(2)
@@ -298,7 +298,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 	}
     
     ubiSwitchPortQosPriorityEnabled OBJECT-TYPE
-		SYNTAX     INTEGER{
+		SYNTAX     INTEGER {
 			enable(1), 
 			disable(2)
 		}
@@ -309,7 +309,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 		::= { ubiSwitchPortQosPriorityEntry 1 }
                 
     ubiSwitchPortQosPriority OBJECT-TYPE
-		SYNTAX     INTEGER{
+		SYNTAX     INTEGER {
 			cos0(0), 
 			cos1(1),
 			cos2(2),
@@ -317,7 +317,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 			cos4(4),
 			cos5(5),
 			cos6(6),
-			cos7(7),
+			cos7(7)
 		}
 		MAX-ACCESS  read-write
 		STATUS     current
@@ -362,7 +362,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 		::= { ubiSwitchPortQosQueueEntry 1 }
 		                                    
     ubiSwitchPortQosQueueMode OBJECT-TYPE
-		SYNTAX     INTEGER{
+		SYNTAX     INTEGER {
 			strict(1), 
 			wrr1(2),
 			wrr2(3)
@@ -386,7 +386,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 -- ***********************************************************	
 	ubiVlanInfoTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiVlanInfoEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"Vlan Information"
@@ -394,7 +394,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
               
 	ubiVlanInfoEntry OBJECT-TYPE
 		SYNTAX  UbiVlanInfoEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"Vlan Information"
@@ -413,7 +413,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 
 	ubiVlanId	OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			" VlanId "
@@ -421,7 +421,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
               	
     ubiVlanName	OBJECT-TYPE
 		SYNTAX  DisplayString
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Vlan name"
@@ -429,18 +429,18 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
               
  	ubiVlanPortList	OBJECT-TYPE
         SYNTAX  PortList 
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"Vlan port list"
 		::= { ubiVlanInfoEntry  3 }  
 
  	ubiVlanOpState	OBJECT-TYPE
-        SYNTAX  INTEGER{
+        SYNTAX  INTEGER {
         	up(1),
         	down(2)
         } 
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Vlan operational status"
@@ -476,7 +476,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 -- ***********************************************************	
 	ubiSwitchPortStormControlTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSwitchPortStormControlEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of storm-control "
@@ -484,7 +484,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 
 	ubiSwitchPortStormControlEntry OBJECT-TYPE
 		SYNTAX  UbiSwitchPortStormControlEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of storm-control "
@@ -547,7 +547,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 -- ***********************************************************	
 	ubiSwitchPortTrafficMonitorTable  OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSwitchPortTrafficMonitorEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of storm-control "
@@ -555,7 +555,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 
 	ubiSwitchPortTrafficMonitorEntry OBJECT-TYPE
 		SYNTAX  UbiSwitchPortTrafficMonitorEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of storm-control "
@@ -598,7 +598,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 -- ***********************************************************	
 	ubiSwitchPortVlanInfoTable  OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSwitchPortVlanInfoEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"."
@@ -606,7 +606,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 
 	ubiSwitchPortVlanInfoEntry OBJECT-TYPE
 		SYNTAX  UbiSwitchPortVlanInfoEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"."
@@ -622,7 +622,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 		
     ubiSwitchPortSwitchIndex	 OBJECT-TYPE  
 		SYNTAX  INTEGER 
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"switchport index"
@@ -635,7 +635,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 				access(2),
 				trunk(3)
 		} 
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"switchport mode"
@@ -643,7 +643,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
  
 	ubiSwitchPortSwitchNativeVlan	 OBJECT-TYPE  
 		SYNTAX  INTEGER 
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"switchport native vlan"
@@ -654,7 +654,7 @@ ubiSwitchInterfaceMIB  MODULE-IDENTITY
 -- ***********************************************************	
 	ubiSwitchPortVlanControlTable  OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSwitchPortVlanControlEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"."

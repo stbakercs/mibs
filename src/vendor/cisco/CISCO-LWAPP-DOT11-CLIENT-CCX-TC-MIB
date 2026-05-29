@@ -11,7 +11,8 @@
 CISCO-LWAPP-DOT11-CLIENT-CCX-TC-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
-    MODULE-IDENTITY
+    MODULE-IDENTITY,
+    Unsigned32
         FROM SNMPv2-SMI
     TEXTUAL-CONVENTION
         FROM SNMPv2-TC
@@ -429,6 +430,18 @@ CiscoLwappDot11ClientDataRates ::= TEXTUAL-CONVENTION
                         mhz48(10),
                         mhz54(11)
                     }
+
+CLDot11ClientDiagAssocReason ::= TEXTUAL-CONVENTION
+    STATUS          current
+    DESCRIPTION
+        "Reason code for client association/disassociation events on
+        the CCX Diagnostic WLAN.  This TC was referenced by
+        CISCO-LWAPP-DOT11-CCX-CLIENT-DIAG-MIB but its definition was
+        omitted from the original Cisco source release.  The 802.11
+        association reason code is a 16-bit unsigned value, so this
+        TC is defined as Unsigned32 (0..65535) so that referencing
+        MIBs can compile and load."
+    SYNTAX          Unsigned32 (0..65535)
 
 END
 

@@ -3677,7 +3677,7 @@ vlanPortMode OBJECT-TYPE
                     Setting it to access(3) sets an access link."
         ::= { vlanPortEntry 2 }
 
---¡@SYS_CPNT_COMMUNITY_PRIVATE_VLAN¡@(use PVLAN_MGR API) start
+--ï¿½@SYS_CPNT_COMMUNITY_PRIVATE_VLANï¿½@(use PVLAN_MGR API) start
 vlanPortPrivateVlanType OBJECT-TYPE
         SYNTAX     INTEGER
                    {
@@ -5633,7 +5633,7 @@ diffServIpAceSourcePortBitmask OBJECT-TYPE
     ::= { diffServIpAceEntry 15 }
 
 diffServIpAceDestPortOp OBJECT-TYPE
-    SYNTAX      INTEGER{
+    SYNTAX      INTEGER {
                 noOperator(1),
                 equal(2),
                 range(3)
@@ -11168,7 +11168,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
          cpuCurrentUti            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The current CPU utilization in percent in the past 5 seconds."
@@ -11177,7 +11177,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuStatMaxUti            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The maximum CPU utilization in percent in the past 60 seconds."
@@ -11186,7 +11186,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuStatAvgUti            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The average CPU utilization in percent in the past 60 seconds."
@@ -11194,7 +11194,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
         cpuPeakTime            OBJECT-TYPE
             SYNTAX      DisplayString
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The time when the CPU utilization reaches cpuUtiRisingThreshold
@@ -11205,7 +11205,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuPeakDuration       OBJECT-TYPE
             SYNTAX      INTEGER
             UNITS       "second"
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The duration from the CPU utilization reaches cpuUtiRisingThreshold
@@ -11215,7 +11215,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuUtiRisingThreshold            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                 "The rising threshold of the cpu utilization."
@@ -11224,7 +11224,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
         cpuUtiFallingThreshold           OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                 "The falling threshold of the cpu utilization."
@@ -11234,7 +11234,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
          memoryTotal    OBJECT-TYPE
             SYNTAX      INTEGER
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The total amount of the memory in kilobytes."
@@ -11242,7 +11242,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
           memoryAllocated       OBJECT-TYPE
             SYNTAX      INTEGER
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The amount of the memory allocated in kilobytes."
@@ -11250,7 +11250,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
           memoryFreed    OBJECT-TYPE
             SYNTAX      INTEGER
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "The amount of the free memory in kilobytes."
@@ -11258,7 +11258,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
 
          memoryFreedInPercent         OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
-            ACCESS      read-only
+            MAX-ACCESS      read-only
             STATUS      current
             DESCRIPTION
                 "the memory freed in proportion to the total memory."
@@ -11267,7 +11267,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
          memoryUtiRisingThreshold            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                  "The rising threshold of the memory utilization."
@@ -11276,7 +11276,7 @@ atcMcastStormTcReleaseTrapStatus OBJECT-TYPE
          memoryUtiFallingThreshold            OBJECT-TYPE
             SYNTAX      INTEGER(1..100)
             UNITS       "%"
-            ACCESS      read-write
+            MAX-ACCESS      read-write
             STATUS      current
             DESCRIPTION
                  "The falling threshold of the memory utilization."
@@ -11682,7 +11682,7 @@ mvrGroupEndIPAddress   OBJECT-TYPE
         ::= { mvrGroupCtlEntry 2 }
 
 mvrGroupCtlAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),
@@ -11735,7 +11735,7 @@ mvrReceiverGroupMask   OBJECT-TYPE
         ::= { mvrReceiverGroupCtlEntry 2 }
 
 mvrReceiverGroupCtlAction   OBJECT-TYPE
-        SYNTAX      Integer32
+        SYNTAX      INTEGER
         {
             noAction(0),
             create(1),

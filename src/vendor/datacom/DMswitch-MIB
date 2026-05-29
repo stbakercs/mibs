@@ -779,20 +779,11 @@ swChassisModel OBJECT-TYPE
         ::= { switchMgt 17 }
 
 switchSessionTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF SwitchIndivAlarmOutEntry
+    SYNTAX      SEQUENCE OF SwitchSessionEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION "Table about CLI sessions informations."
         ::= { switchMgt 18 }
-
-switchSessionEntry OBJECT-TYPE
-        SYNTAX      SwitchSessionEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION "An entry in the table, containing information
-                     about a single switch in this system."
-        INDEX       { swSessionUnitIndex }
-        ::= { switchSessionTable 1 }
 
 SwitchSessionEntry ::= SEQUENCE
 {
@@ -802,6 +793,15 @@ SwitchSessionEntry ::= SEQUENCE
     swSessionPid                   INTEGER,
     swSessionSrcIP                 DisplayString
 }
+
+switchSessionEntry OBJECT-TYPE
+        SYNTAX      SwitchSessionEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION "An entry in the table, containing information
+                     about a single switch in this system."
+        INDEX       { swSessionUnitIndex }
+        ::= { switchSessionTable 1 }
 
 swSessionUnitIndex OBJECT-TYPE
         SYNTAX      Integer32

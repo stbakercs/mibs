@@ -479,11 +479,11 @@ Example: 200"
 		ACCESS			read-only
 		STATUS			mandatory
 		DESCRIPTION		"Indicates the actual condition of ATPC:
-Enabled – if config is on and no issues
+Enabled ? if config is on and no issues
 
-Auto-Disabled – if ATPC coordinated power condition, AAM triggered, or radio loss of link
+Auto-Disabled ? if ATPC coordinated power condition, AAM triggered, or radio loss of link
 
-Disabled-manual – if config set to off"
+Disabled-manual ? if config set to off"
 
 		::=  {  hzIduAtpc  2  }		
 
@@ -712,7 +712,7 @@ Examples: 'on 5.5' or 'off'"
 		ACCESS			read-only
 		STATUS			mandatory
 		DESCRIPTION		"Describes the functionality of the port2"
-		DEFVAL			{ on }
+		DEFVAL			{ "on" }
 		::=  {  hzIduEnetPort2  1  }  
 
 		
@@ -728,7 +728,7 @@ Examples: 'on 5.5' or 'off'"
 		ACCESS			read-only
 		STATUS			mandatory
 		DESCRIPTION		"Describes the functionality of the port1"
-		DEFVAL			{ on }
+		DEFVAL			{ "on" }
 		::=  {  hzIduEnetPort1  1  }  
 
 				

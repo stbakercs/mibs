@@ -280,7 +280,7 @@
 			SYNTAX INTEGER
 				{
 				normal(0),
-				operate(1),
+				operate(1)
 				}
 			MAX-ACCESS read-write
 			STATUS current
@@ -574,10 +574,9 @@
                 "ubiquoss software information MIB"
         ::= { ubiSoftwareMIBGroups 1 }
      
-     ubiSoftwareMIBNotificationGroup    OBJECT-GROUP
-      	OBJECTS {     
-			-- TODO 
-               }
+     ubiSoftwareMIBNotificationGroup    OBJECT-GROUP        OBJECTS {
+                oltSoftwareInfoTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss software information Notifications"

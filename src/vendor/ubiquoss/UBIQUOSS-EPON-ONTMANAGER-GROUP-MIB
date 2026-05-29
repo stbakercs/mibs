@@ -172,10 +172,7 @@
 			::= { ontSwitchPortEntry 7 }
 		
 		ontSwitchPortMacLimit OBJECT-TYPE
-			SYNTAX INTEGER
-			{
-				unlimit(64)
-			}(1..16)				
+			SYNTAX INTEGER (1..16)				
 			MAX-ACCESS read-write
 			STATUS current
 			DESCRIPTION
@@ -351,10 +348,7 @@
 			::= { stpGlobalEntry 1 }
 		
 		bridgeStpAgeingTime OBJECT-TYPE
-			SYNTAX INTEGER
-			{
-				unset(0)
-			}(10..286) 
+			SYNTAX INTEGER (10..286) 
 			MAX-ACCESS read-write
 			STATUS current
 			DESCRIPTION
@@ -394,10 +388,7 @@
 			::= { stpGlobalEntry 4 }
 
 		bridgeStpForwardTime OBJECT-TYPE
-			SYNTAX INTEGER
-			{
-				unset(0)
-			}(4..30) 
+			SYNTAX INTEGER (4..30) 
 			MAX-ACCESS read-write
 			STATUS current
 			DESCRIPTION
@@ -405,10 +396,7 @@
 			::= { stpGlobalEntry 5 }
 		
 		bridgeStpHelloTime OBJECT-TYPE
-			SYNTAX INTEGER
-			{
-				unset(0)
-			}(1..10) 
+			SYNTAX INTEGER (1..10) 
 			MAX-ACCESS read-write
 			STATUS current
 			DESCRIPTION
@@ -416,10 +404,7 @@
 			::= { stpGlobalEntry 6 }
 		
 		bridgeStpMaxAge OBJECT-TYPE
-			SYNTAX INTEGER
-			{
-				unset(0)
-			}(6..40) 
+			SYNTAX INTEGER (6..40) 
 			MAX-ACCESS read-write
 			STATUS current
 			DESCRIPTION
@@ -685,36 +670,22 @@
         DESCRIPTION
 		    "Description"
 		MODULE  -- this module
-        MANDATORY-GROUPS { ubiOntSwitchMIBGroup,
-                		   ubiOntSwitchMIBNotificationGroup	
-                         }
+        MANDATORY-GROUPS { ubiOntSwitchMIBGroup }
 	   GROUP  ubiOntSwitchMIBGroup
 	   DESCRIPTION  
-            "Description"
-       GROUP ubiOntSwitchMIBNotificationGroup   
-       DESCRIPTION
             "Description"
 
        ::= { ubiOntSwitchMIBCompliances 1 }
 	                            
 -- compliance statements
    	ubiOntSwitchMIBGroup  OBJECT-GROUP
-		OBJECTS {     
-			-- TODO 
+		OBJECTS {
+			ontSwitchPortName
                }
         STATUS  current
         DESCRIPTION
                 "ubiquoss ont switch information MIB"
         ::= { ubiOntSwitchMIBGroups 1 }
-     
-     ubiOntSwitchMIBNotificationGroup    OBJECT-GROUP
-      	OBJECTS {     
-			-- TODO 
-               }
-        STATUS  current
-        DESCRIPTION
-                "ubiquoss ont switch information Notifications"
-        ::= { ubiOntSwitchMIBGroups 2 }
 	
 	END
 

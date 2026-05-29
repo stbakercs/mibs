@@ -861,7 +861,7 @@ ubiStpMIB  MODULE-IDENTITY
 
 	ubiSldPortTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSldPortEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"Self-loop-detection Table"
@@ -869,7 +869,7 @@ ubiStpMIB  MODULE-IDENTITY
               
 	ubiSldPortEntry OBJECT-TYPE
 		SYNTAX  UbiSldPortEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"Self-loop-detection Table"
@@ -900,7 +900,7 @@ ubiStpMIB  MODULE-IDENTITY
 -- ***********************************************************
 	ubiSldVlanTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiSldVlanEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"Self-loop-detection Table"
@@ -908,7 +908,7 @@ ubiStpMIB  MODULE-IDENTITY
               
 	ubiSldVlanEntry OBJECT-TYPE
 		SYNTAX  UbiSldVlanEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"Self-loop-detection Table"

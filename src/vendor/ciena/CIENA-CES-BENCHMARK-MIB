@@ -224,7 +224,7 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
                    data."
      SYNTAX        Unsigned32
 
- CienaCesBenchmarkPcpBitmap ::= TEXTUAL-CONVENTION
+ CienaCesBenchmarkVlanPriBits ::= TEXTUAL-CONVENTION
      DISPLAY-HINT "x"
      STATUS       current
      DESCRIPTION  "Bitmap of the VLAN PCP (Priority Code ) value to test
@@ -237,14 +237,14 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
                    such profile is configured, the bandwidth will evenly
                    be distributed among all set PCPs."
      SYNTAX        BITS {
-                     pcp0(0),
-                     pcp1(1),
-                     pcp2(2),
-                     pcp3(3),
-                     pcp4(4),
-                     pcp5(5),
-                     pcp6(6),
-                     pcp7(7)
+                     pri0(0),
+                     pri1(1),
+                     pri2(2),
+                     pri3(3),
+                     pri4(4),
+                     pri5(5),
+                     pri6(6),
+                     pri7(7)
                    }
 
  cienaCesBenchmarkMIBObjects OBJECT IDENTIFIER ::= { cienaCesBenchmarkMIB 1 }
@@ -1748,10 +1748,10 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
      cienaCesBenchmarkProfileEntryPduType             INTEGER,
      cienaCesBenchmarkProfileEntryDstmac              MacAddress,
      cienaCesBenchmarkProfileEntrySVid                Integer32,
-     cienaCesBenchmarkProfileEntrySPcp                CienaCesBenchmarkPcpBitmap,
+     cienaCesBmStagVlanMask                CienaCesBenchmarkVlanPriBits,
      cienaCesBenchmarkProfileEntrySColor              CienaCesBenchmarkColorTest,
      cienaCesBenchmarkProfileEntryCVid                Integer32,
-     cienaCesBenchmarkProfileEntryCPcp                CienaCesBenchmarkPcpBitmap,
+     cienaCesBmCtagVlanMask                CienaCesBenchmarkVlanPriBits,
      cienaCesBenchmarkProfileEntryCColor              CienaCesBenchmarkColorTest,
      cienaCesBenchmarkProfileEntryTpid                Integer32,
      cienaCesBenchmarkProfileEntryDscp                Integer32, 
@@ -2009,8 +2009,8 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
                 "S-VLAN ID to used for generated packets when encapType is set to QinQ"
      ::= { cienaCesBenchmarkProfileEntry 21 }
 
- cienaCesBenchmarkProfileEntrySPcp      OBJECT-TYPE
-     SYNTAX             CienaCesBenchmarkPcpBitmap
+ cienaCesBmStagVlanMask      OBJECT-TYPE
+     SYNTAX             CienaCesBenchmarkVlanPriBits
      MAX-ACCESS         read-create
      STATUS             current
      DESCRIPTION
@@ -2019,7 +2019,6 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
                  PCP can be set in the mask. Otherwise, a test session
                  will be run for each PCP bit set. Used when the encapType
                  set to QinQ"
-     DEFVAL      { pcp0 }
      ::= { cienaCesBenchmarkProfileEntry 22 }
 
  cienaCesBenchmarkProfileEntrySColor    OBJECT-TYPE
@@ -2048,8 +2047,8 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
                  QinQ or dot1q."
      ::= { cienaCesBenchmarkProfileEntry 24 }
 
- cienaCesBenchmarkProfileEntryCPcp      OBJECT-TYPE
-     SYNTAX             CienaCesBenchmarkPcpBitmap
+ cienaCesBmCtagVlanMask      OBJECT-TYPE
+     SYNTAX             CienaCesBenchmarkVlanPriBits
      MAX-ACCESS         read-create
      STATUS             current
      DESCRIPTION
@@ -2060,7 +2059,6 @@ CienaCesBenchmarkFramelossTestState ::= TEXTUAL-CONVENTION
                  encapType is set to dot1q. In the QinQ type, the c-pcp 
                  of the test packet takes the same value as the s-pcp to
                  simplify software."
-     DEFVAL      { pcp0 }
      ::= { cienaCesBenchmarkProfileEntry 25 }
 
  cienaCesBenchmarkProfileEntryCColor    OBJECT-TYPE

@@ -370,7 +370,7 @@ ubiEntitySensorNotifications  		OBJECT IDENTIFIER	 	::= { ubiEntityMIBNotificati
         ubiModuleSerialNumber			  		DisplayString, 
         ubiModuleSlotNumber     				Integer32,
        	ubiModulePortNumber     				Integer32,
-       	ubiModuleAction            				INTEGER,
+       	ubiModuleAction            				INTEGER
        }
  
    	ubiModuleId OBJECT-TYPE
@@ -767,7 +767,7 @@ ubiEntitySensorNotifications  		OBJECT IDENTIFIER	 	::= { ubiEntityMIBNotificati
 			ubiTcVendorManufacturingDate		DisplayString,	
 			ubiTcWaveLength						Integer32,
 			ubiTcConnector			    		UbiTcConnectorType,
-			ubiTcLength							Integer32,   
+			ubiTcLength							Integer32   
 	}
   
  	ubiTcIdentifier OBJECT-TYPE
@@ -919,7 +919,7 @@ ubiEntitySensorNotifications  		OBJECT IDENTIFIER	 	::= { ubiEntityMIBNotificati
     			ubiEntSensorAlarmHighThreshold,      
        			ubiEntSensorWarningHighThreshold,
     			ubiEntSensorWarningLowThreshold, 
-    			ubiEntSensorAlarmLowThreshold, 
+    			ubiEntSensorAlarmLowThreshold 
     	}             
     	STATUS          current
     	DESCRIPTION

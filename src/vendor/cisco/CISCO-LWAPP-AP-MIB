@@ -49,8 +49,6 @@ IMPORTS
     CLApNtpStatus,
     CLDot11Band
         FROM CISCO-LWAPP-TC-MIB
-    cldRegulatoryDomain
-        FROM CISCO-LWAPP-DOT11-MIB
     cLWlanIndex
         FROM CISCO-LWAPP-WLAN-MIB
     Unsigned64
@@ -58,6 +56,8 @@ IMPORTS
     cLRFProfileHighDensityMaxRadioClients,
     cLRFProfileHDClientTrapThreshold
         FROM CISCO-LWAPP-RF-MIB
+    bsnStationAPIfSlotId
+        FROM AIRESPACE-WIRELESS-MIB
     ciscoMgmt
         FROM CISCO-SMI;
 
@@ -9947,20 +9947,12 @@ cLApRogueDot11RadioBand OBJECT-TYPE
 -- *  Notifications
 -- ********************************************************************
 
-ciscoLwappApIfRegulatoryDomainMismatchNotif NOTIFICATION-TYPE
-    OBJECTS         {
-                        cLApName,
-                        cLApDot11IfType,
-                        cLApDot11IfRegDomain,
-                        cldRegulatoryDomain
-                    }
-    STATUS          current
-    DESCRIPTION
-        "This notification  is generated if an AP radio's regulatory
-        domain doesn't match the country the controller is configured
-        for.  Due to the mismatch, the AP will fail to associate with
-        the controller."
-   ::= { ciscoLwappApMIBNotifs 1 }
+-- ciscoLwappApIfRegulatoryDomainMismatchNotif was relocated to
+-- CISCO-LWAPP-AP-NOTIF-MIB to break a circular IMPORTS dependency
+-- between CISCO-LWAPP-AP-MIB and CISCO-LWAPP-DOT11-MIB.  Its new
+-- OID is { ciscoLwappApMIB 100 0 1 }.  The OID arc
+-- { ciscoLwappApMIBNotifs 1 } is intentionally left vacant to avoid
+-- silently re-using a previously-assigned trap identifier.
 
 ciscoLwappApCrash NOTIFICATION-TYPE
     OBJECTS         { cLApName }
@@ -14524,7 +14516,6 @@ ciscoLwappApNotifObjsGroup OBJECT-GROUP
 
 ciscoLwappApNotifsGroup NOTIFICATION-GROUP
    NOTIFICATIONS    {
-                        ciscoLwappApIfRegulatoryDomainMismatchNotif,
                         ciscoLwappApUnsupported,
                         ciscoLwappApCrash,
                         ciscoLwappApAssociated
@@ -14535,7 +14526,15 @@ ciscoLwappApNotifsGroup NOTIFICATION-GROUP
         AP related notifications sent by the agent to a network
         management station.
         ciscoLwappApNotifsGroup object is superseded by 
-        ciscoLwappApNotifsGroupVer1."
+        ciscoLwappApNotifsGroupVer1.
+
+        Note: ciscoLwappApIfRegulatoryDomainMismatchNotif was
+        removed from this group when that notification was relocated
+        to CISCO-LWAPP-AP-NOTIF-MIB to break a circular IMPORTS
+        dependency.  Agents wishing to advertise support for that
+        trap should additionally claim the
+        ciscoLwappApRegDomainNotifsGroup defined in
+        CISCO-LWAPP-AP-NOTIF-MIB."
     ::= { ciscoLwappApMIBGroups 7 }
 
 ciscoLwappApGroupSup4 OBJECT-GROUP
@@ -14731,7 +14730,6 @@ ciscoLwappApGroupSup6 OBJECT-GROUP
 
 ciscoLwappApNotifsGroupVer1 NOTIFICATION-GROUP
    NOTIFICATIONS    {
-                        ciscoLwappApIfRegulatoryDomainMismatchNotif,
                         ciscoLwappApUnsupported,
                         ciscoLwappApAssociated
                     }
@@ -14739,7 +14737,15 @@ ciscoLwappApNotifsGroupVer1 NOTIFICATION-GROUP
     DESCRIPTION
         "This supplemental collection of objects represents the
         AP related notifications sent by the agent to a network
-        management station."
+        management station.
+
+        Note: ciscoLwappApIfRegulatoryDomainMismatchNotif was
+        removed from this group when that notification was relocated
+        to CISCO-LWAPP-AP-NOTIF-MIB to break a circular IMPORTS
+        dependency.  Agents wishing to advertise support for that
+        trap should additionally claim the
+        ciscoLwappApRegDomainNotifsGroup defined in
+        CISCO-LWAPP-AP-NOTIF-MIB."
     ::= { ciscoLwappApMIBGroups 16 }
 
 ciscoLwappApGroupSup7 OBJECT-GROUP

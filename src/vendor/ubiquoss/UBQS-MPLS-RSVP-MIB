@@ -304,8 +304,9 @@ ubiRsvpMIBGroups  	 	OBJECT IDENTIFIER		::= { ubiRsvpMIBConformance 2 }
 
 
 	ubiRsvpMIBGroup OBJECT-GROUP
-    	OBJECTS         {     
-    	}   
+    	OBJECTS {
+                ubiRsvpEnable
+        }   
     	STATUS          current
     	DESCRIPTION
         	"A collection of objects containing

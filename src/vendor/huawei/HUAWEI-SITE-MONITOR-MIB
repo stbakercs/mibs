@@ -5333,7 +5333,7 @@
 
 		
 		-- 1.3.6.1.4.1.2011.6.164.2.3.0.1
-		hwRectifiersInslotChange NOTIFICATION-TYPE
+		hwRectifiersInslotChangeV101 NOTIFICATION-TYPE
 			OBJECTS { hwDeviceTrapOrdinalNumber, hwSiteName, hwSiteAdminAddr, hwNetIdentifier, hwSiteDescription,  
 					hwRectEquipId, hwRectEquipName, hwRectOperStatus }
 			STATUS current
@@ -5344,7 +5344,7 @@
 
 		
 		-- 1.3.6.1.4.1.2011.6.164.2.3.0.2
-		hwBatterysInslotChange NOTIFICATION-TYPE
+		hwBatterysInslotChangeV101 NOTIFICATION-TYPE
 			OBJECTS { hwDeviceTrapOrdinalNumber, hwSiteName, hwSiteAdminAddr, hwNetIdentifier, hwSiteDescription,  
 					hwBattStringEquipId, hwBattStringEquipName, hwBattStringOperStatus }
 			STATUS current
@@ -5355,18 +5355,18 @@
 
 		
 		-- 1.3.6.1.4.1.2011.6.164.2.3.0.3
-		hwBattTestRecordsAdd NOTIFICATION-TYPE
+		hwBattTestRecordsAddV101 NOTIFICATION-TYPE
 			OBJECTS { hwDeviceTrapOrdinalNumber, hwSiteName, hwSiteDescription, hwNetIdentifier,  hwSiteAdminAddr }
 			STATUS current
 			DESCRIPTION 
-				"After a new discharge test is conducted on a battery group, the node reports an event. The bound information includes the site address, site name, site description, and NE identifier. The NMS needs to add the corresponding entry to the battery test table. The test records are sorted by time in descending order. The battery test table holds a maximum of 10 test records. If the number of test records exceeds 10, the earlier records starting from the last but one record are deleted at a time because the last record is saved permanently.
+				"After a new discharge test are conducted on a battery group, the node reports an event. The bound information includes the site address, site name, site description, and NE identifier. The NMS needs to add the corresponding entry to the battery test table. The test records are sorted by time in descending order. The battery test table holds a maximum of 10 test records. If the number of test records exceeds 10, the earlier records starting from the last but one record are deleted at a time because the last record is saved permanently.
 				This trap is the unique trigger condition that causes the NMS to add entries from hwBattsTestResultTable.
 				The battery test table allows you only to add entries."
 			::= { hwV101DevicesTrapsPrefix 3 }
 
 		
 		-- 1.3.6.1.4.1.2011.6.164.2.3.0.4
-		hwEnvTempSensInslotChange NOTIFICATION-TYPE
+		hwEnvTempSensInslotChangeV101 NOTIFICATION-TYPE
 			OBJECTS {  hwDeviceTrapOrdinalNumber, hwSiteName,hwSiteAdminAddr, hwNetIdentifier,hwSiteDescription,  
 					hwEnvTempEquipId, hwEnvTempEquipName, hwEnvTempSensorOperStatus }
 			STATUS current
@@ -5377,7 +5377,7 @@
 
 		
 		-- 1.3.6.1.4.1.2011.6.164.2.3.0.5
-		hwEnvHumiSensInslotChange NOTIFICATION-TYPE
+		hwEnvHumiSensInslotChangeV101 NOTIFICATION-TYPE
 			OBJECTS { hwDeviceTrapOrdinalNumber, hwSiteName, hwSiteAdminAddr, hwNetIdentifier,hwSiteDescription, 
 					hwEnvHumiEquipId, hwEnvHumiEquipName, hwEnvHumiSensorOperStatus   }
 			STATUS current
@@ -5387,7 +5387,7 @@
 			::= { hwV101DevicesTrapsPrefix 5 }
 			
 		-- 1.3.6.1.4.1.2011.6.164.2.3.0.6
-		hwPDEsInslotChange NOTIFICATION-TYPE
+		hwPDEsInslotChangeV101 NOTIFICATION-TYPE
 			OBJECTS { hwDeviceTrapOrdinalNumber,hwSiteName, hwSiteAdminAddr, hwNetIdentifier,hwSiteDescription, 
 				 hwPDEEquipId, hwPDEEquipName, hwPDEOperStatus  }
 			STATUS current

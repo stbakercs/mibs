@@ -790,7 +790,7 @@ portShutdownReason OBJECT-TYPE
                         lbd(6),
                         atcBstorm(7),
                         atcMstorm(8),
-                        udld(9),
+                        udld(9)
                     }
         MAX-ACCESS  read-only
         STATUS      current
@@ -8014,7 +8014,7 @@ diffServIpAceSourcePortBitmask OBJECT-TYPE
     ::= { diffServIpAceEntry 15 }
 
 diffServIpAceDestPortOp OBJECT-TYPE
-    SYNTAX      INTEGER{
+    SYNTAX      INTEGER {
                 noOperator(1),
                 equal(2),
                 range(3)
@@ -14196,7 +14196,6 @@ pethPseMainExtEntry OBJECT-TYPE
     STATUS      current
     DESCRIPTION
         "A set of objects that display and control the Main power of a PSE."
-    AUGMENTS    { pethMainPseEntry }
     ::= { pethPseMainExtTable 1 }
 
 PethPseMainExtEntry ::= SEQUENCE
@@ -14261,7 +14260,6 @@ pethPsePortExtEntry OBJECT-TYPE
     DESCRIPTION
         "A set of objects that display and control the power characteristics of
         a power Ethernet PSE port."
-    AUGMENTS    { pethPsePortEntry }
     ::= { pethPsePortExtTable 1 }
 
 PethPsePortExtEntry ::= SEQUENCE

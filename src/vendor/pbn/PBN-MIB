@@ -5786,7 +5786,7 @@
 		    DESCRIPTION       "Returns the operating status of chassis cooling fan B."
 		    ::= { lte153PowerSupply 6 }
 	
-		upTime                OBJECT-TYPE
+		upTimeAlt                OBJECT-TYPE
 		    SYNTAX            TimeTicks
 		    UNITS             "seconds"
 		    MAX-ACCESS        read-only

@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneDHCP
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212;	
+		FROM SNMPv2-SMI;	
 
           -- textual conventions
 
@@ -29,26 +29,6 @@ IMPORTS
 
 hillstoneDHCPServerMibObjects OBJECT IDENTIFIER ::= { hillstoneDHCP 1 }
 
-hillstoneDHCPPoolTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneDHCPPoolEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-		"A table containing the configuration informations of DHCP 
-		 server global pools, such as pool type, ip address, mask"
-	::= { hillstoneDHCPServerMibObjects 1 }
-
-HillstoneDHCPPoolEntry OBJECT-TYPE
-	SYNTAX HillstoneDHCPPoolEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "An entry containing the objects for configuring
-	    the network ip or host ip etc. to global pools for
-	    DHCP server"
-	INDEX { hillstoneDHCPPoolIndex }
-	::= { hillstoneDHCPPoolTable 1 }
-
 HillstoneDHCPPoolEntry ::=
 SEQUENCE { 
     hillstoneDHCPPoolIndex
@@ -60,6 +40,26 @@ SEQUENCE {
     hillstoneDHCPPoolNetworkMask
 	IpAddress
  }
+hillstoneDHCPPoolTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneDHCPPoolEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"A table containing the configuration informations of DHCP 
+		 server global pools, such as pool type, ip address, mask"
+	::= { hillstoneDHCPServerMibObjects 1 }
+
+hillstoneDHCPPoolEntry OBJECT-TYPE
+	SYNTAX HillstoneDHCPPoolEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "An entry containing the objects for configuring
+	    the network ip or host ip etc. to global pools for
+	    DHCP server"
+	INDEX { hillstoneDHCPPoolIndex }
+	::= { hillstoneDHCPPoolTable 1 }
+
  
 hillstoneDHCPPoolIndex OBJECT-TYPE
 	SYNTAX  INTEGER
@@ -67,7 +67,7 @@ hillstoneDHCPPoolIndex OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	     "The Index of DHCP pool"
-	::= { HillstoneDHCPPoolEntry 1 }
+	::= { hillstoneDHCPPoolEntry 1 }
 
 hillstoneDHCPPoolName OBJECT-TYPE
 	SYNTAX  DisplayString
@@ -75,7 +75,7 @@ hillstoneDHCPPoolName OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	     "The name of DHCP pool"
-	::= { HillstoneDHCPPoolEntry 2 }
+	::= { hillstoneDHCPPoolEntry 2 }
 
 hillstoneDHCPPoolType OBJECT-TYPE
 	SYNTAX INTEGER
@@ -96,7 +96,7 @@ hillstoneDHCPPoolType OBJECT-TYPE
 	    as invalid operation.
 	    The value means:
 	    network(1)- It is a pool with automatic allocation"
-	::= { HillstoneDHCPPoolEntry 3 }
+	::= { hillstoneDHCPPoolEntry 3 }
 
 hillstoneDHCPPoolNetworkMask OBJECT-TYPE
 	SYNTAX IpAddress
@@ -111,29 +111,9 @@ hillstoneDHCPPoolNetworkMask OBJECT-TYPE
 	    When a network ip of a DHCP server global pool was 
 	    deleted, the net mask would also be deleted
 	    automatically, and no further operation needed"
-	::= { HillstoneDHCPPoolEntry 4 }
+	::= { hillstoneDHCPPoolEntry 4 }
 
 -- pool address table
-
-hillstoneDHCPPoolAddrTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneDHCPPoolAddrEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "A table for configuring ip to DHCP server, which 
-	    don't allow to allocate to clients"
-	::= { hillstoneDHCPServerMibObjects 2 }
-
-HillstoneDHCPPoolAddrEntry OBJECT-TYPE
-	SYNTAX HillstoneDHCPPoolAddrEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "An entry for configuring ip to DHCP
-	    server"
-	INDEX { hillstoneDHCPPoolIPIndex,
-		hillstoneDHCPPoolIPStart }
-	::= { hillstoneDHCPPoolAddrTable 1 }
 
 HillstoneDHCPPoolAddrEntry ::=
 	SEQUENCE { 
@@ -144,6 +124,26 @@ HillstoneDHCPPoolAddrEntry ::=
 	    hillstoneDHCPPoolIPEnd
 		IpAddress
 	 }
+hillstoneDHCPPoolAddrTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneDHCPPoolAddrEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "A table for configuring ip to DHCP server, which 
+	    don't allow to allocate to clients"
+	::= { hillstoneDHCPServerMibObjects 2 }
+
+hillstoneDHCPPoolAddrEntry OBJECT-TYPE
+	SYNTAX HillstoneDHCPPoolAddrEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "An entry for configuring ip to DHCP
+	    server"
+	INDEX { hillstoneDHCPPoolIPIndex,
+		hillstoneDHCPPoolIPStart }
+	::= { hillstoneDHCPPoolAddrTable 1 }
+
 
 hillstoneDHCPPoolIPIndex OBJECT-TYPE
 	SYNTAX  INTEGER
@@ -151,7 +151,7 @@ hillstoneDHCPPoolIPIndex OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	     "The Index of DHCP pool, same with hillstoneDHCPPoolIndex"
-	::= { HillstoneDHCPPoolAddrEntry 1 }
+	::= { hillstoneDHCPPoolAddrEntry 1 }
 
 hillstoneDHCPPoolIPStart   OBJECT-TYPE
 	SYNTAX IpAddress
@@ -159,7 +159,7 @@ hillstoneDHCPPoolIPStart   OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	    "The start ip address of this ip pool."
-	::= { HillstoneDHCPPoolAddrEntry 2 }
+	::= { hillstoneDHCPPoolAddrEntry 2 }
 
 hillstoneDHCPPoolIPEnd   OBJECT-TYPE
 	SYNTAX IpAddress
@@ -167,10 +167,19 @@ hillstoneDHCPPoolIPEnd   OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	    "The end ip address of this ip pool."
-	::= { HillstoneDHCPPoolAddrEntry 3 }
+	::= { hillstoneDHCPPoolAddrEntry 3 }
 
 --  Part 3: For DHCP server, exclude ip
 -- 
+HillstoneDHCPFreeIPEntry ::=
+	SEQUENCE { 
+	    hillstoneDHCPFreeIPIndex
+		INTEGER,
+	    hillstoneDHCPFreeIPStart
+		IpAddress,
+	    hillstoneDHCPFreeIPEnd
+		IpAddress
+	 }
 hillstoneDHCPFreeIPTable OBJECT-TYPE
 	SYNTAX SEQUENCE OF HillstoneDHCPFreeIPEntry
 	MAX-ACCESS not-accessible
@@ -180,7 +189,7 @@ hillstoneDHCPFreeIPTable OBJECT-TYPE
 	    don't allow to allocate to clients"
 	::= { hillstoneDHCPServerMibObjects 3 }
 
-HillstoneDHCPFreeIPEntry OBJECT-TYPE
+hillstoneDHCPFreeIPEntry OBJECT-TYPE
 	SYNTAX HillstoneDHCPFreeIPEntry
 	MAX-ACCESS not-accessible
 	STATUS current
@@ -191,15 +200,6 @@ HillstoneDHCPFreeIPEntry OBJECT-TYPE
 	        hillstoneDHCPFreeIPStart }
 	::= { hillstoneDHCPFreeIPTable 1 }
 
-HillstoneDHCPFreeIPEntry ::=
-	SEQUENCE { 
-	    hillstoneDHCPFreeIPIndex
-		INTEGER,
-	    hillstoneDHCPFreeIPStart
-		IpAddress,
-	    hillstoneDHCPFreeIPEnd
-		IpAddress
-	 }
 
 hillstoneDHCPFreeIPIndex OBJECT-TYPE
 	SYNTAX  INTEGER
@@ -207,7 +207,7 @@ hillstoneDHCPFreeIPIndex OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	     "The Index of DHCP pool, same with hillstoneDHCPPoolIndex"
-	::= { HillstoneDHCPFreeIPEntry 1 }
+	::= { hillstoneDHCPFreeIPEntry 1 }
 
 
 hillstoneDHCPFreeIPStart OBJECT-TYPE
@@ -216,7 +216,7 @@ hillstoneDHCPFreeIPStart OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	    "Start ip address of free ip"
-	::= { HillstoneDHCPFreeIPEntry 2 }
+	::= { hillstoneDHCPFreeIPEntry 2 }
 
 hillstoneDHCPFreeIPEnd OBJECT-TYPE
 	SYNTAX IpAddress
@@ -224,6 +224,6 @@ hillstoneDHCPFreeIPEnd OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	    "End ip address of free ip"
-	::= { HillstoneDHCPFreeIPEntry 3 }
+	::= { hillstoneDHCPFreeIPEntry 3 }
 
 END

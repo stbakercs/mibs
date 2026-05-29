@@ -61,7 +61,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	
 	ubiPortTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiPortEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of port"
@@ -69,7 +69,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 
 	ubiPortEntry OBJECT-TYPE
 		SYNTAX  UbiPortEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of port"
@@ -92,7 +92,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 
 	ubiPortIndex OBJECT-TYPE
 		SYNTAX  INTEGER
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Port id "
@@ -100,7 +100,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 		
 	ubiPortType	 OBJECT-TYPE
 		SYNTAX  IANAifType 
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Port type"
@@ -112,7 +112,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 				up(1), 
 				down(2)		
 			}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"link Up/Down "
@@ -124,7 +124,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 				up(1),
 				down(2)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"administrator state"
@@ -136,7 +136,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 				unblock(1),
 				block(2)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"block state"
@@ -149,7 +149,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 				notequiped(2),
 				gbicequip(3)
 		}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"administrator state"
@@ -157,7 +157,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	 	         
 	ubiPortUpSpeedCurrent	 OBJECT-TYPE  
 		SYNTAX  Gauge32
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			""
@@ -165,7 +165,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	         
 	ubiPortDownSpeedCurrent	 OBJECT-TYPE  
 		SYNTAX  Gauge32
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			""
@@ -177,7 +177,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 				enable(1),
 				disable(2)
 		}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  mandatory
 		DESCRIPTION
 			""
@@ -189,7 +189,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 				reset(1),
 				loopback-test(2)
 		}
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  mandatory
 		DESCRIPTION
 			"The port control"
@@ -201,7 +201,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	
 	ubiPortTestResultTable OBJECT-TYPE
 		SYNTAX  SEQUENCE OF UbiPortTestResultEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of port"
@@ -209,7 +209,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 
 	ubiPortTestResultEntry OBJECT-TYPE
 		SYNTAX  UbiPortTestResultEntry
-		ACCESS  not-accessible
+		MAX-ACCESS  not-accessible
 		STATUS  current
 		DESCRIPTION
 			"information of port"
@@ -229,7 +229,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 
 	ubiPortTestResultTx OBJECT-TYPE
 		SYNTAX  Counter32
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Test tx count"
@@ -237,7 +237,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 		
 	ubiPortTestResultRx	 OBJECT-TYPE
 		SYNTAX  Counter32 
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Test rx count"
@@ -246,7 +246,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	ubiPortTestResultMinRTT	 OBJECT-TYPE
 		SYNTAX  Gauge32
 		UNITS   "micro seconds"
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Mininum Round Trip Time"
@@ -255,7 +255,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	ubiPortTestResultAvgRTT	 OBJECT-TYPE  
 		SYNTAX  Gauge32
 		UNITS   "micro seconds"
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"Avarage Round Trip Time"
@@ -264,7 +264,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 	ubiPortTestResultMaxRTT	 OBJECT-TYPE  
 		SYNTAX  Gauge32
 		UNITS   "micro seconds"
-		ACCESS  read-write
+		MAX-ACCESS  read-write
 		STATUS  current
 		DESCRIPTION
 			"Maximum Round Trip Time"
@@ -272,7 +272,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 		         
 	ubiPortTestResultTime	 OBJECT-TYPE  
 		SYNTAX  OCTET STRING
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Tested result time"
@@ -284,7 +284,7 @@ ubiInterfaceMIB  MODULE-IDENTITY
 					sucess(1),
 					fail(2)
 				}
-		ACCESS  read-only
+		MAX-ACCESS  read-only
 		STATUS  current
 		DESCRIPTION
 			"Test result status sucess or fail or notavailable"

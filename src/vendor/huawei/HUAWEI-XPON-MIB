@@ -5819,7 +5819,7 @@
                 hwEponDeviceOntSoftwareWorkMode         INTEGER,
                 hwEponDeviceOntExtendedModel		OCTET STRING,
                 hwEponDeviceOntOuiVersion		OCTET STRING,
-                hwEponDeviceOntExtendedFirmwareVersion  Opaque
+                hwEponDeviceOntExtendedFirmwareVersion  OCTET STRING
             }
 
         hwEponDeviceOntVendorId OBJECT-TYPE
@@ -5942,7 +5942,7 @@
             ::= { hwEponDeviceOntVersionInfoEntry 14}
             
         hwEponDeviceOntExtendedFirmwareVersion OBJECT-TYPE
-            SYNTAX      Opaque (SIZE (0..128))
+            SYNTAX      OCTET STRING (SIZE (0..128))
             MAX-ACCESS read-only
             STATUS current
             DESCRIPTION

@@ -403,7 +403,6 @@ hpnicfAcfpPolicyLifetime OBJECT-TYPE
         SNMP set requests to this object may be rejected or the value of
         the object after an accepted set operation may be less than the
         value that was contained in the SNMP set request."
-    DEFVAL{ hpnicfAcfpServerMaxLifetime }
     ::= { hpnicfAcfpPolicyEntry 7 }
 
 hpnicfAcfpPolicyTimeStart OBJECT-TYPE

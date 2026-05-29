@@ -58,7 +58,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 
  	ubiSysInfoTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE  OF  UbiSysInfoEntry
-		ACCESS	not-accessible
+		MAX-ACCESS	not-accessible
 		STATUS	mandatory
 		DESCRIPTION	
 			"information of configuration"
@@ -66,7 +66,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 
 	ubiSysInfoEntry	OBJECT-TYPE
 		SYNTAX		UbiSysInfoEntry
-		ACCESS	not-accessible
+		MAX-ACCESS	not-accessible
 		STATUS	mandatory
 		DESCRIPTION	
 			"information of configuration"
@@ -92,7 +92,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 		
 	ubiSysIndex	OBJECT-TYPE	
 		SYNTAX			Integer32   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"An index value that uniquely identifies this chassis"
@@ -100,7 +100,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 		
 	ubiSysDescr OBJECT-TYPE
         SYNTAX  DisplayString (SIZE (0..255))
-        ACCESS  read-only
+        MAX-ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 " "
@@ -108,7 +108,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 
 	ubiSysObjectID OBJECT-TYPE
         SYNTAX  OBJECT IDENTIFIER
-        ACCESS  read-only
+        MAX-ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 " "
@@ -116,7 +116,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 
 	ubiSysUpTime OBJECT-TYPE
         SYNTAX  TimeTicks
-        ACCESS  read-only
+        MAX-ACCESS  read-only
         STATUS  mandatory
         DESCRIPTION
                 " "
@@ -124,7 +124,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 
 	ubiSysName OBJECT-TYPE
         SYNTAX  DisplayString (SIZE (0..255))
-        ACCESS  read-write
+        MAX-ACCESS  read-write
         STATUS  mandatory
         DESCRIPTION
                 " "
@@ -132,7 +132,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 
 	ubiSysSerialNumber	OBJECT-TYPE	
 		SYNTAX			DisplayString   
-		ACCESS			read-only
+		MAX-ACCESS			read-only
 		STATUS			current
 		DESCRIPTION		
 				"SerialNumber"
@@ -140,7 +140,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
     
     ubiSysMacAddress	OBJECT-TYPE	
 		SYNTAX			PhysAddress   
-		ACCESS			read-only
+		MAX-ACCESS			read-only
 		STATUS			current
 		DESCRIPTION		
 				"system mac address"
@@ -148,7 +148,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 		
 	ubiSysHwVersion	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"hardware version"
@@ -156,7 +156,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 		
 	ubiSysSwVersion	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"software version"
@@ -164,7 +164,7 @@ ubiSysInfoMIBObjects  OBJECT IDENTIFIER ::= { ubiSysInfoMIB 1 }
 	
 	ubiSysFwVersion	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION		
 				"firmware version"

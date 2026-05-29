@@ -34,8 +34,7 @@
 
         REVISION        "0507040001Z"  -- July 04,2005
         DESCRIPTION     "Initial MIB creation."
-
-        ::= { gbnL3 8 }
+       ::= { gbnL3 8 }
 
 
    gbnL3PimGroup               OBJECT IDENTIFIER ::= { gbnL3PimMib 1 }   
@@ -47,8 +46,8 @@
         STATUS   current
         DESCRIPTION
            "PIM common trace option, including hello packet debug 
-            switch and event debug switch and¢ttimer debug switch"
-           --PIM-DMºÍPIM-SMÍ¨ÓÃµ÷ÊÔ´òÓ¡Ñ¡Ïî¿ª¹Ø
+            switch and event debug switch andï¿½ttimer debug switch"
+           --PIM-DMï¿½ï¿½PIM-SMÍ¨ï¿½Ãµï¿½ï¿½Ô´ï¿½Ó¡Ñ¡ï¿½î¿ªï¿½ï¿½
       ::= { gbnL3PimGroup 1 }     
       
     pimDmTraceOption OBJECT-TYPE
@@ -57,7 +56,7 @@
         STATUS   current
         DESCRIPTION
            "PIM dense mode trace option"
-           --PIM-DMµ÷ÊÔ´òÓ¡Ñ¡Ïî¿ª¹Ø
+           --PIM-DMï¿½ï¿½ï¿½Ô´ï¿½Ó¡Ñ¡ï¿½î¿ªï¿½ï¿½
       ::= { gbnL3PimGroup 2 }       
       
    pimSmTraceOption OBJECT-TYPE
@@ -66,11 +65,11 @@
         STATUS   current
         DESCRIPTION
            "PIM sparse mode trace option"
-           --PIM-SMµ÷ÊÔ´òÓ¡Ñ¡Ïî¿ª¹Ø
+           --PIM-SMï¿½ï¿½ï¿½Ô´ï¿½Ó¡Ñ¡ï¿½î¿ªï¿½ï¿½
       ::= { gbnL3PimGroup 3 }           
            
     pimSourcePolicy OBJECT-TYPE
-       SYNTAX   Integer32(0..99)
+       SYNTAX INTEGER (0..99)
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
@@ -83,16 +82,16 @@
         STATUS   current
         DESCRIPTION
            "static RP for local router"
-           --¾²Ì¬µÄRPµØÖ·£¬Èç¹ûÕÒ²»µ½Ó³ÉäµÄRP£¬ÔòÊ¹ÓÃÄ¬ÈÏRP
+           --ï¿½ï¿½Ì¬ï¿½ï¿½RPï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½RPï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½RP
       ::= { gbnL3PimGroup 5 }
 
     pimSptThreshold OBJECT-TYPE
-       SYNTAX   Unsigned32 { immediately(0), infinity(4294967295)}
+       SYNTAX   INTEGER { immediately(0), infinity(4294967295) }
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
            "threshold for join into spt"
-           --ÇÐ»»¼ÓÈëµ½sptµÄ·§Öµ¡£Ä¬ÈÏÎªinfinity£¬±íÊ¾ÓÃ²»ÇÐ»»µ½spt
+           --ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ëµ½sptï¿½Ä·ï¿½Öµï¿½ï¿½Ä¬ï¿½ï¿½Îªinfinityï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ã²ï¿½ï¿½Ð»ï¿½ï¿½ï¿½spt
       ::= { gbnL3PimGroup 6 }  
                       
     pimStaticEntryCount OBJECT-TYPE
@@ -102,7 +101,7 @@
         DESCRIPTION
             "The number of static entries in the ipMRouteTable.  This can be used
             to monitor the multicast routing table size."
-           --¾²Ì¬×é²¥×ª·¢±íÏîÊý
+           --ï¿½ï¿½Ì¬ï¿½é²¥×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       ::= { gbnL3PimGroup 7 }
     
 --  PIM interface extra information
@@ -140,26 +139,26 @@
         STATUS   current
         DESCRIPTION
            "PIM interface index"   
-           --PIM½Ó¿ÚË÷Òý
+           --PIMï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½
        ::= { pimInterfaceExtraEntry 1 }
 
     pimInterfaceNeighborLimit OBJECT-TYPE
-        SYNTAX   Integer32(1..128)
+        SYNTAX INTEGER (1..128)
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
            "The max number of neighbors on this interface"    
-           --Ò»¸ö½Ó¿ÚÉÏ×î¶à¿ÉÒÔÑ§Ï°µ½µÄÁÚ¾ÓÊý
+           --Ò»ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½
        ::= { pimInterfaceExtraEntry 2 }
 
     pimInterfaceNeighborPolicy OBJECT-TYPE
-        SYNTAX   Integer32(1..99)
+        SYNTAX INTEGER (1..99)
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
            "The neighbor filter, only neighbors which match the policy 
             can be thought valid."  
-            --ÁÚ¾Ó·ÃÎÊ¿ØÖÆÁÐ±íºÅ£¬±ê×¼·ÃÎÊ¿ØÖÆÁÐ±í1~99
+            --ï¿½Ú¾Ó·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Å£ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½1~99
        ::= { pimInterfaceExtraEntry 3 }
        
     pimInterfaceBsrBorder OBJECT-TYPE
@@ -168,17 +167,17 @@
         STATUS   current
         DESCRIPTION
            "Whether the interface is the bsr border."  
-            --¸Ã½Ó¿ÚÊÇ·ñbsr border
-       DEFVAL { false }
+            --ï¿½Ã½Ó¿ï¿½ï¿½Ç·ï¿½bsr border
+       
        ::= { pimInterfaceExtraEntry 4 }
        
     pimInterfaceNeighborCount OBJECT-TYPE
-        SYNTAX   Integer32(1..128)
+        SYNTAX INTEGER (1..128)
         MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
            "The current number of neighbors on this interface"    
-           --µ±Ç°½Ó¿ÚÉÏÒÑÑ§Ï°µ½µÄÁÚ¾ÓÊý
+           --ï¿½ï¿½Ç°ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½
        ::= { pimInterfaceExtraEntry 5 }       
        
 -- The BSR Candidate-RP extra Table
@@ -218,7 +217,7 @@
        STATUS     current
        DESCRIPTION
                "The Inet address type of the Candidate-RP."
-               --C-RPµÄµØÖ·ÀàÐÍ£¬IPv4»òÕßIPv6
+               --C-RPï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½Í£ï¿½IPv4ï¿½ï¿½ï¿½ï¿½IPv6
        ::= { pimBsrCRPExtraEntry 1 }
 
    pimBsrCRPAddress OBJECT-TYPE
@@ -229,7 +228,7 @@
                "The (unicast) address that will be advertised as a
                Candidate-RP.  The InetAddressType is given by the
                pimBsrCandidateRPAddressType object."
-               --C-RPµÄµØÖ·£¬´ËµØÖ·Îªµ¥²¥µØÖ·
+               --C-RPï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½Ëµï¿½Ö·Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
        ::= { pimBsrCRPExtraEntry 2 }
 
    pimBsrCRPGroupAddress OBJECT-TYPE
@@ -243,7 +242,7 @@
                prefix for which the local router will advertise itself
                as a Candidate-RP. The InetAddressType is given by the
                pimBsrCandidateRPAddressType object."
-               --¶ÔÓ¦±¾ÌõÄ¿µÄC-RPËù¹ÜÀíµÄ×éµØÖ·
+               --ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½C-RPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
        ::= { pimBsrCRPExtraEntry 3 }
 
    pimBsrCRPGroupPrefixLength OBJECT-TYPE
@@ -257,16 +256,16 @@
                for which the local router will advertise itself as a
                Candidate-RP.  The InetAddressType is given by the
                pimBsrCandidateRPAddressType object."
-               --¶à²¥×éÇ°×º³¤¶È
+               --ï¿½à²¥ï¿½ï¿½Ç°×ºï¿½ï¿½ï¿½ï¿½
        ::= { pimBsrCRPExtraEntry 4 } 
        
    pimBsrCRPGroupACL OBJECT-TYPE
-       SYNTAX     Integer32(1..99)
+       SYNTAX INTEGER (1..99)
        MAX-ACCESS read-write
        STATUS     current
        DESCRIPTION
                "ACL of Group"
-               --¶à²¥×é·ÃÎÊ¿ØÖÆÁÐ±í£¬±ê×¼·ÃÎÊ¿ØÖÆÁÐ±í1~99
+               --ï¿½à²¥ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½1~99
        ::= { pimBsrCRPExtraEntry 5 }      
        
 --  PIM-SSM information
@@ -295,31 +294,31 @@
 	              }
 
     pimSSMGrpRangeGrp OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
            "Group Address of the SSM Group Range Entry"   
-           --PIM-SSM×éµØÖ··¶Î§±íÏîµÄ×éIPµØÖ·
+           --PIM-SSMï¿½ï¿½ï¿½Ö·ï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·
 	::= { pimSSMGrpRangeEntry 1 }
 
     pimSSMGrpRangeGrpPrefixLen OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
            "Group Address Prefix Length of the SSM Group Range Entry"   
-           --PIM-SSM×éµØÖ··¶Î§±íÏîµÄ×éIPµØÖ·Ç°×º³¤¶È
+           --PIM-SSMï¿½ï¿½ï¿½Ö·ï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·Ç°×ºï¿½ï¿½ï¿½ï¿½
 	::= { pimSSMGrpRangeEntry 2 }
 
     pimSSMGrpRangeACL OBJECT-TYPE
-        SYNTAX     Integer32(1..100)
+        SYNTAX INTEGER (1..100)
         MAX-ACCESS not-accessible
         STATUS     current
         DESCRIPTION
                "ACL of SSM"
-		--PIM-SSMµÄ×éµØÖ··¶Î§µÄ·ÃÎÊ¿ØÖÆÁÐ±íºÅ¡£±ê×¼·ÃÎÊ¿ØÖÆÁÐ±í1~99£¬
-		--100±íÊ¾Ê¹ÓÃ±ê×¼µÄSSM×éµØÖ··¶Î§232.0.0.0/8
+		--PIM-SSMï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Î§ï¿½Ä·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Å¡ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½1~99ï¿½ï¿½
+		--100ï¿½ï¿½Ê¾Ê¹ï¿½Ã±ï¿½×¼ï¿½ï¿½SSMï¿½ï¿½ï¿½Ö·ï¿½ï¿½Î§232.0.0.0/8
 	::= { pimSSMGrpRangeEntry 3}
 
     pimSSMGrpRangeStatus  OBJECT-TYPE
@@ -328,7 +327,7 @@
 	STATUS current
 	DESCRIPTION
 			"The status of this entry."
-			--±íÏî×´Ì¬
+			--ï¿½ï¿½ï¿½ï¿½×´Ì¬
 	::= { pimSSMGrpRangeEntry 4 }
   
 

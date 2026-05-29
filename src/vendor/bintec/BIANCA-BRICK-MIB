@@ -1237,7 +1237,7 @@ BIANCA-BRICK-MIB DEFINITIONS ::= BEGIN
 		"The IP address of the alternate WINS server."
 	::= { admin 41 }
 
-	admin-2 OBJECT IDENTIFIER
+	admin2 OBJECT IDENTIFIER
 	    ::= { bibo 22 }
 
 -- Card Table
@@ -1887,7 +1887,7 @@ BIANCA-BRICK-MIB DEFINITIONS ::= BEGIN
  
 
 	extadmin	OBJECT IDENTIFIER
-	    ::= { admin-2 1 }
+	    ::= { admin2 1 }
 
 	biboExtAdmMonAddress OBJECT-TYPE
 	    SYNTAX  IpAddress

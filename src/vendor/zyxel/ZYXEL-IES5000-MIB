@@ -9665,7 +9665,7 @@ alarmTarget OBJECT-TYPE
         ::= { vdslLineConfEntry 75 }
         
         vdslLineConfSosMultiStepDs OBJECT-TYPE
-        SYNTAX 	BITS
+        SYNTAX 	OCTET STRING
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -9680,7 +9680,7 @@ alarmTarget OBJECT-TYPE
         ::= { vdslLineConfEntry 76 }
         
         vdslLineConfSosMultiStepUs OBJECT-TYPE
-        SYNTAX 	BITS
+        SYNTAX 	OCTET STRING
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -15392,7 +15392,7 @@ alarmTarget OBJECT-TYPE
 	    ::= { vdsl2LineConfProfileExtendedEntry 14 }
 	
 	    vdsl2LineProfSosMultiStepDs OBJECT-TYPE
-	    SYNTAX BITS 
+	    SYNTAX OCTET STRING
 	    MAX-ACCESS  read-write
 	    STATUS  current
 	    DESCRIPTION
@@ -15407,7 +15407,7 @@ alarmTarget OBJECT-TYPE
 	    ::= { vdsl2LineConfProfileExtendedEntry 15 }
 	
 	    vdsl2LineProfSosMultiStepUs OBJECT-TYPE
-	    SYNTAX BITS 
+	    SYNTAX OCTET STRING
 	    MAX-ACCESS  read-write
 	    STATUS  current
 	    DESCRIPTION
@@ -15518,7 +15518,7 @@ alarmTarget OBJECT-TYPE
 	    ::= { vdsl2LineConfProfileExtendedEntry 25 }
 
 	    vdsl2LineProfTransmissionType OBJECT-TYPE
-        SYNTAX BITS
+        SYNTAX OCTET STRING
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -19314,6 +19314,12 @@ alarmTarget OBJECT-TYPE
 
 -- Access Control Table
 	
+        AccessCtrlEntry ::= SEQUENCE {
+            accessCtrlService    INTEGER,
+            accessCtrlEnable     INTEGER,
+            accessCtrlPort       INTEGER
+        }
+
         accessCtrlTable OBJECT-TYPE
         SYNTAX SEQUENCE OF AccessCtrlEntry
         MAX-ACCESS not-accessible
@@ -19331,18 +19337,11 @@ alarmTarget OBJECT-TYPE
         INDEX { accessCtrlService }
         ::= { accessCtrlTable 1 }
 
-        AccessCtrlEntry ::=
-        	SEQUENCE {
-        		accessCtrlService	INTEGER,
-			accessCtrlEnable	INTEGER,
-			accessCtrlPort		INTEGER
-           	}
-
         accessCtrlService OBJECT-TYPE
         SYNTAX  INTEGER {
 			telnet(1),
 			ftp(2),
-			web(3),
+			webService(3),
 			icmp(4),
 			ssh(5),
 			snmp(6),

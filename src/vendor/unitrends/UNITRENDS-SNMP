@@ -543,13 +543,13 @@ eventlogProbeInstances                               OBJECT-TYPE
     ::= { eventlogGroup 1 }
 
 eventlogProbeTable                                       OBJECT-TYPE
-    SYNTAX      SEQUENCE OF EventLogProbeTableEntry
+    SYNTAX      SEQUENCE OF EventLogTableEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION "This object defines the Voltage Probe Table."
     ::= { eventlogGroup 2 }
 
-eventlogProbeTableEntry                              OBJECT-TYPE
+eventlogProbeEntry                              OBJECT-TYPE
     SYNTAX      EventLogTableEntry
     MAX-ACCESS  not-accessible
     STATUS      current
@@ -566,7 +566,7 @@ eventlogEntryDescription                       OBJECT-TYPE
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION "This object contains the IPMI System Event Log entry description."
-    ::= { eventlogProbeTableEntry 2 }
+    ::= { eventlogProbeEntry 2 }
 
 --*****************************************************************************
 --  BP Backup Info

@@ -328,8 +328,9 @@ ubiOspfMIBGroups  	 	OBJECT IDENTIFIER		::= { ubiOspfMIBConformance 2 }
 
 
 	ubiOspfMIBGroup OBJECT-GROUP
-    	OBJECTS         {     
-    	}   
+    	OBJECTS {
+                ubiOspfInstanceTable
+        }   
     	STATUS          current
     	DESCRIPTION
         	"A collection of objects containing

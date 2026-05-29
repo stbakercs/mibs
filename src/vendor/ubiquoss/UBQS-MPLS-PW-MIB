@@ -651,8 +651,9 @@ ubiPwMIBGroups  	 	OBJECT IDENTIFIER		::= { ubiPwMIBConformance 2 }
 
 
 	ubiPwMIBGroup OBJECT-GROUP
-    	OBJECTS         {     
-    	}   
+    	OBJECTS {
+                ubiPwPlatformNodeType
+        }   
     	STATUS          current
     	DESCRIPTION
         	"A collection of objects containing

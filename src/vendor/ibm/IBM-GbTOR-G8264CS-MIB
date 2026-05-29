@@ -60774,7 +60774,7 @@ ibmnoscfa                  OBJECT IDENTIFIER ::= { ibmnos-BladeSwitch 27 }
 
 
 
-      if OBJECT IDENTIFIER ::= { ibmnoscfa 1 }
+      ibmIfBranch OBJECT IDENTIFIER ::= { ibmnoscfa 1 }
 
 
 
@@ -60793,7 +60793,7 @@ ibmnoscfa                  OBJECT IDENTIFIER ::= { ibmnos-BladeSwitch 27 }
             proprietary extension to the standard ifTable and 
             ifXTable. The index to this table has the semantics of
             the MIB-2 ifIndex."
-         ::= { if 4 }
+         ::= { ibmIfBranch 4 }
 
       ifMainEntry          OBJECT-TYPE
          SYNTAX            IfMainEntry

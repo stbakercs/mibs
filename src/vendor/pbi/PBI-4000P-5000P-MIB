@@ -34,7 +34,7 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 	tunerType	OBJECT IDENTIFIER
 		::=  {  p4000-p5000  2  }  
 		  
-	tuner-sInput	OBJECT IDENTIFIER
+	tunerSInput	OBJECT IDENTIFIER
 		::=  {  p4000-p5000  3  }  
 		
 	tuner-cInput	OBJECT IDENTIFIER
@@ -243,47 +243,47 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"tuner channel"
 		  ::=  {  tunerType  2  }
 		  
-	lnbFrequency	OBJECT-TYPE	
+	lnbFrequencyTuner	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"LNB frequency"
-		  ::=  {  tuner-sInput  1  }
+		  ::=  {  tunerSInput  1  }
 		
-	satFrequency	OBJECT-TYPE	
+	satFrequencyTuner	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner frequency or centre_frequency for the transmission expressed in MHz, its value range: from 950MHz to 2150 MHz"
-		  ::=  {  tuner-sInput  2  }	
+		  ::=  {  tunerSInput  2  }	
 
-	symbolRate	OBJECT-TYPE	
+	symbolRateTuner	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner symbol rate in symbols per second,its value range: from 0kb/s to 45000kb/s"
-		  ::=  {  tuner-sInput  3  }
+		  ::=  {  tunerSInput  3  }
       
-  lnbVoltage	OBJECT-TYPE	
+  lnbVoltageTuner	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner power, Option: 0v,13v,18v"
-		  ::=  {  tuner-sInput  4  }
+		  ::=  {  tunerSInput  4  }
 
 	lnb22KHz	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner 22 KHz, option: off or on"
-		  ::=  {  tuner-sInput  5  }
+		  ::=  {  tunerSInput  5  }
 		  
 	diseqc	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner diseqc, option: 0:DisEqc Offˇ˘1:PortAˇ˘2:PortBˇ˘3:PortCˇ˘4:PortD"
-		  ::=  {  tuner-sInput  6  }
+		  ::=  {  tunerSInput  6  }
                  
   constellation	OBJECT-TYPE	
 		SYNTAX			INTEGER
@@ -952,7 +952,7 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"External board Input mac"
 		  ::=  {  ethernetInput  4  }
 		
-	multicastIPAddress	OBJECT-TYPE
+	multicastIPAddress2	OBJECT-TYPE
 		SYNTAX			IpAddress
 		MAX-ACCESS		read-write
 		STATUS			current
@@ -966,7 +966,7 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"Multicast port:0~65535"
 		  ::=  {  ethernetInput  6  }
 		
-	protocol     OBJECT-TYPE	
+	protocol2    OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
@@ -987,35 +987,35 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"input TS BitRate,from 0M~99M"
 	 	  ::=  {  ethernetInput  9  }
 		
-	lnbFrequency     OBJECT-TYPE	
+	lnbFrequencyS2     OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"LNB frequency"
 		  ::=  {  s2Input  1  }
 
-	satFrequency	OBJECT-TYPE	
+	satFrequencyS2	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner frequency or centre_frequency for the transmission expressed in MHz, its value range: from 950MHz to 2150 MHz"
 		  ::=  {  s2Input  2  }	
 
-	symbolRate	OBJECT-TYPE	
+	symbolRateS2	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner symbol rate in symbols per second,its value range: from 0kb/s to 45000kb/s"
 		  ::=  {  s2Input  3  }
       
-  lnbVoltage	OBJECT-TYPE	
+  lnbVoltageS2	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
 		DESCRIPTION		"Tuner power, Option: 0v,13v,18v"
 		  ::=  {  s2Input  4  }
 
-	lnb22KHz	OBJECT-TYPE	
+	lnb22KHz2	OBJECT-TYPE	
 		SYNTAX			INTEGER
 		MAX-ACCESS		read-write
 		STATUS			current
@@ -1091,7 +1091,7 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"set filter function control,off:0;on:1"
 		  ::=  {  filterSetup  3  }
 		  
-	outBitRate OBJECT-TYPE
+	outBitRate2 OBJECT-TYPE
 		SYNTAX			  INTEGER
 		MAX-ACCESS		read-write
 		STATUS			  current
@@ -1154,7 +1154,7 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"set mux function control,off:0;on:1"
 		::=  {  multiplexSetup  8  }
 		
-	outBitRate	OBJECT-TYPE	
+	outBitRate3	OBJECT-TYPE	
 		SYNTAX			INTEGER 
 		MAX-ACCESS		read-write
 		STATUS			current
@@ -1252,7 +1252,7 @@ PBI-4000P-5000P-MIB	DEFINITIONS ::= BEGIN
 		DESCRIPTION		"RF attenuation,from 0db~18db "
 		  ::=  {  cmOutput  8  }
 		  
-	source OBJECT-TYPE
+	source2 OBJECT-TYPE
 		SYNTAX			  INTEGER
 		MAX-ACCESS		read-write
 		STATUS			  current

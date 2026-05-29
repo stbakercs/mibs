@@ -768,7 +768,7 @@ rupsAlarmOnBypass OBJECT IDENTIFIER ::= { rupsWellKnownAlarms  9 }
 
 rupsAlarmBypassBad OBJECT IDENTIFIER ::= { rupsWellKnownAlarms  10 }
 
-rupsAlarmShutdownImminent OBJECT IDENTIFIER ::= { rupsWellKnownAlarms  11 }
+rupsAlarmShutdownImminent2 OBJECT IDENTIFIER ::= { rupsWellKnownAlarms  11 }
 
    --
    -- The Test Group

@@ -168,18 +168,11 @@ alarmStatus			OBJECT-TYPE
 	::= { alarmEntry 3 }
 
 busTable			OBJECT-TYPE
-	SYNTAX SEQUENCE OF OutputEntry
+	SYNTAX SEQUENCE OF BusEntry
 	ACCESS			not-accessible
 	STATUS			mandatory
-	DESCRIPTION		"Output Table"
+	DESCRIPTION		"Bus Table"
 	::= { distPanel 10 }
-
-busEntry			OBJECT-TYPE
-	SYNTAX			BusEntry
-	ACCESS			not-accessible
-	STATUS			mandatory
-	INDEX { busNumber }
-	::= { busTable 1 }
 
 BusEntry ::=
 	SEQUENCE {
@@ -188,6 +181,13 @@ BusEntry ::=
 		busVoltage		DisplayString,
 		busCurrent		DisplayString
 	}
+
+busEntry			OBJECT-TYPE
+	SYNTAX			BusEntry
+	ACCESS			not-accessible
+	STATUS			mandatory
+	INDEX { busNumber }
+	::= { busTable 1 }
 
 busNumber			OBJECT-TYPE
 	SYNTAX			INTEGER (0..1)

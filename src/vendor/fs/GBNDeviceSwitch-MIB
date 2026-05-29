@@ -34,7 +34,7 @@
 MirrorMacType ::= TEXTUAL-CONVENTION
     STATUS      current
     DESCRIPTION
-       "null¡¢destination¡¢source"
+       "nullï¿½ï¿½destinationï¿½ï¿½source"
     SYNTAX      INTEGER { null(0), destination (1), source(2) }  
     
 ------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS      current
         DESCRIPTION
             "The MAC address which will be compared with the ingress frame, Only the matched frame will be mirrored"
-            --ÓÃÓÚÆ¥Åäingress±¨ÎÄµÄMACµØÖ·
+            --ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ingressï¿½ï¿½ï¿½Äµï¿½MACï¿½ï¿½Ö·
         ::= { gbnDeviceSwitchMirror 4 }
 
     egressMirrorMac OBJECT-TYPE
@@ -103,7 +103,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS      current
         DESCRIPTION
             "The MAC address which will be compared with the egress frame, Only the matched frame will be mirrored"
-            --ÓÃÓÚÆ¥Åäegress±¨ÎÄµÄMACµØÖ·
+            --ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½egressï¿½ï¿½ï¿½Äµï¿½MACï¿½ï¿½Ö·
         ::= { gbnDeviceSwitchMirror 5 }
 
     ingressMirrorMacType OBJECT-TYPE
@@ -112,7 +112,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS      current
         DESCRIPTION
             "The destination or source MAC address which will be compared with the ingress frame"
-            --Ö¸¶¨ÓÃÓÚÆ¥Åäingress±¨ÎÄµÄÊÇÄ¿µÄ»¹ÊÇÔ´MACµØÖ·
+            --Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ingressï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½Ä¿ï¿½Ä»ï¿½ï¿½ï¿½Ô´MACï¿½ï¿½Ö·
         ::= { gbnDeviceSwitchMirror 6 }    
 
     egressMirrorMacType OBJECT-TYPE
@@ -121,7 +121,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS      current
         DESCRIPTION
             "The destination or source MAC address which will be compared with the egress frame"
-            --Ö¸¶¨ÓÃÓÚÆ¥Åäegress±¨ÎÄµÄÊÇÄ¿µÄ»¹ÊÇÔ´MACµØÖ·
+            --Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½egressï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½Ä¿ï¿½Ä»ï¿½ï¿½ï¿½Ô´MACï¿½ï¿½Ö·
         ::= { gbnDeviceSwitchMirror 7 }     
 
     ingressMirrorDivider OBJECT-TYPE
@@ -130,7 +130,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS      current
         DESCRIPTION
             "the mirror sampling divider"
-            --ingress±¨ÎÄµÄ²ÉÑùÖµ
+            --ingressï¿½ï¿½ï¿½ÄµÄ²ï¿½ï¿½ï¿½Öµ
         ::= { gbnDeviceSwitchMirror 8 }        
 
     egressMirrorDivider OBJECT-TYPE
@@ -139,7 +139,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS      current
         DESCRIPTION
             "the mirror sampling divider"
-            --egress±¨ÎÄµÄ²ÉÑùÖµ
+            --egressï¿½ï¿½ï¿½ÄµÄ²ï¿½ï¿½ï¿½Öµ
         ::= { gbnDeviceSwitchMirror 9 }
                   
  
@@ -194,9 +194,9 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
-            "¶Ë¿ÚÀàÐÍ:1Îª²»´æÔÚ£»2Îª10/100Mµç¿Ú£»3Îª100Mµ¥Ä£¹â¿Ú£»
-            4Îª100M¶àÄ£¹â¿Ú£»5Îª1000M¹â¿Ú£»6Îª1000M¹â¿Ú£»
-            7Îª1000Mµç¿Ú; 8ÎªCPU½Ó¿Ú;9Îª10000M¹â¿Ú"
+            "ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½:1Îªï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½2Îª10/100Mï¿½ï¿½Ú£ï¿½3Îª100Mï¿½ï¿½Ä£ï¿½ï¿½Ú£ï¿½
+            4Îª100Mï¿½ï¿½Ä£ï¿½ï¿½Ú£ï¿½5Îª1000Mï¿½ï¿½Ú£ï¿½6Îª1000Mï¿½ï¿½Ú£ï¿½
+            7Îª1000Mï¿½ï¿½ï¿½; 8ÎªCPUï¿½Ó¿ï¿½;9Îª10000Mï¿½ï¿½ï¿½"
         ::= { portTypeEntry 2 }
 
 ------------------------------------------------------------------------------
@@ -311,14 +311,14 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         SYNTAX      SEQUENCE OF L3Entry
         MAX-ACCESS  not-accessible
         STATUS      current
-        DESCRIPTION "´Ë±íÎª½»»»Ð¾Æ¬µÄL3±íÏîÄÚÈÝ¡£"
+        DESCRIPTION "ï¿½Ë±ï¿½Îªï¿½ï¿½ï¿½ï¿½Ð¾Æ¬ï¿½ï¿½L3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½"
         ::= { gbnDeviceSwitchL3 1 }
 
     l3Entry OBJECT-TYPE
         SYNTAX      L3Entry
         MAX-ACCESS  not-accessible
         STATUS      current
-        DESCRIPTION "½»»»Ð¾Æ¬µÄL3±íÏî£¬´Ë±íÎªÖ»¶Á¡£"
+        DESCRIPTION "ï¿½ï¿½ï¿½ï¿½Ð¾Æ¬ï¿½ï¿½L3ï¿½ï¿½ï¿½î£¬ï¿½Ë±ï¿½ÎªÖ»ï¿½ï¿½ï¿½ï¿½"
         INDEX   { l3IpAddress }
         ::= { l3Table 1 }
 
@@ -336,28 +336,28 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         SYNTAX       IpAddress
         MAX-ACCESS   read-only
         STATUS       current
-        DESCRIPTION "Ä¿µÄIPµØÖ·£¬×÷ÎªË÷Òý¡£"
+        DESCRIPTION "Ä¿ï¿½ï¿½IPï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
         ::= { l3Entry 1 }
 
     l3NextHopMacAddress OBJECT-TYPE
         SYNTAX       MacAddress
         MAX-ACCESS   read-only
         STATUS       current
-        DESCRIPTION "ÏÂÒ»ÌøIPµÄMACµØÖ·¡£"
+        DESCRIPTION "ï¿½ï¿½Ò»ï¿½ï¿½IPï¿½ï¿½MACï¿½ï¿½Ö·ï¿½ï¿½"
         ::= { l3Entry 2 }
 
     l3Vlan OBJECT-TYPE
         SYNTAX       VlanIndex
         MAX-ACCESS   read-only
         STATUS       current
-        DESCRIPTION "ÏÂÒ»ÌøIPËùÔÚµÄVLAN¡£"
+        DESCRIPTION "ï¿½ï¿½Ò»ï¿½ï¿½IPï¿½ï¿½ï¿½Úµï¿½VLANï¿½ï¿½"
         ::= { l3Entry 3 }
 
     l3Port OBJECT-TYPE
         SYNTAX       INTEGER
         MAX-ACCESS   read-only
         STATUS       current
-        DESCRIPTION "±¨ÎÄµÄ³ö¶Ë¿Ú¡£"
+        DESCRIPTION "ï¿½ï¿½ï¿½ÄµÄ³ï¿½ï¿½Ë¿Ú¡ï¿½"
         ::= { l3Entry 4 }
 
     l3CreateTime OBJECT-TYPE
@@ -428,7 +428,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION "Add network routes to hardware table or not.Default is enable."
-        -- "ÊÇ·ñÏÂ·¢Íø¶ÎÂ·ÓÉµ½Ó²¼þ±íÖÐ¡£Ä¬ÈÏÎªÏÂ·¢¡£"
+        -- "ï¿½Ç·ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½Éµï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ä¬ï¿½ï¿½Îªï¿½Â·ï¿½ï¿½ï¿½"
         ::= { gbnDeviceSwitchSRM 1 }
 
    srmHardwareDEFCPU OBJECT-TYPE
@@ -439,7 +439,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION "The DEF routes goes to CPU."
-        -- "Ó²¼þ²éÕÒÊ§°ÜµÄÂ·ÓÉ·¢ËÍµ½CPU£¬´Ë¹¦ÄÜÖ»ÓÐTiNet S3750Ö§³Ö£¬Ä¬ÈÏÎªdisable"
+        -- "Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Üµï¿½Â·ï¿½É·ï¿½ï¿½Íµï¿½CPUï¿½ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½Ö»ï¿½ï¿½TiNet S3750Ö§ï¿½Ö£ï¿½Ä¬ï¿½ï¿½Îªdisable"
         ::= { gbnDeviceSwitchSRM 2 }
 ------------------------------------------------------------------------------
 --
@@ -452,7 +452,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS current
         DESCRIPTION
             "A Table of port flow alarm."
-            --¶Ë¿ÚÁ÷Á¿¸æ¾¯±í
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½
         ::= { gbnDeviceSwitchFlowAlarm 1 }
 
     portFlowAlarmEntry OBJECT-TYPE
@@ -461,7 +461,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS current
         DESCRIPTION
             "A list of port flow alarm."
-            --¶Ë¿ÚÁ÷Á¿¸æ¾¯ÁÐ±í
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½Ð±ï¿½
         INDEX { portFlowAlarmPort }
         ::= { portFlowAlarmTable 1 }
 
@@ -474,12 +474,12 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         }
 
     portFlowAlarmPort OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS  read-only
         STATUS current
         DESCRIPTION
             "The port number."
-            --¶Ë¿ÚºÅ£¬¶Ë¿ÚÁ÷Á¿¸æ¾¯±íµÄË÷ÒýÖµ
+            --ï¿½Ë¿ÚºÅ£ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
         ::= { portFlowAlarmEntry 1 }
 
     portFlowAlarmEnable OBJECT-TYPE
@@ -488,7 +488,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS current
         DESCRIPTION
             "The enable status of the port flow alarm"
-            --¶Ë¿ÚÁ÷Á¿¸æ¾¯¿ªÆô/¹Ø±Õ×´Ì¬
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½/ï¿½Ø±ï¿½×´Ì¬
         ::= { portFlowAlarmEntry 2 }
 
     portFlowAlarmExceedStatus OBJECT-TYPE
@@ -497,25 +497,25 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS current
         DESCRIPTION
             "The exceed status of the port flow alarm"
-            --¶Ë¿ÚÁ÷Á¿¸æ¾¯Á÷Á¿×´Ì¬
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½×´Ì¬
         ::= { portFlowAlarmEntry 3 }
 
     portFlowAlarmExceedThreshold OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS  read-write
         STATUS current
         DESCRIPTION
             "The exceed threshold of port flow alarm."
-            --¶Ë¿ÚÁ÷Á¿¹ý´óµÄãÐÖµ
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
         ::= { portFlowAlarmEntry 4 }
 
     portFlowAlarmNormalThreshold OBJECT-TYPE
-        SYNTAX  Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "The normal threshold of port flow alarm."
-            --¶Ë¿ÚÁ÷Á¿Õý³£µÄãÐÖµ
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
         ::= { portFlowAlarmEntry 5 }
 
     portFlowAlarmGlobalEnable OBJECT-TYPE
@@ -524,7 +524,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS current
         DESCRIPTION
             "The global enable status of port flow alarm."
-            --È«¾Ö¶Ë¿ÚÁ÷Á¿¸æ¾¯¿ªÆô/¹Ø±Õ×´Ì¬
+            --È«ï¿½Ö¶Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½/ï¿½Ø±ï¿½×´Ì¬
         ::= { gbnDeviceSwitchFlowAlarm 2 }
 
 ------------------------------------------------------------------------------
@@ -546,7 +546,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS  current
         DESCRIPTION
                "Port ingress packet rate become normal, port flow normal alarm happen."
-               --Èç¹û¶Ë¿Ú½øÀ´µÄ±¨ÎÄËÙÂÊ»Ö¸´Õý³££¬Ôò·¢³ö¶Ë¿ÚËÙÂÊÕý³£µÄtrap
+               --ï¿½ï¿½ï¿½ï¿½Ë¿Ú½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê»Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò·¢³ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½trap
         ::= { portFlowAlarmTrap 2 }
 
 -- the quene-scheduer QOS
@@ -559,7 +559,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 1th queue(%). for 3650, the range is 1 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ1µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª1µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 1 }
 
    qosWrrQueue2Weight OBJECT-TYPE
@@ -568,7 +568,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 2th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ2µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 2 }
 
 
@@ -578,7 +578,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 3th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ3µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 3 }
 
 
@@ -588,7 +588,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 4th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ4µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 4 }
 
    qosWrrMaxDelayValue OBJECT-TYPE
@@ -597,7 +597,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "the maximum allowable latency for packet transmission on the priorest COS"
-               --¶ÓÁÐµ÷¶ÈÊ±×î¸ßÓÅÏÈ¼¶µÄ¶ÓÁÐ×î³¤µÈ´ýÊ±¼ä
+               --ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½î³¤ï¿½È´ï¿½Ê±ï¿½ï¿½
        ::= { qosQueueSchedulerGroup 5 }
 
    qosQueueSchedulerMode OBJECT-TYPE
@@ -609,7 +609,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "queue scheduler mode: strict priority, weighted round robin, strict priority+weighted round robin" 
-               --¶ÓÁÐµ÷¶ÈÄ£Ê½:¾ø¶ÔÓÅÏÈ¼¶¡¢¼ÓÈ¨ÂÖÑ­µ÷¶È
+               --ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ä£Ê½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½
        DEFVAL  { strictPriority }
        ::= { qosQueueSchedulerGroup 6 }
 
@@ -619,7 +619,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 5th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ5µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 7 }
 
    qosWrrQueue6Weight OBJECT-TYPE
@@ -628,7 +628,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 6th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ6µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½6ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 8 }
 
 
@@ -638,7 +638,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 7th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ7µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½7ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 9 }
 
 
@@ -648,7 +648,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "Weight of 8th queue(%). for 3650, the range is 0 to 255, for 3750-24/48,the range is 1 to 15."
-               --¶ÓÁÐ8µÄÈ¨ÖØ¡£¶ÔÓÚ3650£¬·¶Î§Îª0µ½255£¬¶ÔÓÚ3750-24/48£¬·¶Î§Îª1µ½15
+               --ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½È¨ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½3650ï¿½ï¿½ï¿½ï¿½Î§Îª0ï¿½ï¿½255ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3750-24/48ï¿½ï¿½ï¿½ï¿½Î§Îª1ï¿½ï¿½15
        ::= { qosQueueSchedulerGroup 10 }
 
    qosLineRateTable OBJECT-TYPE
@@ -657,7 +657,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "A list of line-rate QOS entries. "
-               --¶Ë¿ÚÏÞËÙÈë¿Ú±í
+               --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½
        ::= { gbnDeviceSwitchLineRate 1 }
 
    qosLineRateEntry OBJECT-TYPE
@@ -666,7 +666,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "A list of line-rate QOS entries. "
-               --¶Ë¿ÚÏÞËÙÈë¿Ú
+               --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        INDEX   { qosLineRateInterface }
        ::= { qosLineRateTable 1 }
 
@@ -690,7 +690,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "the line rate interface.  "
-               --¶Ë¿ÚÏÞËÙ¶Ë¿Ú
+               --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½Ù¶Ë¿ï¿½
        ::= { qosLineRateEntry 1 }
 
    qosLineRateTargetRate OBJECT-TYPE
@@ -699,7 +699,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "The target rate(Kbps) of the line-rate QOS. Must be a multiple of 64Kbps "
-               --¶Ë¿ÚÏÞËÙÄ¿±êËÙÂÊ(Kbps),±ØÐëÊÇ64KbpsµÄ±¶Êý
+               --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Kbps),ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½64Kbpsï¿½Ä±ï¿½ï¿½ï¿½
        ::= { qosLineRateEntry 2 }
 
    qosLineRateTargetBurst OBJECT-TYPE
@@ -708,7 +708,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "The target burst(Kbps) of the line-rate QOS. Must be a multiple of 64Kbps "
-               --¶Ë¿ÚÏÞËÙÔÊÐíÍ»·¢ËÙÂÊ(Kbps),±ØÐëÊÇ64KbpsµÄ±¶Êý
+               --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Kbps),ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½64Kbpsï¿½Ä±ï¿½ï¿½ï¿½
        ::= { qosLineRateEntry 3 }
 
    qosLineRateTargetRateIngress OBJECT-TYPE
@@ -717,7 +717,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "The ingress target rate(Kbps) of the line-rate QOS.0 means disable"
-               --Èë¿Ú¶Ë¿ÚÏÞËÙÄ¿±êËÙÂÊ(Kbps)
+               --ï¿½ï¿½Ú¶Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Kbps)
        ::= { qosLineRateEntry 4 }  
        
    portIsolationGroup  OBJECT IDENTIFIER ::= { gbnDeviceSwitchPortIsolation 1 }
@@ -728,7 +728,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "port isolation down link portlist"
-               -- ¶Ë¿Ú¸ôÀëµÄÏÂÐÐ¶Ë¿ÚÁÐ±í --
+               -- ï¿½Ë¿Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ë¿ï¿½ï¿½Ð±ï¿½ --
        ::= { portIsolationGroup 1 }
 
    portIsolationUpLinkTable OBJECT-TYPE
@@ -737,7 +737,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "A list of uplink-ports of portisolation entries. conflict with portIsolationDownLinkPorts."
-               --»ùÓÚ¶Ë¿ÚµÄ¶Ë¿Ú¸ôÀëÉÏÐÐ¿ÚÁÐ±í£¬²»ÄÜ¹»¸úportIsolationDownLinkPortsÍ¬Ê±Ê¹ÓÃ
+               --ï¿½ï¿½ï¿½Ú¶Ë¿ÚµÄ¶Ë¿Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½portIsolationDownLinkPortsÍ¬Ê±Ê¹ï¿½ï¿½
        ::= { portIsolationGroup 2 }
  
    portIsolationUpLinkEntry OBJECT-TYPE
@@ -746,7 +746,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "A list of uplink-ports of portisolation entries. "
-               --»ùÓÚ¶Ë¿ÚµÄ¶Ë¿Ú¸ôÀëÉÏÐÐ¿ÚÁÐ±í
+               --ï¿½ï¿½ï¿½Ú¶Ë¿ÚµÄ¶Ë¿Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ð±ï¿½
        INDEX   { portisolationInterface }
        ::= { portIsolationUpLinkTable 1 }
  
@@ -764,7 +764,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "port index, start from 1. "
-               --¶Ë¿ÚË÷Òý
+               --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½
        ::= { portIsolationUpLinkEntry 1 }
 
    portisolationUplinkList OBJECT-TYPE
@@ -773,7 +773,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "portlist of uplink ports,when configured , a port can only communicate with it's uplink ports. "
-               --ÉÏÐÐ¿ÚÁÐ±í£¬µ±ÅäÖÃºó£¬¶Ë¿ÚÖ»ÔÊÐí¸úËüµÄÉÏÐÐ¿ÚÍ¨ÐÅ
+               --ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãºó£¬¶Ë¿ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½Í¨ï¿½ï¿½
        ::= { portIsolationUpLinkEntry 2 }
 
 
@@ -783,7 +783,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "A list of storm control entries. "
-               --·ç±©¿ØÖÆÈë¿Ú±í
+               --ï¿½ç±©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½
        ::= { gbnDeviceSwitchStormControl 1 }
 
    stormControlEntry OBJECT-TYPE
@@ -792,7 +792,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "A list of storm control entries. "
-               --·ç±©¿ØÖÆÈë¿Ú
+               --ï¿½ç±©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        INDEX   { stormControlInterface, stormControlType }
        ::= { stormControlTable 1 }
 
@@ -816,7 +816,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "the storm control interface. "
-               --·ç±©¿ØÖÆ¶Ë¿Ú
+               --ï¿½ç±©ï¿½ï¿½ï¿½Æ¶Ë¿ï¿½
        ::= { stormControlEntry 1 }
 
    stormControlType OBJECT-TYPE
@@ -825,7 +825,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "the pack flow type of the storm control. "
-               --·ç±©¿ØÖÆ±¨ÎÄÁ÷ÀàÐÍ
+               --ï¿½ç±©ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        ::= { stormControlEntry 2 }
 
    stormControlTargetRate OBJECT-TYPE
@@ -834,7 +834,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
        STATUS  current
        DESCRIPTION
                "the target rate of the storm control. "
-               --·ç±©¿ØÖÆÄ¿±êËÙÂÊ
+               --ï¿½ç±©ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
        ::= { stormControlEntry 3 }
 
    stormControlRowStatus OBJECT-TYPE
@@ -843,7 +843,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
                 "row status of the storm control"
-                --·ç±©¿ØÖÆÐÐ×´Ì¬
+                --ï¿½ç±©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
         ::= { stormControlEntry 4 }
 
    stormControlMode OBJECT-TYPE
@@ -870,7 +870,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
         STATUS current
         DESCRIPTION
            "Control IP with TTL=0 packet,default is not traffic  to the  CPU."
-         --¿ØÖÆTTL=0µÄ±¨ÎÄÊÇ·ñËÍÍùCPU,Ä¬ÈÏÇé¿öÊÇ¹Ø±ÕÉÏ±¨CPU.
+         --ï¿½ï¿½ï¿½ï¿½TTL=0ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½CPU,Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹Ø±ï¿½ï¿½Ï±ï¿½CPU.
          ::= { gbnDeviceSwitchAntiDos 2 } 
 
    bandwidthcontrolTable OBJECT-TYPE
@@ -1569,7 +1569,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
       STATUS current
       DESCRIPTION
           "The configed channel-group index list."
-          --ÒÑÅäÖÃµÄ»ã¾Û×éË÷ÒýÁÐ±í
+          --ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
       ::= { channelStatsEntry 1 }
     
     channelInOctetRate OBJECT-TYPE
@@ -1578,7 +1578,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
       STATUS current
       DESCRIPTION
           "The ingress octet rate of this channel-group."
-          --¸Ã»ã¾Û×é½ÓÊÕ±¨ÎÄ×Ö½ÚµÄËÙÂÊ
+          --ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ±ï¿½ï¿½ï¿½ï¿½Ö½Úµï¿½ï¿½ï¿½ï¿½ï¿½
       ::= { channelStatsEntry 2 }
       
     channelInFrameRate OBJECT-TYPE
@@ -1587,7 +1587,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
       STATUS current
       DESCRIPTION
           "The ingress packet rate of this channel-group."
-          --¸Ã»ã¾Û×é½ÓÊÕ±¨ÎÄµÄËÙÂÊ
+          --ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ±ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
       ::= { channelStatsEntry 3 }
 
     channelOutOctetRate OBJECT-TYPE
@@ -1596,7 +1596,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
       STATUS current
       DESCRIPTION
           "The egress octet rate of this channel-group."
-          --¸Ã»ã¾Û×é·¢ËÍ±¨ÎÄ×Ö½ÚµÄËÙÂÊ
+          --ï¿½Ã»ï¿½ï¿½ï¿½é·¢ï¿½Í±ï¿½ï¿½ï¿½ï¿½Ö½Úµï¿½ï¿½ï¿½ï¿½ï¿½
       ::= { channelStatsEntry 4 }
 
     channelOutFrameRate OBJECT-TYPE
@@ -1605,7 +1605,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
       STATUS current
       DESCRIPTION
           "The egress packet rate of this channel-group."
-          --¸Ã»ã¾Û×é·¢ËÍ±¨ÎÄµÄËÙÂÊ
+          --ï¿½Ã»ï¿½ï¿½ï¿½é·¢ï¿½Í±ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
       ::= { channelStatsEntry 5 }
 
     channelPkts64Octets OBJECT-TYPE
@@ -2655,7 +2655,7 @@ MirrorMacType ::= TEXTUAL-CONVENTION
 --
 ------------------------------------------------------------------------------
     portRateStatisticsInterval OBJECT-TYPE
-        SYNTAX Integer32 (1..5)
+        SYNTAX INTEGER (1..5)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION

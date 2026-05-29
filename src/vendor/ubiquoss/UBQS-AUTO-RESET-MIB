@@ -190,7 +190,7 @@ ubiAutoResetIcmp                  	OBJECT IDENTIFIER	::= { ubiAutoResetMIBObject
             delay(1),
             reset(2),
             suppress(3),
-            cancel_delay(4),
+            cancel_delay(4)
          }        
          MAX-ACCESS read-only
          STATUS     current
@@ -287,7 +287,7 @@ ubiAutoResetIcmp                  	OBJECT IDENTIFIER	::= { ubiAutoResetMIBObject
             delay(1),
             reset(2),
             suppress(3),
-            cancel_delay(4),
+            cancel_delay(4)
          }        
          MAX-ACCESS read-only
          STATUS     current
@@ -389,7 +389,7 @@ ubiAutoResetIcmp                  	OBJECT IDENTIFIER	::= { ubiAutoResetMIBObject
             delay(1),
             reset(2),
             suppress(3),
-            cancel_delay(4),
+            cancel_delay(4)
          }        
          MAX-ACCESS read-only
          STATUS     current
@@ -500,8 +500,8 @@ ubiAutoResetMIBGroups      	OBJECT IDENTIFIER ::= { ubiAutoResetMIBConformance 2
 -- units of conformance
 
 	ubiAutoResetGroup OBJECT-GROUP
-        OBJECTS {       
-        	         
+        OBJECTS {
+                ubiAutoResetDelayTime
         	    }
     	STATUS          current
     	DESCRIPTION

@@ -189,28 +189,28 @@ dsRouterSystem           OBJECT IDENTIFIER ::= { dasanRouterMIBObjects 1 }
                "The Free memory of sytem"
        ::= { dsRouterSystem 16 }        
 
-dsRouterPortCRCcnt       OBJECT IDENTIFIER ::= { dasanRouterMIBObjects 4 }
+dsRouterPortCRCGroup       OBJECT IDENTIFIER ::= { dasanRouterMIBObjects 4 }
 
     dsRouterCRCInterval  OBJECT-TYPE
        SYNTAX      TimeTicks 
        MAX-ACCESS  read-write
        STATUS      current
        DESCRIPTION ""
-       ::= { dsRouterPortCRCcnt 1 }
+       ::= { dsRouterPortCRCGroup 1 }
 
     dsRouterCRCThreshold  OBJECT-TYPE
        SYNTAX       INTEGER 
        MAX-ACCESS   read-write
        STATUS       current
        DESCRIPTION  "The fixed CRC threshold for all port"
-       ::= { dsRouterPortCRCcnt 2 }
+       ::= { dsRouterPortCRCGroup 2 }
 
    dsRouterPortCRCTable  	    OBJECT-TYPE
        SYNTAX SEQUENCE OF   DsRouterPortCRCEntry
        MAX-ACCESS           not-accessible
        STATUS	            mandatory
        DESCRIPTION	    "The current CRC Table of each port"
-       ::= { dsRouterPortCRCcnt 3 }
+       ::= { dsRouterPortCRCGroup 3 }
 
    dsRouterPortCRCEntry  	OBJECT-TYPE
        SYNTAX		DsRouterPortCRCEntry

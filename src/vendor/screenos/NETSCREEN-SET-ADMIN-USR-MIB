@@ -112,8 +112,8 @@ nsAdminUserLocalPriv OBJECT-TYPE
     ::= { nsSetAdminUserLocalEntry 3 }
 
 nsAdminUserLocalRole OBJECT-TYPE
-    SYNTAX  Integer32 {
-        not-assigned(0),
+    SYNTAX  INTEGER {
+        notAssigned(0),
         crypto(1),
         security(2),
         audit(4)

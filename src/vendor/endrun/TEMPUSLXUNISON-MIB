@@ -394,17 +394,7 @@ cdmaTrapTimeFigureOfMeritChange NOTIFICATION-TYPE
    ::= { cdmatrap 2 }
 
 cdmaFaultStatus OBJECT-TYPE
-   SYNTAX BITS
-   {
-      cdmaNotUsed         (0)
-      cdmaNTPNotPolling   (1)
-      cdmaRefTimeFlt      (2)
-      cdmaLOPLLFlt        (3)
-      cdmaFLASHWriteFlt   (4)
-      cdmaFPGACfgFlt      (5)
-      cdmaNoSignalTimeout (6)
-      cdmaDACNearLimit    (7)
-   }
+   SYNTAX OCTET STRING (SIZE(0..1))
    MAX-ACCESS read-only
    STATUS current
    DESCRIPTION
@@ -1132,17 +1122,7 @@ gpsTrapTimeFigureOfMeritChange NOTIFICATION-TYPE
    ::= { gpstrap 2 }
 
 gpsFaultStatus OBJECT-TYPE
-   SYNTAX BITS
-   {
-      gpsAntennaFlt      (0)
-      gpsNTPNotPolling   (1)
-      gpsRefTimeFlt      (2)
-      gpsEngineCommFlt   (3)
-      gpsFLASHWriteFlt   (4)
-      gpsFPGACfgFlt      (5)
-      gpsNoSignalTimeout (6)
-      gpsDACNearLimit    (7)
-   }
+   SYNTAX OCTET STRING
    MAX-ACCESS read-only
    STATUS current
    DESCRIPTION

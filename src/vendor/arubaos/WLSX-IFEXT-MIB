@@ -30,7 +30,7 @@ WLSX-IFEXT-MIB DEFINITIONS ::= BEGIN
        OBJECT-GROUP
            FROM SNMPv2-CONF
 	ifIndex
-		  FROM RFC1213-MIB
+		  FROM IF-MIB
 
 		 ArubaPoeState,
 		 ArubaDot1dState,

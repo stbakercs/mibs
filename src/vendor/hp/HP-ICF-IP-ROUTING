@@ -4,7 +4,7 @@ HP-ICF-IP-ROUTING DEFINITIONS ::= BEGIN
         OBJECT-TYPE, MODULE-IDENTITY, Integer32,
         Unsigned32
             FROM SNMPv2-SMI
-        PhysAddress, RowStatus
+        PhysAddress, RowStatus, TruthValue
             FROM SNMPv2-TC
         MODULE-COMPLIANCE, OBJECT-GROUP
             FROM SNMPv2-CONF

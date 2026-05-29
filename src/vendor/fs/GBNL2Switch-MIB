@@ -66,7 +66,7 @@
         STATUS current
         DESCRIPTION
             "A table of dlf packets port control."
-            --¿ØÖÆ¶Ë¿Ú×ª·¢Î´Öª±¨ÎÄ±í
+            --ï¿½ï¿½ï¿½Æ¶Ë¿ï¿½×ªï¿½ï¿½Î´Öªï¿½ï¿½ï¿½Ä±ï¿½
         ::= { gbnL2SwitchPacket 3 }
 
    dlfForwardPortEntry OBJECT-TYPE
@@ -75,7 +75,7 @@
         STATUS current
         DESCRIPTION
             "Table entry for dlf packets control."
-            --¿ØÖÆ×ª·¢Î´Öª±¨ÎÄ±íÏî
+            --ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Î´Öªï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
         INDEX { dlfForwardPort }
         ::= { dlfForwardPortTable 1 }
 
@@ -90,7 +90,7 @@
         STATUS      current
         DESCRIPTION
             "The port number in dlf packets table Item."
-            --×ª·¢Î´Öª±¨ÎÄ±íÏîµÄ¶Ë¿ÚºÅ
+            --×ªï¿½ï¿½Î´Öªï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ä¶Ë¿Úºï¿½
         ::= { dlfForwardPortEntry 1 }
 
    dlfForwardStatus OBJECT-TYPE
@@ -99,7 +99,7 @@
         STATUS      current
         DESCRIPTION
             "The dlf packets flag Item."
-            --×ª·¢Î´Öª±¨ÎÄ±íÏîµÄ×´Ì¬
+            --×ªï¿½ï¿½Î´Öªï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½×´Ì¬
         ::= { dlfForwardPortEntry 2 }
 
 ------------------------------------------------------------------------------
@@ -157,8 +157,7 @@
         ::= { macAddressEntry 3 }
 
     macAddressStatus OBJECT-TYPE
-        SYNTAX      INTEGER
-        {
+        SYNTAX      INTEGER {
            dynamic(1),
            static(2),
            permanent(3),
@@ -169,19 +168,19 @@
         STATUS      current
         DESCRIPTION
             " "
-            --macµØÖ·±êÖ¾,dynamic(1)±íÊ¾¶¯Ì¬macµØÖ·, static(2)±íÊ¾¾²Ì¬macµØÖ·²»¿ÉÒÔÀÏ»¯,
-            --permanent(3)±íÊ¾±£´æÖØÆð½»»»»úÊ±,macµØÖ·±íÏî»¹´æÔÚ,
-            --backhole(4)±íÊ¾±£´æÖØÆð½»»»»úÊ±,macµØÖ·±íÏî»¹´æÔÚ,ÇÒ¶ÔÔ´ÓëÄ¿µÄ¹ýÂË¡£
+            --macï¿½ï¿½Ö·ï¿½ï¿½Ö¾,dynamic(1)ï¿½ï¿½Ê¾ï¿½ï¿½Ì¬macï¿½ï¿½Ö·, static(2)ï¿½ï¿½Ê¾ï¿½ï¿½Ì¬macï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½,
+            --permanent(3)ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ð½»»ï¿½ï¿½ï¿½Ê±,macï¿½ï¿½Ö·ï¿½ï¿½ï¿½î»¹ï¿½ï¿½ï¿½ï¿½,
+            --backhole(4)ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ð½»»ï¿½ï¿½ï¿½Ê±,macï¿½ï¿½Ö·ï¿½ï¿½ï¿½î»¹ï¿½ï¿½ï¿½ï¿½,ï¿½Ò¶ï¿½Ô´ï¿½ï¿½Ä¿ï¿½Ä¹ï¿½ï¿½Ë¡ï¿½
 
-            --Ìí¼ÓmacµØÖ·±íÏî²Ù×÷Ôö¼ÓÈçÏÂ´íÎóºÅ:
+            --ï¿½ï¿½ï¿½ï¿½macï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½:
 
-            --PermanentMacFULL(-2)±íÊ¾ÓÀ¾Ã»ò¹ýÂË±íÏîÒÑÂú£»
-            --ArlFULL(-3)±íÊ¾Ó²¼þarl±íÒÑÂú£»
-            --CreateNvmError(-4)±íÊ¾´´½¨nvm¶ÔÏó´íÎó£»
-            --InValidVlanID(-6)ÊäÈëµÄvlan IDºÅ¶ÔÓ¦µÄvlanÃ»´´½¨£»
-            --InValidVlanPort(-7)vlanÃ»ÓÐ°üº¬¶ÔÓ¦µÄ¶Ë¿Ú;
-            --InValidMac(-8)ÎÞÐ§µÄmacµØÖ·£»
-            --InValidArgument(-9)ÊäÈëµÄ²ÎÊýÈ¡Öµ·¶Î§ÓÐÎó¡£
+            --PermanentMacFULL(-2)ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            --ArlFULL(-3)ï¿½ï¿½Ê¾Ó²ï¿½ï¿½arlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            --CreateNvmError(-4)ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½nvmï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            --InValidVlanID(-6)ï¿½ï¿½ï¿½ï¿½ï¿½vlan IDï¿½Å¶ï¿½Ó¦ï¿½ï¿½vlanÃ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            --InValidVlanPort(-7)vlanÃ»ï¿½Ð°ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä¶Ë¿ï¿½;
+            --InValidMac(-8)ï¿½ï¿½Ð§ï¿½ï¿½macï¿½ï¿½Ö·ï¿½ï¿½
+            --InValidArgument(-9)ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½È¡Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½
 
         ::= { macAddressEntry 4 }
 
@@ -225,8 +224,7 @@
         ::= { macLearningPortEntry 1 }
 
     macAddressLearningStatus OBJECT-TYPE
-        SYNTAX      INTEGER
-        {
+        SYNTAX      INTEGER {
             enable(1),
 	    disable(2)
         }
@@ -250,7 +248,7 @@
           STATUS   current
           DESCRIPTION
                   "The total number of mac-address entries including learnt or configured."
-          	--"MACµØÖ·×ÜÊý£¬°üÀ¨×Ô¶¯Ñ§Ï°µÄÒÔ¼°ÊÖ¹¤ÅäÖÃµÄ" 
+          	--"MACï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ñ§Ï°ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ãµï¿½" 
           ::= { gbnL2SwitchMac 3 }
 ------------------------------------------------------------------------------
 --
@@ -283,7 +281,7 @@
         ::= { gbnL2SwitchMulticast 2 }
 
     igmpSnoopAging  OBJECT-TYPE
-        SYNTAX Integer32 (10..1000000)
+        SYNTAX INTEGER (10..1000000)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -343,17 +341,17 @@
         DESCRIPTION
             "The default group learning policy when a group address is not found in
             IGMP Snooping white-list and black-list"
-            --µ±×éµØÖ·²»ÔÚIGMP SnoopingºÚ°×Ãûµ¥ÖÐÊ±¶Ô¸Ã×é²¥µÄÄ¬ÈÏÑ§Ï°¹æÔò
+            --ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½IGMP Snoopingï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ô¸ï¿½ï¿½é²¥ï¿½ï¿½Ä¬ï¿½ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchMulticast 5 }
 
     igmpSnoopMaxResponseTime OBJECT-TYPE
-        SYNTAX Integer32 (1..100)
+        SYNTAX INTEGER (1..100)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "The timeout period in seconds waited before determinating whether
             a group port should be deleted or not after received a leave packet"
-            --ÔÚ×é¶Ë¿ÚÊÕµ½Àë¿ª±¨ÎÄºó£¬¾ö¶¨ÊÇ·ñÉ¾³ý¸Ã×é¶Ë¿ÚµÄµÈ´ýÊ±¼ä
+            --ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Õµï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Äºó£¬¾ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ÚµÄµÈ´ï¿½Ê±ï¿½ï¿½
         ::= { gbnL2SwitchMulticast 6 }
 
     igmpSnoopPortTable OBJECT-TYPE
@@ -363,8 +361,8 @@
         DESCRIPTION
             "Used to config IGMP Snooping port options,such as group-limit and
              fast-leave."
-             --¸Ã±íÓÃÓÚÅäÖÃIGMP SnoopingÖÐ»ùÓÚÃ¿¸ö¶Ë¿ÚµÄÐÅÏ¢£¬Èç¶Ë¿ÚÑ§Ï°ÏÞÖÆ£¬
-             --¶Ë¿Ú¿ìËÙÀë¿ªµÈ¹¦ÄÜ
+             --ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IGMP Snoopingï¿½Ð»ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ë¿Úµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½Ñ§Ï°ï¿½ï¿½ï¿½Æ£ï¿½
+             --ï¿½Ë¿Ú¿ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½È¹ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchMulticast 7 }
 
     igmpSnoopPortEntry OBJECT-TYPE
@@ -373,7 +371,7 @@
         STATUS current
         DESCRIPTION
             "Entries of igmpSnoopPortTable."
-            --igmpSnoopPortTable±íµÄ±íÏîÐÅÏ¢
+            --igmpSnoopPortTableï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         INDEX { igmpSnoopPort }
         ::= { igmpSnoopPortTable 1 }
 
@@ -390,7 +388,7 @@
         STATUS current
         DESCRIPTION
             "Index that uniquely identifies a Ap port within igmpSnoopPortTable."
-            --¶Ë¿ÚºÅÓÃÓÚigmpSnoopPortTable±íµÄË÷Òý
+            --ï¿½Ë¿Úºï¿½ï¿½ï¿½ï¿½ï¿½igmpSnoopPortTableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { igmpSnoopPortEntry 1 }
 
     igmpSnoopPortFastLeave OBJECT-TYPE
@@ -405,9 +403,9 @@
              a group port is deleted immediately on receiving a leave
              packet, otherwise a max-response-time should be waited
              before deleting the port."
-            --ÅäÖÃ¶Ë¿ÚµÄ¿ìËÙÀë¿ª¹¦ÄÜ£¬Èç¹û¿ªÆôÁË¶Ë¿ÚµÄ¿ìËÙÀë¿ª¹¦ÄÜ£¬ÔÚ
-            --¶Ë¿ÚÊÕµ½Àë¿ª±¨ÎÄºó¾Í»áÁ¢¼´ÓÉ¶à²¥×éÖÐÉ¾³ý£¬·ñÔòÔÚÉ¾³ý¶Ë¿Ú
-            --Ö®Ç°»áµÈ´ýmax-response-time
+            --ï¿½ï¿½ï¿½Ã¶Ë¿ÚµÄ¿ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¶Ë¿ÚµÄ¿ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½
+            --ï¿½Ë¿ï¿½ï¿½Õµï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Äºï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶à²¥ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ë¿ï¿½
+            --Ö®Ç°ï¿½ï¿½È´ï¿½max-response-time
         ::= { igmpSnoopPortEntry 2 }
 
     igmpSnoopPortGroupLimit OBJECT-TYPE
@@ -416,7 +414,7 @@
         STATUS current
         DESCRIPTION
             "The max number of Multicast groups a port can learn."
-            --¶Ë¿ÚÄÜ¹»Ñ§Ï°µÄ×î´ó¶à²¥×éÊýÄ¿
+            --ï¿½Ë¿ï¿½ï¿½Ü¹ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½à²¥ï¿½ï¿½ï¿½ï¿½Ä¿
         ::= { igmpSnoopPortEntry 3 }
 
     igmpSnoopPortMcastVlan OBJECT-TYPE
@@ -428,9 +426,9 @@
               on the port will be add to the multicast vlan, regardless of the
               vlan id indicated by the report packets, a zero vlan means no multicast
               vlan is used."
-          --Îª¶Ë¿ÚÖ¸¶¨Ò»¸ö×é²¥vlan£¬¸Ã¶Ë¿ÚÊÕµ½ÁËIGMP±¨¸æ±¨ÎÄºó¸Ã±¨¸æ×é»á
-          --±»Ìí¼Óµ½×é²¥VLANÖÐ£¬Ôò²»¹Ü±¨¸æ±¨ÎÄÖÐµÄvlanÎªºÎÖµ,vlanÎª0±íÊ¾²»Ê¹ÓÃ
-          --×é²¥vlan
+          --Îªï¿½Ë¿ï¿½Ö¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½é²¥vlanï¿½ï¿½ï¿½Ã¶Ë¿ï¿½ï¿½Õµï¿½ï¿½ï¿½IGMPï¿½ï¿½ï¿½æ±¨ï¿½Äºï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+          --ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½é²¥VLANï¿½Ð£ï¿½ï¿½ò²»¹Ü±ï¿½ï¿½æ±¨ï¿½ï¿½ï¿½Ðµï¿½vlanÎªï¿½ï¿½Öµ,vlanÎª0ï¿½ï¿½Ê¾ï¿½ï¿½Ê¹ï¿½ï¿½
+          --ï¿½é²¥vlan
         ::= { igmpSnoopPortEntry 4 }
 
     igmpSnoopGroupTable OBJECT-TYPE
@@ -440,7 +438,7 @@
         DESCRIPTION
             "This table is used to config IGMP Snooping white-list and
              black-list."
-             --¸Ã±íÓÃÓÚÅäÖÃIGMP SnoopingµÄºÚ°×Ãûµ¥
+             --ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IGMP Snoopingï¿½ÄºÚ°ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchMulticast 8 }
 
     igmpSnoopGroupEntry OBJECT-TYPE
@@ -449,7 +447,7 @@
         STATUS current
         DESCRIPTION
             "Entries of igmpSnoopGroupTable."
-            --igmpSnoopGroupTable±íµÄ±íÏîÐÅÏ¢
+            --igmpSnoopGroupTableï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         INDEX { igmpSnoopGroupAddress, igmpSnoopGroupPort , igmpSnoopGroupVLAN }
         ::= { igmpSnoopGroupTable 1 }
 
@@ -467,7 +465,7 @@
         DESCRIPTION
             "An index that uniquely identifies a multicast mac-address
              within igmpSnoopGroupTable."
-            --¶à²¥MACµØÖ·ÓÃÓÚË÷ÒýigmpSnoopGroupTable±í
+            --ï¿½à²¥MACï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½igmpSnoopGroupTableï¿½ï¿½
         ::= { igmpSnoopGroupEntry 1 }
 
     igmpSnoopGroupPort OBJECT-TYPE
@@ -476,7 +474,7 @@
         STATUS current
         DESCRIPTION
             "An index that uniquely identifies a Ap port within igmpSnoopGroupTable."
-            --¶Ë¿ÚºÅÓÃÓÚË÷ÒýigmpSnoopGroupTable±íµÄË÷Òý
+            --ï¿½Ë¿Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½igmpSnoopGroupTableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { igmpSnoopGroupEntry 2 }
 
     igmpSnoopGroupVLAN OBJECT-TYPE
@@ -485,7 +483,7 @@
         STATUS current
         DESCRIPTION
             "An index that uniquely identifies a VLAN ID within igmpSnoopGroupTable."
-            --VLANºÅÓÃÓÚË÷ÒýigmpSnoopGroupTable±íµÄË÷Òý
+            --VLANï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½igmpSnoopGroupTableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { igmpSnoopGroupEntry 3 }
 
     igmpSnoopGroupPolicy OBJECT-TYPE
@@ -502,9 +500,9 @@
             superior to that has beed defined by igmpSnoopDefaultGroupPolicy.
             If group is not found in white-list or black-list then
             'igmpSnoopDefaultGroupPolicy' takes effect"
-            --ÓÃÓÚÅäÖÃIGMP SnoopingÑ§Ï°µÄºÚ°×Ãûµ¥£¬ºÚ°×Ãûµ¥ÖÐµÄÑ§Ï°¹æÔòÓÅÏÈ¼¶
-            --¸ßÓÚigmpSnoopDefaultGroupPolicy¶¨ÒåµÄÄ¬ÈÏÑ§Ï°¹æÔò£¬Èç¹û×éµØÖ·Ã¿ÔÚ
-            --ºÚ°×Ãûµ¥ÖÐ£¬ÄÇÃ´×éµÄÑ§Ï°È¡¾öÓÚigmpSnoopDefaultGroupPolicyµÄÖµ
+            --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IGMP SnoopingÑ§Ï°ï¿½ÄºÚ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
+            --ï¿½ï¿½ï¿½ï¿½igmpSnoopDefaultGroupPolicyï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Ã¿ï¿½ï¿½
+            --ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ñ§Ï°È¡ï¿½ï¿½ï¿½ï¿½igmpSnoopDefaultGroupPolicyï¿½ï¿½Öµ
         ::= { igmpSnoopGroupEntry 4 }
 
 
@@ -515,7 +513,7 @@
         DESCRIPTION
             "Setting this object to true(1) enables cross-vlan multicast.  Setting
              it to false(2) disables cross-vlan multicast."
-            --ÅäÖÃ¿çvlan×é²¥×´Ì¬£¬1´ò¿ª£¬2¹Ø±Õ
+            --ï¿½ï¿½ï¿½Ã¿ï¿½vlanï¿½é²¥×´Ì¬ï¿½ï¿½1ï¿½ò¿ª£ï¿½2ï¿½Ø±ï¿½
         ::= { gbnL2SwitchMulticast 9 }
 
     crossVlanMulticastTable OBJECT-TYPE
@@ -524,7 +522,7 @@
         STATUS current
         DESCRIPTION
             "Used to config port info of cross-vlan multicast,such as tag/untag and vlanid of tag."
-            --¿çvlan×é²¥±í£¬ÅäÖÃ¶Ë¿ÚµÄ¶à²¥ÊôÐÔ£¬°üÀ¨tag/untagÒÔ¼°tagÊôÐÔµÄvlanid
+            --ï¿½ï¿½vlanï¿½é²¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶Ë¿ÚµÄ¶à²¥ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½tag/untagï¿½Ô¼ï¿½tagï¿½ï¿½ï¿½Ôµï¿½vlanid
         ::= { gbnL2SwitchMulticast 10 }
 
     crossVlanMulticastEntry OBJECT-TYPE
@@ -533,7 +531,7 @@
         STATUS current
         DESCRIPTION
             "Entries of crossVlanMulticastPortTable."
-            --¿çvlan×é²¥¶Ë¿ÚÁÐ±í
+            --ï¿½ï¿½vlanï¿½é²¥ï¿½Ë¿ï¿½ï¿½Ð±ï¿½
         INDEX { crossVlanPort }
         ::= { crossVlanMulticastTable 1 }
 
@@ -544,12 +542,12 @@
         }
 
     crossVlanPort OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS not-accessible
         STATUS current
         DESCRIPTION
             "The port number."
-            --¶Ë¿ÚºÅ
+            --ï¿½Ë¿Úºï¿½
         ::= { crossVlanMulticastEntry 1 }
 
     crossVlanPortTag OBJECT-TYPE
@@ -559,22 +557,21 @@
         DESCRIPTION
             "Setting this object to true(1) of tag.  Setting
              it to false(2) of untag."
-            --¶Ë¿Ú µÄtagÊôÐÔ£¬1Îªtag£¬2Îªuntag
+            --ï¿½Ë¿ï¿½ ï¿½ï¿½tagï¿½ï¿½ï¿½Ô£ï¿½1Îªtagï¿½ï¿½2Îªuntag
         ::= { crossVlanMulticastEntry 2 }
 
 
     crossVlanPortVid OBJECT-TYPE
-        SYNTAX Integer32 (1..4095)
+        SYNTAX INTEGER (1..4095)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "The vlanid of tag port."
-            --¶Ë¿Ú µÄvlanid
+            --ï¿½Ë¿ï¿½ ï¿½ï¿½vlanid
         ::= { crossVlanMulticastEntry 3 }
 
     igmpSnoopRoutePortForward OBJECT-TYPE
-        SYNTAX      INTEGER
-        {
+        SYNTAX      INTEGER {
 	    	enabled(1),
 	    	disabled(2)
         }
@@ -583,7 +580,7 @@
         DESCRIPTION
             "If the status is enabled, the route port can be added into the group automatically
              when an igmp snooping group is created . If the status is disabled, it will be not."
-            --¿ØÖÆÊÇ·ñ½«Â·ÓÉ¿Ú×Ô¶¯¼ÓÈëµ½IGMP×é²¥
+            --ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Â·ï¿½É¿ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ëµ½IGMPï¿½é²¥
         ::= { gbnL2SwitchMulticast 11 }
 
 ---------------------- IgmpSnooping Profile Function Begin --------------------------
@@ -613,7 +610,7 @@
     }
     
     profileId OBJECT-TYPE
-        SYNTAX Integer32 (1..16)
+        SYNTAX INTEGER (1..16)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -629,7 +626,7 @@
         ::= { igmpSnoopProfileEntry 2 }
         
     profileLimit OBJECT-TYPE
-        SYNTAX Integer32 {
+        SYNTAX INTEGER {
                   permit(1),
                   deny(2)
         }
@@ -648,11 +645,7 @@
         ::= { igmpSnoopProfileEntry 4 }
         
     profileRowStatus OBJECT-TYPE
-        SYNTAX RowStatus {
-                  active(1),
-                  createAndGo(4),
-                  destroy(6)
-        }
+        SYNTAX RowStatus
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -700,7 +693,7 @@
         ::= { igmpSnoopProfileIpRangeEntry 2 }
         
     ipRangeVlanId OBJECT-TYPE
-        SYNTAX Integer32 (0..4094)
+        SYNTAX INTEGER (0..4094)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -708,11 +701,7 @@
         ::= { igmpSnoopProfileIpRangeEntry 3 }
         
     ipRangeRowStatus OBJECT-TYPE
-        SYNTAX RowStatus {
-                  active(1),
-                  createAndGo(4),
-                  destroy(6)
-        }
+        SYNTAX RowStatus
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -760,7 +749,7 @@
         ::= { igmpSnoopProfileMacRangeEntry 2 }
         
     macRangeVlanId OBJECT-TYPE
-        SYNTAX Integer32 (0..4094)
+        SYNTAX INTEGER (0..4094)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -768,11 +757,7 @@
         ::= { igmpSnoopProfileMacRangeEntry 3 }
         
     macRangeRowStatus OBJECT-TYPE
-        SYNTAX RowStatus {
-                  active(1),
-                  createAndGo(4),
-                  destroy(6)
-        }
+        SYNTAX RowStatus
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -807,7 +792,7 @@
         }
 
     portNumber OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -855,7 +840,7 @@
             Lacp channel group that is associated with this System.
             This table is supported in products:TiNet S3750,TiNet S3526,
             TiNet S3026E,TiNet S2016EI,TiNet S2024EI."
-            --ÏµÍ³ÖÐlacpµÄÍ¨µÀ×é±íÏî
+            --ÏµÍ³ï¿½ï¿½lacpï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchLacpGroup 3 }
 
     channelGroupEntry OBJECT-TYPE
@@ -865,7 +850,7 @@
         DESCRIPTION
             "A list of the Lacp channel group parameters. This is indexed
             by the group index."
-            --ÏµÍ³ÖÐlacp±íÏîµÄ¾ßÌå²ÎÊý£¬Ë÷ÒýÎªÍ¨µÀ×éºÅ
+            --ÏµÍ³ï¿½ï¿½lacpï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÍ¨ï¿½ï¿½ï¿½ï¿½ï¿½
         INDEX { ChannelGroupIndex }
         ::= { channelGroupTable 1 }
 
@@ -880,10 +865,10 @@
         channelGroupRowstatus
            RowStatus
     }
-    --channelGroupIndex:Í¨µÀ×éºÅ
-    --channelGroupPortList:Í¨µÀ×éµÄ¶Ë¿Ú³ÉÔ±ÁÐ±í
-    --channelGroupRule:Í¨µÀ×éµÄ¸ºÔØ¾ùºâ²ßÂÔ
-    --channelGroupRowstatus:ÐÐ×´Ì¬
+    --channelGroupIndex:Í¨ï¿½ï¿½ï¿½ï¿½ï¿½
+    --channelGroupPortList:Í¨ï¿½ï¿½ï¿½ï¿½Ä¶Ë¿Ú³ï¿½Ô±ï¿½Ð±ï¿½
+    --channelGroupRule:Í¨ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    --channelGroupRowstatus:ï¿½ï¿½×´Ì¬
 
     channelGroupIndex OBJECT-TYPE
         SYNTAX       INTEGER
@@ -891,7 +876,7 @@
         STATUS       current
         DESCRIPTION
             "The Index of the Lacp Channel group."
-            --Í¨µÀ×éµÄË÷Òý
+            --Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { channelGroupEntry 1 }
 
     channelGroupPortList OBJECT-TYPE
@@ -902,7 +887,7 @@
             "The complete set of ports currently associated with
              this Group.  Each bit set in this list represents
              an Actor Port member of this Group."
-            --Í¨µÀ×éµÄ¶Ë¿Ú³ÉÔ±ÁÐ±í£¬Ã¿Ò»¸öbit´ú±íÒ»¸ö¶Ë¿Ú
+            --Í¨ï¿½ï¿½ï¿½ï¿½Ä¶Ë¿Ú³ï¿½Ô±ï¿½Ð±ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½bitï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ë¿ï¿½
 
         ::= { channelGroupEntry 2 }
 
@@ -915,7 +900,7 @@
 		destIP(5),
 		srcXORDestIP(6)
 	}
-	ACCESS read-write
+	MAX-ACCESS read-write
 	STATUS mandatory
 	DESCRIPTION
 		" The Rule to be applied to this Link Aggregator's Trunk Group
@@ -935,9 +920,9 @@
 		with the last three bits of the Destination IP Address and used to 
 		index into the Trunk Group to get the destination port. This rule
 		defines the distribution algorithm applied to the aggregated link."
-         --Í¨µÀ×éµÄ¸ºÔØ¾ùºâ²ßÂÔ£¬Ò²¾ÍÊÇ±¨ÎÄÔÚ»ã¾Û¶Ë¿Ú×éÖÐÑ¡Ôñ·¢ËÍ¶Ë¿ÚµÄ²ßÂÔ¡£
-         --·ÖÎªÔ´MAC¡¢Ä¿µÄMAC¡¢Ô´ºÍÄ¿µÄMAC¡¢Ô´IP¡¢Ä¿µÄIP¡¢Ô´ºÍÄ¿µÄIPÁùÖÖ
-         --¶ÔÓÚTiNet S2008EIÎªÖ»¶ÁÊôÐÔ¡£
+         --Í¨ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½Ò²ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½Ú»ï¿½Û¶Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Í¶Ë¿ÚµÄ²ï¿½ï¿½Ô¡ï¿½
+         --ï¿½ï¿½ÎªÔ´MACï¿½ï¿½Ä¿ï¿½ï¿½MACï¿½ï¿½Ô´ï¿½ï¿½Ä¿ï¿½ï¿½MACï¿½ï¿½Ô´IPï¿½ï¿½Ä¿ï¿½ï¿½IPï¿½ï¿½Ô´ï¿½ï¿½Ä¿ï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
+         --ï¿½ï¿½ï¿½ï¿½TiNet S2008EIÎªÖ»ï¿½ï¿½ï¿½ï¿½ï¿½Ô¡ï¿½
 	::= { channelGroupEntry 3 }
 
 
@@ -947,7 +932,7 @@
         STATUS       current
         DESCRIPTION
             "rowstatus of channel group."
-            --Í¨µÀ×éµÄÐÐ×´Ì¬
+            --Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
         ::= { channelGroupEntry 4 }
 
 ------------------------------------------------------------------------------
@@ -964,7 +949,7 @@
             Lacp channel group that is associated with this System.
             This table is supported in products:TiNet S3750,TiNet S3526,
             TiNet S3026E,TiNet S2016EI,TiNet S2024EI."
-            --¶Ë¿ÚlacpÄ£Ê½±í
+            --ï¿½Ë¿ï¿½lacpÄ£Ê½ï¿½ï¿½
         ::= { gbnL2SwitchLacpPort 1 }
 
     lacpPortModeEntry OBJECT-TYPE
@@ -974,7 +959,7 @@
         DESCRIPTION
             "The port mode of lacp. This is indexed
             by the port number."
-            --¶Ë¿ÚlacpÄ£Ê½±í£¬ÒÔ¶Ë¿ÚºÅÎªË÷Òý
+            --ï¿½Ë¿ï¿½lacpÄ£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶Ë¿Úºï¿½Îªï¿½ï¿½ï¿½ï¿½
         INDEX { portIndex }
         ::= { lacpPortModeTable 1 }
 
@@ -987,9 +972,9 @@
         portLacpRowstatus
            RowStatus
     }
-    --portIndex:¶Ë¿ÚË÷Òý
-    --portLacpMode:¶Ë¿ÚlacpÄ£Ê½
-    --portLacpRowstatus£º¶Ë¿ÚÐÐ×´Ì¬£¬²»¿ÉÐ´
+    --portIndex:ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    --portLacpMode:ï¿½Ë¿ï¿½lacpÄ£Ê½
+    --portLacpRowstatusï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´
 
     portIndex OBJECT-TYPE
         SYNTAX       INTEGER
@@ -997,7 +982,7 @@
         STATUS       current
         DESCRIPTION
             "The Index of the port."
-            --¶Ë¿ÚË÷Òý£¬Ò²¾ÍÊÇ¶Ë¿ÚºÅ
+            --ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ç¶Ë¿Úºï¿½
         ::= { lacpPortModeEntry 1 }    
 
     portLacpMode OBJECT-TYPE
@@ -1013,9 +998,9 @@
             static configguration,and lacp protocol do not run. Active:the port
             in this mode can send lacp pdu active.Passive:the port in this mode
             just send pdu when needed."
-            --¶Ë¿ÚÄ£Ê½¡£staticÎª¾²Ì¬»ã¾Û£¬ÔÚÕâÖÐ¶Ë¿ÚÉÏ²»ÔËÐÐlacpÐ­Òé£¬È«ÊÖ¶¯ÅäÖÃ¡£
-            --activeÎªÖ÷¶¯lacpÄ£Ê½£¬¶Ë¿ÚÄÜ¹»ÖÜÆÚÐÔµÄ·¢ËÍlacp±¨ÎÄ
-            --passiveÎª±»¶¯lacpÄ£Ê½£¬¶Ë¿ÚÖ»ÏìÓ¦lacpÐ­ÉÌ£¬²»Ö÷¶¯·¢ËÍ±¨ÎÄ¡£
+            --ï¿½Ë¿ï¿½Ä£Ê½ï¿½ï¿½staticÎªï¿½ï¿½Ì¬ï¿½ï¿½Û£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ë¿ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½lacpÐ­ï¿½é£¬È«ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
+            --activeÎªï¿½ï¿½ï¿½ï¿½lacpÄ£Ê½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÔµÄ·ï¿½ï¿½ï¿½lacpï¿½ï¿½ï¿½ï¿½
+            --passiveÎªï¿½ï¿½ï¿½ï¿½lacpÄ£Ê½ï¿½ï¿½ï¿½Ë¿ï¿½Ö»ï¿½ï¿½Ó¦lacpÐ­ï¿½Ì£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½Ä¡ï¿½
         ::= { lacpPortModeEntry 2 }
 
     portLacpRowstatus OBJECT-TYPE
@@ -1024,7 +1009,7 @@
         STATUS       current
         DESCRIPTION
             "rowstatus of port."
-            --¶Ë¿ÚÐÐ×´Ì¬
+            --ï¿½Ë¿ï¿½ï¿½ï¿½×´Ì¬
         ::= { lacpPortModeEntry 3 } 
 ------------------------------------------------------------------------------
 --
@@ -1057,7 +1042,7 @@
         ::= { gbnL2SwitchMLD 2 }
 
     mldSnoopAging  OBJECT-TYPE
-        SYNTAX Integer32 (10..1000000)
+        SYNTAX INTEGER (10..1000000)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -1118,17 +1103,17 @@
         DESCRIPTION
             "The default group learning policy when a group address is not found in
             MLD Snooping white-list and black-list"
-            --µ±×éµØÖ·²»ÔÚMLD SnoopingºÚ°×Ãûµ¥ÖÐÊ±¶Ô¸Ã×é²¥µÄÄ¬ÈÏÑ§Ï°¹æÔò
+            --ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½MLD Snoopingï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ô¸ï¿½ï¿½é²¥ï¿½ï¿½Ä¬ï¿½ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchMLD 5 }
 
     mldSnoopMaxResponseTime OBJECT-TYPE
-        SYNTAX Integer32 (1..100)
+        SYNTAX INTEGER (1..100)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "The timeout period in seconds waited before determinating whether
             a group port should be deleted or not after received a leave packet"
-            --ÔÚ×é¶Ë¿ÚÊÕµ½Àë¿ª±¨ÎÄºó£¬¾ö¶¨ÊÇ·ñÉ¾³ý¸Ã×é¶Ë¿ÚµÄµÈ´ýÊ±¼ä
+            --ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½Õµï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Äºó£¬¾ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ÚµÄµÈ´ï¿½Ê±ï¿½ï¿½
         ::= { gbnL2SwitchMLD 6 }
 
     mldSnoopPortTable OBJECT-TYPE
@@ -1138,8 +1123,8 @@
         DESCRIPTION
             "Used to config MLD Snooping port options,such as group-limit and
              fast-leave."
-             --¸Ã±íÓÃÓÚÅäÖÃMLD SnoopingÖÐ»ùÓÚÃ¿¸ö¶Ë¿ÚµÄÐÅÏ¢£¬Èç¶Ë¿ÚÑ§Ï°ÏÞÖÆ£¬
-             --¶Ë¿Ú¿ìËÙÀë¿ªµÈ¹¦ÄÜ
+             --ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MLD Snoopingï¿½Ð»ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ë¿Úµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½Ñ§Ï°ï¿½ï¿½ï¿½Æ£ï¿½
+             --ï¿½Ë¿Ú¿ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½È¹ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchMLD 7 }
 
     mldSnoopPortEntry OBJECT-TYPE
@@ -1148,7 +1133,7 @@
         STATUS current
         DESCRIPTION
             "Entries of mldSnoopPortTable."
-            --mldSnoopPortTable±íµÄ±íÏîÐÅÏ¢
+            --mldSnoopPortTableï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         INDEX { mldSnoopPort }
         ::= { mldSnoopPortTable 1 }
 
@@ -1165,7 +1150,7 @@
         STATUS current
         DESCRIPTION
             "Index that uniquely identifies a Ap port within mldSnoopPortTable."
-            --¶Ë¿ÚºÅÓÃÓÚmldSnoopPortTable±íµÄË÷Òý
+            --ï¿½Ë¿Úºï¿½ï¿½ï¿½ï¿½ï¿½mldSnoopPortTableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { mldSnoopPortEntry 1 }
 
     mldSnoopPortFastLeave OBJECT-TYPE
@@ -1180,9 +1165,9 @@
              a group port is deleted immediately on receiving a leave
              packet, otherwise a max-response-time should be waited
              before deleting the port."
-            --ÅäÖÃ¶Ë¿ÚµÄ¿ìËÙÀë¿ª¹¦ÄÜ£¬Èç¹û¿ªÆôÁË¶Ë¿ÚµÄ¿ìËÙÀë¿ª¹¦ÄÜ£¬ÔÚ
-            --¶Ë¿ÚÊÕµ½Àë¿ª±¨ÎÄºó¾Í»áÁ¢¼´ÓÉ¶à²¥×éÖÐÉ¾³ý£¬·ñÔòÔÚÉ¾³ý¶Ë¿Ú
-            --Ö®Ç°»áµÈ´ýmax-response-time
+            --ï¿½ï¿½ï¿½Ã¶Ë¿ÚµÄ¿ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¶Ë¿ÚµÄ¿ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½
+            --ï¿½Ë¿ï¿½ï¿½Õµï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Äºï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶à²¥ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ë¿ï¿½
+            --Ö®Ç°ï¿½ï¿½È´ï¿½max-response-time
         ::= { mldSnoopPortEntry 2 }
 
     mldSnoopPortGroupLimit OBJECT-TYPE
@@ -1191,7 +1176,7 @@
         STATUS current
         DESCRIPTION
             "The max number of MLD groups a port can learn."
-            --¶Ë¿ÚÄÜ¹»Ñ§Ï°µÄ×î´ó¶à²¥×éÊýÄ¿
+            --ï¿½Ë¿ï¿½ï¿½Ü¹ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½à²¥ï¿½ï¿½ï¿½ï¿½Ä¿
         ::= { mldSnoopPortEntry 3 }
 
     mldSnoopPortMcastVlan OBJECT-TYPE
@@ -1203,9 +1188,9 @@
               on the port will be add to the multicast vlan, regardless of the
               vlan id indicated by the report packets, a zero vlan means no multicast
               vlan is used."
-          --Îª¶Ë¿ÚÖ¸¶¨Ò»¸ö×é²¥vlan£¬¸Ã¶Ë¿ÚÊÕµ½ÁËMLD±¨¸æ±¨ÎÄºó¸Ã±¨¸æ×é»á
-          --±»Ìí¼Óµ½×é²¥VLANÖÐ£¬Ôò²»¹Ü±¨¸æ±¨ÎÄÖÐµÄvlanÎªºÎÖµ,vlanÎª0±íÊ¾²»Ê¹ÓÃ
-          --×é²¥vlan
+          --Îªï¿½Ë¿ï¿½Ö¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½é²¥vlanï¿½ï¿½ï¿½Ã¶Ë¿ï¿½ï¿½Õµï¿½ï¿½ï¿½MLDï¿½ï¿½ï¿½æ±¨ï¿½Äºï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+          --ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½é²¥VLANï¿½Ð£ï¿½ï¿½ò²»¹Ü±ï¿½ï¿½æ±¨ï¿½ï¿½ï¿½Ðµï¿½vlanÎªï¿½ï¿½Öµ,vlanÎª0ï¿½ï¿½Ê¾ï¿½ï¿½Ê¹ï¿½ï¿½
+          --ï¿½é²¥vlan
         ::= { mldSnoopPortEntry 4 }
 
     mldSnoopGroupTable OBJECT-TYPE
@@ -1215,7 +1200,7 @@
         DESCRIPTION
             "This table is used to config MLD Snooping white-list and
              black-list."
-             --¸Ã±íÓÃÓÚÅäÖÃMLD SnoopingµÄºÚ°×Ãûµ¥
+             --ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MLD Snoopingï¿½ÄºÚ°ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { gbnL2SwitchMLD 8 }
 
     mldSnoopGroupEntry OBJECT-TYPE
@@ -1224,7 +1209,7 @@
         STATUS current
         DESCRIPTION
             "Entries of mldSnoopGroupTable."
-            --mldSnoopGroupTable±íµÄ±íÏîÐÅÏ¢
+            --mldSnoopGroupTableï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         INDEX { mldSnoopGroupAddress, mldSnoopGroupPort, mldSnoopGroupVLAN }
         ::= { mldSnoopGroupTable 1 }
 
@@ -1242,7 +1227,7 @@
         DESCRIPTION
             "An index that uniquely identifies a multicast mac-address
              within mldSnoopGroupTable."
-            --¶à²¥MACµØÖ·ÓÃÓÚË÷ÒýmldSnoopGroupTable±í
+            --ï¿½à²¥MACï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mldSnoopGroupTableï¿½ï¿½
         ::= { mldSnoopGroupEntry 1 }
 
     mldSnoopGroupPort OBJECT-TYPE
@@ -1251,7 +1236,7 @@
         STATUS current
         DESCRIPTION
             "An index that uniquely identifies a Ap port within mldSnoopGroupTable."
-            --¶Ë¿ÚºÅÓÃÓÚË÷ÒýmldSnoopGroupTable±íµÄË÷Òý
+            --ï¿½Ë¿Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mldSnoopGroupTableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { mldSnoopGroupEntry 2 }
 
     mldSnoopGroupVLAN OBJECT-TYPE
@@ -1260,7 +1245,7 @@
         STATUS current
         DESCRIPTION
             "An index that uniquely identifies a VLAN ID within mldSnoopGroupTable."
-            --VLANºÅÓÃÓÚË÷ÒýmldSnoopGroupTable±íµÄË÷Òý
+            --VLANï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mldSnoopGroupTableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { mldSnoopGroupEntry 3 }
 
     mldSnoopGroupPolicy OBJECT-TYPE
@@ -1277,14 +1262,13 @@
             superior to that has beed defined by mldSnoopDefaultGroupPolicy.
             If group is not found in white-list or black-list then
             'mldSnoopDefaultGroupPolicy' takes effect"
-            --ÓÃÓÚÅäÖÃMLD SnoopingÑ§Ï°µÄºÚ°×Ãûµ¥£¬ºÚ°×Ãûµ¥ÖÐµÄÑ§Ï°¹æÔòÓÅÏÈ¼¶
-            --¸ßÓÚmldSnoopDefaultGroupPolicy¶¨ÒåµÄÄ¬ÈÏÑ§Ï°¹æÔò£¬Èç¹û×éµØÖ·Ã¿ÔÚ
-            --ºÚ°×Ãûµ¥ÖÐ£¬ÄÇÃ´×éµÄÑ§Ï°È¡¾öÓÚmldSnoopDefaultGroupPolicyµÄÖµ
+            --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MLD SnoopingÑ§Ï°ï¿½ÄºÚ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
+            --ï¿½ï¿½ï¿½ï¿½mldSnoopDefaultGroupPolicyï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Ñ§Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Ã¿ï¿½ï¿½
+            --ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ñ§Ï°È¡ï¿½ï¿½ï¿½ï¿½mldSnoopDefaultGroupPolicyï¿½ï¿½Öµ
         ::= { mldSnoopGroupEntry 4 }
 
     mldSnoopRoutePortForward OBJECT-TYPE
-        SYNTAX      INTEGER
-        {
+        SYNTAX      INTEGER {
             enabled(1),
             disabled(2)
         }
@@ -1293,7 +1277,7 @@
         DESCRIPTION
             "If the status is enabled, the route port can be added into the group automatically
              when an mld snooping group is created . If the status is disabled, it will be not."
-            --¿ØÖÆÊÇ·ñ½«Â·ÓÉ¿Ú×Ô¶¯¼ÓÈëµ½MLD×é²¥
+            --ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Â·ï¿½É¿ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ëµ½MLDï¿½é²¥
         ::= { gbnL2SwitchMLD 9 }
 
 --

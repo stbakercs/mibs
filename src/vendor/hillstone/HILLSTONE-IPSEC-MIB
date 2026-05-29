@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneIpsec			FROM HILLSTONE-SMI
 	NetworkAddress, IpAddress, 
 	Counter, Gauge, TimeTicks	FROM RFC1155-SMI
-	OBJECT-TYPE			FROM RFC-1212;	
+	OBJECT-TYPE			FROM SNMPv2-SMI;	
 
           -- textual conventions
 
@@ -28,19 +28,6 @@ IMPORTS
           --      SIZE (0..255)
 
 hillstoneIpsecMibObjects OBJECT IDENTIFIER ::= { hillstoneIpsec 1 }
-
-ipsecTunnelTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF IpsecTunnelEntry
-	ACCESS not-accessible
-	STATUS current
-	::= { hillstoneIpsecMibObjects 1 }
-
-IpsecTunnelEntry OBJECT-TYPE
-	SYNTAX IpsecTunnelEntry
-	ACCESS not-accessible
-	STATUS current
-	INDEX { ipsecTunnelIndex }
-	::= { ipsecTunnelTable 1}
 
 IpsecTunnelEntry ::=
 	SEQUENCE{
@@ -69,30 +56,43 @@ IpsecTunnelEntry ::=
 		ipsecTunnelStatus
 			INTEGER
 	}
+ipsecTunnelTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF IpsecTunnelEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	::= { hillstoneIpsecMibObjects 1 }
+
+ipsecTunnelEntry OBJECT-TYPE
+	SYNTAX IpsecTunnelEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	INDEX { ipsecTunnelIndex }
+	::= { ipsecTunnelTable 1}
+
 		
 ipsecTunnelIndex OBJECT-TYPE
 	SYNTAX INTEGER 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	 DESCRIPTION 
 		"The index of ipsec tunnel"
-	::= { IpsecTunnelEntry 1 }
+	::= { ipsecTunnelEntry 1 }
 
 ipsecTunnelName OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The name of ipsec tunnel"
-	::= { IpsecTunnelEntry 2 }
+	::= { ipsecTunnelEntry 2 }
 
 ipsecTunnelID OBJECT-TYPE
 	SYNTAX INTEGER 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	 DESCRIPTION 
 		"The index of ipsec tunnel"
-	::= { IpsecTunnelEntry 3 }
+	::= { ipsecTunnelEntry 3 }
 
 ipsecTunnelType OBJECT-TYPE
 	SYNTAX INTEGER  {
@@ -101,78 +101,78 @@ ipsecTunnelType OBJECT-TYPE
 		dail-up (3),
 		manual (4)
 	}
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The type of tunnel"
-	::= { IpsecTunnelEntry 4 }
+	::= { ipsecTunnelEntry 4 }
 
 ipsecTunnelPeerIp OBJECT-TYPE
 	SYNTAX NetworkAddress
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The peer ip of a ipsec tunnel"
-	::= { IpsecTunnelEntry 5 }
+	::= { ipsecTunnelEntry 5 }
 
 ipsecTunnelExIfIndex OBJECT-TYPE
 	SYNTAX INTEGER
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The local interface of a ipsec tunnel"
-	::= { IpsecTunnelEntry 6 }
+	::= { ipsecTunnelEntry 6 }
 
 ipsecTunnelLocalID OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The local id of a ipsec tunnel"
-	::= { IpsecTunnelEntry 7 }
+	::= { ipsecTunnelEntry 7 }
 
 ipsecTunnelRemoteID OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The remote id of a ipsec tunnel"
-	::= { IpsecTunnelEntry 8 }
+	::= { ipsecTunnelEntry 8 }
 
 ipsecTunnelCryptAlgorithms OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The crypt algorithms of a ipsec tunnel"
-	::= { IpsecTunnelEntry 9 }
+	::= { ipsecTunnelEntry 9 }
 
 ipsecTunnelAuthAlgorithms OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The auth algorithms of a ipsec tunnel"
-	::= { IpsecTunnelEntry 10 }
+	::= { ipsecTunnelEntry 10 }
 
 ipsecTunnelLifeTime OBJECT-TYPE
 	SYNTAX TimeTicks
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The life time of a ipsec tunnel"
-	::= { IpsecTunnelEntry 11 }
+	::= { ipsecTunnelEntry 11 }
 
 ipsecTunnelStatus OBJECT-TYPE
 	SYNTAX INTEGER  {
 		active (1),
 		inactive (2)
 	}
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION 
 		"The status of tunnel"
-	::= { IpsecTunnelEntry 12 }
+	::= { ipsecTunnelEntry 12 }
 
 END
 

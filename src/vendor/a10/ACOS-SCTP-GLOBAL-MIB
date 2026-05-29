@@ -21,7 +21,7 @@ ACOS-SCTP-GLOBAL-MIB DEFINITIONS ::= BEGIN
 				DESCRIPTION	 "sctpGlobalModule OID for ACOS"
 				::=  {  acosSchema 495 }
 
-global		 OBJECT IDENTIFIER ::= { sctpGlobalModule 1}
+sctpGlobalBranch OBJECT IDENTIFIER ::= { sctpGlobalModule 1}
 
 globalStatsTable OBJECT-TYPE
 	 SYNTAX SEQUENCE OF GlobalStatsEntry
@@ -29,7 +29,7 @@ globalStatsTable OBJECT-TYPE
 	 STATUS current
 	 DESCRIPTION
 	 "SCTP Statistics from object 'sctp.global'"
-	::= {global 1}
+	::= { sctpGlobalBranch 1}
 
 globalStatsEntry OBJECT-TYPE
 	SYNTAX GlobalStatsEntry

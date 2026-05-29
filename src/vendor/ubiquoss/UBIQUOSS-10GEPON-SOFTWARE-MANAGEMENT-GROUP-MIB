@@ -348,7 +348,7 @@
 			SYNTAX INTEGER
 				{
 				normal(0),
-				operate(1),
+				operate(1)
 				}
 			MAX-ACCESS read-write
 			STATUS current
@@ -452,13 +452,13 @@
 
 			                     
 -- ***********************************************************
---  ubiSoftwareMIBNotificationPrefix
+--  ubi10gSoftwareMIBNotificationPrefix
 -- ***********************************************************
 -- the following two OBJECT IDENTIFIERS are used to define SNMPv2 Notifications
 -- that are backward compatible with SNMPv1 Traps.           
 
-	ubiSoftwareMIBNotificationPrefix OBJECT IDENTIFIER ::= { ubiSoftwareMIB 2 }
-	ubiSoftwareMIBNotifications OBJECT IDENTIFIER ::= { ubiSoftwareMIBNotificationPrefix 0 }
+	ubi10gSoftwareMIBNotificationPrefix OBJECT IDENTIFIER ::= { ubi10gSoftwareMIB 2 }
+	ubi10gSoftwareMIBNotifications OBJECT IDENTIFIER ::= { ubi10gSoftwareMIBNotificationPrefix 0 }
     
     ubiEponOltImageUpgradeNotification NOTIFICATION-TYPE
        OBJECTS       {
@@ -476,7 +476,7 @@
        STATUS        current
        DESCRIPTION
            "olt upgrade notification"
-       ::= { ubiSoftwareMIBNotifications 1 }
+       ::= { ubi10gSoftwareMIBNotifications 1 }
        
      ubiEponOltImageUpgradeFailNotification NOTIFICATION-TYPE
        OBJECTS       {
@@ -494,7 +494,7 @@
        STATUS        current
        DESCRIPTION
            "olt upgrade notification"
-       ::= { ubiSoftwareMIBNotifications 2 }
+       ::= { ubi10gSoftwareMIBNotifications 2 }
                                        
     ubiEponOnuImageUpgradeNotification NOTIFICATION-TYPE
        OBJECTS       {
@@ -512,7 +512,7 @@
        STATUS        current
        DESCRIPTION
            "onu upgrade notification"
-       ::= { ubiSoftwareMIBNotifications 3 }
+       ::= { ubi10gSoftwareMIBNotifications 3 }
        
      ubiEponOnuImageUpgradeFailNotification NOTIFICATION-TYPE
        OBJECTS       {
@@ -530,7 +530,7 @@
        STATUS        current
        DESCRIPTION
            "onu upgrade notification"
-       ::= { ubiSoftwareMIBNotifications 4 }        
+       ::= { ubi10gSoftwareMIBNotifications 4 }        
     
 
 	END

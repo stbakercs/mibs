@@ -291,7 +291,7 @@ WATCHGUARD-POLICY-MIB DEFINITIONS ::= BEGIN
         ::= {wgPolicyEntry 16}
 
     wgPolicyLogging OBJECT-TYPE
-        SYNTAX      Unsigned32 {
+        SYNTAX      INTEGER {
                         disabled(0),
                         enabled(1)
                     }

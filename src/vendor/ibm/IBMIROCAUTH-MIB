@@ -7,8 +7,10 @@ IBMIROCAUTH-MIB DEFINITIONS ::= BEGIN
 -- Compile options "G A T M"
 
 IMPORTS
-    Counter32, Gauge32, Integer32, TimeTicks, IpAddress
+    Counter32, Gauge32, Integer32, TimeTicks
             FROM SNMPv2-SMI-v1
+    IpAddress
+            FROM RFC1155-SMI
     OBJECT-TYPE
             FROM RFC-1212
     TRAP-TYPE
@@ -423,7 +425,7 @@ authUserProfileIpAddr OBJECT-TYPE
     STATUS mandatory
     DESCRIPTION
         "IP address for this user."
-    DEFVAL { 0.0.0.0 }
+    DEFVAL { '00000000'H }
     ::= { authUserProfileEntry 18 }
 
 authUserProfileIpMask OBJECT-TYPE
@@ -432,7 +434,7 @@ authUserProfileIpMask OBJECT-TYPE
     STATUS mandatory
     DESCRIPTION
         "IP mask for this user."
-    DEFVAL { 255.255.255.255 }
+    DEFVAL { 'FFFFFFFF'H }
     ::= { authUserProfileEntry 19 }
 
 authUserProfileHostName OBJECT-TYPE

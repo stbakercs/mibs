@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneInterface
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212;	
+		FROM SNMPv2-SMI;	
 
           -- textual conventions
 
@@ -33,7 +33,7 @@ hillstoneIfObjects OBJECT IDENTIFIER ::= { hillstoneInterface 1 }
 -- If Ext MIB Objects
 --
 hillstoneWanIfNumber OBJECT-TYPE
-    SYNTAX Integer32
+    SYNTAX INTEGER
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
@@ -41,28 +41,12 @@ hillstoneWanIfNumber OBJECT-TYPE
     ::= { hillstoneIfObjects 1 } 
      
 hillstoneLanIfNumber OBJECT-TYPE
-    SYNTAX Integer32
+    SYNTAX INTEGER
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
 	"The number of lan interfaces."
     ::= { hillstoneIfObjects 2 } 
-
-hillstoneIfAttriTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneIfAttriEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	"The table for representing the interface attribute."
-::= { hillstoneIfObjects 3 }  
-
-HillstoneIfAttriEntry OBJECT-TYPE
-	SYNTAX HillstoneIfAttriEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION ""
-INDEX { hillstoneIfIndex }
-::= { hillstoneIfAttriTable 1 } 
 
 HillstoneIfAttriEntry ::= 
     SEQUENCE { 
@@ -103,13 +87,30 @@ HillstoneIfAttriEntry ::=
 	hillstoneIfSecNetMask5
 		IpAddress		
 	     }
+
+hillstoneIfAttriTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneIfAttriEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	"The table for representing the interface attribute."
+	::= { hillstoneIfObjects 3 }
+
+hillstoneIfAttriEntry OBJECT-TYPE
+	SYNTAX HillstoneIfAttriEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION ""
+	INDEX { hillstoneIfIndex }
+	::= { hillstoneIfAttriTable 1 }
+
 hillstoneIfIndex OBJECT-TYPE
 	SYNTAX INTEGER
 	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 		"ucIfIndex equals to IfIndex of IF-MIB."
-::= { HillstoneIfAttriEntry 1 }  
+::= { hillstoneIfAttriEntry 1 }  
 
 hillstoneIfName OBJECT-TYPE
 	SYNTAX DisplayString
@@ -117,7 +118,7 @@ hillstoneIfName OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"ifDescr equals to IfIndex of IF-MIB."
-::= { HillstoneIfAttriEntry 2 }
+::= { hillstoneIfAttriEntry 2 }
 
 hillstoneIfAttribute OBJECT-TYPE
 	SYNTAX INTEGER
@@ -130,7 +131,7 @@ hillstoneIfAttribute OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The Attribute of this interface: 0 for Unknown, 1 for LAN, 2 for WAN."
-::= { HillstoneIfAttriEntry 3 }
+	::= { hillstoneIfAttriEntry 3 }
 
 hillstoneIfNetAddress OBJECT-TYPE
 	SYNTAX IpAddress
@@ -138,7 +139,7 @@ hillstoneIfNetAddress OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The ip address of the interface."
-::= { HillstoneIfAttriEntry 4 }
+::= { hillstoneIfAttriEntry 4 }
 
 hillstoneIfNetMask OBJECT-TYPE
 	SYNTAX IpAddress
@@ -146,7 +147,7 @@ hillstoneIfNetMask OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The netmask of the interface, ip address and manage ip address of the the interface are in the same subnet."
-::= { HillstoneIfAttriEntry 5 }
+::= { hillstoneIfAttriEntry 5 }
 
 hillstoneIfManageIp OBJECT-TYPE
 	SYNTAX IpAddress
@@ -154,7 +155,7 @@ hillstoneIfManageIp OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The manage ip address of the interface."
-::= { HillstoneIfAttriEntry 6 }
+::= { hillstoneIfAttriEntry 6 }
 
 hillstoneIfSecIpAddress0 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -162,7 +163,7 @@ hillstoneIfSecIpAddress0 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address0 of the interface."
-::= { HillstoneIfAttriEntry 7 }
+::= { hillstoneIfAttriEntry 7 }
 
 hillstoneIfSecNetMask0 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -170,7 +171,7 @@ hillstoneIfSecNetMask0 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address0 netmask of the interface."
-::= { HillstoneIfAttriEntry 8 }
+::= { hillstoneIfAttriEntry 8 }
 
 hillstoneIfSecIpAddress1 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -178,7 +179,7 @@ hillstoneIfSecIpAddress1 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address1 of the interface."
-::= { HillstoneIfAttriEntry 9 }
+::= { hillstoneIfAttriEntry 9 }
 
 hillstoneIfSecNetMask1 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -186,7 +187,7 @@ hillstoneIfSecNetMask1 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address1 netmask of the interface."
-::= { HillstoneIfAttriEntry 10 }
+::= { hillstoneIfAttriEntry 10 }
 
 hillstoneIfSecIpAddress2 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -194,7 +195,7 @@ hillstoneIfSecIpAddress2 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address2 of the interface."
-::= { HillstoneIfAttriEntry 11 }
+::= { hillstoneIfAttriEntry 11 }
 
 hillstoneIfSecNetMask2 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -202,7 +203,7 @@ hillstoneIfSecNetMask2 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address2 netmask of the interface."
-::= { HillstoneIfAttriEntry 12 }
+::= { hillstoneIfAttriEntry 12 }
 
 hillstoneIfSecIpAddress3 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -210,7 +211,7 @@ hillstoneIfSecIpAddress3 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address3 of the interface."
-::= { HillstoneIfAttriEntry 13 }
+::= { hillstoneIfAttriEntry 13 }
 
 hillstoneIfSecNetMask3 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -218,7 +219,7 @@ hillstoneIfSecNetMask3 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address3 netmask of the interface."
-::= { HillstoneIfAttriEntry 14 }
+::= { hillstoneIfAttriEntry 14 }
 
 hillstoneIfSecIpAddress4 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -226,7 +227,7 @@ hillstoneIfSecIpAddress4 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address4 of the interface."
-::= { HillstoneIfAttriEntry 15 }
+::= { hillstoneIfAttriEntry 15 }
 
 hillstoneIfSecNetMask4 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -234,7 +235,7 @@ hillstoneIfSecNetMask4 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address4 netmask of the interface."
-::= { HillstoneIfAttriEntry 16 }
+::= { hillstoneIfAttriEntry 16 }
 
 hillstoneIfSecIpAddress5 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -242,7 +243,7 @@ hillstoneIfSecIpAddress5 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address5 of the interface."
-::= { HillstoneIfAttriEntry 17 }
+::= { hillstoneIfAttriEntry 17 }
 
 hillstoneIfSecNetMask5 OBJECT-TYPE
 	SYNTAX IpAddress
@@ -250,7 +251,7 @@ hillstoneIfSecNetMask5 OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 		"The second ip address5 netmask of the interface."
-::= { HillstoneIfAttriEntry 18 }
+::= { hillstoneIfAttriEntry 18 }
 
 
 

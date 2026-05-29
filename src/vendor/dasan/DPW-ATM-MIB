@@ -26,6 +26,7 @@ DPW-ATM-MIB DEFINITIONS ::= BEGIN
             FROM ATM-TC-MIB
       ;
 
+        mplsATMPWMIB OBJECT IDENTIFIER ::= { mib-2 999 }
 
         dpwAtmMIB MODULE-IDENTITY
         LAST-UPDATED "200811200000Z"  -- 20 November 2008 12:00:00 GMT 

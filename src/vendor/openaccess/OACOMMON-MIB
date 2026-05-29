@@ -9,7 +9,7 @@ OACOMMON-MIB DEFINITIONS ::= BEGIN
 -- 1.3.6.1.4.1.1732.2.1.1
 
 netspire MODULE-IDENTITY
-      LAST-UPDATED "201610050000Z" -- 2016 October 5 12:00AM"
+      LAST-UPDATED "201610050000Z"
 	ORGANIZATION "Open Access Pty Ltd."
 	CONTACT-INFO
 		"	Open Access Pty Ltd
@@ -32,128 +32,128 @@ netspire MODULE-IDENTITY
 -- 1.3.6.1.4.1.1732.2.1.1
 netspireDeviceName OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Name"
     ::= { netspire 1 }
 
 -- 1.3.6.1.4.1.1732.2.1.2
 netspireDeviceUnitLocation OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Unit Location"
     ::= { netspire 2 }
 
 -- 1.3.6.1.4.1.1732.2.1.3
 netSpireDeviceAlarmStatus OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Alarm Status"
     ::= { netspire 3 }
 
 -- 1.3.6.1.4.1.1732.2.1.4
 netSpireDeviceUptime OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Uptime in Seconds"
     ::= { netspire 4 }
 
 -- 1.3.6.1.4.1.1732.2.1.5
 netSpireDeviceCurrentTime OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Current Wall Time"
     ::= { netspire 5 }
 
 -- 1.3.6.1.4.1.1732.2.1.6
 netSpireDeviceTimeSource OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Time Source"
     ::= { netspire 6 }
 
 -- 1.3.6.1.4.1.1732.2.1.7
 netSpireDeviceRestartCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Restart Count"
     ::= { netspire 7 }
 
 -- 1.3.6.1.4.1.1732.2.1.8
 netSpireDeviceStorageUsed OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Storage Percentage"
     ::= { netspire 8 }
 
 -- 1.3.6.1.4.1.1732.2.1.9
 netSpireDeviceCPULoad OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device CPU Load Percentage"
     ::= { netspire 9 }
 
 -- 1.3.6.1.4.1.1732.2.1.10
 netSpireDeviceSystemTemperature OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device System Temperature in Celsius"
     ::= { netspire 10 }
 
 -- 1.3.6.1.4.1.1732.2.1.11
 netSpireDeviceDeviceSerialNo  OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Serial Number"
     ::= { netspire 11 }
 
 -- 1.3.6.1.4.1.1732.2.1.12
 netSpireDeviceProductionDate  OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Production Date"
     ::= { netspire 12 }
 
 -- 1.3.6.1.4.1.1732.2.1.13
 netSpireDeviceHardwareRevision  OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Hardware Revision"
     ::= { netspire 13 }
 
 -- 1.3.6.1.4.1.1732.2.1.14
 netSpireDeviceWarrantyExpiryDate  OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Warranty Expiry Date"
     ::= { netspire 14 }
 
 -- 1.3.6.1.4.1.1732.2.1.15
 netSpireDeviceBootFirmwareVersion  OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Boot Firmware Version"
     ::= { netspire 15 }
 
 -- 1.3.6.1.4.1.1732.2.1.16
 netSpireDeviceSystemFirmwareVersion  OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device System Firmware Version"
     ::= { netspire 16 }
 
@@ -171,8 +171,8 @@ netSpireDeviceFaultActive OBJECT-TYPE
 -- 1.3.6.1.4.1.1732.2.1.18
 netSpireDeviceAlarmDescription OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Alarm Description"
     ::= { netspire 18 }
 
@@ -189,76 +189,76 @@ netSpireDeviceNonAckFaultActive OBJECT-TYPE
 
 -- 1.3.6.1.4.1.1732.2.1.20
 netSpireDeviceInfoFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device where alarm severity is Info."
     ::= { netspire 20 }
 
 -- 1.3.6.1.4.1.1732.2.1.21
 netSpireDeviceMinorFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device where alarm severity is Minor."
     ::= { netspire 21 }
 
 -- 1.3.6.1.4.1.1732.2.1.22
 netSpireDeviceMajorFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device where alarm severity is Major."
     ::= { netspire 22 }
 
 -- 1.3.6.1.4.1.1732.2.1.23
 netSpireDeviceSevereFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device where alarm severity is Severe."
     ::= { netspire 23 }
 
 -- 1.3.6.1.4.1.1732.2.1.24
 netSpireDeviceInfoNonAckFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device that are not acknowledged where alarm severity is Info."
     ::= { netspire 24 }
 
 -- 1.3.6.1.4.1.1732.2.1.25
 netSpireDeviceMinorNonAckFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device that are not acknowledged where alarm severity is Minor."
     ::= { netspire 25 }
 
 -- 1.3.6.1.4.1.1732.2.1.26
 netSpireDeviceMajorNonAckFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device that are not acknowledged where alarm severity is Major."
     ::= { netspire 26 }
 
 -- 1.3.6.1.4.1.1732.2.1.27
 netSpireDeviceSevereNonAckFaultCount OBJECT-TYPE
-    SYNTAX        Integer
-    ACCESS        read-only
-    STATUS        mandatory
+    SYNTAX        Integer32
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "The number currently active alarms on the device that are not acknowledged where alarm severity is Severe."
     ::= { netspire 27 }
 
 -- 1.3.6.1.4.1.1732.2.1.28
-CurrentMaxFaultSeverity OBJECT-TYPE
+currentMaxFaultSeverity OBJECT-TYPE
     SYNTAX        INTEGER {
-                      None(0),
-                      Info(1),
-                      Minor(2),
-					  Major(3),
-					  Savere(4)
+                      noneVal(0),
+                      infoVal(1),
+                      minorVal(2),
+	                      majorVal(3),
+	                      severeVal(4)
                   }
     MAX-ACCESS    read-only
     STATUS        current
@@ -266,13 +266,13 @@ CurrentMaxFaultSeverity OBJECT-TYPE
     ::= { netspire 28 } 
 
 -- 1.3.6.1.4.1.1732.2.1.29
-CurrentMaxNonAckFaultSeverity OBJECT-TYPE
+currentMaxNonAckFaultSeverity OBJECT-TYPE
     SYNTAX        INTEGER {
-                      None(0),
-                      Info(1),
-                      Minor(2),
-					  Major(3),
-					  Savere(4)
+                      noneVal(0),
+                      infoVal(1),
+                      minorVal(2),
+	                      majorVal(3),
+	                      severeVal(4)
                   }
     MAX-ACCESS    read-only
     STATUS        current
@@ -280,75 +280,82 @@ CurrentMaxNonAckFaultSeverity OBJECT-TYPE
     ::= { netspire 29 } 
 
 -- 1.3.6.1.4.1.1732.2.1.32
-Faults OBJECT-TYPE
-    SYNTAX        SEQUENCE OF Fault
+FaultEntry ::=
+    SEQUENCE {
+        faultType          INTEGER,
+        faultSeverity      INTEGER,
+        faultModule        DisplayString,
+        faultErrorText     DisplayString,
+        faultAcknowledged  DisplayString,
+        faultDevice        DisplayString
+    }
+faultTable OBJECT-TYPE
+    SYNTAX        SEQUENCE OF FaultEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION   "A table containing the faults for the device."
     ::= { netspire 32 }
 
 -- 1.3.6.1.4.1.1732.2.1.32.1
-Fault OBJECT-TYPE
-    SYNTAX        Fault
+faultTableEntry OBJECT-TYPE
+    SYNTAX        FaultEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION   "Device fault definition"
-    INDEX         { Type }
-    ::= { Faults 1 }
+    INDEX         { faultType }
+    ::= { faultTable 1 }
 
-Fault ::=
-    SEQUENCE {
-        Type          INTEGER,
-        Severity      INTEGER,
-        Module        DisplayString,
-        ErrorText     DisplayString,
-        Acknowledged  DisplayString,
-        Device		  DisplayString
-    }
 
 -- 1.3.6.1.4.1.1732.2.1.32.1.1
-Type OBJECT-TYPE
+faultType OBJECT-TYPE
     SYNTAX        INTEGER
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "The type of the fault."
-    ::= { Fault 1 }
+    ::= { faultTableEntry 1 }
+
+faultSeverity OBJECT-TYPE
+    SYNTAX        INTEGER
+    MAX-ACCESS    read-only
+    STATUS        current
+    DESCRIPTION   "The severity of the fault."
+    ::= { faultTableEntry 2 }
 
 -- 1.3.6.1.4.1.1732.2.1.32.1.3
-Module OBJECT-TYPE
+faultModule OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "The module in which the fault was detected."
-    ::= { Fault 3 } 
+    ::= { faultTableEntry 3 } 
 
 -- 1.3.6.1.4.1.1732.2.1.32.1.4
-ErrorText OBJECT-TYPE
+faultErrorText OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "A human readable summary of the fault."
-    ::= { Fault 4 } 
+    ::= { faultTableEntry 4 } 
 
 -- 1.3.6.1.4.1.1732.2.1.32.1.5
-Acknowledged OBJECT-TYPE
+faultAcknowledged OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Shows whether a user has acknowledged the fault."
-    ::= { Fault 5 } 
+    ::= { faultTableEntry 5 } 
 
 -- 1.3.6.1.4.1.1732.2.1.32.1.6
-Device OBJECT-TYPE
+faultDevice OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "The device on which the alarm is active."
-    ::= { Fault 6 } 
+    ::= { faultTableEntry 6 } 
 
 -- 1.3.6.1.4.1.1732.2.1.33
 netspireDigitalInCount OBJECT-TYPE
-    SYNTAX        Integer
+    SYNTAX        Integer32
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Number of Digital Inputs present"
@@ -356,13 +363,20 @@ netspireDigitalInCount OBJECT-TYPE
 
 -- 1.3.6.1.4.1.1732.2.1.34
 netspireDigitalOutCount OBJECT-TYPE
-    SYNTAX        Integer
+    SYNTAX        Integer32
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Number of Digital Outputs present"
     ::= { netspire 34}
 
 -- 1.3.6.1.4.1.1732.2.1.36
+DigitalInEntry ::=
+    SEQUENCE {
+        digitalInPort   	 INTEGER,
+        digitalInName   	 DisplayString,
+        digitalInState       INTEGER
+    }
+
 netspireDigitalInTable OBJECT-TYPE
     SYNTAX        SEQUENCE OF DigitalInEntry
     MAX-ACCESS    read-only
@@ -378,13 +392,6 @@ digitalInEntry OBJECT-TYPE
         "Digital Input Port Information"
     INDEX   { digitalInPort }
     ::= { netspireDigitalInTable 1 }
-
-DigitalInEntry ::=
-    SEQUENCE {
-        digitalInPort   	 DigitalInPort,
-        digitalInName   	 DigitalInName,
-	    digitalInState       DigitalInState
-    }
 
 digitalInPort OBJECT-TYPE
     SYNTAX        INTEGER
@@ -402,8 +409,8 @@ digitalInName OBJECT-TYPE
 
 digitalInStatus OBJECT-TYPE
     SYNTAX        INTEGER {
-                    Low(0),
-                    High(1)
+                    lowVal(0),
+                    highVal(1)
 				 }
     MAX-ACCESS    read-only
     STATUS        current
@@ -412,6 +419,13 @@ digitalInStatus OBJECT-TYPE
 
 
 -- 1.3.6.1.4.1.1732.2.1.37
+DigitalOutEntry ::=
+    SEQUENCE {
+        digitalOutPort   	 INTEGER,
+        digitalOutName   	 DisplayString,
+        digitalOutState      INTEGER
+    }
+
 netspireDigitalOutTable OBJECT-TYPE
     SYNTAX        SEQUENCE OF DigitalOutEntry
     MAX-ACCESS    read-only
@@ -428,13 +442,6 @@ digitalOutEntry OBJECT-TYPE
     INDEX   { digitalOutPort }
     ::= { netspireDigitalOutTable 1 }
 
-DigitalOutEntry ::=
-    SEQUENCE {
-        digitalOutPort   	 DigitalOutPort,
-        digitalOutName   	 DigitalOutName,
-	    digitalOutState      DigitalOutState
-    }
-
 digitalOutPort OBJECT-TYPE
     SYNTAX        INTEGER
     MAX-ACCESS    read-only
@@ -442,17 +449,17 @@ digitalOutPort OBJECT-TYPE
     DESCRIPTION   "Digital Output port"
     ::= { digitalOutEntry 1 }
 
-digitaloOutName OBJECT-TYPE
+digitalOutName OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Digital Output name"
     ::= { digitalOutEntry 2 }
 
-digitalOutStatus OBJECT-TYPE
+digitalOutState OBJECT-TYPE
     SYNTAX        INTEGER {
-                    Low(0),
-                    High(1)
+                    lowVal(0),
+                    highVal(1)
 				 }
     MAX-ACCESS    read-only
     STATUS        current
@@ -463,172 +470,166 @@ digitalOutStatus OBJECT-TYPE
 -- 1.3.6.1.4.1.1732.2.1.40
 netspireDeviceDescription OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Description"
     ::= { netspire 40 }
 
 -- 1.3.6.1.4.1.1732.2.1.41
 netspireDeviceModelName OBJECT-TYPE
     SYNTAX        DisplayString
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "NetSpire Device Model Name"
     ::= { netspire 41 }
 	
 -- 1.3.6.1.4.1.1732.2.1.43
-ManagedDeviceCount OBJECT-TYPE
+managedDeviceCount OBJECT-TYPE
     SYNTAX        INTEGER
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "Managed Device Count"
     ::= { netspire 43 }	
 
 -- 1.3.6.1.4.1.1732.2.1.44
-ManagedDisplayCount OBJECT-TYPE
+managedDisplayCount OBJECT-TYPE
     SYNTAX        INTEGER
-    ACCESS        read-only
-    STATUS        mandatory
+    MAX-ACCESS        read-only
+    STATUS        current
     DESCRIPTION   "Managed Display Count"
     ::= { netspire 44 }	
 	
 -- 1.3.6.1.4.1.1732.2.1.46
-ManagedDevicetable OBJECT-TYPE
-    SYNTAX        SEQUENCE OF Device
+OaManagedDeviceEntry ::=
+    SEQUENCE {
+        managedDeviceDestNum           INTEGER,
+        managedDeviceName        DisplayString,
+        managedDeviceLocation     DisplayString,
+        deviceIp  DisplayString,
+        managedDeviceOnline		  INTEGER
+    }
+
+managedDeviceTable OBJECT-TYPE
+    SYNTAX        SEQUENCE OF OaManagedDeviceEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION   "A table containing the managed device."
     ::= { netspire 46 }
 
 -- 1.3.6.1.4.1.1732.2.1.46.1
-ManagedDevice OBJECT-TYPE
-    SYNTAX        Device
+managedDeviceEntry OBJECT-TYPE
+    SYNTAX        OaManagedDeviceEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION   "Managed Device"
-    INDEX         { DestinationNumber }
-    ::= { ManagedDevicetable 1 }
-
-Device ::=
-    SEQUENCE {
-        DestinationNumber           INTEGER,
-        Name        DisplayString,
-        Location     DisplayString,
-        IP  DisplayString,
-        Online		  INTEGER
-    }
+    INDEX         { managedDeviceDestNum }
+    ::= { managedDeviceTable 1 }
 
 -- 1.3.6.1.4.1.1732.2.1.46.1.1
-DestinationNumber OBJECT-TYPE
+managedDeviceDestNum OBJECT-TYPE
     SYNTAX        INTEGER
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Device Destination Number"
-    ::= { ManagedDevice 1 }
+    ::= { managedDeviceEntry 1 }
 
 -- 1.3.6.1.4.1.1732.2.1.46.1.2
-Name OBJECT-TYPE
+managedDeviceName OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Device Name"
-    ::= { ManagedDevice 2 }
+    ::= { managedDeviceEntry 2 }
 
 -- 1.3.6.1.4.1.1732.2.1.46.1.3
-Location OBJECT-TYPE
+managedDeviceLocation OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Device Location"
-    ::= { ManagedDevice 3 } 
+    ::= { managedDeviceEntry 3 } 
 
 -- 1.3.6.1.4.1.1732.2.1.46.1.4
-IP OBJECT-TYPE
+managedDeviceIp OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Ip address"
-    ::= { ManagedDevice 4 } 
+    ::= { managedDeviceEntry 4 } 
 
 -- 1.3.6.1.4.1.1732.2.1.46.1.5
-Online OBJECT-TYPE
-    SYNTAX        INTEGER {
-					N(0),
-					Y(1)
-				  }
+managedDeviceOnline OBJECT-TYPE
+    SYNTAX        INTEGER { deviceOffline(0), deviceOnline(1) }
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "whether a device is online or not"
-    ::= { ManagedDevice 5 } 
+    ::= { managedDeviceEntry 5 } 
 
 -- 1.3.6.1.4.1.1732.2.1.47
-ManagedDisplaytable OBJECT-TYPE
-    SYNTAX        SEQUENCE OF Display
+OaManagedDisplayEntry ::=
+    SEQUENCE {
+        displayNumber           INTEGER,
+        displayName        DisplayString,
+        displayLocation     DisplayString,
+        displayIp  DisplayString,
+        displayOnline		  INTEGER
+    }
+
+managedDisplayTable OBJECT-TYPE
+    SYNTAX        SEQUENCE OF OaManagedDisplayEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION   "A table containing the managed display."
     ::= { netspire 47 }
 	
 -- 1.3.6.1.4.1.1732.2.1.47.1
-ManagedDisplay OBJECT-TYPE
-    SYNTAX        Display
+managedDisplayEntry OBJECT-TYPE
+    SYNTAX        OaManagedDisplayEntry
     MAX-ACCESS    not-accessible
     STATUS        current
     DESCRIPTION   "Managed Display"
-    INDEX         { DisplayNumber }
-    ::= { ManagedDisplaytable 1 }
-
-Display ::=
-    SEQUENCE {
-        DisplayNumber           INTEGER,
-        Name        DisplayString,
-        Location     DisplayString,
-        IP  DisplayString,
-        Online		  INTEGER
-    }
+    INDEX         { displayNumber }
+    ::= { managedDisplayTable 1 }
 
 -- 1.3.6.1.4.1.1732.2.1.47.1.1
-DisplayNumber OBJECT-TYPE
+displayNumber OBJECT-TYPE
     SYNTAX        INTEGER
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Display Number"
-    ::= { ManagedDisplay 1 }
+    ::= { managedDisplayEntry 1 }
 
 -- 1.3.6.1.4.1.1732.2.1.47.1.2
-Name OBJECT-TYPE
+displayName OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Display Name"
-    ::= { ManagedDisplay 2 }
+    ::= { managedDisplayEntry 2 }
 
 -- 1.3.6.1.4.1.1732.2.1.47.1.3
-Location OBJECT-TYPE
+displayLocation OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Display Location"
-    ::= { ManagedDisplay 3 } 
+    ::= { managedDisplayEntry 3 } 
 
 -- 1.3.6.1.4.1.1732.2.1.47.1.4
-IP OBJECT-TYPE
+displayIp OBJECT-TYPE
     SYNTAX        DisplayString
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "Ip address"
-    ::= { ManagedDisplay 4 } 
+    ::= { managedDisplayEntry 4 } 
 
 -- 1.3.6.1.4.1.1732.2.1.47.1.5
-Online OBJECT-TYPE
-    SYNTAX        INTEGER {
-					N(0),
-					Y(1)
-				  }
+displayOnline OBJECT-TYPE
+    SYNTAX        INTEGER { displayOffline(0), displayOnlineState(1) }
     MAX-ACCESS    read-only
     STATUS        current
     DESCRIPTION   "whether a display is online or not"
-    ::= { ManagedDisplay 5 } 
+    ::= { managedDisplayEntry 5 } 
 	
 -- ===========================================================================
 -- ========================   Control  G r o u p   ===========================
@@ -745,7 +746,7 @@ netSpireDigitalOutControlTable OBJECT-TYPE
 
 digitalOutControlEntry OBJECT-TYPE
     SYNTAX  DigitalOutControlEntry
-    MAX-ACCESS  read-write
+    MAX-ACCESS  not-accessible
     STATUS  current
     DESCRIPTION
         "Digital Output Port Control"
@@ -767,8 +768,8 @@ digitalOutControlPort OBJECT-TYPE
 
 digitalOutSetState OBJECT-TYPE
     SYNTAX        INTEGER {
-				      High (0),
-				      Low (1)
+                          High (0),
+                          Low (1)
 				 } 
     MAX-ACCESS    read-write
     STATUS        current

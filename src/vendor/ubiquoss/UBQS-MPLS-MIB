@@ -663,8 +663,9 @@ ubiMplsMIBGroups  	 	OBJECT IDENTIFIER		::= { ubiMplsMIBConformance 2 }
 
 
 	ubiMplsMIBGroup OBJECT-GROUP
-    	OBJECTS         {     
-    	}   
+    	OBJECTS {
+                ubiMplsInterfaceTable
+        }   
     	STATUS          current
     	DESCRIPTION
         	"A collection of objects containing

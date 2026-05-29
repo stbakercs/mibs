@@ -70,13 +70,13 @@ traps             OBJECT IDENTIFIER ::= { dismuntel 3 }
 		    INTEGER,
 		flagsCurrent
 		    Gauge,
-		PFCTotal
+		pfcTotalValue
 		    INTEGER,
-		PFC1
+		pfc1Measure
 		    INTEGER,
-		PFC2
+		pfc2Measure
 		    INTEGER,
-		PFC3
+		pfc3Measure
 		    INTEGER,
 		realPow
 		    INTEGER,
@@ -176,13 +176,13 @@ traps             OBJECT IDENTIFIER ::= { dismuntel 3 }
 		    INTEGER,
 		flagsCurrentConm
 		    Gauge,
-		PFCTotalConm
+		pfcTotalConm
 		    INTEGER,
-		PFC1Conm
+		pfc1Conm
 		    INTEGER,
-		PFC2Conm
+		pfc2Conm
 		    INTEGER,
-		PFC3Conm
+		pfc3Conm
 		    INTEGER,
 		realPowConm
 		    INTEGER,
@@ -311,25 +311,25 @@ flagsCurrent  OBJECT-TYPE
 	DESCRIPTION	""
 ::= { measures 18 }
 
-PFCTotal OBJECT-TYPE
+pfcTotalMeasure OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
 	DESCRIPTION	""
 ::= { measures 19 }   
-PFC1 OBJECT-TYPE
+pfc1Measure OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
 	DESCRIPTION	""
 ::= { measures 20 }   
-PFC2 OBJECT-TYPE
+pfc2Measure OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
 	DESCRIPTION	""
 ::= { measures 21 }   
-PFC3 OBJECT-TYPE
+pfc3Measure OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
@@ -624,27 +624,27 @@ flagsCurrentConm  OBJECT-TYPE
 	DESCRIPTION	""
 ::= { conmutationmeasuresEntry 18 }
 
-PFCTotalConm OBJECT-TYPE
+pfcTotalConm OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
 	DESCRIPTION	""
 ::= { conmutationmeasuresEntry 19 }   
-PFC1Conm OBJECT-TYPE
+pfc1Conm OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
 	DESCRIPTION	""
 ::= { conmutationmeasuresEntry 20 }   
 
-PFC2Conm OBJECT-TYPE
+pfc2Conm OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
 	DESCRIPTION	""
 ::= { conmutationmeasuresEntry 21 }   
 
-PFC3Conm OBJECT-TYPE
+pfc3Conm OBJECT-TYPE
     SYNTAX INTEGER
 	ACCESS read-only
 	STATUS current
@@ -716,13 +716,13 @@ alarmBitMapConm OBJECT-TYPE
             INTEGER,
         dplusActivationTime
             INTEGER,
-        EJP1ActivationDelayTime
+        ejp1ActivationDelayTime
             INTEGER,
         mainsActivationDelay
             INTEGER,
         coolingTime
             INTEGER,
-        PEActivationTime
+        peActivationTime
             INTEGER,		
         counterDetectionTime
             INTEGER,
@@ -878,7 +878,7 @@ dplusActivationTime  OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION	""
 ::= { parameters 8 } 
-EJP1ActivationDelayTime  OBJECT-TYPE
+ejp1ActivationDelayTime  OBJECT-TYPE
 	SYNTAX  	INTEGER
 	ACCESS		read-write
 	STATUS		current
@@ -896,7 +896,7 @@ coolingTime  OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION	""
 ::= { parameters 11 }   
-PEActivationTime  OBJECT-TYPE
+peActivationTime  OBJECT-TYPE
 	SYNTAX  	INTEGER
 	ACCESS		read-write
 	STATUS		current
@@ -1291,4 +1291,3 @@ alarmMsg TRAP-TYPE
 ::= 1
 
 END
-cj

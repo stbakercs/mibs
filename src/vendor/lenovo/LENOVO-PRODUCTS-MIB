@@ -25,14 +25,13 @@ lenovoProductsMIB MODULE-IDENTITY
     DESCRIPTION
         "This module defines the object identifiers returned as values for
          sysObjectID for Lenovo hardware."
-        REVISION      "201604200000Z"
-		DESCRIPTION   "Initial version."
-        REVISION      "201705010000Z"
-        DESCRIPTION   "Add sysObjectId for G8332 CNOS product"
-		REVISION      "201705020000Z"
-        DESCRIPTION   "Add sysObjectIDs for NE1032, NE1032T, NE1072, and NE10032 switches."
-
-		    ::= { lenovoModules 1 }
+    REVISION      "201604200000Z"
+    DESCRIPTION   "Initial version."
+    REVISION      "201705010000Z"
+    DESCRIPTION   "Add sysObjectId for G8332 CNOS product"
+    REVISION      "201705020000Z"
+    DESCRIPTION   "Add sysObjectIDs for NE1032, NE1032T, NE1072, and NE10032 switches."
+    ::= { lenovoModules 1 }
 			
 -- Lenovo Server Products
 lenovoServerProducts OBJECT-IDENTITY
@@ -66,13 +65,13 @@ g8296 OBJECT IDENTIFIER ::= { tor 22}
 g8272 OBJECT IDENTIFIER ::= { tor 24}
 
 -- Lenovo RackSwitch G8296 CNOS
-g8296-cnos OBJECT IDENTIFIER ::= { tor 29}
+g8296Cnos OBJECT IDENTIFIER ::= { tor 29}
 
 -- Lenovo RackSwitch G8272 CNOS
-g8272-cnos OBJECT IDENTIFIER ::= { tor 30}
+g8272Cnos OBJECT IDENTIFIER ::= { tor 30}
 
 -- Lenovo RackSwitch G8332 CNOS
-g8332-cnos OBJECT IDENTIFIER ::= { tor 31}
+g8332Cnos OBJECT IDENTIFIER ::= { tor 31}
 
 -- Lenovo ThinkSystem NE1032 RackSwitch
 ne1032 OBJECT IDENTIFIER ::= { tor 32}
@@ -97,8 +96,5 @@ ce0128p OBJECT IDENTIFIER ::= { tor 38}
 
 -- Lenovo CE0152T Switch
 ce0152t OBJECT IDENTIFIER ::= { tor 39}
-
--- Lenovo ThinkSystem NE2572 RackSwitch 
-ne2572 OBJECT IDENTIFIER ::= { tor 41}
 
 END

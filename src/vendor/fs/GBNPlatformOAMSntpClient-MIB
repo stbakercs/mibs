@@ -43,7 +43,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "SNTP¿Í»§¶ËµÄ¹¤×÷·½Ê½"   
+            "SNTPï¿½Í»ï¿½ï¿½ËµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ê½"   
         DEFVAL  { broadcast }            
         ::= { sntpClientGeneral 1 }  
         
@@ -52,7 +52,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "·¢ËÍÇëÇóµÄ¼ä¸ô£¬ÓÃÓÚµ¥²¥ºÍÈÎÒâ²¥·½Ê½"      
+            "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¥ï¿½ï¿½Ê½"      
         DEFVAL  { 1000 }                 
         ::= { sntpClientGeneral 2 }              
        
@@ -61,7 +61,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶ËÖØ´«ÇëÇóµÄ¼ä¸ô"    
+            "ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½"    
         DEFVAL  { 5 }                 
         ::= { sntpClientGeneral 3 }  
         
@@ -70,7 +70,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶ËÃ»ÓÐÊÕµ½»ØÓ¦Ê±£¬ÖØ´«ÇëÇóµÄ´ÎÊý£¬ÓÃÓÚµ¥²¥ºÍÈÎÒâ²¥·½Ê½"   
+            "ï¿½Í»ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ó¦Ê±ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¥ï¿½ï¿½Ê½"   
         DEFVAL  { 0 }            
         ::= { sntpClientGeneral 4 }       
         
@@ -79,7 +79,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "ÕýÔÚÊ¹ÓÃµÄ·þÎñÆ÷µØÖ·£¬ÓÃÓÚ³öµ¥²¥ºÍÈÎÒâ²¥·½Ê½"
+            "ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¥ï¿½ï¿½Ê½"
         ::= { sntpClientGeneral 5 }  
         
     sntpClientSynthFlag OBJECT-TYPE
@@ -87,7 +87,7 @@
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶ËµÄÊ±¼äÊÇ·ñ±»Í¬²½"
+            "ï¿½Í»ï¿½ï¿½Ëµï¿½Ê±ï¿½ï¿½ï¿½Ç·ï¿½Í¬ï¿½ï¿½"
         ::= { sntpClientGeneral 6 }               
         
     sntpClientState OBJECT-TYPE
@@ -95,15 +95,15 @@
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶Ëµ±Ç°µÄ×´Ì¬£¬¿ÕÏÐ×´Ì¬»òµÈ´ý»ØÓ¦±¨ÎÄ×´Ì¬"
+            "ï¿½Í»ï¿½ï¿½Ëµï¿½Ç°ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½È´ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½×´Ì¬"
         ::= { sntpClientGeneral 7 }  
         
     sntpClientLastSynthTime OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶Ë×îºóÒ»´ÎÍ¬²½µÄÊ±¼ä"
+            "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½"
         ::= { sntpClientGeneral 8 }               
         
     sntpClientLastSynthErrno OBJECT-TYPE
@@ -111,7 +111,7 @@
         MAX-ACCESS  read-only
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶Ë×îºóÒ»´ÎÍ¬²½ÈôÊ§°ÜÊ±µÄ´íÎóÂë¡£"
+            "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½Ê±ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ë¡£"
         ::= { sntpClientGeneral 9 }      
         
     sntpClientAdminStatus OBJECT-TYPE
@@ -122,7 +122,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶Ë´ò¿ªºÍ¹Ø±Õ×´Ì¬"
+            "ï¿½Í»ï¿½ï¿½Ë´ò¿ªºÍ¹Ø±ï¿½×´Ì¬"
         ::= { sntpClientGeneral 10 }    
         
     sntpClientBcastDelay OBJECT-TYPE
@@ -130,7 +130,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶Ë¹¤×÷ÔÚ¹ã²¥·½Ê½ÏÂµÄ¹À¼Æ´«ÊäÑÓÊ±(ºÁÃëÊý)"
+            "ï¿½Í»ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½Ú¹ã²¥ï¿½ï¿½Ê½ï¿½ÂµÄ¹ï¿½ï¿½Æ´ï¿½ï¿½ï¿½ï¿½ï¿½Ê±(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)"
         ::= { sntpClientGeneral 11 }  
         
      sntpClientMcastTtl OBJECT-TYPE
@@ -138,7 +138,7 @@
         MAX-ACCESS  read-write
         STATUS  current
         DESCRIPTION
-            "¿Í»§¶Ë¹¤×÷ÔÚ×é²¥·½Ê½ÏÂµÄTTLÖµ"
+            "ï¿½Í»ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é²¥ï¿½ï¿½Ê½ï¿½Âµï¿½TTLÖµ"
         ::= { sntpClientGeneral 12 }  
     
       sntpClientAuthFlag OBJECT-TYPE
@@ -147,7 +147,7 @@
         STATUS  current
         DESCRIPTION
             "authentication enable flag"  
-             --ÈÏÖ¤Ê¹ÄÜ±ê¼Ç£¬TRUE£º´ò¿ªÈÏÖ¤£¬FALSE£º¹Ø±ÕÈÏÖ¤--
+             --ï¿½ï¿½Ö¤Ê¹ï¿½Ü±ï¿½Ç£ï¿½TRUEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½FALSEï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½Ö¤--
         ::= { sntpClientGeneral 13 }   
         
       sntpClientUniKeyID OBJECT-TYPE
@@ -156,7 +156,7 @@
         STATUS  current
         DESCRIPTION
             "in client/server mode, client send request with this keyID"  
-             --ÔÚ¿Í»§¶Ë/·þÎñÆ÷Ä£Ê½ÏÂ£¬¿Í»§¶Ë·¢ËÍÇëÇóÊ¹ÓÃµÄkeyID--
+             --ï¿½Ú¿Í»ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½Â£ï¿½ï¿½Í»ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½keyID--
         ::= { sntpClientGeneral 14 }         
    
       sntpClientAnyKeyID OBJECT-TYPE
@@ -165,7 +165,7 @@
         STATUS  current
         DESCRIPTION
             "in anycast mode, client send request with this keyID"  
-             --ÔÚÈÎÒâ²¥Ä£Ê½ÏÂ£¬¿Í»§¶ËÊ¹ÓÃ¹ã£¨×é£©²¥·¢ËÍÇëÇóÊ¹ÓÃµÄkeyID--
+             --ï¿½ï¿½ï¿½ï¿½ï¿½â²¥Ä£Ê½ï¿½Â£ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹ã£¨ï¿½é£©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½keyID--
         ::= { sntpClientGeneral 15 }                   
       sntpClientServerBackup OBJECT-TYPE
         SYNTAX IpAddress
@@ -184,8 +184,8 @@
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
-           "ºÏ·¨·þÎñÆ÷Íø¶Î±í£¬SNTP¸ù¾Ý´Î±í¼ì²é±¨ÎÄÔ´µØÖ·£¬Ö»ÓÐÔ´µØÖ·ÂäÔÚÕâ¸öÕâ¸ö
-            ±íÖÐµÄ±¨ÎÄ²ÅÎªºÏ·¨±¨ÎÄ£¬·ñÔò¶ªÆú¡£Ïàµ±ÓÚ·ÃÎÊ¿ØÖÆÁÐ±í"
+           "ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½SNTPï¿½ï¿½ï¿½Ý´Î±ï¿½ï¿½ï¿½é±¨ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½ï¿½Ö»ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            ï¿½ï¿½ï¿½ÐµÄ±ï¿½ï¿½Ä²ï¿½Îªï¿½Ï·ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½àµ±ï¿½Ú·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½"
        ::= { gbnPlatformOAMSntpClient 2 }
 
     sntpClientValidServerEntry OBJECT-TYPE
@@ -193,7 +193,7 @@
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
-           "¶¨ÒåÒ»ÌõºÏ·¨·þÎñÆ÷ÁÐ±í."
+           "ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½."
        INDEX { sntpClientValidServerNet, sntpClientValidServerMask }
        ::= { sntpClientValidServerTable 1 } 
          
@@ -212,7 +212,7 @@
         MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
-           "Ô´µØÖ·ËùÔÚÍø¶ÎºÅ"
+           "Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½"
         ::= { sntpClientValidServerEntry 1 } 
         
     sntpClientValidServerMask OBJECT-TYPE
@@ -220,7 +220,7 @@
         MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
-           "Ô´µØÖ·ËùÔÚÍø¶ÎÑÚÂë"
+           "Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
         ::= { sntpClientValidServerEntry 2 }         
                                                 
     sntpClientValidServerRowStatus OBJECT-TYPE
@@ -228,7 +228,7 @@
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "ÐÐ×´Ì¬"
+           "ï¿½ï¿½×´Ì¬"
         ::= { sntpClientValidServerEntry 3 }   
         
 ------------------------------------------------------------------------------     
@@ -241,7 +241,7 @@
         STATUS   current
         DESCRIPTION
            "keys userd for SNTP authentication"  
-           --ÓÃÓÚSNTPÈÏÖ¤µÄÃÜÂë±í--
+           --ï¿½ï¿½ï¿½ï¿½SNTPï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--
        ::= { gbnPlatformOAMSntpClient 3 }
 
     sntpAuthKeyEntry OBJECT-TYPE
@@ -250,7 +250,7 @@
         STATUS   current
         DESCRIPTION
            "define a key item."   
-           --¶¨ÒåÒ»¸öÃÜÂë±íÏî--
+           --ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--
        INDEX { sntpAuthKeyId }
        ::= { sntpAuthKeyTable 1 } 
          
@@ -281,7 +281,7 @@
         STATUS   current
         DESCRIPTION
            "key value"    
-           --Ò»¸ö×î³¤Îª16×Ö½ÚµÄ×Ö·û´®--
+           --Ò»ï¿½ï¿½ï¿½î³¤Îª16ï¿½Ö½Úµï¿½ï¿½Ö·ï¿½ï¿½ï¿½--
         ::= { sntpAuthKeyEntry 2 }    
         
     sntpAuthKeyTrustFlag OBJECT-TYPE
@@ -290,7 +290,7 @@
         STATUS   current
         DESCRIPTION
            "whether the key is trusted" 
-           --´ËÃÜÂëÊÇ·ñÎª¿ÉÐÅÈÎµÄ±ê¼Ç--
+           --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ÎµÄ±ï¿½ï¿½--
         ::= { sntpAuthKeyEntry 3 }   
                                                 
     sntpAuthKeyRowStatus OBJECT-TYPE
@@ -299,7 +299,7 @@
         STATUS   current
         DESCRIPTION
            "row status"
-           --ÐÐ×´Ì¬£¬ÓÃÓÚÉ¾³ý--
+           --ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½--
         ::= { sntpAuthKeyEntry 4 }                                                                             
                                
    END

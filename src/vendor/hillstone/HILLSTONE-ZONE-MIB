@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneZONE
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212	
+		FROM SNMPv2-SMI	
 	RowStatus		
 		FROM SNMPv2-TC;
           -- textual conventions
@@ -30,23 +30,6 @@ IMPORTS
 
 hillstoneZoneObjects OBJECT IDENTIFIER ::= { hillstoneZONE 1 }
 
-hillstoneZoneTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneZoneEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "This table contains all the security zones defined in the system."
-::= { hillstoneZoneObjects 1 }
-
-HillstoneZoneEntry OBJECT-TYPE
-	SYNTAX HillstoneZoneEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-		"Define the parameters of security zone."
-INDEX { hillstoneZoneZoneIdx }
-::= { hillstoneZoneTable 1 }
-	
 HillstoneZoneEntry ::=
 	SEQUENCE { 
 	hillstoneZoneZoneIdx
@@ -58,6 +41,23 @@ HillstoneZoneEntry ::=
 	hillstoneZoneRowStatus
 		RowStatus
 	}
+hillstoneZoneTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneZoneEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "This table contains all the security zones defined in the system."
+::= { hillstoneZoneObjects 1 }
+
+hillstoneZoneEntry OBJECT-TYPE
+	SYNTAX HillstoneZoneEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"Define the parameters of security zone."
+INDEX { hillstoneZoneZoneIdx }
+::= { hillstoneZoneTable 1 }
+	
 
 hillstoneZoneZoneIdx OBJECT-TYPE
 	SYNTAX Counter 
@@ -68,7 +68,7 @@ hillstoneZoneZoneIdx OBJECT-TYPE
 	    An internal number to distinguish security zone.
 	    Different zone has different number.
 	    "
-::= { HillstoneZoneEntry 1 }
+::= { hillstoneZoneEntry 1 }
 
 hillstoneZoneZoneName OBJECT-TYPE
 	SYNTAX OCTET STRING (SIZE (1..255))
@@ -78,13 +78,13 @@ hillstoneZoneZoneName OBJECT-TYPE
 	    "
 	    The name of security zone.
 	    Different zone has different name."
-::= { HillstoneZoneEntry 2 }
+::= { hillstoneZoneEntry 2 }
 
 hillstoneZoneType OBJECT-TYPE
 	SYNTAX INTEGER
 	{
-		lever-2(1),
-		lever-3(2)
+		lever2(1),
+		lever3(2)
 	}
 	MAX-ACCESS read-write
 	STATUS current
@@ -93,7 +93,7 @@ hillstoneZoneType OBJECT-TYPE
 	    The priority of security zone.
 	    Different zone has different priority.
 	    "
-::= { HillstoneZoneEntry 3 }
+::= { hillstoneZoneEntry 3 }
   
 hillstoneZoneRowStatus OBJECT-TYPE
 	SYNTAX RowStatus
@@ -101,10 +101,17 @@ hillstoneZoneRowStatus OBJECT-TYPE
 	STATUS current
 	DESCRIPTION
 	 "The status of this address book row. support: active, createandgo, destory"
-::= { HillstoneZoneEntry 4 }
+::= { hillstoneZoneEntry 4 }
 	
+HillstoneZoneIFEntry ::=
+SEQUENCE { 
+        hillstoneZoneIdx
+		Counter,
+	hillstoneZoneIfIndex
+		Counter
+	}
 hillstoneZoneIFTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF hillstoneZoneIFEntry
+	SYNTAX SEQUENCE OF HillstoneZoneIFEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION
@@ -114,7 +121,7 @@ hillstoneZoneIFTable OBJECT-TYPE
 ::= { hillstoneZoneObjects 2 }
 
 hillstoneZoneIFEntry OBJECT-TYPE
-	SYNTAX hillstoneZoneIFEntry
+	SYNTAX HillstoneZoneIFEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION
@@ -123,13 +130,6 @@ hillstoneZoneIFEntry OBJECT-TYPE
 	       hillstoneZoneIfIndex }
 ::= { hillstoneZoneIFTable 1 }
 
-hillstoneZoneIFEntry ::=
-SEQUENCE { 
-        hillstoneZoneIdx
-		Counter,
-	hillstoneZoneIfIndex
-		Counter
-	}
 
 hillstoneZoneIdx OBJECT-TYPE
 	SYNTAX Counter

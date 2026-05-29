@@ -48,7 +48,7 @@
         STATUS current
         DESCRIPTION
             "SSH version."
-            --SSH °æ±¾¡£
+            --SSH ï¿½æ±¾ï¿½ï¿½
         ::= { gbnPlatformOAMSsh 1 }
 
 	sshState OBJECT-TYPE
@@ -60,7 +60,7 @@
         STATUS current
         DESCRIPTION
             "enable or disable SSH."
-            --´ò¿ª»ò¹Ø±ÕSSH¹¦ÄÜ¡£
+            --ï¿½ò¿ª»ï¿½Ø±ï¿½SSHï¿½ï¿½ï¿½Ü¡ï¿½
         ::= { gbnPlatformOAMSsh 2 } 
 
 	sshKeyAvailable OBJECT-TYPE
@@ -72,16 +72,16 @@
         STATUS current
         DESCRIPTION
             "SSH key file state."
-            --SSHÃÜÔ¿ÎÄ¼þ×´Ì¬: ÒÑ´ÓFlashÖÐ¼ÓÔØÃÜÔ¿ÎÄ¼þÔò×´Ì¬Îªavailable£¬·ñÔòÎªunavailable¡£
+            --SSHï¿½ï¿½Ô¿ï¿½Ä¼ï¿½×´Ì¬: ï¿½Ñ´ï¿½Flashï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½Ä¼ï¿½ï¿½ï¿½×´Ì¬Îªavailableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªunavailableï¿½ï¿½
         ::= { gbnPlatformOAMSsh 3 } 
         
   sshUserLimit OBJECT-TYPE
-        SYNTAX Integer32 (0..5)
+        SYNTAX INTEGER (0..5)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "The max user limit of ssh"
-            --ÔÊÐísshµÇÂ¼µÄ×î´óÓÃ»§ÊýÄ¿
+            --ï¿½ï¿½ï¿½ï¿½sshï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ä¿
         ::= { gbnPlatformOAMSsh 4 }               
    
   sshLoginUsers  OBJECT-TYPE
@@ -90,7 +90,7 @@
         STATUS current
         DESCRIPTION
             "Current login users of ssh"
-            --µ±Ç°sshµÇÂ¼µÄÓÃ»§ÊýÄ¿
+            --ï¿½ï¿½Ç°sshï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ä¿
         ::= { gbnPlatformOAMSsh 5 }          
                                            
    END

@@ -18,7 +18,7 @@
 RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
 
 	IMPORTS
-        MODULE-IDENTITY,Unsigned32
+        MODULE-IDENTITY, OBJECT-IDENTITY, Unsigned32
                 	FROM SNMPv2-SMI
         OBJECT-TYPE
                     FROM SNMPv2-SMI
@@ -75,13 +75,7 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
 -- RAISECOM CPU objects
 --
 
-	raisecomCpu MODULE-IDENTITY
-                LAST-UPDATED 	"200412170000Z"
-                ORGANIZATION 	"RAISECOM TECH, Ltd."
-                CONTACT-INFO 	"www.raisecom.com"
-                DESCRIPTION
-                		"raisecom System objects: objects common to all platforms."
-        	::= { raisecomSystem 1 }
+	raisecomCpu OBJECT IDENTIFIER ::= { raisecomSystem 1 }
 
 -- =========================================
 -- raisecomCPUTrapGroup
@@ -676,13 +670,7 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
 -- RAISECOM END Pool objects
 -- =========================================
 
-	raisecomEndPool MODULE-IDENTITY
-                LAST-UPDATED 	"200412170000Z"
-                ORGANIZATION 	"RAISECOM TECH, Ltd."
-                CONTACT-INFO 	"www.raisecom.com"
-                DESCRIPTION
-                		"raisecom System objects: objects common to all platforms."
-        	::= { raisecomSystem 2 }
+	raisecomEndPool OBJECT IDENTIFIER ::= { raisecomSystem 2 }
 
 	raisecomEndPoolTable OBJECT-TYPE
 	        SYNTAX      SEQUENCE OF RaisecomEndPoolEntry
@@ -737,13 +725,7 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
 -- =========================================
 -- RAISECOM Memory objects
 -- =========================================
-	 raisecomMemory MODULE-IDENTITY
-                LAST-UPDATED 	"200412170000Z"
-                ORGANIZATION 	"RAISECOM TECH, Ltd."
-                CONTACT-INFO 	"www.raisecom.com"
-                DESCRIPTION
-                		"raisecom System objects: memory objects."
-      ::= { raisecomSystem 3 }
+	raisecomMemory OBJECT IDENTIFIER ::= { raisecomSystem 3 }
 
 -- =========================================
 -- raisecomMemoryTrapGroup
@@ -853,27 +835,12 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
 			::= { raisecomMemoryScalarGroup 7 }
 
 
-		-- 1.3.6.1.4.1.8886.1.1.4.1
-		raisecomDeviceType OBJECT-TYPE
-			SYNTAX OCTET STRING
-			MAX-ACCESS read-only
-			STATUS current
-			DESCRIPTION
-				"Device type."
-			::= { raisecomInformation 1 }
-
 -- =========================================
 -- RAISECOM Information objects
 -- =========================================
 
 
-		 raisecomInformation MODULE-IDENTITY
-                LAST-UPDATED 	"200507270000Z"
-                ORGANIZATION 	"RAISECOM TECH, Ltd."
-                CONTACT-INFO 	"www.raisecom.com"
-                DESCRIPTION
-                		"raisecom System objects: objects common to all platforms."
- 		   		::= { raisecomSystem 4 }
+	raisecomInformation OBJECT IDENTIFIER ::= { raisecomSystem 4 }
 
 		PortAlarmEventList ::= TEXTUAL-CONVENTION
 		    STATUS current
@@ -1432,7 +1399,7 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
                        MAX-ACCESS  read-only
                        STATUS      current
                        DESCRIPTION
-                       		"The status of alarm information£¬asserted:alarm has generated,
+                       		"The status of alarm information??asserted:alarm has generated,
                        		 cleared:alarm is cleared, clearall:all of alarm is cleared."
         		  	   ::= { raisecomAlarmHistEntry 2 }
 
@@ -1441,7 +1408,7 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
                        MAX-ACCESS  read-only
                        STATUS      current
                        DESCRIPTION
-                       		"The source of alarm information£¬switch or port."
+                       		"The source of alarm information??switch or port."
         		  	   ::= { raisecomAlarmHistEntry 3 }
 
 			    raisecomAlarmHistDescr OBJECT-TYPE
@@ -1531,7 +1498,7 @@ RAISECOM-SYSTEM-MIB DEFINITIONS ::= BEGIN
                        MAX-ACCESS  read-only
                        STATUS      current
                        DESCRIPTION
-                       		"The source of alarm information£¬switch or port."
+                       		"The source of alarm information??switch or port."
         		  	   ::= { raisecomAlarmCurtEntry 2 }
 
 			    raisecomAlarmCurtDescr OBJECT-TYPE

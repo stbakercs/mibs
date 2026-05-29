@@ -85,7 +85,7 @@ CISCO-WIRELESS-P2MP-PHY-MIB DEFINITIONS ::= BEGIN
 
 	IMPORTS
 	MODULE-IDENTITY, OBJECT-TYPE,
-	Integer32, NOTIFICATION-TYPE 
+	Integer32, Unsigned32, NOTIFICATION-TYPE 
 		FROM SNMPv2-SMI
 	DisplayString, TruthValue 
 		FROM SNMPv2-TC
@@ -97,8 +97,6 @@ CISCO-WIRELESS-P2MP-PHY-MIB DEFINITIONS ::= BEGIN
 		FROM IF-MIB
 	CwrOscState, CwrRfType, CwrRfFreqRange
 		FROM CISCO-WIRELESS-TC-MIB
-        Unsigned32
-                FROM CISCO-TC
         entPhysicalIndex
                 FROM ENTITY-MIB
 	ciscoMgmt

@@ -3509,8 +3509,8 @@
 		dsVdslCpeSpeed OBJECT-TYPE
 			SYNTAX INTEGER
 				{
-				100(0),
-				10(1)
+				speed100Mbps(0),
+				speed10Mbps(1)
 				}
 			MAX-ACCESS read-write
 			STATUS current

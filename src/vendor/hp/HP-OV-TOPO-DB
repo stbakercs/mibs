@@ -1,14 +1,17 @@
 HP-OV-TOPO-DB DEFINITIONS ::= BEGIN
 
 IMPORTS
-	IpAddress, Counter, Gauge
-		FROM RFC1155-SMI
-        OBJECT-TYPE
-                FROM RFC-1212
-	DisplayString, PhysAddress
-		FROM RFC-1213;
+	OBJECT-TYPE
+		FROM SNMPv2-SMI;
 
-hp		OBJECT IDENTIFIER ::= { enterprises 11 }
+-- RFC1155/RFC1213 type stubs (avoid comma-chained RFC-1212/RFC-1213 imports)
+IpAddress ::= OCTET STRING (SIZE(4))
+Counter ::= INTEGER
+Gauge ::= INTEGER
+DisplayString ::= OCTET STRING
+PhysAddress ::= OCTET STRING (SIZE(6))
+
+hp		OBJECT IDENTIFIER ::= { 1 3 6 1 4 1 11 }
 nm		OBJECT IDENTIFIER ::= { hp 2 }
 openView	OBJECT IDENTIFIER ::= { nm 17 }
 hpOVDistribStation
@@ -19,14 +22,14 @@ hpOVDistribStation
 --
 
 -- OpenView Object Identifier
-OVID ::= INTEGER (SIZE (0..2147483647))
+OVID ::= INTEGER (0..2147483647)
 
 -- OpenView UUID
 OVUUID ::= DisplayString (SIZE (36))
 
 -- Seconds since 12:00am, January 1, 1970 used as a timestamp.
 -- A value of 2^31 - 1 (21474383647) indicates MAXIMUM TIME.
-OVTime ::= INTEGER (SIZE (0..2147483647))
+OVTime ::= INTEGER (0..2147483647)
 
 
 -- The OV status of the object

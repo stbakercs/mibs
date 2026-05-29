@@ -4182,10 +4182,8 @@ ZYXEL-GS4012F-MIB DEFINITIONS ::= BEGIN
                        ""
         ::= { clusterStatusMemberEntry 4 }
 --fault MIB
-faultMIB MODULE-IDENTITY
-    LAST-UPDATED "200411031200Z" -- YYYY/MM/DD, HH/MM
-    ORGANIZATION "ZyXEL"
-    CONTACT-INFO ""
+faultMIB OBJECT-IDENTITY
+    STATUS current
     DESCRIPTION
             "Fault event table definitions"
     ::= { gs4012f 36 }
@@ -4503,10 +4501,8 @@ eventServAffective OBJECT-TYPE
 
 
 -- fault Trap MIB
-faultTrapsMIB MODULE-IDENTITY
-    LAST-UPDATED "200411011200Z" -- YYYY/MM/DD, HH/MM
-    ORGANIZATION "ZyXEL"
-    CONTACT-INFO ""
+	faultTrapsMIB OBJECT-IDENTITY
+    STATUS current
     DESCRIPTION
             "Fault event trap definitions"
     ::= { gs4012f 37 }
@@ -5737,7 +5733,7 @@ eventClearedTrap NOTIFICATION-TYPE
 --  MRSTP Trap
  mrstpNotifications      OBJECT IDENTIFIER ::= { mrstp 2 }
 
-  newRoot NOTIFICATION-TYPE
+  mrstpNewRoot NOTIFICATION-TYPE
       OBJECTS {
         mrstpBridgeIndex
       }
@@ -8053,7 +8049,7 @@ eventClearedTrap NOTIFICATION-TYPE
 --MSTP Traps
        mstpNotifications      OBJECT IDENTIFIER ::= { mstp 70 }
 
-      newRoot NOTIFICATION-TYPE
+      mstpNewRoot NOTIFICATION-TYPE
          OBJECTS {
                 mstpXstId
          }
@@ -8062,7 +8058,7 @@ eventClearedTrap NOTIFICATION-TYPE
           ""
          ::= { mstpNotifications 1 }
 
-         topologyChange NOTIFICATION-TYPE
+         mstpTopologyChange NOTIFICATION-TYPE
          OBJECTS {
                 mstpXstId
          }

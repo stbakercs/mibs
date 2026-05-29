@@ -48,16 +48,16 @@
         STATUS current
         DESCRIPTION
             "enable or disable telnet."
-            --´ò¿ª»ò¹Ø±Õtelnet¹¦ÄÜ¡£
+            --ï¿½ò¿ª»ï¿½Ø±ï¿½telnetï¿½ï¿½ï¿½Ü¡ï¿½
         ::= { gbnPlatformOAMTelnet 1 } 
 
   telnetUserLimit OBJECT-TYPE
-        SYNTAX Integer32 (0..5)
+        SYNTAX INTEGER (0..5)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "The max user limit of telnet"
-            --ÔÊÐítelnetµÇÂ¼µÄ×î´óÓÃ»§ÊýÄ¿
+            --ï¿½ï¿½ï¿½ï¿½telnetï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ä¿
         ::= { gbnPlatformOAMTelnet 2 }               
    
   telnetLoginUsers  OBJECT-TYPE
@@ -66,7 +66,7 @@
         STATUS current
         DESCRIPTION
             "Current login users of telnet"
-            --µ±Ç°telnetµÇÂ¼µÄÓÃ»§ÊýÄ¿
+            --ï¿½ï¿½Ç°telnetï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ä¿
         ::= { gbnPlatformOAMTelnet 3 }
   
   telnetUserTable OBJECT-TYPE
@@ -75,7 +75,7 @@
         STATUS current
         DESCRIPTION
             "A table of  login user information"
-            --µÇÂ¼ÓÃ»§ÐÅÏ¢±í
+            --ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
         ::= { gbnPlatformOAMTelnet 4 }
 
   telnetUserEntry OBJECT-TYPE
@@ -84,7 +84,7 @@
         STATUS current
         DESCRIPTION
             "A list of login user information"
-            --µÇÂ¼ÓÃ»§ÐÅÏ¢ÁÐ±í
+            --ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½
         INDEX { telnetUserTerminal }
         ::= { telnetUserTable 1 }
 
@@ -103,7 +103,7 @@
         STATUS current
         DESCRIPTION
             "login terminal number"
-            --µÇÂ¼ÖÕ¶ËºÅ
+            --ï¿½ï¿½Â¼ï¿½Õ¶Ëºï¿½
         ::= { telnetUserEntry 1 }
  
   telnetUserAddrIp OBJECT-TYPE
@@ -112,7 +112,7 @@
         STATUS current
         DESCRIPTION
             "login ip address"
-            -- µÇÂ¼ipµØÖ·,°üÀ¨IPV4ºÍIPV6.
+            -- ï¿½ï¿½Â¼ipï¿½ï¿½Ö·,ï¿½ï¿½ï¿½ï¿½IPV4ï¿½ï¿½IPV6.
         ::= { telnetUserEntry 2 }
 
   telnetUserName OBJECT-TYPE
@@ -121,7 +121,7 @@
         STATUS current
         DESCRIPTION
             "login user name"
-            --µÇÂ¼ÓÃ»§Ãû³Æ
+            --ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { telnetUserEntry 3 }
 
   telnetUserLoginTime OBJECT-TYPE
@@ -130,7 +130,7 @@
         STATUS current
         DESCRIPTION
             "login time"
-            --µÇÂ¼Ê±¼ä
+            --ï¿½ï¿½Â¼Ê±ï¿½ï¿½
         ::= { telnetUserEntry 4 } 
         
   telnetUserTransport OBJECT-TYPE
@@ -139,7 +139,7 @@
         STATUS current
         DESCRIPTION
             "transport type"
-            --µÇÂ¼ÀàÐÍ, telnet»òssh
+            --ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½, telnetï¿½ï¿½ssh
         ::= { telnetUserEntry 5 }
         
   telnetUserRowStatus OBJECT-TYPE
@@ -148,6 +148,6 @@
         STATUS current
         DESCRIPTION
             "login user rowstatus"
-            --µÇÂ¼ÓÃ»§ÐÐ×´Ì¬£¬ÓÃÀ´ÌÞ³ýÓÃ»§
+            --ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ³ï¿½ï¿½Ã»ï¿½
         ::= { telnetUserEntry 6 }                                        
    END

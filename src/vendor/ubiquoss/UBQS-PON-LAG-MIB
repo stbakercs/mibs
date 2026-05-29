@@ -205,7 +205,7 @@ ubiPonRedundancyPort OBJECT IDENTIFIER ::= { ubiPonLagMIBObjects 1 }
      ::= { ubiPonRedundancyPortSwitchoverTable 1 }
 
    UbiPonRedundancyPortSwitchoverEntry ::= SEQUENCE {
-     ubiPonReduSwitchover    		InterfaceIndex,
+     ubiPonReduSwitchover    		InterfaceIndex
    }
  
    ubiPonReduSwitchover  OBJECT-TYPE
@@ -248,7 +248,7 @@ ubiPonLagMIBGroups    OBJECT IDENTIFIER  ::= { ubiPonLagMIBConformance 2 }
 		ubiPonReduPeerIfName,
 		ubiPonReduAggIfIndex,
 		ubiPonReduAggIfName,
-		ubiPonReduActive,
+		ubiPonReduActive
      }
      STATUS          current
      DESCRIPTION

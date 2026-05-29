@@ -2527,7 +2527,7 @@
 				onu10gPonBridgeNniSideInnerTag
 					Integer32,    
 				onu10gPonBridgeNniSideOuterTag
-					Integer32,
+					Integer32
 			 }
 
 		onu10gPonBridgeType OBJECT-TYPE
@@ -3804,7 +3804,7 @@
 				pkbitsBurst
 					Integer32,  
 				oltFilterPolicerRowStatus 
-					RowStatus,					
+					RowStatus					
 			 }
 
 		policerName OBJECT-TYPE
@@ -3880,7 +3880,7 @@
 			INDEX { ubiPortIndex, onu10gId, onuLinkId, oltFilterSetLinkAclDir, oltFilterSetLinkAclId }
 			::= { oltFilterSetLinkAclTable 1 }
 		
-		oltFilterSetLinkAclEntry ::=
+		OltFilterSetLinkAclEntry ::=
 			SEQUENCE {  
 			    oltFilterSetLinkAclDir
 			    	INTEGER,        
@@ -3920,7 +3920,7 @@
 				"Set Link AclId"
 			::= { oltFilterSetLinkAclEntry 2 }
 			 
-		classMapName OBJECT-TYPE
+		oltFilterSetLinkAclClassMapName OBJECT-TYPE
 			SYNTAX DisplayString (SIZE (1..32))
 			MAX-ACCESS read-write
 			STATUS current
@@ -3928,7 +3928,7 @@
 				"for oltFilterSetLinkAcl delete, classMapName have to setting   "
 			::= { oltFilterSetLinkAclEntry 3 }
 
-		queueId OBJECT-TYPE
+		oltFilterSetLinkAclQueueId OBJECT-TYPE
 			SYNTAX INTEGER (0..3)
 			MAX-ACCESS read-write
 			STATUS current
@@ -3936,7 +3936,7 @@
 				"Up or Down."
 			::= { oltFilterSetLinkAclEntry 4 }
 
-		counter OBJECT-TYPE
+		oltFilterSetLinkAclCounter OBJECT-TYPE
 			SYNTAX INTEGER
 				{
 				disable(0),
@@ -3948,7 +3948,7 @@
 				"counter"
 			::= { oltFilterSetLinkAclEntry 5 }
 
-		color OBJECT-TYPE
+		oltFilterSetLinkAclColor OBJECT-TYPE
 			SYNTAX INTEGER
 				{
 				committed(0),
@@ -3961,7 +3961,7 @@
 				"color"
 			::= { oltFilterSetLinkAclEntry 6 }
 
-		policerName OBJECT-TYPE
+		oltFilterSetLinkAclPolicerName OBJECT-TYPE
 			SYNTAX DisplayString (SIZE (1..32))
 			MAX-ACCESS read-write
 			STATUS current
@@ -4002,7 +4002,7 @@
 			INDEX { ubiPortIndex, oltFilterSetLinkAclDir, oltFilterSetLinkAclId }
 			::= { oltFilterSetPortAclTable 1 }
 		
-		oltFilterSetPortAclEntry ::=
+		OltFilterSetPortAclEntry ::=
 			SEQUENCE {  
 			    oltFilterSetPortAclDir
 			    	INTEGER,        
@@ -4042,7 +4042,7 @@
 				"Set Port AclId"
 			::= { oltFilterSetPortAclEntry 2 }
 			 
-		classMapName OBJECT-TYPE
+		oltFilterSetPortAclClassMapName OBJECT-TYPE
 			SYNTAX DisplayString (SIZE (1..32))
 			MAX-ACCESS read-only
 			STATUS current
@@ -4050,7 +4050,7 @@
 				"for oltFilterSetPortAcl delete, classMapName have to setting   "
 			::= { oltFilterSetPortAclEntry 3 }
 
-		queueId OBJECT-TYPE
+		oltFilterSetPortAclQueueId OBJECT-TYPE
 			SYNTAX INTEGER (0..3)
 			MAX-ACCESS read-write
 			STATUS current
@@ -4058,7 +4058,7 @@
 				"Up or Down."
 			::= { oltFilterSetPortAclEntry 4 }
 
-		counter OBJECT-TYPE
+		oltFilterSetPortAclCounter OBJECT-TYPE
 			SYNTAX INTEGER
 				{
 				disable(0),
@@ -4070,7 +4070,7 @@
 				"counter"
 			::= { oltFilterSetPortAclEntry 5 }
 
-		color OBJECT-TYPE
+		oltFilterSetPortAclColor OBJECT-TYPE
 			SYNTAX INTEGER
 				{
 				committed(0),
@@ -4083,7 +4083,7 @@
 				"color"
 			::= { oltFilterSetPortAclEntry 6 }
 
-		policerName OBJECT-TYPE
+		oltFilterSetPortAclPolicerName OBJECT-TYPE
 			SYNTAX DisplayString (SIZE (1..32))
 			MAX-ACCESS read-write
 			STATUS current

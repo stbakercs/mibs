@@ -95,7 +95,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 						
 	ubiHwVersion	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"Hardware version of the system."
@@ -103,7 +103,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSwVersion	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"Software version of the system."
@@ -111,7 +111,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiReleaseDate	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"The date of release for system OS."
@@ -119,7 +119,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSerialNumber	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"Serial number of the system."
@@ -127,7 +127,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysPhysAddress	OBJECT-TYPE	
 		SYNTAX		PhysAddress   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"System mac address"
@@ -135,7 +135,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysClock	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		mandatory
 		DESCRIPTION		
 				"Current local time of the system.
@@ -153,7 +153,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
                                    
 	ubiShelfPhysAddress	OBJECT-TYPE	
 		SYNTAX		PhysAddress   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"System shelf mac address."
@@ -162,7 +162,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiBspVersion	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		mandatory
 		DESCRIPTION		
 				"System Bsp Versoin."
@@ -170,7 +170,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
  
 	ubiSysResetReason	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		accessible-for-notify
+		MAX-ACCESS		accessible-for-notify
 		STATUS		mandatory
 		DESCRIPTION		
 				"System Reset Reason."
@@ -189,7 +189,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 						
 	ubiSysTimeZoneOffset	OBJECT-TYPE	
 		SYNTAX		DisplayString   
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION		
 				"System timezone offset(Hours:Minutes)."
@@ -201,7 +201,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysBannerLogin	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"null string	-> no banner login
@@ -211,7 +211,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBannerMotd	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"null string	-> no banner motd
@@ -225,7 +225,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysRedundancyInfoTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiSysRedundancyInfoEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Table of redundancy information"
@@ -233,7 +233,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysRedundancyInfoEntry	OBJECT-TYPE	
 		SYNTAX		UbiSysRedundancyInfoEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Entry of redundancy information"
@@ -254,7 +254,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 			active(1),
 			standby(2)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"SCU role"
@@ -266,7 +266,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 			left(1),
 			right(2)
 		}           
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"SCU postion"
@@ -278,7 +278,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 			down(0),
 			up(1)
 		}        
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"mng port status of SCU"
@@ -286,7 +286,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSCUIpAddress				OBJECT-TYPE	
 		SYNTAX		IpAddress
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"IP address of SCU"
@@ -298,7 +298,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 			unequip(0),
 			equip(1)
 		}        
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"Peer Equip status of SCU"
@@ -312,7 +312,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 			reload_peer(1),
 			reload_shelf(2)
 		}
-		ACCESS		write-only                   
+		MAX-ACCESS		write-only                   
 		STATUS		current
 		DESCRIPTION
 			"Reload Active and/or Standby"
@@ -321,7 +321,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 -- ubiSysRedundancyPeerImage	
 	ubiSysRedundancyPeerImage	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		write-only
+		MAX-ACCESS		write-only
 		STATUS		current
 		DESCRIPTION
 			"Peer boot image"
@@ -379,7 +379,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
     	   	 
 	ubiSysBarcodePowerTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiSysBarcodePowerEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains information 
@@ -388,7 +388,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodePowerEntry	OBJECT-TYPE	
 		SYNTAX		UbiSysBarcodePowerEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Barcode Information about the power."
@@ -402,7 +402,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 	
 	ubiSysBarcodePowerIndex		OBJECT-TYPE
 		SYNTAX		INTEGER
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"A unique value for each power entity"
@@ -410,7 +410,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysBarcodePowerString		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"The textual barcode of power entity"
@@ -418,7 +418,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeFanTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiSysBarcodeFanEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains information 
@@ -427,7 +427,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeFanEntry	OBJECT-TYPE	
 		SYNTAX		UbiSysBarcodeFanEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Barcode Information about the fan"
@@ -441,7 +441,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 	
 	ubiSysBarcodeFanIndex		OBJECT-TYPE
 		SYNTAX		INTEGER
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"A unique value for each fan entity"
@@ -449,7 +449,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysBarcodeFanString		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"The textual barcode of fan entity."
@@ -457,7 +457,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeUplinkTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiSysBarcodeUplinkEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains information 
@@ -466,7 +466,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeUplinkEntry	OBJECT-TYPE	
 		SYNTAX		UbiSysBarcodeUplinkEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Barcode Information about the uplink module."
@@ -480,7 +480,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 	
 	ubiSysBarcodeUplinkIndex		OBJECT-TYPE
 		SYNTAX		INTEGER
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"A unique value for each uplink module."
@@ -488,7 +488,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysBarcodeUplinkString		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"The textual barcode of uplink module."
@@ -496,7 +496,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeSlotTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiSysBarcodeSlotEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains information 
@@ -505,7 +505,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeSlotEntry	OBJECT-TYPE	
 		SYNTAX		UbiSysBarcodeSlotEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Barcode Information about the slot."
@@ -519,7 +519,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 	
 	ubiSysBarcodeSlotIndex		OBJECT-TYPE
 		SYNTAX		INTEGER
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"A unique value for each slot."
@@ -527,7 +527,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysBarcodeSlotString		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"The textual barcode of slot."
@@ -535,7 +535,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeScuTable	OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiSysBarcodeScuEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains information 
@@ -544,7 +544,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 		
 	ubiSysBarcodeScuEntry	OBJECT-TYPE	
 		SYNTAX		UbiSysBarcodeScuEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"Barcode Information about the SCU."
@@ -558,7 +558,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 	
 	ubiSysBarcodeScuIndex		OBJECT-TYPE
 		SYNTAX		INTEGER
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"A unique value for each SCU."
@@ -566,7 +566,7 @@ ubiSysBarCode  			OBJECT IDENTIFIER			::= { ubiSystemMIBObjects 8 }
 
 	ubiSysBarcodeScuString		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"The textual barcode of SCU."

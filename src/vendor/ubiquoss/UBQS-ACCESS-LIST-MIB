@@ -240,23 +240,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiAclExtEntry 6 }
 		
 	ubiAclExtProtocol	OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			ip(0),
-			icmp(1),
-			igmp(2),
-			tcp(6),
-			udp(17),
-			rsvp(46),
-			gre(47),
-			--esp(50),
-			--ahp(51),
-			ospf(89),
-			pim(103),
-			ipcomp(108),
-			vrrp(112),
-			any(256)
-		}(0..255)
+		SYNTAX INTEGER (0..255)
 		MAX-ACCESS	read-only
 		STATUS		current
 		DESCRIPTION
@@ -421,9 +405,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiAclExtEntry 13 }
 
 	ubiAclExtPrecedence	OBJECT-TYPE
-		SYNTAX		Integer32{
-			none(256)
-		}(0..256)
+		SYNTAX		INTEGER (0..256)
 		MAX-ACCESS	read-only
 		STATUS		current
 		DESCRIPTION
@@ -431,9 +413,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiAclExtEntry 14 }	         
 
 	ubiAclExtTos	OBJECT-TYPE
-		SYNTAX		Integer32{
-			none(256)
-		}(0..256)
+		SYNTAX		INTEGER (0..256)
 		MAX-ACCESS	read-only
 		STATUS		current
 		DESCRIPTION
@@ -609,7 +589,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 
 	ubiAclUserTable		OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiAclUserEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains objects which provide
@@ -618,7 +598,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiAclUserEntry		OBJECT-TYPE
 		SYNTAX		UbiAclUserEntry    
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"An entry containing management information 
@@ -634,7 +614,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 	
 	ubiUserAclUsername	OBJECT-TYPE 
 		SYNTAX		DisplayString
-		ACCESS		read-only 
+		MAX-ACCESS		read-only 
 		STATUS		current
 		DESCRIPTION
 			"User name for applying access-list"
@@ -642,7 +622,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiUserAclAcessList	OBJECT-TYPE
 		SYNTAX		Integer32(1..99)
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"The access list name for user access-list"
@@ -650,7 +630,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiUserAclRowStatus	OBJECT-TYPE
 		SYNTAX		RowStatus
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"Create and remove user access-list configuration"
@@ -662,7 +642,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 
 	ubiAclSnmpTable		OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiAclSnmpEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains objects which provide
@@ -671,7 +651,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiAclSnmpEntry		OBJECT-TYPE
 		SYNTAX		UbiAclSnmpEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"An entry containing management information 
@@ -688,7 +668,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 	
 	ubiAclSnmpCommunityName		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"SNMP community for applying access-list"
@@ -700,7 +680,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 			ro(1),
 			rw(2)
 		}
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"The access type of community"
@@ -708,7 +688,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 				
 	ubiAclSnmpAccessList		OBJECT-TYPE
 		SYNTAX		Integer32(1..99)
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"The access list number for SNMP access-list"
@@ -716,7 +696,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiAclSnmpRowStatus			OBJECT-TYPE
 		SYNTAX		RowStatus
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"Create and remove SNMP access-list configuration"
@@ -728,7 +708,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 
 	ubiAclProtocolTable		OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiAclProtocolEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"This table contains objects which provide
@@ -737,7 +717,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiAclProtocolEntry		OBJECT-TYPE
 		SYNTAX		UbiAclProtocolEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"An entry containing management information 
@@ -757,7 +737,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 			ftp(1),
 			telnet(2)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"The type of protocol"
@@ -765,7 +745,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 				
 	ubiAclProtocolAclName		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"The access list name for telnet/ftp protocol"
@@ -773,7 +753,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		
 	ubiAclProtocolRowStatus			OBJECT-TYPE
 		SYNTAX		RowStatus
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"Create and remove telnet/ftn protocol
@@ -824,7 +804,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclEntry 1 }
 		
 	ubiIpv6AclType		OBJECT-TYPE
-		SYNTAX		Integer32
+		SYNTAX		INTEGER
 		{
 			deny(0),
 			permit(1)
@@ -931,7 +911,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 1 }
 		
 	ubiIpv6AclExtType		OBJECT-TYPE
-		SYNTAX		Integer32
+		SYNTAX		INTEGER
 		{
 			deny(0),
 			permit(1)
@@ -975,21 +955,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 6 }
 		
 	ubiIpv6AclExtProtocol	OBJECT-TYPE
-		SYNTAX		Integer32
-		{
-			ipv6(0),	
-			tcp(6),
-			udp(17),
-			rsvp(46),
-			gre(47),
-			esp(50),
-			ahp(51),
-			icmpv6(58),
-			ipcomp(108),
-			vrrp(112),
-			sctp(132),
-			any(256)
-		}(0..255)
+		SYNTAX INTEGER (0..255)
 		MAX-ACCESS	read-only
 		STATUS		current
 		DESCRIPTION
@@ -998,7 +964,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 7 }  
 		
 	ubiIpv6AclExtIcmpType	OBJECT-TYPE
-		SYNTAX		Integer32
+		SYNTAX		INTEGER
 		{
 			echoReply(0),
 			destinationUnreachable(3),
@@ -1041,7 +1007,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 8 }
 
 	ubiIpv6AclExtSrcEqual		OBJECT-TYPE
-		SYNTAX		Integer32
+		SYNTAX		INTEGER
 		{
 			noOper(0),
 			equal(1)
@@ -1063,7 +1029,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 10 }
 		
 	ubiIpv6AclExtDestEqual		OBJECT-TYPE
-		SYNTAX		Integer32
+		SYNTAX		INTEGER
 		{
 			noOper(0),
 			equal(1)
@@ -1085,7 +1051,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 12 }
 		
 	ubiIpv6AclExtLog			OBJECT-TYPE
-		SYNTAX		Integer32
+		SYNTAX		INTEGER
 		{
 			disble(0),
 			enable(1)
@@ -1097,9 +1063,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 13 }	 
 
 	ubiIpv6AclExtPrecedence		OBJECT-TYPE
-		SYNTAX		Integer32{
-			none(256)
-		}(0..256)
+		SYNTAX		INTEGER (0..256)
 		MAX-ACCESS	read-create
 		STATUS		current
 		DESCRIPTION
@@ -1107,9 +1071,7 @@ ubiAclMIBConformance  				OBJECT IDENTIFIER ::= { ubiAclMIB  2 }
 		::= { ubiIpv6AclExtEntry 14 }	         
 
 	ubiIpv6AclExtTos			OBJECT-TYPE
-		SYNTAX		Integer32{
-			none(256)
-		}(0..256)
+		SYNTAX		INTEGER (0..256)
 		MAX-ACCESS	read-create
 		STATUS		current
 		DESCRIPTION

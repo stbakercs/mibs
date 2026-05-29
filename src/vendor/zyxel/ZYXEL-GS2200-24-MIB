@@ -91,10 +91,8 @@ ZYXEL-GS2200-24-MIB DEFINITIONS ::= BEGIN
    		::= { gs2200-24 26 }
 
 
-	faultTrapsMIB MODULE-IDENTITY
-    	LAST-UPDATED "200411011200Z" -- YYYY/MM/DD, HH/MM
-    	ORGANIZATION "ZyXEL"
-    	CONTACT-INFO ""
+	faultTrapsMIB OBJECT-IDENTITY
+    	STATUS current
     	DESCRIPTION
             "Fault event trap definitions"
     	::= { gs2200-24 27 } 
@@ -5390,7 +5388,7 @@ ZYXEL-GS2200-24-MIB DEFINITIONS ::= BEGIN
 --  MRSTP Trap
 	mrstpNotifications     	OBJECT IDENTIFIER ::= { mrstp 2 }              
 	
-	  	newRoot NOTIFICATION-TYPE
+	  	mrstpNewRoot NOTIFICATION-TYPE
       	OBJECTS {
         	mrstpBridgeIndex
       	}
@@ -5399,7 +5397,7 @@ ZYXEL-GS2200-24-MIB DEFINITIONS ::= BEGIN
           ""
       	::= { mrstpNotifications 1 }
                                              
-		topologyChange NOTIFICATION-TYPE
+		mrstpTopologyChange NOTIFICATION-TYPE
       	OBJECTS {
         	mrstpBridgeIndex
       	}
@@ -7438,7 +7436,7 @@ ZYXEL-GS2200-24-MIB DEFINITIONS ::= BEGIN
 --MSTP Traps 
  	     mstpNotifications     	OBJECT IDENTIFIER ::= { mstp 70 }              
 	
-	     newRoot NOTIFICATION-TYPE
+	     mstpNewRoot NOTIFICATION-TYPE
          OBJECTS {
                 mstpXstId
          }
@@ -7447,7 +7445,7 @@ ZYXEL-GS2200-24-MIB DEFINITIONS ::= BEGIN
           ""
          ::= { mstpNotifications 1 }
       
-         topologyChange NOTIFICATION-TYPE
+         mstpTopologyChange NOTIFICATION-TYPE
          OBJECTS {
                 mstpXstId
          }

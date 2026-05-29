@@ -463,8 +463,8 @@ e3IpsSensors OBJECT-TYPE
 e3IpsChannelConfig OBJECT-TYPE
 	SYNTAX		INTEGER {
 		unknown (0),
-		1L (1),
-		3L1N (2)
+		oneL (1),
+		threeL1N (2)
 	}
 	MAX-ACCESS	read-only
 	STATUS		current
@@ -1254,19 +1254,14 @@ e3MeterModel OBJECT-TYPE
 e3MeterChannelConfig OBJECT-TYPE
 	SYNTAX		INTEGER {
 		ch-unknown (0),
-		ch-1L (1),
-		ch-3L1N (2),
+		ch-oneL (1),
+		ch3L1N (2),
 		ch-3L (3)
 	}
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION
-		"Channel configuration of this meter. This defines the
-		number of channels of a meter and the nature of the
-		individual meters in e3MeterTable:
-		- 1L: 1 live wire channel
-		- 3L1N: 3 live wires, 1 neutral wire (4 channels total)
-		- 3L: 3 live wires"
+		"Channel configuration of this meter (oneL, threeL1N, or threeL)."
 	::= { e3MeterConfigEntry 8 }
 
 e3MeterNumSensors OBJECT-TYPE

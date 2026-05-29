@@ -101,13 +101,54 @@ IMPORTS
 	"An entry containing one event.
 	The index into the table is the event number (32 bits int),
         where each byte represented by an index digit."
-         INDEX { INTEGER , INTEGER , INTEGER , INTEGER }  
+         INDEX { rmRingEventIndex1, rmRingEventIndex2,
+                 rmRingEventIndex3, rmRingEventIndex4 }
    ::= { rmRingEventTable 1 }
 
    RmRingEventEntry ::=   SEQUENCE{
-	 rmRingEvent   
+         rmRingEventIndex1
+             INTEGER,
+         rmRingEventIndex2
+             INTEGER,
+         rmRingEventIndex3
+             INTEGER,
+         rmRingEventIndex4
+             INTEGER,
+	 rmRingEvent
 	     OCTET STRING
      }
+
+   rmRingEventIndex1 OBJECT-TYPE
+     SYNTAX  INTEGER (0..255)
+     ACCESS  not-accessible
+     STATUS  mandatory
+     DESCRIPTION
+        "Most significant byte of the 32-bit event number."
+     ::= { rmRingEventEntry 1 }
+
+   rmRingEventIndex2 OBJECT-TYPE
+     SYNTAX  INTEGER (0..255)
+     ACCESS  not-accessible
+     STATUS  mandatory
+     DESCRIPTION
+        "Second byte of the 32-bit event number."
+     ::= { rmRingEventEntry 2 }
+
+   rmRingEventIndex3 OBJECT-TYPE
+     SYNTAX  INTEGER (0..255)
+     ACCESS  not-accessible
+     STATUS  mandatory
+     DESCRIPTION
+        "Third byte of the 32-bit event number."
+     ::= { rmRingEventEntry 3 }
+
+   rmRingEventIndex4 OBJECT-TYPE
+     SYNTAX  INTEGER (0..255)
+     ACCESS  not-accessible
+     STATUS  mandatory
+     DESCRIPTION
+        "Least significant byte of the 32-bit event number."
+     ::= { rmRingEventEntry 4 }
 
    rmRingEvent   OBJECT-TYPE
      SYNTAX  OCTET STRING
@@ -116,7 +157,7 @@ IMPORTS
      DESCRIPTION
 	"This variable will give the data structure 
         describing a ring event in an internal format"
-     ::= { rmRingEventEntry 1 }
+     ::= { rmRingEventEntry 5 }
 
    rmRingBeaconingStatus OBJECT-TYPE
      SYNTAX  OCTET STRING

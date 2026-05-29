@@ -92,7 +92,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gnlinkMib 2 }
 
         ----------------------------------------------------------------------------------
-        --LANSWITCHÊôÐÔÊý¾ÝMIB±í--
+        --LANSWITCHï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MIBï¿½ï¿½--
         ----------------------------------------------------------------------------------
         gbnGgmpLsProTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GbnGgmpLsProEntry
@@ -153,7 +153,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
 
 
         ggmplanDeviceId OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -162,7 +162,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 3 }
 
         ggmplanInServerPort OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -170,7 +170,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 4 }
 
         ggmplanPortNumber OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -178,8 +178,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 5 }
 
         ggmplanStatus OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             lsError(0),
             lsNormal(1),
             lsRegister(2),
@@ -192,7 +191,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 6 }
 
         ggmplanupportsep OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -201,7 +200,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 7 }
 
         ggmppvidrangestart OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -210,7 +209,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 8 }
 
         ggmplanlocation OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -218,7 +217,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 9 }
 
         ggmplanBSF OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -227,7 +226,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 10 }
 
         ggmpclientver OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -235,7 +234,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 11 }
 
         ggmplanManageVlanId OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -243,8 +242,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 12 }
 
         ggmplanGrnStp OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             grnStpEnable(1),
             grnStpDisable(2)
         }
@@ -264,7 +262,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 14 }
 
         ggmplanOnlineTime OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -272,8 +270,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 15 }
 
         ggmplanVlanMode OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             vlanModePortBased(1),
             vlanMode802dot1q(2)
         }
@@ -283,13 +280,12 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
              " ggmp client vlan mode.
              port-based vlan means ingress does not check packets' vlan header,
              802.1q means ingress checks packets' vlan header. "
-             --vlanÄ£Ê½·ÖÎª»ùÓÚ¶Ë¿ÚµÄvlanºÍ802.1qvlan£¬»ùÓÚ¶Ë¿ÚµÄvlan±íÊ¾Èë¶Ë¿Ú²»¼ì²é±¨ÎÄ
-             --µÄvlanÊ×²¿£¬802.1qvlan±íÊ¾Èë¶Ë¿Ú¼ì²é±¨ÎÄµÄvlanÊ×²¿
+             --vlanÄ£Ê½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ú¶Ë¿Úµï¿½vlanï¿½ï¿½802.1qvlanï¿½ï¿½ï¿½ï¿½ï¿½Ú¶Ë¿Úµï¿½vlanï¿½ï¿½Ê¾ï¿½ï¿½Ë¿Ú²ï¿½ï¿½ï¿½é±¨ï¿½ï¿½
+             --ï¿½ï¿½vlanï¿½×²ï¿½ï¿½ï¿½802.1qvlanï¿½ï¿½Ê¾ï¿½ï¿½Ë¿Ú¼ï¿½é±¨ï¿½Äµï¿½vlanï¿½×²ï¿½
         ::= { gbnGgmpLsProEntry 16 }
 
         ggmplanMacLearningMode OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             macLearningModeIvl(0),
             macLearningModeSvl(1)
         }
@@ -298,20 +294,19 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         DESCRIPTION
              " ggmp client mac-learning mode.
              ivl means independent vlan learning,svl means share vlan learning."
-             --ivl´ú±í¶ÀÁ¢vlanÑ§Ï°£¬svl´ú±í¹²ÏívlanÑ§Ï°
+             --ivlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vlanÑ§Ï°ï¿½ï¿½svlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vlanÑ§Ï°
         ::= { gbnGgmpLsProEntry 17 }
 
         ggmplanHardwareVersion OBJECT-TYPE
-        SYNTAX Integer32
-        {
-            CDVersion(0),
-            CGVersion(1)
+        SYNTAX INTEGER {
+            cdVersion(0),
+            cgVersion(1)
         }
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
              " client's hardware version,0 means CD version and 1 means CG version."
-             --¿Í»§¶ËµÄÓ²¼þ°æ±¾£¬0´ú±íCD°æ±¾£¬1´ú±íCGÛà±¾
+             --ï¿½Í»ï¿½ï¿½Ëµï¿½Ó²ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½CDï¿½æ±¾ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½CGï¿½à±¾
         ::= { gbnGgmpLsProEntry 18 }
 
         ggmplanBootVer OBJECT-TYPE
@@ -331,7 +326,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsProEntry 20 }
 
         ----------------------------------------------------------------------------------
-        --LANSWITCH¶Ë¿ÚÊôÐÔÊý¾ÝMIB±í--
+        --LANSWITCHï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MIBï¿½ï¿½--
         ----------------------------------------------------------------------------------
         gbnGgmpPortPropertyTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GbnGgmpPortPropertyEntry
@@ -372,7 +367,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 1 }
 
         ggmpportportnumber OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -380,8 +375,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 2 }
 
         ggmpportportclosed OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             interfaceEnable(1),
             interfaceDisable(2)
         }
@@ -392,8 +386,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 3 }
 
         ggmpportportlink OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             portlinkup(1),
             portlinkdown(2)
         }
@@ -404,7 +397,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 4 }
 
         ggmpportportvlanid OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -412,8 +405,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 5 }
 
         ggmpportporttagged OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             porttrunk(1),
             portaccess(2)
         }
@@ -424,8 +416,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 6 }
 
         ggmpportportduplex OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             auto(1),
             half10(2),
             full10(3),
@@ -441,8 +432,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 7 }
 
         ggmpportportactualduplex OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             unknown(1),
             half10(2),
             full10(3),
@@ -458,7 +448,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 8 }
 
         ggmpportportlockmac OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -466,8 +456,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpPortPropertyEntry 9 }
 
         ggmpportportgrnstp OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             stpdisable(0),
             stpblocking(1),
             stplearning(2),
@@ -520,7 +509,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpVlanPropertyEntry 1 }
 
         ggmpvlanvlanid OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -537,8 +526,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpVlanPropertyEntry 3 }
 
         ggmpvlanstatic OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
            other(1),
            permanent(2),
            dynamicgvrp(3)
@@ -660,8 +648,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsSaveEntry 1 }
 
         ggmpsaveStatus OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             noop(1),
             savelanswitch(2)
         }
@@ -672,8 +659,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsSaveEntry 2 }
 
         ggmprebootStatus OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             noop(1),
             rebootlanswitch(2)
         }
@@ -684,8 +670,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsSaveEntry 3 }
 
         ggmpresetStatus OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             noop(1),
             resetlanswitch(2)
         }
@@ -696,8 +681,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsSaveEntry 4 }
 
         ggmpSyncLswProperty OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             noop(1),
             synchronizelswproperty(2)
         }
@@ -708,8 +692,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsSaveEntry 5 }
 
         ggmpSyncPortTable OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             noop(1),
             synchronizeporttable(2)
         }
@@ -720,8 +703,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsSaveEntry 6 }
 
         ggmpSyncVlanTable OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             noop(1),
             synchronizevlantable(2)
         }
@@ -757,7 +739,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpSvrProperty 1 }
 
         ggmpServerMngVlan OBJECT-TYPE
-        SYNTAX Integer32 (2..4094)
+        SYNTAX INTEGER (2..4094)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -765,7 +747,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpSvrProperty 2 }
 
         ggmpSvrLanMngVlan OBJECT-TYPE
-        SYNTAX Integer32 (2..4094)
+        SYNTAX INTEGER (2..4094)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -773,8 +755,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpSvrProperty 3 }
 
         ggmpTrapSwitch OBJECT-TYPE
-        SYNTAX Integer32
-        {
+        SYNTAX INTEGER {
             ggmpTrapEnable(1),
             ggmpTrapDisable(2)
         }
@@ -785,39 +766,39 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpSvrProperty 4 }
 
         ggmpSvrRequestTimeout OBJECT-TYPE
-        SYNTAX Integer32 (1..10)
+        SYNTAX INTEGER (1..10)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             "Maximum time that command waiting for its reply "
-            --ÃüÁîµÄ³¬Ê±Ê±¼ä
+            --ï¿½ï¿½ï¿½ï¿½Ä³ï¿½Ê±Ê±ï¿½ï¿½
         ::= { gbnGgmpSvrProperty 5 }
 
         ggmpSvrClientErrTimeout OBJECT-TYPE
-        SYNTAX Integer32 (90..255)
+        SYNTAX INTEGER (90..255)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             " Time that server must wait to delete a lanswith in error state "
-            --serverÉ¾³ý´¦ÓÚ´íÎó×´Ì¬µÄclientÇ°ÐèÒªµÈ´ýµÄÊ±¼ä
+            --serverÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½clientÇ°ï¿½ï¿½Òªï¿½È´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         ::= { gbnGgmpSvrProperty 6 }
 
         ggmpSvrClientErrMaxHellos OBJECT-TYPE
-        SYNTAX Integer32 (3..10)
+        SYNTAX INTEGER (3..10)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             " Times which lanswitch hasn't shankhands with server before being setted to error "
-            --ÉèÖÃserverÔÚÎÕÊÖ³¬Ê±¶àÉÙ´Îºó½«clientÖÃÎªerror
+            --ï¿½ï¿½ï¿½ï¿½serverï¿½ï¿½ï¿½ï¿½ï¿½Ö³ï¿½Ê±ï¿½ï¿½ï¿½Ù´Îºï¿½clientï¿½ï¿½Îªerror
         ::= { gbnGgmpSvrProperty 7 }
 
         ggmpSvrRequestMaxRetries OBJECT-TYPE
-        SYNTAX Integer32 (3..10)
+        SYNTAX INTEGER (3..10)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
             " Retransmit times for server before sending a command successfully "
-            --ÃüÁî·¢ËÍÊ§°ÜÔÊÐíµÄÖØÊÔ´ÎÊý
+            --ï¿½ï¿½ï¿½î·¢ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½
         ::= { gbnGgmpSvrProperty 8 }
 
         ggmpserverMacAddr OBJECT-TYPE
@@ -826,7 +807,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             " ZY.Link protocol packets' destination MAC address"
-            --ZY.LinkÐ­Òé±¨ÎÄµÄÄ¿µÄMACµØÖ·
+            --ZY.LinkÐ­ï¿½é±¨ï¿½Äµï¿½Ä¿ï¿½ï¿½MACï¿½ï¿½Ö·
         ::= { gbnGgmpSvrProperty 9 }
 
         ggmpClientAppGetMode OBJECT-TYPE
@@ -838,7 +819,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             " config mode by which to get application from server,ftp or tftp"
-            --Ñ¡ÔñÍ¨¹ýÄÄÖÖ·½Ê½ÓÉ·þÎñÆ÷ÏÂÔØ¿Í»§¶ËÓ¦ÓÃ³ÌÐò,·ÖÎªftpÄ£Ê½ºÍtftpÄ£Ê½
+            --Ñ¡ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿Í»ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½,ï¿½ï¿½ÎªftpÄ£Ê½ï¿½ï¿½tftpÄ£Ê½
         ::= { gbnGgmpSvrProperty 10 }
 
         ggmpClientAppSvrIpAddr OBJECT-TYPE
@@ -847,7 +828,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             " ggmp client application ftp server ipaddress"
-            --¼¯Èº¹ÜÀí¿Í»§¶ËÓ¦ÓÃ³ÌÐòftp·þÎñÆ÷µÄipµØÖ·
+            --ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ftpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½Ö·
         ::= { gbnGgmpSvrProperty 11 }
 
         ggmpClientAppFtpSvrUserName OBJECT-TYPE
@@ -856,7 +837,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             "ggmp client application ftp server userName"
-            --¼¯Èº¹ÜÀí¿Í»§¶Ëftp·þÎñÆ÷ÓÃ»§Ãû
+            --ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ftpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
         ::= { gbnGgmpSvrProperty 12 }
 
         ggmpClientAppFtpSvrPassword OBJECT-TYPE
@@ -865,7 +846,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             "ggmp client application ftp server password"
-            --¼¯Èº¹ÜÀí¿Í»§¶Ëftp·þÎñÆ÷ÃÜÂë
+            --ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ftpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { gbnGgmpSvrProperty 13 }
 
         ggmpClientRemoteReboot OBJECT-TYPE
@@ -877,11 +858,11 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             " config ZY.Link server allow client remote reboot"
-            --ÅäÖÃZY.Link·þÎñÆ÷¶ËÊÇ·ñÔÊÐíÖ§³Ö´¥·¢ÖØÆôµÄ¿Í»§¶ËÉè±¸ÔÚÔ¶³ÌÉý¼¶Íê±Ïºó´¥·¢ÖØÆô
+            --ï¿½ï¿½ï¿½ï¿½ZY.Linkï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Í»ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºó´¥·ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { gbnGgmpSvrProperty 14 }
 
         ----------------------------------------------------------------------------------
-        --LANSWITCH ARL±í²éÑ¯MIB±í--
+        --LANSWITCH ARLï¿½ï¿½ï¿½ï¿½Ñ¯MIBï¿½ï¿½--
         ----------------------------------------------------------------------------------
         gbnGgmpLsARLTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GbnGgmpLsARLEntry
@@ -924,7 +905,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpLsARLEntry 2 }
 
         ggmpmac2port OBJECT-TYPE
-        SYNTAX Integer32
+        SYNTAX INTEGER
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -992,7 +973,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpTrap 8 }
         
         -----------------------------------------------------------------------
-        --GGMP Ô¶³ÌÉý¼¶¿Í»§¶ËÓ¦ÓÃ³ÌÐòÃûµÄÅäÖÃ MIB--
+        --GGMP Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MIB--
         -----------------------------------------------------------------------
         ggmpDevClientAppTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GgmpDevClientAppEntry
@@ -1000,7 +981,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             "Table used to config Lanswitch application table"
-            --¸Ã±íÓÃÀ´ÅäÖÃÏÂ¹Ò½»»»»úµÄÓ¦ÓÃ³ÌÐò
+            --ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¹Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½
         ::= { gnlinkMib 10 }
 
         ggmpDevClientAppEntry OBJECT-TYPE
@@ -1009,7 +990,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
                "Table entry for configging clients' application list."
-               --ÓÃÓÚÅäÖÃ¿Í»§¶ËµÄÓ¦ÓÃ³ÌÐòÁÐ±í
+               --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½Ëµï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
         INDEX {
            ggmpDevTypeNum ,
            ggmpRmtLoadAppType
@@ -1030,8 +1011,8 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
                "This value actually is the same as the index of device id table,
                 please refer to device id table for more details about which
                 value each device corresponds to"
-               --´Ë½ÚµãµÄÖµºÍdevice id±íµÄË÷ÒýÖµÏàÍ¬,¿ÉÒÔ²Î¿¼device id±íÀ´²é¿´Ã¿ÖÖ
-               --Éè±¸¶ÔÓ¦µÄË÷ÒýÖµ
+               --ï¿½Ë½Úµï¿½ï¿½Öµï¿½ï¿½device idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Í¬,ï¿½ï¿½ï¿½Ô²Î¿ï¿½device idï¿½ï¿½ï¿½ï¿½ï¿½é¿´Ã¿ï¿½ï¿½
+               --ï¿½è±¸ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
         ::= { ggmpDevClientAppEntry 1 }
 
         ggmpRmtLoadAppType OBJECT-TYPE
@@ -1043,7 +1024,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
              "config file type to be loaded :bootrom or host"
-             --ÅäÖÃ´ý¼ÓÔØµÄÎÄ¼þÀàÐÍ£¬bootromÎÄ¼þ»òÖ÷»úÎÄ¼þ
+             --ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½bootromï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
         ::= { ggmpDevClientAppEntry 2 }
 
         ggmpDevAppName OBJECT-TYPE
@@ -1052,11 +1033,11 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
                "ggmp client application filename"
-               --¼¯Èº¹ÜÀí¿Í»§¶ËÓ¦ÓÃ³ÌÐòÃû
+               --ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { ggmpDevClientAppEntry 3 }
 
         ----------------------------------------------------------------------
-        --GGMP Ô¶³ÌÉý¼¶¿Í»§¶ËÒÔ¼°¼ÓÔØÊ±¼äµÄÅäÖÃmib--
+        --GGMP Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mib--
         ----------------------------------------------------------------------
         ggmpDevRmtLoadTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GgmpDevRmtLoadEntry
@@ -1072,7 +1053,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
                "Table entry for configging/showing clients remote load information."
-               --ÓÃÓÚÅäÖÃÏÔÊ¾¿Í»§¶ËµÄ¼ÓÔØÐÅÏ¢
+               --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Í»ï¿½ï¿½ËµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         INDEX { ggmpRmtLoadDevMac }
         ::= { ggmpDevRmtLoadTable 1 }
 
@@ -1091,21 +1072,21 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
             " MAC address of the regist lanswtich"
-            --¼¯Èº¹ÜÀí¿Í»§¶ËµÄÉè±¸MACµØÖ·
+            --ï¿½ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½è±¸MACï¿½ï¿½Ö·
         ::= { ggmpDevRmtLoadEntry 1 }
 
         ggmpRmtLoadQueIn OBJECT-TYPE
         SYNTAX INTEGER {
-              WaitingList(1),
-              ReadyList(2),
-              CmpltList(3),
-              FailedList(4)
+              waitingList(1),
+              readyList(2),
+              cmpltList(3),
+              failedList(4)
         }
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
              " current queue in which lanswitch resides"
-             --Ö¸Ê¾Éè±¸´¦ÓÚÄÄ¸ö¶ÓÁÐ
+             --Ö¸Ê¾ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { ggmpDevRmtLoadEntry 2 }
 
         ggmplanRmtLoadPercent OBJECT-TYPE
@@ -1114,11 +1095,11 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
              " Show the process of loading"
-             --ÏÔÊ¾¼ÓÔØµÄ½ø¶È
+             --ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ØµÄ½ï¿½ï¿½ï¿½
         ::= { ggmpDevRmtLoadEntry 3 }
 
         ggmplanRmtLoadAppType OBJECT-TYPE
-        SYNTAX INTEGER{
+        SYNTAX INTEGER {
                bootrom(1),
                host(2),
                bootromAndHost(3)
@@ -1127,7 +1108,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
              "config file type to be loaded :bootrom or host or both"
-             --ÅäÖÃ´ý¼ÓÔØµÄÎÄ¼þÀàÐÍ£¬bootromÎÄ¼þ»òÖ÷»úÎÄ¼þ»òÕßÈ«²¿ÎÄ¼þ
+             --ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½bootromï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½Ä¼ï¿½
         ::= { ggmpDevRmtLoadEntry 4 }
 
         ggmplanRmtLoadTime OBJECT-TYPE
@@ -1136,7 +1117,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
              " Time at which lanswitch to be loaded"
-             --ÏÂ¹Ò½»»»»úµÄ¼ÓÔØÊ±¼ä
+             --ï¿½Â¹Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         ::= { ggmpDevRmtLoadEntry 5 }
 
         ggmplanRmtLoadRowStatus OBJECT-TYPE
@@ -1145,11 +1126,11 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
              "Status of this entry."
-            --±íÏîµÄ×´Ì¬
+            --ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
         ::= { ggmpDevRmtLoadEntry 6 }
 
         -----------------------------------------------------------------------
-        --GGMP Ô¶³ÌÉý¼¶Ä£Ê½µÄÅäÖÃ MIB--
+        --GGMP Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MIB--
         -----------------------------------------------------------------------
         ggmpRmtLoadModeTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GgmpRmtLoadModeEntry
@@ -1165,7 +1146,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
                "Table entry for configging/showing remote load mode."
-               --ÓÃÓÚÅäÖÃÏÔÊ¾¿Í»§¶ËµÄ¼ÓÔØÄ£Ê½
+               --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Í»ï¿½ï¿½ËµÄ¼ï¿½ï¿½ï¿½Ä£Ê½
         INDEX { ggmpRmtLoadDevType }
         ::= { ggmpRmtLoadModeTable 1 }
 
@@ -1185,8 +1166,8 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
              "value '0'means all device,the others actually are the same as the
               index of device id table,please refer to device id table for more
               details about which value each device corresponds to"
-             --´Ë½ÚµãÖµÎª'0'´ú±íÅäÖÃËùÓÐÉè±¸,ÆäËûÖµµÄÒâÒåºÍdevice id±íµÄË÷ÒýÖµÏàÍ¬,
-             --¿ÉÒÔ²Î¿¼device id±íÀ´²é¿´Ã¿ÖÖÉè±¸¶ÔÓ¦µÄË÷ÒýÖµ
+             --ï¿½Ë½Úµï¿½ÖµÎª'0'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸,ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½device idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Í¬,
+             --ï¿½ï¿½ï¿½Ô²Î¿ï¿½device idï¿½ï¿½ï¿½ï¿½ï¿½é¿´Ã¿ï¿½ï¿½ï¿½è±¸ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
         ::= { ggmpRmtLoadModeEntry 1 }
 
         ggmpRmtLoadmode OBJECT-TYPE
@@ -1205,9 +1186,9 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
              " Config loading mode:1.load all lanswitchs'host file ,or bootrom
                file, or both ,at specified time; 2.load all lanswitchs'host file,
                or bootrom file ,or both, periodically at specified time"
-             --ÅäÖÃ¼ÓÔØµÄÄ£Ê½,·ÖÎª£º
-             --1.ÔÚ¸ø¶¨Ê±¼äÒ»´ÎÐÔÉý¼¶ËùÓÐÉè±¸µÄÖ÷»úÎÄ¼þ»òbootromÎÄ¼þ»òËùÓÐÎÄ¼þ;
-             --2.ÔÚ¸ø¶¨Ê±¼äÖÜÆÚÐÔ¼ÓÔØËùÓÐÉè±¸µÄÖ÷»úÎÄ¼þ»òbootromÎÄ¼þ»òËùÓÐÎÄ¼þ¡£
+             --ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½Øµï¿½Ä£Ê½,ï¿½ï¿½Îªï¿½ï¿½
+             --1.ï¿½Ú¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½bootromï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½;
+             --2.ï¿½Ú¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½bootromï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
         ::= { ggmpRmtLoadModeEntry 2 }
 
         ggmpRmtLoadModeTime OBJECT-TYPE
@@ -1219,9 +1200,9 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
                of seconds relative to start point which is '1970/01/01 00:00:00'
                if remote-load-mode is 'loadAllOnce',or 'sunday 00:00:00'if
                remote-load-time is 'loadAllPeriodic' "
-             --ÅäÖÃ¼ÓÔØµÄÊ±¼ä,µ±¼ÓÔØÄ£Ê½Îª"loadAllOnce"Ê±£¬¼ÓÔØÊ±¼äÎªÏà¶ÔÓÚ
-             --1970/01/01 00:00:00µÄ×ÜÃëÊý£¬µ±¼ÓÔØÄ£Ê½Îª'loadAllPeriodic'Ê±£¬
-             --¼ÓÔØÊ±¼äÎªÏà¶ÔÓÚÐÇÆÚÌì00:00:00µÄ×ÜÃëÊý
+             --ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½Øµï¿½Ê±ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½Îª"loadAllOnce"Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½
+             --1970/01/01 00:00:00ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½Îª'loadAllPeriodic'Ê±ï¿½ï¿½
+             --ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½00:00:00ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { ggmpRmtLoadModeEntry 3 }
 
         ggmpRmtLoadNewRegAuto OBJECT-TYPE
@@ -1236,8 +1217,8 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         DESCRIPTION
             "Config if all lanswitchs newly registered are loaded automatically.
              File to be loaded :host file, bootrom file, or both"
-            --ÅäÖÃÊÇ·ñ×Ô¶¯¼ÓÔØËùÓÐÐÂ×¢²áÉè±¸,´ýÉý¼¶µÄÎÄ¼þ·ÖÎªÖ÷»úÎÄ¼þ£¬bootromÎÄ¼þ
-            --»òÕßÊÇÁ½ÖÖÎÄ¼þ¶¼Éý¼¶
+            --ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½è±¸,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½bootromï¿½Ä¼ï¿½
+            --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ::= { ggmpRmtLoadModeEntry 4 }
 
         ggmpRmtLoadModeRowStatus OBJECT-TYPE
@@ -1246,10 +1227,10 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS      current
         DESCRIPTION
             "Status of this entry."
-            --±íÏîµÄ×´Ì¬
+            --ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
         ::= { ggmpRmtLoadModeEntry 5 }
         ----------------------------------------------------------------------
-        --´Ë±íÓÃÀ´ÅäÖÃ¿Í»§¶ËµÄÉè±¸idÁÐ±í--
+        --ï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½Ëµï¿½ï¿½è±¸idï¿½Ð±ï¿½--
         ----------------------------------------------------------------------
         ggmpGbnDeviceIdTable OBJECT-TYPE
         SYNTAX SEQUENCE OF GgmpGbnDeviceIdEntry
@@ -1265,7 +1246,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         STATUS current
         DESCRIPTION
                "Table entry for configging lanswitch deviceId information."
-               --ÓÃÓÚÅäÖÃ¿Í»§¶ËµÄÉè±¸idÐÅÏ¢
+               --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½Ëµï¿½ï¿½è±¸idï¿½ï¿½Ï¢
         INDEX { ggmpGbnDevIdIndex }
         ::= { ggmpGbnDeviceIdTable 1 }
 
@@ -1284,8 +1265,8 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         DESCRIPTION
              " index of deviceId table,the first 20 entries of id table
                have been occupied,so index should not less than 21"
-             --Éè±¸id±íµÄË÷Òý,ÓÉÓÚÇ°20Ìõ±íÏîÒÑ¾­±»Õ¼ÓÃ£¬ËùÒÔÓÃ»§ÅäÖÃ
-             --ÊäÈëµÄË÷Òý²»Ó¦Ð¡ÓÚ21
+             --ï¿½è±¸idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ç°20ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Õ¼ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+             --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦Ð¡ï¿½ï¿½21
         ::= { ggmpGbnDeviceIdEntry 1 }
 
         ggmpGbnDeviceId  OBJECT-TYPE
@@ -1295,7 +1276,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         DESCRIPTION
              " lanswitch's device-id which is the identifier of device-type,
                first 20 entries of device-id table have been occupied by
-               existing device-types,following details £º
+               existing device-types,following details ï¿½ï¿½
                S3042V->0x01000000,S2008E->0x02000000,S2016E->0x03000000,
                S2016EF->0x03010000,S2024E->0x04000000,S2024EF->0x04010000,
                S2208->0x05000000,S2024M->0x06010000,S2024M->0x06010000,
@@ -1312,7 +1293,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
-             " lanswitch's device-type name£¬such as ¡®TiNet S2008E¡¯"
+             " lanswitch's device-type nameï¿½ï¿½such as ï¿½ï¿½TiNet S2008Eï¿½ï¿½"
         ::= { ggmpGbnDeviceIdEntry 3 }
 
         ggmpGbnDeviceIDRowStatus   OBJECT-TYPE
@@ -1344,7 +1325,7 @@ gbnGgmpTrap                   OBJECT IDENTIFIER ::= { gnlinkMib 9 }
         ::= { gbnGgmpClientProperty 1 }
 
         ggmpClientManageVlan OBJECT-TYPE
-        SYNTAX Integer32 (2..4094)
+        SYNTAX INTEGER (2..4094)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION

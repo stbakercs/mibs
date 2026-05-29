@@ -383,7 +383,7 @@ nsSetAuthCfgAcctPort OBJECT-TYPE
 nsSetAuthCfgAcctListActn  OBJECT-TYPE
         SYNTAX  INTEGER {
         		none(0),
-        		cleanup-sess(1)
+        		cleanupSess(1)
         } 
         ACCESS  read-only
         STATUS  mandatory

@@ -586,7 +586,7 @@ HORIZON-ODU-MIB	DEFINITIONS ::= BEGIN
 		ACCESS			read-only
 		STATUS			mandatory
 		DESCRIPTION		"Describes the functionality of the port2"
-		DEFVAL			{ on }
+		DEFVAL			{ "on" }
 		::=  {  hzOduEnetPort2  1  }  
 
 		
@@ -602,7 +602,7 @@ HORIZON-ODU-MIB	DEFINITIONS ::= BEGIN
 		ACCESS			read-only
 		STATUS			mandatory
 		DESCRIPTION		"Describes the functionality of the port1"
-		DEFVAL			{ on }
+		DEFVAL			{ "on" }
 		::=  {  hzOduEnetPort1  1  }  
 
 				
@@ -1232,7 +1232,7 @@ HORIZON-ODU-MIB	DEFINITIONS ::= BEGIN
 		ACCESS			read-only
 		STATUS			mandatory
 		DESCRIPTION		"Describes the functionality of the Wireless Interface1"
-		DEFVAL			{ on }
+		DEFVAL			{ "on" }
 		::=  {  hzOduWirelessPort1  1  }  
 
 

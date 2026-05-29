@@ -93,9 +93,6 @@ bas			OBJECT IDENTIFIER ::= {dataCom 6}
 voip			OBJECT IDENTIFIER ::= {dataCom 7}
 mnt			OBJECT IDENTIFIER ::= {dataCom 10}
 
---VDSL Products
-S5330-28TX   OBJECT IDENTIFIER ::= {vdsl 1}   
-
 -- ADMIN Major MIB Categories
     gbnPlatform     OBJECT IDENTIFIER ::= { gbn 1 }     
     gbnDevice       OBJECT IDENTIFIER ::= { gbn 2 }     

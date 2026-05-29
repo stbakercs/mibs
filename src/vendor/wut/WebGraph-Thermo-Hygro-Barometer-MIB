@@ -1890,7 +1890,7 @@ wtWebGraphThermoBaroSensorColorEntry OBJECT-TYPE
     INDEX  { wtWebGraphThermoBaroSensorNo }
     ::= { wtWebGraphThermoBaroSensorColorTable 1 }
 
-wtWebGraphThermoBaroSensorColorEntry ::= SEQUENCE {
+WtWebGraphThermoBaroSensorColorEntry ::= SEQUENCE {
     wtWebGraphThermoBaroGraphicsSensorColor OCTET STRING,
     wtWebGraphThermoBaroGraphicsSelectScale OCTET STRING
 }

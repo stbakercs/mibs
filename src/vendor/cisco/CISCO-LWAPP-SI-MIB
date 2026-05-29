@@ -546,12 +546,12 @@ cLSiD11SpectrumIntelligenceEnable OBJECT-TYPE
 
 cLSiD11InterferenceDeviceList OBJECT-TYPE
     SYNTAX          BITS {
-                    byte(0),
-                    byte(1),
-                    byte(2),
-                    byte(3),
-                    byte(4),
-                    byte(5),
+                    reserved0(0),
+                    reserved1(1),
+                    reserved2(2),
+                    reserved3(3),
+                    reserved4(4),
+                    reserved5(5),
                     wifiInvalidChannel(6),
                     wifiInverted(7),
                     eightZeroTwoDot15dot4(8),
@@ -652,12 +652,12 @@ cLSiD11IdrTrapEnable OBJECT-TYPE
 
 cLSiD11IdrTrapDeviceList OBJECT-TYPE
     SYNTAX          BITS {
-                        byte(0),
-                        byte(1),
-                        byte(2),
-                        byte(3),
-                        byte(4),
-                        byte(5),
+                        reserved0(0),
+                        reserved1(1),
+                        reserved2(2),
+                        reserved3(3),
+                        reserved4(4),
+                        reserved5(5),
                         wifiInvalidChannel(6),
                         wifiInverted(7),
                         eightZeroTwoDot15dot4(8),

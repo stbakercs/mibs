@@ -703,7 +703,7 @@
 --
    ibm3200Event OBJECT IDENTIFIER ::= {ibm3200 4 }
     
-	eventStatusChange NOTIFICATION-TYPE
+	eventStatusChangeNotify NOTIFICATION-TYPE
 		STATUS current
 		DESCRIPTION 
 			"The library status has changed."
@@ -713,7 +713,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 1}
 
-	eventDoorOpen NOTIFICATION-TYPE
+	eventDoorOpenNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library door has been opened."
@@ -723,7 +723,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 2}
 	
-	eventMailSlotAccessed NOTIFICATION-TYPE
+	eventMailSlotAccessedNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library mail slot has been accessed."
@@ -733,7 +733,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 3}
 	
-	eventFaultPosted NOTIFICATION-TYPE
+	eventFaultPostedNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library has posted a hard fault."
@@ -743,7 +743,7 @@
 		--#SEVERITY CRITICAL
 		::= {ibm3200Event 4}
 	
-	eventRequestDriveClean NOTIFICATION-TYPE
+	eventRequestDriveCleanNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"One of the library tape drives has requested a cleaning cycle to ensure continued
@@ -754,7 +754,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 5}
 	
-	eventDriveError NOTIFICATION-TYPE
+	eventDriveErrorNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"One of the library tape drives has reported an error condition."
@@ -764,7 +764,7 @@
 		--#SEVERITY MAJOR
 		::= {ibm3200Event 6}
 	
-	eventLoaderRetriesExcessive NOTIFICATION-TYPE
+	eventLoaderRetriesExcessiveNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library has detected excessive loader retries."
@@ -774,7 +774,7 @@
 		--#SEVERITY MINOR
 		::= {ibm3200Event 7}
 	
-	eventLoaderOK NOTIFICATION-TYPE
+	eventLoaderOKNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"The library has reverted to normal operation."
@@ -784,7 +784,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 8}    
 	
-	eventLoaderPasswordChange NOTIFICATION-TYPE
+	eventLoaderPasswordChangeNotify NOTIFICATION-TYPE
 		STATUS  current
 		DESCRIPTION
 			"Library password has changed"
@@ -804,7 +804,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 10}   
 	
-	eventBrowserLogin NOTIFICATION-TYPE    
+	eventBrowserLoginNotify NOTIFICATION-TYPE    
 		STATUS  current
 		DESCRIPTION
 			"Someone logged in via Web Browser."
@@ -814,7 +814,7 @@
 		--#SEVERITY INFORMATIONAL
 		::= {ibm3200Event 11}   
 	
-	eventBrowserLogout NOTIFICATION-TYPE    
+	eventBrowserLogoutNotify NOTIFICATION-TYPE    
 		STATUS  current
 		DESCRIPTION
 			"Someone logged from Web Browser."
@@ -827,7 +827,7 @@
 	
 	--OLD Style Trap definitions      
 	
-	eventStatusChange TRAP-TYPE    
+	eventStatusChangeTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum, 
@@ -836,24 +836,21 @@
     	DESCRIPTION 
 			"The library status has changed."	
 		::=  1
-		
-	eventDoorOpen  TRAP-TYPE    
+			eventDoorOpenTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }		
 		DESCRIPTION
 			"The library door has been opened."		
 		::= 2
-	
-	eventMailSlotAccessed TRAP-TYPE    
+		eventMailSlotAccessedTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
    		DESCRIPTION
 			"The library mail slot has been accessed."	
 		::= 3
-	
-	eventFaultPosted TRAP-TYPE    
+		eventFaultPostedTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum,
@@ -863,8 +860,7 @@
    		DESCRIPTION
 			"The library has posted a hard fault."		
 		::= 4
-			
-	eventRequestDriveClean TRAP-TYPE    
+				eventRequestDriveCleanTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -872,32 +868,28 @@
 			"One of the library tape drives has requested a cleaning cycle to ensure continued
             data reliability."		
         ::= 5
-	
-	eventDriveError TRAP-TYPE    
+		eventDriveErrorTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
 		DESCRIPTION
 			"One of the library tape drives has reported an error condition."
 		::= 6
-	
-	eventLoaderRetriesExcessive TRAP-TYPE    
+		eventLoaderRetriesExcessiveTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
 		DESCRIPTION
 			"The library has detected excessive loader retries."
 		::= 7
-	
-	eventLoaderOK TRAP-TYPE    
+		eventLoaderOKTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
 		DESCRIPTION
 			"The library has reverted to normal operation."
 		::= 8	
-	
-	eventLoaderPasswordChange TRAP-TYPE    
+		eventLoaderPasswordChangeTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
@@ -905,23 +897,21 @@
 			"An account password in the library has changed."
 		::= 9	 	
   
-  	eventLoaderConfigChange TRAP-TYPE    
+  	eventLoaderConfigChangeTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
 		DESCRIPTION
 			"A logical library configuration has been changed."
 		::= 10
-
-  	eventBrowserLogin TRAP-TYPE    
+	eventBrowserLoginTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }
 		DESCRIPTION
 			"Someone logged in via Web Browser"
 		::= 11
-
-  	eventBrowserLogout TRAP-TYPE    
+	eventBrowserLogoutTrap TRAP-TYPE    
     	ENTERPRISE  ibm3200Event
         VARIABLES   { libraryProductId,
         			  librarySerNum	 }

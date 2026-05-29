@@ -79,7 +79,7 @@ LesLecsConfEntry ::= SEQUENCE {
     configDirectVccType AtmVccTrafficType,
     configDirectPcr Bandwidth,
     configDirectScr Bandwidth,
-    lesLecsAtmDevLineSpeed UInteger32,
+    lesLecsAtmDevLineSpeed Counter32,
     lesLecsConfRowStatus RowStatus
     }
 
@@ -117,7 +117,7 @@ lesLecsAtmDevNum OBJECT-TYPE
     ::= { lesLecsConfEntry 3 }
 
 lesLecsAtmDevLineSpeed OBJECT-TYPE
-    SYNTAX UInteger32
+    SYNTAX Counter32
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION

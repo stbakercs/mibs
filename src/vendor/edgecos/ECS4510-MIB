@@ -8285,7 +8285,7 @@ diffServIpAceSourcePortBitmask OBJECT-TYPE
     ::= { diffServIpAceEntry 15 }
 
 diffServIpAceDestPortOp OBJECT-TYPE
-    SYNTAX      INTEGER{
+    SYNTAX      INTEGER {
                 noOperator(1),
                 equal(2),
                 range(3)
@@ -14786,7 +14786,7 @@ ospfMultiProcessIfAuthKey OBJECT-TYPE
 
          When read, ospfIfAuthKey always returns an octet string of length zero.
          This is a private substitution for ospfIfAuthKey of RFC1253."
-    DEFVAL { none }
+    DEFVAL { "" }
     ::= { ospfMultiProcessIfEntry 16 }
 
 ospfMultiProcessIfStatus OBJECT-TYPE
@@ -15421,7 +15421,7 @@ ospfMultiProcessVirtIfAuthKey OBJECT-TYPE
 
          When read, ospfVirtIfAuthKey always returns an octet string of length
          zero. "
-    DEFVAL { none }
+    DEFVAL { "" }
     ::= { ospfMultiProcessVirtIfEntry 9 }
 
 ospfMultiProcessVirtIfStatus OBJECT-TYPE

@@ -32,7 +32,7 @@ powerMIB MODULE-IDENTITY
 
 ees OBJECT IDENTIFIER ::= { enterprises 6302 }
 
-global OBJECT IDENTIFIER ::= { ees 2 }
+eesGlobalBranch OBJECT IDENTIFIER ::= { ees 2 }
 
 ------------------------------------------------------------
 -- Textual conventions
@@ -1022,7 +1022,7 @@ psSMDUH8Voltage OBJECT-TYPE
 	::= { psSMDUHCurrent 9 }
 
 psSMDUHCurrentTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF PSSMDUHEntry
+	SYNTAX SEQUENCE OF PsSMDUHCurrentEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION "
@@ -1030,7 +1030,7 @@ psSMDUHCurrentTable OBJECT-TYPE
 	::= { psSMDUHCurrent 10 }
 
 psSMDUHCurrentEntry OBJECT-TYPE
-	SYNTAX PSSMDUHEntry
+	SYNTAX PsSMDUHCurrentEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION "
@@ -1038,7 +1038,7 @@ psSMDUHCurrentEntry OBJECT-TYPE
 	INDEX { psSMDUHCurrentIndex }
 	::= { psSMDUHCurrentTable 1 }
 
-psSMDUHCurrentEntry ::= SEQUENCE {
+PsSMDUHCurrentEntry ::= SEQUENCE {
 	psSMDUHCurrentIndex Integer32,
 	psSMDUHCurrent1 Integer32,
 	psSMDUHCurrent2 Integer32,
@@ -1235,7 +1235,7 @@ psSMDUHCurrent20 OBJECT-TYPE
 psSMDUHPower OBJECT IDENTIFIER ::= { system 17 }
 
 psSMDUHPowerTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF PSSMDUHEntry
+	SYNTAX SEQUENCE OF PsSMDUHPowerEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION "
@@ -1243,7 +1243,7 @@ psSMDUHPowerTable OBJECT-TYPE
 	::= { psSMDUHPower 1 }
 
 psSMDUHPowerEntry OBJECT-TYPE
-	SYNTAX PSSMDUHEntry
+	SYNTAX PsSMDUHPowerEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION "
@@ -1251,7 +1251,7 @@ psSMDUHPowerEntry OBJECT-TYPE
 	INDEX { psSMDUHPowerIndex }
 	::= { psSMDUHPowerTable 1 }
 
-psSMDUHPowerEntry ::= SEQUENCE {
+PsSMDUHPowerEntry ::= SEQUENCE {
 	psSMDUHPowerIndex Integer32,
 	psSMDUHPower1 Integer32,
 	psSMDUHPower2 Integer32,
@@ -1448,7 +1448,7 @@ psSMDUHPower20 OBJECT-TYPE
 psSMDUHEnergy OBJECT IDENTIFIER ::= { system 18 }
 
 psSMDUHEnergyTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF PSSMDUHEntry
+	SYNTAX SEQUENCE OF PsSMDUHEnergyEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION "
@@ -1456,7 +1456,7 @@ psSMDUHEnergyTable OBJECT-TYPE
 	::= { psSMDUHEnergy 1 }
 
 psSMDUHEnergyEntry OBJECT-TYPE
-	SYNTAX PSSMDUHEntry
+	SYNTAX PsSMDUHEnergyEntry
 	MAX-ACCESS not-accessible
 	STATUS current
 	DESCRIPTION "
@@ -1464,7 +1464,7 @@ psSMDUHEnergyEntry OBJECT-TYPE
 	INDEX { psSMDUHEnergyIndex }
 	::= { psSMDUHEnergyTable 1 }
 
-psSMDUHEnergyEntry ::= SEQUENCE {
+PsSMDUHEnergyEntry ::= SEQUENCE {
 	psSMDUHEnergyIndex Integer32,
 	psSMDUHTotalEnergy1 Integer32,
 	psSMDUHTotalEnergy2 Integer32,

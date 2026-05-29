@@ -65,7 +65,7 @@ IMPORTS
             STATUS                mandatory
             DESCRIPTION
             "An interface entry containing the Ipaddress and net-mask."
-            INDEX {INTEGER }
+            INDEX { snSysCMOSIpIpAddr }
             ::=   { snSysCMOSIpInterfaceTable 1 }
 
    SnSysCMOSIpInterfaceEntry ::= SEQUENCE {
@@ -158,15 +158,25 @@ IMPORTS
                     SYNTAX  SnSysCMOSHubSlotConfigEntry
                     ACCESS  not-accessible
                     STATUS  mandatory
-                    INDEX {INTEGER }
+                    INDEX { snSysCMOSHubSlotIndex }
                     ::= { snSysCMOSHubSlotConfigTable 1 }
 
    SnSysCMOSHubSlotConfigEntry  ::= SEQUENCE {
-         snSysSlotLastOperations 
+         snSysCMOSHubSlotIndex
+             INTEGER,
+         snSysSlotLastOperations
              OCTET STRING,
-         snSysResetSlotQueue 
+         snSysResetSlotQueue
              INTEGER
    }
+
+   snSysCMOSHubSlotIndex OBJECT-TYPE
+        SYNTAX INTEGER
+        ACCESS not-accessible
+        STATUS mandatory
+        DESCRIPTION
+        "Slot number for this hub configuration entry."
+        ::= { snSysCMOSHubSlotConfigEntry 1 }
 
    snSysSlotLastOperations  OBJECT-TYPE        
         SYNTAX OCTET STRING      
@@ -175,7 +185,7 @@ IMPORTS
               DESCRIPTION
               " A description of last 20 operations performed,
                 on the slot"
-              ::= { snSysCMOSHubSlotConfigEntry 1 }
+              ::= { snSysCMOSHubSlotConfigEntry 2 }
 
    snSysResetSlotQueue OBJECT-TYPE
              SYNTAX  INTEGER
@@ -183,7 +193,7 @@ IMPORTS
              STATUS  mandatory
              DESCRIPTION
              " Resets the last 20 operations queue."
-              ::= { snSysCMOSHubSlotConfigEntry 2 }
+              ::= { snSysCMOSHubSlotConfigEntry 3 }
 
 
    snSysCMOSHubSaveHubFunctions OBJECT-TYPE
@@ -346,7 +356,7 @@ IMPORTS
      STATUS  mandatory
      DESCRIPTION
 	"An entry community info"
-     INDEX { INTEGER }  
+     INDEX { snSysCMOSSNMPCommunityName }
    ::= { snSysCMOSSNMPCommunitiesTable 1 }
 
    SnSysCMOSSNMPCommunitiesEntry ::=   SEQUENCE{
@@ -391,7 +401,7 @@ IMPORTS
      STATUS  mandatory
      DESCRIPTION
 	"An entry of trap IP destinations."
-     INDEX {INTEGER }
+     INDEX { snSysCMOSSNMPTrapCommunityIpAddr }
    ::= { snSysCMOSSNMPTrapCommunitiesTable 1 }
 
    SnSysCMOSSNMPTrapCommunitiesEntry ::=   SEQUENCE{

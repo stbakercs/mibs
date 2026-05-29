@@ -16,7 +16,8 @@ IMPORTS
                 NOTIFICATION-TYPE,
                 Counter32,
                 Gauge32,
-                Integer32
+                Integer32,
+                Unsigned32
                         FROM SNMPv2-SMI
                 TEXTUAL-CONVENTION,
                 TimeStamp,
@@ -32,9 +33,7 @@ IMPORTS
                 ifIndex
                         FROM RFC1213-MIB
                 workgroup
-                        FROM CISCO-SMI
-                Unsigned32
-                        FROM CISCO-TC;
+                        FROM CISCO-SMI;
 
 ciscoLS1010ChassisMIB MODULE-IDENTITY
         LAST-UPDATED    "200103290000Z"

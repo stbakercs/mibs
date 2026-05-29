@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneNTP
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212;	
+		FROM SNMPv2-SMI;	
 
           -- textual conventions
 
@@ -43,21 +43,6 @@ hillstoneNTPServConfTable OBJECT-TYPE
       
 	::= { hillstoneNTPMibObjects 1 }
 	
-  HillstoneNTPServConfEntry OBJECT-TYPE
-      
-	SYNTAX HillstoneNTPServConfEntry
-      
-	MAX-ACCESS not-accessible
-      
-	STATUS current
-      
-	DESCRIPTION
-
-		"The entry is used in ip address informatioin of this dns server"
-	INDEX { hillstoneNTPServName }
-      
-	::= { hillstoneNTPServConfTable 1 } 
-	
   HillstoneNTPServConfEntry ::=
       SEQUENCE{
           hillstoneNTPServName
@@ -65,15 +50,23 @@ hillstoneNTPServConfTable OBJECT-TYPE
           hillstoneNTPServStatus
               INTEGER
       }
-        
+
+  hillstoneNTPServConfEntry OBJECT-TYPE
+	SYNTAX HillstoneNTPServConfEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"The entry is used in ip address informatioin of this dns server"
+	INDEX { hillstoneNTPServName }
+	::= { hillstoneNTPServConfTable 1 }
+
   hillstoneNTPServName OBJECT-TYPE
       SYNTAX DisplayString
       MAX-ACCESS read-only
       STATUS current
       DESCRIPTION
           "The index of this NTP server table"
-      ::= { HillstoneNTPServConfEntry 1 }
-  
+      ::= { hillstoneNTPServConfEntry 1 }
 
   hillstoneNTPServStatus OBJECT-TYPE
       SYNTAX INTEGER
@@ -82,12 +75,12 @@ hillstoneNTPServConfTable OBJECT-TYPE
               sourcePeer(2),
               selected(3),
               candidate(4),
-              configured(5)	
+              configured(5)
           }
       MAX-ACCESS read-only
       STATUS current
       DESCRIPTION
           "The status of this NTP server. 1:source(master);2:source(peer);3:selected;4:candidate;5:configured;"
-      ::= { HillstoneNTPServConfEntry 2 } 
+      ::= { hillstoneNTPServConfEntry 2 } 
                 
 END

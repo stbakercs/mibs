@@ -37,7 +37,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiCpuFiveSec  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "%"
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      mandatory 
        DESCRIPTION
           "CPU busy percentage in the last 5 second
@@ -47,7 +47,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiCpuOneMin  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "%"       
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      mandatory 
        DESCRIPTION
           "CPU busy percentage in the last 1 minute
@@ -57,7 +57,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
 	ubiCpuFiveMin  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "%"
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      mandatory 
        DESCRIPTION
           "CPU busy percentage in the last 5 minute
@@ -67,7 +67,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
 	ubiCpuRisingThreshold  OBJECT-TYPE
        SYNTAX      Counter32 
      UNITS        "%"
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      mandatory 
        DESCRIPTION
           "Rising threshold of CPU Usage."
@@ -76,7 +76,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiCpuFallingThreshold  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "%"
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      mandatory 
        DESCRIPTION
           "Falling threshold of CPU Usage."
@@ -89,7 +89,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
        		oneMin(2),
        		fiveMin(3)
        }
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      mandatory 
        DESCRIPTION
           "CPU Load Time Period for notification."
@@ -104,7 +104,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiMemoryAlloc  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "kbyte"
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      mandatory 
        DESCRIPTION
           "Memory allocation usage."
@@ -113,7 +113,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiMemoryFree  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "kbyte"
-       ACCESS  	   read-only
+       MAX-ACCESS  	   read-only
        STATUS      mandatory 
        DESCRIPTION
           "Memory free usage."
@@ -122,7 +122,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiMemoryTotal  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "kbyte"
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      mandatory 
        DESCRIPTION
           "Total memory."
@@ -131,7 +131,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiMemoryFreePercentage  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "%"
-       ACCESS  	   read-only
+       MAX-ACCESS  	   read-only
        STATUS      mandatory 
        DESCRIPTION
           "memoryUsageFreePercentage indicates available memory 
@@ -141,7 +141,7 @@ ubiSysRscMemory   	OBJECT IDENTIFIER 		::= { ubiSystemMIBObjects 4 }
     ubiMemoryThreshold  OBJECT-TYPE
        SYNTAX      Counter32
        UNITS        "%"  
-       ACCESS  	   read-write
+       MAX-ACCESS  	   read-write
        STATUS      mandatory 
        DESCRIPTION
           "Threshold of the memory usage."

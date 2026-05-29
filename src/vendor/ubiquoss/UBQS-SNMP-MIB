@@ -161,7 +161,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
                       		                      
     ubiSnmpUserEntry   OBJECT-TYPE
         SYNTAX          UbiSnmpUserEntry
-        ACCESS      	not-accessible
+        MAX-ACCESS      	not-accessible
         STATUS          current 
         DESCRIPTION
                 "An entry containing information about 
@@ -183,7 +183,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpUserVersion  OBJECT-TYPE
        SYNTAX      SnmpVersion
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "The version of SNMP user."
@@ -191,7 +191,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpUserName  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "A textual string containing information about 
@@ -200,7 +200,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpUserGroup  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "A textual string containing information about 
@@ -213,7 +213,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
        		md5(1),
        		sha(2)
        }
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "This object indicates the authentication parameters 
@@ -224,7 +224,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpUserAuthPasswd  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "A textual string containing authentication password 
@@ -239,7 +239,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
        		aes(1),
        		des(2)
        }
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "This object indicates the encryption parameters 
@@ -250,7 +250,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpUserPrivacyPasswd  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "A textual string containing encryption password 
@@ -261,7 +261,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpUserAclName  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "The access ID for SNMP user."
@@ -293,7 +293,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
                       		                      
     ubiSnmpGroupEntry   OBJECT-TYPE
         SYNTAX          UbiSnmpGroupEntry
-        ACCESS      	not-accessible
+        MAX-ACCESS      	not-accessible
         STATUS          current 
         DESCRIPTION
                 "An entry containing information about 
@@ -313,7 +313,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpGroupVersion  OBJECT-TYPE
        SYNTAX      SnmpVersion
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "The version of SNMP group."
@@ -321,7 +321,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpGroupName  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "A textual string containing information about 
@@ -335,7 +335,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
        		authen(2),
        		privacy(3)
        }
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           ""
@@ -344,7 +344,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpGroupReadView  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           ""
@@ -353,7 +353,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpGroupWriteView  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           ""
@@ -361,7 +361,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpGroupNotifyView  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           ""
@@ -393,7 +393,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
                       		                      
     ubiSnmpViewEntry   OBJECT-TYPE
         SYNTAX          UbiSnmpViewEntry
-        ACCESS      	not-accessible
+        MAX-ACCESS      	not-accessible
         STATUS          current 
         DESCRIPTION
                 "An entry containing information about 
@@ -410,7 +410,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpViewName  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "A textual string containing information about 
@@ -419,7 +419,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpViewVariable  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           ""
@@ -431,7 +431,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
        		excluded(1),
        		included(2)
        }
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           ""
@@ -453,7 +453,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 -- ***********************************************************
     ubiSnmpTrapHostTable   OBJECT-TYPE
         SYNTAX          SEQUENCE  OF  UbiSnmpTrapHostEntry
-        ACCESS          not-accessible
+        MAX-ACCESS          not-accessible
         STATUS          current 
         DESCRIPTION
                "This table contains objects which provide
@@ -462,7 +462,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpTrapHostEntry   OBJECT-TYPE
         SYNTAX          UbiSnmpTrapHostEntry
-        ACCESS      	not-accessible
+        MAX-ACCESS      	not-accessible
         STATUS          current 
         DESCRIPTION
                 "An entry containing information about 
@@ -488,7 +488,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
        		trap(1),
        		inform(2)
        }
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "This object indicates the trap type."
@@ -496,7 +496,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
       
     ubiSnmpTrapHostVersion  OBJECT-TYPE
        SYNTAX      SnmpVersion
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "This object indicates the trap version. 
@@ -506,7 +506,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpTrapHostAddrType  OBJECT-TYPE
        SYNTAX      InetAddressType 
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "The type of the UbiSnmpTrapHostAddress, as defined 
@@ -515,7 +515,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
 
     ubiSnmpTrapHostAddress  OBJECT-TYPE
        SYNTAX      InetAddress 
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "The trap host IP address. The type of this address is
@@ -524,7 +524,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
  
 	ubiSnmpTrapHostCommunity  OBJECT-TYPE
        SYNTAX      DisplayString
-       ACCESS      read-only
+       MAX-ACCESS      read-only
        STATUS      current 
        DESCRIPTION
           "A textual string containing information about 
@@ -538,7 +538,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
        		authen(2),
        		privacy(3)
        }
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current 
        DESCRIPTION
           "The security type for SNMPv3 trap host."
@@ -546,7 +546,7 @@ ubiSnmpMIBConformance  			OBJECT IDENTIFIER		::= { ubiSnmpMIB 2 }
          
  	ubiSnmpTrapHostPort  OBJECT-TYPE
        SYNTAX      Integer32 (0..65535)
-       ACCESS      read-write
+       MAX-ACCESS      read-write
        STATUS      current  
        DESCRIPTION
           "The port number of SNMP trap host. "     

@@ -2274,7 +2274,7 @@ IMPORTS
         ::= { iapEntry 35 }
 
 
-    global      OBJECT IDENTIFIER ::= { iap 2 }
+    iapGlobalBranch      OBJECT IDENTIFIER ::= { iap 2 }
     global11a   OBJECT IDENTIFIER ::= { iap 3 }
     global11bg  OBJECT IDENTIFIER ::= { iap 4 }
     wds         OBJECT IDENTIFIER ::= { iap 5 }
@@ -2291,7 +2291,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Bring all IAPs up or down"
-        ::= { global 1 }
+        ::= { iapGlobalBranch 1 }
 
     globalIAPCellSize OBJECT-TYPE
         SYNTAX          INTEGER { none(0), small(1), medium(2), large(3),
@@ -2300,7 +2300,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Set up RF cell size base on Tx pwr and Rx Threshold"
-        ::= { global 2 }
+        ::= { iapGlobalBranch 2 }
 
     globalIAPTxPwr OBJECT-TYPE
         SYNTAX          Integer32(-15..20)
@@ -2308,7 +2308,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Maximum Tx power output from any radio"
-        ::= { global 3 }
+        ::= { iapGlobalBranch 3 }
 
     globalIAPRxThreshold OBJECT-TYPE
         SYNTAX          Integer32(-100..0)
@@ -2316,7 +2316,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Rx (deferred) threshold setting"
-        ::= { global 4 }
+        ::= { iapGlobalBranch 4 }
 
     globalIAPBeaconRate OBJECT-TYPE
         SYNTAX          Integer32(100..1000)
@@ -2324,7 +2324,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Time between beacons in kilo_microseconds"
-        ::= { global 5 }
+        ::= { iapGlobalBranch 5 }
 
     globalIAPBeaconDTIM OBJECT-TYPE
         SYNTAX          Integer32(1..255)
@@ -2332,7 +2332,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Number of beacons between DTIM being transmitted"
-        ::= { global 6 }
+        ::= { iapGlobalBranch 6 }
 
     globalIAPLongRetry OBJECT-TYPE
         SYNTAX          Integer32(1..128)
@@ -2340,7 +2340,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Long retry"
-        ::= { global 7 }
+        ::= { iapGlobalBranch 7 }
 
     globalIAPShortRetry OBJECT-TYPE
         SYNTAX          Integer32(1..128)
@@ -2348,7 +2348,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Short retry"
-        ::= { global 8 }
+        ::= { iapGlobalBranch 8 }
 
     globalIAPMaxStations OBJECT-TYPE
         SYNTAX          Integer32(1..240)
@@ -2356,7 +2356,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Limit the number of STA that can be associated per IAP"
-        ::= { global 9 }
+        ::= { iapGlobalBranch 9 }
 
     globalIAPInactiveTime OBJECT-TYPE
         SYNTAX          Integer32(1..65535)
@@ -2364,7 +2364,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Time, in seconds, without any activity before removing the client from the association table"
-        ::= { global 10 }
+        ::= { iapGlobalBranch 10 }
 
     globalIAPReauthPeriod OBJECT-TYPE
         SYNTAX          Integer32(0..65535)
@@ -2372,7 +2372,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Time (sec) between 802.1x re_authentication attempts"
-        ::= { global 11 }
+        ::= { iapGlobalBranch 11 }
 
     globalIAPSta2Sta OBJECT-TYPE
         SYNTAX          INTEGER { forward(0), block(1) }
@@ -2380,7 +2380,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Block or forward intra-Array STA to STA traffic"
-        ::= { global 12 }
+        ::= { iapGlobalBranch 12 }
 
     globalMgmt OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2388,15 +2388,15 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable management on the WLAN interfaces"
-        ::= { global 13 }
+        ::= { iapGlobalBranch 13 }
 
-    leds          OBJECT IDENTIFIER ::= { global 14 }
-    autoChannel   OBJECT IDENTIFIER ::= { global 15 }
-    rogueDetect   OBJECT IDENTIFIER ::= { global 16 }
-    fastRoaming   OBJECT IDENTIFIER ::= { global 17 }
-    autoCell      OBJECT IDENTIFIER ::= { global 24 }
-    ids           OBJECT IDENTIFIER ::= { global 33 }
-    rfMonitor     OBJECT IDENTIFIER ::= { global 40 }
+    leds          OBJECT IDENTIFIER ::= { iapGlobalBranch 14 }
+    autoChannel   OBJECT IDENTIFIER ::= { iapGlobalBranch 15 }
+    rogueDetect   OBJECT IDENTIFIER ::= { iapGlobalBranch 16 }
+    fastRoaming   OBJECT IDENTIFIER ::= { iapGlobalBranch 17 }
+    autoCell      OBJECT IDENTIFIER ::= { iapGlobalBranch 24 }
+    ids           OBJECT IDENTIFIER ::= { iapGlobalBranch 33 }
+    rfMonitor     OBJECT IDENTIFIER ::= { iapGlobalBranch 40 }
 
     globalLoadBalancing OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(2) }
@@ -2404,7 +2404,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable load balancing across IAPs"
-        ::= { global 18 }
+        ::= { iapGlobalBranch 18 }
 
     globalCountryCode OBJECT-TYPE
         SYNTAX          INTEGER { not-set(0), united-states(1), canada(2),
@@ -2434,7 +2434,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Country code"
-        ::= { global 19 }
+        ::= { iapGlobalBranch 19 }
 
     globalSharpCell OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2442,7 +2442,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable sharp cell TX power shaping"
-        ::= { global 20 }
+        ::= { iapGlobalBranch 20 }
 
     globalIAPMaxPhones OBJECT-TYPE
         SYNTAX          Integer32(0..16)
@@ -2450,7 +2450,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Limit the number of phones that can be associated per IAP. Note this is not used and essentially deprecated."
-        ::= { global 21 }
+        ::= { iapGlobalBranch 21 }
 
     globalNumStations OBJECT-TYPE
         SYNTAX          Integer32
@@ -2458,7 +2458,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Number of stations associated with array"
-        ::= { global 22 }
+        ::= { iapGlobalBranch 22 }
 
     globalBroadcastRates OBJECT-TYPE
         SYNTAX          INTEGER { standard(0), optimized(1) }
@@ -2466,7 +2466,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Select standard or optimized broadcast rates"
-        ::= { global 23 }
+        ::= { iapGlobalBranch 23 }
 
     globalPublicSafety OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2474,7 +2474,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable public safety band"
-        ::= { global 25 }
+        ::= { iapGlobalBranch 25 }
 
     globalDot11hSupport OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2482,7 +2482,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable support for 802.11h beacons"
-        ::= { global 26 }
+        ::= { iapGlobalBranch 26 }
 
     globalLoopbackTest OBJECT-TYPE
         SYNTAX          INTEGER { disabled(0), alert-only(1),
@@ -2491,7 +2491,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "IAP radio assurance mode"
-        ::= { global 27 }
+        ::= { iapGlobalBranch 27 }
 
     globalArpFilter OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), passthru(1), proxy(2) }
@@ -2499,7 +2499,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable ARP filtering"
-        ::= { global 28 }
+        ::= { iapGlobalBranch 28 }
 
     globalIAPChannelReset OBJECT-TYPE
         SYNTAX          INTEGER { reset(1) }
@@ -2507,7 +2507,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Reset all channels back to factory defaults"
-        ::= { global 29 }
+        ::= { iapGlobalBranch 29 }
 
     globalWfaMode OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2515,7 +2515,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable WiFi Alliance mode"
-        ::= { global 30 }
+        ::= { iapGlobalBranch 30 }
 
     globalMaxStations OBJECT-TYPE
         SYNTAX          Integer32(1..3840)
@@ -2523,7 +2523,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Maximum number of associated stations per array"
-        ::= { global 31 }
+        ::= { iapGlobalBranch 31 }
 
     globalMulticastMode OBJECT-TYPE
         SYNTAX          INTEGER { standard(0), convert(1), snoop(2), prune(3) }
@@ -2531,7 +2531,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Select multicast mode"
-        ::= { global 32 }
+        ::= { iapGlobalBranch 32 }
 
     globalAutoBandEnable OBJECT-TYPE
         SYNTAX          INTEGER { enable(1) }
@@ -2539,7 +2539,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Automatically assign bands (2.4GHz or 5GHz) to all IAPs"
-        ::= { global 34 }
+        ::= { iapGlobalBranch 34 }
 
     globalWmmPowerSave OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2547,7 +2547,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable WMM power save mode"
-        ::= { global 35 }
+        ::= { iapGlobalBranch 35 }
 
     globalDscpMappingMode OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2555,7 +2555,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable DSCP to QoS mapping"
-        ::= { global 36 }
+        ::= { iapGlobalBranch 36 }
 
     globalDscpMappingTable OBJECT-TYPE
         SYNTAX          SEQUENCE OF GlobalDscpMappingEntry
@@ -2563,7 +2563,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "DSCP to QoS mapping"
-        ::= { global 37 }
+        ::= { iapGlobalBranch 37 }
 
     globalDscpMappingEntry OBJECT-TYPE
         SYNTAX          GlobalDscpMappingEntry
@@ -2610,7 +2610,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Multicast conversion exclude list"
-        ::= { global 38 }
+        ::= { iapGlobalBranch 38 }
 
     globalMulticastExcludeEntry OBJECT-TYPE
         SYNTAX          GlobalMulticastExcludeEntry
@@ -2657,7 +2657,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Reset multicast conversion exclude list"
-        ::= { global 39 }
+        ::= { iapGlobalBranch 39 }
 
     globalExtractStaInfoTable OBJECT-TYPE
         SYNTAX          SEQUENCE OF GlobalExtractStaInfoEntry
@@ -2665,7 +2665,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Station information to be extracted table"
-        ::= { global 41 }
+        ::= { iapGlobalBranch 41 }
 
     globalExtractStaInfoEntry OBJECT-TYPE
         SYNTAX          GlobalExtractStaInfoEntry
@@ -2712,7 +2712,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Time to complete 802.1x authentication (seconds)"
-        ::= { global 42 }
+        ::= { iapGlobalBranch 42 }
 
     globalIPv6Filter OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2720,7 +2720,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable IPv6 packet filtering"
-        ::= { global 43 }
+        ::= { iapGlobalBranch 43 }
 
     globalMulticastForwardingTable OBJECT-TYPE
         SYNTAX          SEQUENCE OF GlobalMulticastForwardingEntry
@@ -2728,7 +2728,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Multicast conversion forwarding list"
-        ::= { global 44 }
+        ::= { iapGlobalBranch 44 }
 
     globalMulticastForwardingEntry OBJECT-TYPE
         SYNTAX          GlobalMulticastForwardingEntry
@@ -2775,7 +2775,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Reset multicast conversion forwarding list"
-        ::= { global 45 }
+        ::= { iapGlobalBranch 45 }
 
     globalMulticastVlanForwardingTable OBJECT-TYPE
         SYNTAX          SEQUENCE OF GlobalMulticastVlanForwardingEntry
@@ -2783,7 +2783,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Multicast conversion vlan forwarding list"
-        ::= { global 46 }
+        ::= { iapGlobalBranch 46 }
 
     globalMulticastVlanForwardingEntry OBJECT-TYPE
         SYNTAX          GlobalMulticastVlanForwardingEntry
@@ -2830,7 +2830,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Reset multicast conversion vlan forwarding list"
-        ::= { global 47 }
+        ::= { iapGlobalBranch 47 }
 
     globalMulticastDnsFilteringTable OBJECT-TYPE
         SYNTAX          SEQUENCE OF GlobalMulticastDnsFilteringEntry
@@ -2838,7 +2838,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Multicast DNS filtering list"
-        ::= { global 48 }
+        ::= { iapGlobalBranch 48 }
 
     globalMulticastDnsFilteringEntry OBJECT-TYPE
         SYNTAX          GlobalMulticastDnsFilteringEntry
@@ -2885,7 +2885,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Reset multicast DNS filtering list"
-        ::= { global 49 }
+        ::= { iapGlobalBranch 49 }
 
     globalDot11kSupport OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2893,7 +2893,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable support for 802.11k beacons"
-        ::= { global 50 }
+        ::= { iapGlobalBranch 50 }
 
 	globalDot11wProtectedManagement OBJECT-TYPE
         SYNTAX          INTEGER { disable(0), enable(1) }
@@ -2901,7 +2901,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Enable/disable support for 802.11w Protected Management"
-        ::= { global 51 }
+        ::= { iapGlobalBranch 51 }
 
     globalExtractIpAddrDhcpPeriod OBJECT-TYPE
         SYNTAX          Integer32(0..300)
@@ -2909,7 +2909,7 @@ IMPORTS
         STATUS          current
         DESCRIPTION
             "Station IP address extraction via DHCP period"
-        ::= { global 52 }
+        ::= { iapGlobalBranch 52 }
 
 --
 -- INTERFACE IAP GLOBAL LEDS
@@ -17608,7 +17608,7 @@ IMPORTS
         ::= { position 6 }
 
     positionInfoScope OBJECT-TYPE
-        SYNTAX          INTEGER { map(0), global(1) }
+        SYNTAX          INTEGER { map(0), globalScope(1) }
         MAX-ACCESS      read-write
         STATUS          current
         DESCRIPTION

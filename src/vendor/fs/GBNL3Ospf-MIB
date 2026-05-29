@@ -40,7 +40,7 @@ Metric ::= TEXTUAL-CONVENTION
     STATUS      current
     DESCRIPTION
        "The OSPF Internal Metric."
-    SYNTAX      Integer32 (0..'FFFFFF'h)
+    SYNTAX INTEGER (0..'FFFFFF'h)
 
    gbnL3OspfGroup               OBJECT IDENTIFIER ::= { gbnL3OspfMib 1 }   
     
@@ -50,7 +50,7 @@ Metric ::= TEXTUAL-CONVENTION
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "фДкШб╥сип╜рИ╣дб╥сирЩхК╣╫OSPF╣дд╛хо╩╗╥яж╣."
+           "О©╫О©╫О©╫О©╫б╥О©╫О©╫п╜О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫К╣╫OSPFО©╫О©╫д╛О©╫о╩О©╫О©╫О©╫ж╣."
        REFERENCE
           "OSPF Version 2, C.1 Global parameters" 
        DEFVAL { 1 }         
@@ -64,46 +64,46 @@ Metric ::= TEXTUAL-CONVENTION
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "фДкШб╥сип╜рИ╣дб╥сирЩхК╣╫OSPF╣дд╛хоюЮпм.╣зр╩юЮ╩Р╣з╤ЧюЮ║ё"
+           "О©╫О©╫О©╫О©╫б╥О©╫О©╫п╜О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫К╣╫OSPFО©╫О©╫д╛О©╫О©╫О©╫О©╫О©╫О©╫.О©╫О©╫р╩О©╫О©╫О©╫з╤О©╫О©╫Ю║ё"
        REFERENCE
           "OSPF Version 2, C.1 Global parameters"  
        DEFVAL { type2 }         
       ::= { gbnL3OspfGroup 2 }
 
     ospfRedistriDefaultTag OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "╢коНтщй╠╡╩сц." 
+           "О©╫О©╫О©╫О©╫О©╫О©╫й╠О©╫О©╫О©╫О©╫." 
        DEFVAL { 1 }        
       ::= { gbnL3OspfGroup 3 }
 
 
    ospfRedistriDefaultInterval OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "OSPFрЩхКмБ╡©б╥си╣дд╛хорЩхК╪Д╦Тё╛ртцКё╗Sё╘н╙╣╔н╩."
+           "OSPFО©╫О©╫О©╫О©╫О©╫Б╡©б╥О©╫и╣О©╫д╛О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫Кё╗SО©╫О©╫н╙О©╫О©╫н╩."
        REFERENCE
           "OSPF Version 2, C.1 Global parameters" 
        DEFVAL { 1 }          
       ::= { gbnL3OspfGroup 4 }    
       
     ospfRedistriDefaultLimit OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "OSPFц©╢нрЩхКмБ╡©б╥си╣двН╢СйЩд©."
+           "OSPFц©О©╫О©╫О©╫О©╫О©╫О©╫О©╫Б╡©б╥О©╫и╣О©╫О©╫О©╫О©╫О©╫О©╫д©."
        REFERENCE
           "OSPF Version 2, C.1 Global parameters"
        DEFVAL { 1000 }
       ::= { gbnL3OspfGroup 5 }
 
     ospfMibBinding OBJECT-TYPE
-        SYNTAX   Integer32(0..10)
+        SYNTAX INTEGER (0..10)
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
@@ -153,11 +153,11 @@ Metric ::= TEXTUAL-CONVENTION
 	              }
 
     ospfRedistributeProtocal OBJECT-TYPE
-       SYNTAX   Integer32
+       SYNTAX INTEGER
          MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
-           "OSPFрЩхК╣дмБ╡©б╥сип╜рИ."
+           "OSPFО©╫О©╫О©╫О©╫О©╫О©╫Б╡©б╥О©╫О©╫п╜О©╫О©╫."
        REFERENCE
           "OSPF Version 2, C.1 Global parameters"
       ::= { ospfRedistributeEntry 1 }
@@ -167,10 +167,10 @@ Metric ::= TEXTUAL-CONVENTION
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "╤╗рЕфДкШб╥сип╜рИ╣дб╥сирЩхК╣╫OSPFй╠б╥си╣д╩Ыв╪╩╗╥яё╛
-           хГ:рЩхКRIPб╥сип╜рИ╣дб╥сиё╛еДжцRIP╣дmetricн╙100ё╛
-           ╢клУб╥ситзRIPжп╣длЬйЩн╙10ё╛тРрЩхКOSPF╨С╢клУб╥си╣д
-           й╣╪й╩╗╥ян╙110."
+           "О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫б╥О©╫О©╫п╜О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫К╣╫OSPFй╠б╥О©╫и╣д╩О©╫в╪О©╫О©╫О©╫яёО©╫
+           О©╫О©╫:О©╫О©╫О©╫О©╫RIPб╥О©╫О©╫п╜О©╫О©╫О©╫б╥О©╫иёО©╫О©╫О©╫О©╫О©╫RIPО©╫О©╫metricн╙100О©╫О©╫
+           О©╫О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫RIPО©╫п╣О©╫О©╫О©╫О©╫О©╫н╙10О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫OSPFО©╫О©╫О©╫О©╫О©╫б╥О©╫и╣О©╫
+           й╣О©╫й╩О©╫О©╫О©╫н╙110."
        ::= { ospfRedistributeEntry 2 }
 
     ospfRedistributeType OBJECT-TYPE
@@ -181,21 +181,21 @@ Metric ::= TEXTUAL-CONVENTION
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
-           "OSPF╫╚кЫрЩхК╣двтжно╣мЁмБ╡©б╥си╥жЁиа╫юЮё╨type1╨мtype2ё╛
-           ╣зр╩юЮйгж╦рЩхК╣дйгIGPб╥сиё╗юЩхГRIPё╛IGRPё╛STATICё╘ё╛ си
-           сзуБюЮб╥си╣д©ипеЁл╤х╦ър╩п╘ё╛кЫрт╪фкЦЁЖ╣дмБ╡©б╥си╣д╩╗╥я
-           сКвтжно╣мЁдз╡©╣дб╥си╩╗╥я╣дйЩа©╪╤йгоЮм╛╣дё╛╪╢╣╫╣зр╩юЮмБ╡©
-           б╥си╣д╩╗╥яж╣ = ╠╬б╥сифВ╣╫оЮс╕╣дASBR╣д╩╗╥яж╣+ASBR╣╫╦цб╥си
-           д©╣д╣ьж╥╣д╩╗╥яж╣║ё╤тсз╣з╤ЧюЮмБ╡©б╥сийгж╦рЩхК╣дйгBGPб╥сиё╛
-           сисзуБюЮб╥си╣д©ипе╤х╠х╫о╣мё╛кЫртOSPFп╜рИхон╙╢сASBR╣╫втжн
-           о╣мЁж╝мБ╣д╩╗╥ят╤т╤╢Ссзтзвтжно╣мЁж╝дз╣╫╢ОASBR╣д╩╗╥я║ёкЫрт
-           ╪фкЦб╥си╩╗╥яй╠╫╚жВр╙©╪бгг╟уъё╛╪╢╣╫╣з╤ЧюЮмБ╡©б╥си╣д╩╗╥яж╣ 
-           = ASBR╣╫╦цб╥сид©╣д╣ьж╥╣д╩╗╥яж╣║ёхГ╧Ш╦цж╣оЮ╣хё╛ты©╪бг╠╬б╥
-           сифВ╣╫оЮс╕╣дASBR╣д╩╗╥яж╣║ёхГ╧Ш╪сиог╟цФкЫйЖ╣да╫жжб╥сиюЮпм."
+           "OSPFО©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╣мЁО©╫Б╡©б╥О©╫и╥жЁО©╫О©╫О©╫О©╫Юё╨type1О©╫О©╫type2О©╫О©╫
+           О©╫О©╫р╩О©╫О©╫О©╫О©╫ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫IGPб╥О©╫иёО©╫О©╫О©╫О©╫О©╫RIPО©╫О©╫IGRPО©╫О©╫STATICО©╫О©╫О©╫О©╫ О©╫О©╫
+           О©╫О©╫О©╫О©╫О©╫О©╫б╥О©╫и╣д©О©╫О©╫еЁл╤х╦О©╫р╩п╘О©╫О©╫О©╫О©╫О©╫т╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫Б╡©б╥О©╫и╣д╩О©╫О©╫О©╫
+           О©╫О©╫О©╫О©╫О©╫О©╫о╣мЁО©╫з╡О©╫О©╫О©╫б╥О©╫и╩О©╫О©╫я╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫м╛О©╫дёО©╫О©╫О©╫О©╫О©╫О©╫О©╫р╩О©╫О©╫О©╫Б╡©
+           б╥О©╫и╣д╩О©╫О©╫О©╫ж╣ = О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫с╕О©╫О©╫ASBRО©╫д╩О©╫О©╫О©╫ж╣+ASBRО©╫О©╫О©╫О©╫б╥О©╫О©╫
+           д©О©╫д╣О©╫ж╥О©╫д╩О©╫О©╫О©╫ж╣О©╫О©╫О©╫О©╫О©╫з╣з╤О©╫О©╫О©╫О©╫Б╡©б╥О©╫О©╫О©╫О©╫ж╦О©╫О©╫О©╫О©╫О©╫О©╫О©╫BGPб╥О©╫иёО©╫
+           О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫б╥О©╫и╣д©О©╫О©╫е╤х╠х╫о╣мёО©╫О©╫О©╫О©╫О©╫OSPFп╜О©╫О©╫О©╫О©╫н╙О©╫О©╫ASBRО©╫О©╫О©╫О©╫О©╫О©╫
+           о╣мЁж╝О©╫О©╫д╩О©╫О©╫О©╫т╤т╤О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╣мЁж╝О©╫з╣О©╫О©╫О©╫ASBRО©╫д╩О©╫О©╫я║О©╫О©╫О©╫О©╫О©╫
+           О©╫О©╫О©╫О©╫б╥О©╫и╩О©╫О©╫О©╫й╠О©╫О©╫О©╫О©╫р╙О©╫О©╫О©╫О©╫г╟О©╫ъёО©╫О©╫О©╫О©╫О©╫О©╫з╤О©╫О©╫О©╫О©╫Б╡©б╥О©╫и╣д╩О©╫О©╫О©╫ж╣ 
+           = ASBRО©╫О©╫О©╫О©╫б╥О©╫О©╫д©О©╫д╣О©╫ж╥О©╫д╩О©╫О©╫О©╫ж╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╣О©╫О©╫хёО©╫О©╫ы©О©╫О©╫г╠О©╫б╥
+           О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫с╕О©╫О©╫ASBRО©╫д╩О©╫О©╫О©╫ж╣О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫г╟О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫б╥О©╫О©╫О©╫О©╫О©╫О©╫."
        ::= { ospfRedistributeEntry 3 }
 
     ospfRedistributeTag OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current 
         DESCRIPTION
@@ -215,10 +215,10 @@ Metric ::= TEXTUAL-CONVENTION
         MAX-ACCESS   read-write
         STATUS   current 
         DESCRIPTION
-        "always уБ╦Ж╧ь╪Эвжй╧╣ц╬мкЦ╠╬╩Зц╩спеДжцх╠й║б╥сир╡р╙╡ЗиЗр╩╦ЖцХ
-        йЖх╠й║б╥си╣дase lsa ╥╒╡╪ЁЖх╔хТн╢ж╦╤╗╦ц╧ь╪Эвж╠╬╩З╠ьпКр╙еДжцх╠
-        й║б╥си╡е©иртрЩхК╡ЗиЗх╠й║б╥си╣дase lsaё╛уБ╦Ж╡нйЩж╩сптзрЩхКд╛хо
-        б╥сий╠╡есц."
+        "always О©╫О©╫О©╫О©╫ь╪О©╫О©╫О©╫й╧О©╫ц╬О©╫О©╫Ц╠╬О©╫О©╫ц╩О©╫О©╫О©╫О©╫О©╫О©╫х╠й║б╥О©╫О©╫р╡р╙О©╫О©╫О©╫О©╫р╩О©╫О©╫О©╫О©╫
+        О©╫О©╫х╠й║б╥О©╫и╣О©╫ase lsa О©╫О©╫О©╫О©╫О©╫О©╫х╔О©╫О©╫н╢ж╦О©╫О©╫О©╫ц╧ь╪О©╫О©╫ж╠О©╫О©╫О©╫О©╫О©╫О©╫О©╫р╙О©╫О©╫О©╫О©╫х╠
+        й║б╥О©╫и╡е©О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫х╠й║б╥О©╫и╣О©╫ase lsaО©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╛О©╫О©╫
+        б╥О©╫О©╫й╠О©╫О©╫О©╫О©╫."
         ::= { ospfRedistributeEntry 6 } 
 
 END

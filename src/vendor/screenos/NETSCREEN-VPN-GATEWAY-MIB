@@ -219,7 +219,7 @@ nsVpnGwPeerType OBJECT-TYPE
         crl(7),
         arl(8),
         spki(9),
-        x509-att(10)
+        x509Att(10)
     }
     MAX-ACCESS    read-only
     STATUS        current

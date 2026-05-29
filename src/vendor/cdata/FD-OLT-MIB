@@ -1087,7 +1087,7 @@
 -- 1.3.6.1.4.1.34592.1.3.3.4.6.1
 -- 1.3.6.1.4.1.34592.1.3.3.4.6.1
 		-- 1.3.6.1.4.1.34592.1.3.3.4.6.1
-		OltEncryptEntry OBJECT-TYPE
+		oltEncryptTableEntry OBJECT-TYPE
 			SYNTAX OltEncryptEntry
 			MAX-ACCESS not-accessible
 			STATUS current
@@ -1113,7 +1113,7 @@
 			STATUS current
 			DESCRIPTION
 				"Description: "
-			::= { OltEncryptEntry 1 }
+			::= { oltEncryptTableEntry 1 }
 			 
 --      1.3.6.1.4.1.34592.1.3.3.5
 -- 1.3.6.1.4.1.34592.1.3.3.5
@@ -2125,7 +2125,7 @@
 -- 1.3.6.1.4.1.34592.1.3.3.10.2.1
 -- 1.3.6.1.4.1.34592.1.3.3.10.2.1
 		-- 1.3.6.1.4.1.34592.1.3.3.10.2.1
-		igmpGroupEntry OBJECT-TYPE
+		igmpGroupTableEntry OBJECT-TYPE
 			SYNTAX IgmpGroupEntry
 			MAX-ACCESS not-accessible
 			STATUS current
@@ -2156,7 +2156,7 @@
 			STATUS current
 			DESCRIPTION
 				"Administratorly assigned entry index value"
-			::= { igmpGroupEntry 1 }
+			::= { igmpGroupTableEntry 1 }
 
 		
 --      1.3.6.1.4.1.34592.1.3.3.10.2.1.2
@@ -2170,7 +2170,7 @@
 			STATUS current
 			DESCRIPTION
 				" "
-			::= { igmpGroupEntry 2 }
+			::= { igmpGroupTableEntry 2 }
 
 		
 --      1.3.6.1.4.1.34592.1.3.3.10.2.1.3
@@ -2184,7 +2184,7 @@
 			STATUS current
 			DESCRIPTION
 				" "
-			::= { igmpGroupEntry 3 }
+			::= { igmpGroupTableEntry 3 }
 
 		
 --      1.3.6.1.4.1.34592.1.3.3.11

@@ -756,21 +756,21 @@ RAISECOM-PON-DEVICE-MIB DEFINITIONS ::= BEGIN
   -- other table define here
   --raisecomSubFanTable
    raisecomSubFanTable     OBJECT-TYPE
-        SYNTAX          SEQUENCE OF  raisecomSubFanEntry
+        SYNTAX          SEQUENCE OF RaisecomSubFanEntry
         MAX-ACCESS      not-accessible
         STATUS          current
         DESCRIPTION     "Fan management table."
     ::= { raisecomFan 1 }
 
-    raisecomSubFanEntry    OBJECT-TYPE
-	SYNTAX          raisecomSubFanEntry
+    raisecomSubFanTableEntry    OBJECT-TYPE
+	SYNTAX          RaisecomSubFanEntry
 	MAX-ACCESS      not-accessible
     STATUS          current
 	DESCRIPTION     "Fan management table entry."
 	INDEX { raisecomFanSlotId, raisecomSubFanId  }
     ::= { raisecomSubFanTable 1 }
 
-    raisecomSubFanEntry ::=
+    RaisecomSubFanEntry ::=
         SEQUENCE {
         raisecomFanSlotId                   SlotIndex,
         raisecomSubFanId           			INTEGER,
@@ -783,33 +783,33 @@ RAISECOM-PON-DEVICE-MIB DEFINITIONS ::= BEGIN
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION     "Slot Index."
-        ::= { raisecomSubFanEntry 1 }
+        ::= { raisecomSubFanTableEntry 1 }
 
      raisecomSubFanId       OBJECT-TYPE
         SYNTAX          SlotIndex
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION     "Sub Fan Index."
-        ::= { raisecomSubFanEntry 2 }
+        ::= { raisecomSubFanTableEntry 2 }
 
      raisecomSubFanStatus     OBJECT-TYPE
         SYNTAX             INTEGER  {
 									normal(1),
 									abnormal(2),
-									null(3),
+									notPresent(3),
 									unknown(4)
 									}
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION     "Fan status. Null value means that this fan is plugged out."
-        ::= { raisecomSubFanEntry 3 }
+        ::= { raisecomSubFanTableEntry 3 }
 
      raisecomSubFanSpeed     OBJECT-TYPE
         SYNTAX          INTEGER
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION     "Fan current speed."
-        ::= { raisecomSubFanEntry 4 }
+        ::= { raisecomSubFanTableEntry 4 }
 
 
      raisecomFanMaxSpeed   OBJECT-TYPE

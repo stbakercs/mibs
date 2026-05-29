@@ -7,7 +7,7 @@ IBM-LAN-EMULATION-EXTENSION-MIB DEFINITIONS ::= BEGIN
 -- Compile options "G A T M"
 
 IMPORTS
-    Gauge32, Integer32, Counter32, TimeTicks, IpAddress
+    Counter, Integer32, Counter, TimeTicks, IpAddress
             FROM SNMPv2-SMI-v1
     OBJECT-TYPE
             FROM RFC-1212
@@ -156,7 +156,7 @@ IbmVlanType ::= INTEGER {
 --    
 
 ibmLeServerXMonLecsInstances OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -164,7 +164,7 @@ ibmLeServerXMonLecsInstances OBJECT-TYPE
     ::= { ibmLeServerXMon 1 }
 
 ibmLeServerXMonLesInstances OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -172,7 +172,7 @@ ibmLeServerXMonLesInstances OBJECT-TYPE
     ::= { ibmLeServerXMon 2 }
 
 ibmLeServerXMonBusInstances OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -198,7 +198,7 @@ ibmLeServerXLecsMonEntry OBJECT-TYPE
 
 IbmLeServerXLecsMonEntry ::= SEQUENCE {
     ibmLeServerXLecsMonIndex Integer32,
-    ibmLeServerXLecsUsedConnections Gauge32
+    ibmLeServerXLecsUsedConnections Counter
     }
 
 ibmLeServerXLecsMonIndex OBJECT-TYPE
@@ -215,7 +215,7 @@ ibmLeServerXLecsMonIndex OBJECT-TYPE
     ::= { ibmLeServerXLecsMonEntry 1 }
 
 ibmLeServerXLecsUsedConnections OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -242,8 +242,8 @@ ibmLeServerXLesMonEntry OBJECT-TYPE
 
 IbmLeServerXLesMonEntry ::= SEQUENCE {
     ibmLeServerXLesMonIndex Integer32,
-    ibmLeServerXLesMonUsedConnections Gauge32,
-    ibmLeServerXLesMonLesLecInstances Gauge32
+    ibmLeServerXLesMonUsedConnections Counter,
+    ibmLeServerXLesMonLesLecInstances Counter
     }
 
 ibmLeServerXLesMonIndex OBJECT-TYPE
@@ -260,7 +260,7 @@ ibmLeServerXLesMonIndex OBJECT-TYPE
     ::= { ibmLeServerXLesMonEntry 1 }
 
 ibmLeServerXLesMonUsedConnections OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -269,7 +269,7 @@ ibmLeServerXLesMonUsedConnections OBJECT-TYPE
     ::= { ibmLeServerXLesMonEntry 2 }
 
 ibmLeServerXLesMonLesLecInstances OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -300,8 +300,8 @@ ibmLeServerXBusMonEntry OBJECT-TYPE
 
 IbmLeServerXBusMonEntry ::= SEQUENCE {
     ibmLeServerXBusMonIndex Integer32,
-    ibmLeServerXBusMonUsedConnections Gauge32,
-    ibmLeServerXBusMonBusLecInstances Gauge32
+    ibmLeServerXBusMonUsedConnections Counter,
+    ibmLeServerXBusMonBusLecInstances Counter
     }
 
 ibmLeServerXBusMonIndex OBJECT-TYPE
@@ -318,7 +318,7 @@ ibmLeServerXBusMonIndex OBJECT-TYPE
     ::= { ibmLeServerXBusMonEntry 1 }
 
 ibmLeServerXBusMonUsedConnections OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -327,7 +327,7 @@ ibmLeServerXBusMonUsedConnections OBJECT-TYPE
     ::= { ibmLeServerXBusMonEntry 2 }
 
 ibmLeServerXBusMonBusLecInstances OBJECT-TYPE
-    SYNTAX Gauge32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -405,27 +405,27 @@ ibmSEPortStatisticsEntry OBJECT-TYPE
 IbmSEPortStatisticsEntry ::= SEQUENCE {
     ibmSEBridgeId IbmSEBridgeID,
     ibmSEPortNum INTEGER,
-    ibmSEPortArpRequestsIn Counter32,
-    ibmSEPortArpRequestsOut Counter32,
-    ibmSEArpRequestsErrors Counter32,
-    ibmSEPortArpRequestsDroppedPortBlocked Counter32,
-    ibmSEPortArpRequestsFiltered Counter32,
-    ibmSEPortArpRepliesIn Counter32,
-    ibmSEPortArpRepliesOut Counter32,
-    ibmSEPortArpRepliesErrors Counter32,
-    ibmSEPortNarpRequestsIn Counter32,
-    ibmSEPortNarpRequestsOut Counter32,
-    ibmSEPortNarpRequestsDroppedPortBlocked Counter32,
-    ibmSEPortFlushRequestsIn Counter32,
-    ibmSEPortFlushRequestsOut Counter32,
-    ibmSEPortFlushRepliesIn Counter32,
-    ibmSEPortFlushRepliesOut Counter32,
-    ibmSEPortFlushRequestErrors Counter32,
-    ibmSEPortFlushRepliesErrors Counter32,
-    ibmSEPortLeCtrlFramesIn Counter32,
-    ibmSEPortLeCtrlFramesOut Counter32,
-    ibmSEPortLeCtrlFramesDiscSrcPortNotFwrd Counter32,
-    ibmSEPortLeCtrlFramesDiscDestPortNotFwrd Counter32
+    ibmSEPortArpRequestsIn Counter,
+    ibmSEPortArpRequestsOut Counter,
+    ibmSEArpRequestsErrors Counter,
+    ibmSEPortArpRequestsDroppedPortBlocked Counter,
+    ibmSEPortArpRequestsFiltered Counter,
+    ibmSEPortArpRepliesIn Counter,
+    ibmSEPortArpRepliesOut Counter,
+    ibmSEPortArpRepliesErrors Counter,
+    ibmSEPortNarpRequestsIn Counter,
+    ibmSEPortNarpRequestsOut Counter,
+    ibmSEPortNarpRequestsDroppedPortBlocked Counter,
+    ibmSEPortFlushRequestsIn Counter,
+    ibmSEPortFlushRequestsOut Counter,
+    ibmSEPortFlushRepliesIn Counter,
+    ibmSEPortFlushRepliesOut Counter,
+    ibmSEPortFlushRequestErrors Counter,
+    ibmSEPortFlushRepliesErrors Counter,
+    ibmSEPortLeCtrlFramesIn Counter,
+    ibmSEPortLeCtrlFramesOut Counter,
+    ibmSEPortLeCtrlFramesDiscSrcPortNotFwrd Counter,
+    ibmSEPortLeCtrlFramesDiscDestPortNotFwrd Counter
     }
 
 ibmSEBridgeId OBJECT-TYPE
@@ -450,7 +450,7 @@ ibmSEPortNum OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 2 }
 
 ibmSEPortArpRequestsIn OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -459,7 +459,7 @@ ibmSEPortArpRequestsIn OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 3 }
 
 ibmSEPortArpRequestsOut OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -468,7 +468,7 @@ ibmSEPortArpRequestsOut OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 4 }
 
 ibmSEArpRequestsErrors OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -477,7 +477,7 @@ ibmSEArpRequestsErrors OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 5 }
 
 ibmSEPortArpRequestsDroppedPortBlocked OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS obsolete
     DESCRIPTION
@@ -489,7 +489,7 @@ ibmSEPortArpRequestsDroppedPortBlocked OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 6 }
 
 ibmSEPortArpRequestsFiltered OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -499,7 +499,7 @@ ibmSEPortArpRequestsFiltered OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 7 }
 
 ibmSEPortArpRepliesIn OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -508,7 +508,7 @@ ibmSEPortArpRepliesIn OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 8 }
 
 ibmSEPortArpRepliesOut OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -517,7 +517,7 @@ ibmSEPortArpRepliesOut OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 9 }
 
 ibmSEPortArpRepliesErrors OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -528,7 +528,7 @@ ibmSEPortArpRepliesErrors OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 10 }
 
 ibmSEPortNarpRequestsIn OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -537,7 +537,7 @@ ibmSEPortNarpRequestsIn OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 11 }
 
 ibmSEPortNarpRequestsOut OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -546,7 +546,7 @@ ibmSEPortNarpRequestsOut OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 12 }
 
 ibmSEPortNarpRequestsDroppedPortBlocked OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS obsolete
     DESCRIPTION
@@ -558,7 +558,7 @@ ibmSEPortNarpRequestsDroppedPortBlocked OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 13 }
 
 ibmSEPortFlushRequestsIn OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -567,7 +567,7 @@ ibmSEPortFlushRequestsIn OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 14 }
 
 ibmSEPortFlushRequestsOut OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -576,7 +576,7 @@ ibmSEPortFlushRequestsOut OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 15 }
 
 ibmSEPortFlushRepliesIn OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -585,7 +585,7 @@ ibmSEPortFlushRepliesIn OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 16 }
 
 ibmSEPortFlushRepliesOut OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -594,7 +594,7 @@ ibmSEPortFlushRepliesOut OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 17 }
 
 ibmSEPortFlushRequestErrors OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -603,7 +603,7 @@ ibmSEPortFlushRequestErrors OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 18 }
 
 ibmSEPortFlushRepliesErrors OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -612,7 +612,7 @@ ibmSEPortFlushRepliesErrors OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 19 }
 
 ibmSEPortLeCtrlFramesIn OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -621,7 +621,7 @@ ibmSEPortLeCtrlFramesIn OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 20 }
 
 ibmSEPortLeCtrlFramesOut OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -630,7 +630,7 @@ ibmSEPortLeCtrlFramesOut OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 21 }
 
 ibmSEPortLeCtrlFramesDiscSrcPortNotFwrd OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -639,7 +639,7 @@ ibmSEPortLeCtrlFramesDiscSrcPortNotFwrd OBJECT-TYPE
     ::= { ibmSEPortStatisticsEntry 22 }
 
 ibmSEPortLeCtrlFramesDiscDestPortNotFwrd OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1064,7 +1064,7 @@ IbmSEBridgeEntry ::= SEQUENCE {
     ibmSENumPorts INTEGER,
     ibmSEProtocolSpecification INTEGER,
     ibmSETimeSinceTopologyChange TimeTicks,
-    ibmSETopChanges Counter32,
+    ibmSETopChanges Counter,
     ibmSEDesignatedRoot BridgeId,
     ibmSERootCost INTEGER,
     ibmSERootPort INTEGER,
@@ -1072,8 +1072,8 @@ IbmSEBridgeEntry ::= SEQUENCE {
     ibmSEHelloTime Timeout,
     ibmSEHoldTime INTEGER,
     ibmSEForwardDelay Timeout,
-    ibmSEMacLearnedEntryDiscards Counter32,
-    ibmSERDLearnedEntryDiscards Counter32
+    ibmSEMacLearnedEntryDiscards Counter,
+    ibmSERDLearnedEntryDiscards Counter
     }
 
 ibmSENumPorts OBJECT-TYPE
@@ -1117,7 +1117,7 @@ ibmSETimeSinceTopologyChange OBJECT-TYPE
     ::= { ibmSEBridgeEntry 3 }
 
 ibmSETopChanges OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1235,7 +1235,7 @@ ibmSEForwardDelay OBJECT-TYPE
     ::= { ibmSEBridgeEntry 11 }
 
 ibmSEMacLearnedEntryDiscards OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1255,7 +1255,7 @@ ibmSEMacLearnedEntryDiscards OBJECT-TYPE
     ::= { ibmSEBridgeEntry 12 }
 
 ibmSERDLearnedEntryDiscards OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1299,7 +1299,7 @@ IbmSEStpPortEntry ::= SEQUENCE {
     ibmSEStpPortDesignatedCost INTEGER,
     ibmSEStpPortDesignatedBridge BridgeId,
     ibmSEStpPortDesignatedPort INTEGER,
-    ibmSEStpPortForwardTransitions Counter32,
+    ibmSEStpPortForwardTransitions Counter,
     ibmSEPortMaxInfo INTEGER
     }
 
@@ -1390,7 +1390,7 @@ ibmSEStpPortDesignatedPort OBJECT-TYPE
     ::= { ibmSEStpPortEntry 5 }
 
 ibmSEStpPortForwardTransitions OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1428,28 +1428,28 @@ ibmSEPortDataStatisticsEntry OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsTable 1 }
 
 IbmSEPortDataStatisticsEntry ::= SEQUENCE {
-    ibmSEPortInFrames Counter32,
-    ibmSEPortOutFrames Counter32,
-    ibmSEPortRoutedInFrames Counter32,
-    ibmSEPortBpduFrames Counter32,
-    ibmSEPortInDiscards Counter32,
-    ibmSEPortDropSrcAddrFilters Counter32,
-    ibmSEPortDropDestAddrFilters Counter32,
-    ibmSEPortDropProtocolFilters Counter32,
-    ibmSEPortDropSrcNotFwds Counter32,
-    ibmSEPortDropDestNotFwds Counter32,
-    ibmSEPortDropInputOverflows Counter32,
-    ibmSEPortDropBpduOverflows Counter32,
-    ibmSEPortDropSrOverflows Counter32,
-    ibmSEPortRecNoBuffFailures Counter32,
-    ibmSEPortTransmitFailures Counter32,
-    ibmSEPortToBigFailures Counter32,
-    ibmSEPortLanIdFailures Counter32,
-    ibmSEPortStpLanIdFailures Counter32
+    ibmSEPortInFrames Counter,
+    ibmSEPortOutFrames Counter,
+    ibmSEPortRoutedInFrames Counter,
+    ibmSEPortBpduFrames Counter,
+    ibmSEPortInDiscards Counter,
+    ibmSEPortDropSrcAddrFilters Counter,
+    ibmSEPortDropDestAddrFilters Counter,
+    ibmSEPortDropProtocolFilters Counter,
+    ibmSEPortDropSrcNotFwds Counter,
+    ibmSEPortDropDestNotFwds Counter,
+    ibmSEPortDropInputOverflows Counter,
+    ibmSEPortDropBpduOverflows Counter,
+    ibmSEPortDropSrOverflows Counter,
+    ibmSEPortRecNoBuffFailures Counter,
+    ibmSEPortTransmitFailures Counter,
+    ibmSEPortToBigFailures Counter,
+    ibmSEPortLanIdFailures Counter,
+    ibmSEPortStpLanIdFailures Counter
     }
 
 ibmSEPortInFrames OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1465,7 +1465,7 @@ ibmSEPortInFrames OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 1 }
 
 ibmSEPortOutFrames OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1481,7 +1481,7 @@ ibmSEPortOutFrames OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 2 }
 
 ibmSEPortRoutedInFrames OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1491,7 +1491,7 @@ ibmSEPortRoutedInFrames OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 3 }
 
 ibmSEPortBpduFrames OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1500,7 +1500,7 @@ ibmSEPortBpduFrames OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 4 }
 
 ibmSEPortInDiscards OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1512,7 +1512,7 @@ ibmSEPortInDiscards OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 5 }
 
 ibmSEPortDropSrcAddrFilters OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1521,7 +1521,7 @@ ibmSEPortDropSrcAddrFilters OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 6 }
 
 ibmSEPortDropDestAddrFilters OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1532,7 +1532,7 @@ ibmSEPortDropDestAddrFilters OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 7 }
 
 ibmSEPortDropProtocolFilters OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1542,7 +1542,7 @@ ibmSEPortDropProtocolFilters OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 8 }
 
 ibmSEPortDropSrcNotFwds OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1552,7 +1552,7 @@ ibmSEPortDropSrcNotFwds OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 9 }
 
 ibmSEPortDropDestNotFwds OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1562,7 +1562,7 @@ ibmSEPortDropDestNotFwds OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 10 }
 
 ibmSEPortDropInputOverflows OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1571,7 +1571,7 @@ ibmSEPortDropInputOverflows OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 11 }
 
 ibmSEPortDropBpduOverflows OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1580,7 +1580,7 @@ ibmSEPortDropBpduOverflows OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 12 }
 
 ibmSEPortDropSrOverflows OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1589,7 +1589,7 @@ ibmSEPortDropSrOverflows OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 13 }
 
 ibmSEPortRecNoBuffFailures OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1598,7 +1598,7 @@ ibmSEPortRecNoBuffFailures OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 14 }
 
 ibmSEPortTransmitFailures OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1607,7 +1607,7 @@ ibmSEPortTransmitFailures OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 15 }
 
 ibmSEPortToBigFailures OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1616,7 +1616,7 @@ ibmSEPortToBigFailures OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 16 }
 
 ibmSEPortLanIdFailures OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1625,7 +1625,7 @@ ibmSEPortLanIdFailures OBJECT-TYPE
     ::= { ibmSEPortDataStatisticsEntry 17 }
 
 ibmSEPortStpLanIdFailures OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1830,14 +1830,14 @@ ibmBbcmStatEntry OBJECT-TYPE
 
 IbmBbcmStatEntry ::= SEQUENCE {
     ibmBbcmStatProtocolType INTEGER,
-    ibmBbcmStatInReceives Counter32,
-    ibmBbcmStatInOctets Counter32,
-    ibmBbcmStatOutManaged Counter32,
-    ibmBbcmStatOutManagedOctets Counter32,
-    ibmBbcmStatOutNotManaged Counter32,
-    ibmBbcmStatOutNotManagedOctets Counter32,
-    ibmBbcmStatOutFiltered Counter32,
-    ibmBbcmStatOutFilteredOctets Counter32
+    ibmBbcmStatInReceives Counter,
+    ibmBbcmStatInOctets Counter,
+    ibmBbcmStatOutManaged Counter,
+    ibmBbcmStatOutManagedOctets Counter,
+    ibmBbcmStatOutNotManaged Counter,
+    ibmBbcmStatOutNotManagedOctets Counter,
+    ibmBbcmStatOutFiltered Counter,
+    ibmBbcmStatOutFilteredOctets Counter
     }
 
 ibmBbcmStatProtocolType OBJECT-TYPE
@@ -1859,7 +1859,7 @@ ibmBbcmStatProtocolType OBJECT-TYPE
     ::= { ibmBbcmStatEntry 1 }
 
 ibmBbcmStatInReceives OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1868,7 +1868,7 @@ ibmBbcmStatInReceives OBJECT-TYPE
     ::= { ibmBbcmStatEntry 2 }
 
 ibmBbcmStatInOctets OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1880,7 +1880,7 @@ ibmBbcmStatInOctets OBJECT-TYPE
     ::= { ibmBbcmStatEntry 3 }
 
 ibmBbcmStatOutManaged OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1890,7 +1890,7 @@ ibmBbcmStatOutManaged OBJECT-TYPE
     ::= { ibmBbcmStatEntry 4 }
 
 ibmBbcmStatOutManagedOctets OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1903,7 +1903,7 @@ ibmBbcmStatOutManagedOctets OBJECT-TYPE
     ::= { ibmBbcmStatEntry 5 }
 
 ibmBbcmStatOutNotManaged OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1913,7 +1913,7 @@ ibmBbcmStatOutNotManaged OBJECT-TYPE
     ::= { ibmBbcmStatEntry 6 }
 
 ibmBbcmStatOutNotManagedOctets OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1926,7 +1926,7 @@ ibmBbcmStatOutNotManagedOctets OBJECT-TYPE
     ::= { ibmBbcmStatEntry 7 }
 
 ibmBbcmStatOutFiltered OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -1935,7 +1935,7 @@ ibmBbcmStatOutFiltered OBJECT-TYPE
     ::= { ibmBbcmStatEntry 8 }
 
 ibmBbcmStatOutFilteredOctets OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -2028,7 +2028,7 @@ IbmVlanConfEntry ::= SEQUENCE {
     ibmVlanConfIndex IbmVlanIndex,
     ibmVlanConfBridgeId IbmSEBridgeID,
     ibmVlanConfType IbmVlanType,
-    ibmVlanConfAgingTimer UInteger32,
+    ibmVlanConfAgingTimer Counter,
     ibmVlanConfForwardingPortMap IbmVlanPortMap,
     ibmVlanConfIncludedPortMap IbmVlanPortMap,
     ibmVlanConfExcludedPortMap IbmVlanPortMap,
@@ -2077,7 +2077,7 @@ ibmVlanConfType OBJECT-TYPE
     ::= { ibmVlanConfEntry 3 }
 
 ibmVlanConfAgingTimer OBJECT-TYPE
-    SYNTAX UInteger32
+    SYNTAX Counter
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -2562,8 +2562,8 @@ ibmVlanStatusEntry OBJECT-TYPE
 IbmVlanStatusEntry ::= SEQUENCE {
     ibmVlanOperStatus INTEGER,
     ibmVlanAdminStatus INTEGER,
-    ibmVlanProcessedPackets Counter32,
-    ibmVlanDiscardedPackets Counter32,
+    ibmVlanProcessedPackets Counter,
+    ibmVlanDiscardedPackets Counter,
     ibmVlanDiscPktsMac MacAddress
     }
 
@@ -2593,7 +2593,7 @@ ibmVlanAdminStatus OBJECT-TYPE
     ::= { ibmVlanStatusEntry 2 }
 
 ibmVlanProcessedPackets OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -2602,7 +2602,7 @@ ibmVlanProcessedPackets OBJECT-TYPE
     ::= { ibmVlanStatusEntry 3 }
 
 ibmVlanDiscardedPackets OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -2651,14 +2651,14 @@ ibmVlanIpStatusEntry OBJECT-TYPE
     ::= { ibmVlanIpStatusTable 1 }
 
 IbmVlanIpStatusEntry ::= SEQUENCE {
-    ibmVlanIpCutThruFromPkts Counter32,
-    ibmVlanIpCutThruToPkts Counter32,
-    ibmVlanIpCutThruFromDiscPkts Counter32,
-    ibmVlanIpCutThruToDiscPkts Counter32
+    ibmVlanIpCutThruFromPkts Counter,
+    ibmVlanIpCutThruToPkts Counter,
+    ibmVlanIpCutThruFromDiscPkts Counter,
+    ibmVlanIpCutThruToDiscPkts Counter
     }
 
 ibmVlanIpCutThruFromPkts OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -2667,7 +2667,7 @@ ibmVlanIpCutThruFromPkts OBJECT-TYPE
     ::= { ibmVlanIpStatusEntry 1 }
 
 ibmVlanIpCutThruToPkts OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -2676,7 +2676,7 @@ ibmVlanIpCutThruToPkts OBJECT-TYPE
     ::= { ibmVlanIpStatusEntry 2 }
 
 ibmVlanIpCutThruFromDiscPkts OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -2686,7 +2686,7 @@ ibmVlanIpCutThruFromDiscPkts OBJECT-TYPE
     ::= { ibmVlanIpStatusEntry 3 }
 
 ibmVlanIpCutThruToDiscPkts OBJECT-TYPE
-    SYNTAX Counter32
+    SYNTAX Counter
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION

@@ -52,38 +52,38 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            "The enabled status of igmp proxy on this switch."
-           --ÔÚ½»»»»úÉÏ´ò¿ªigmp´úÀíµÄÊ¹ÄÜ×´Ì¬          
+           --ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½igmpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½×´Ì¬          
       ::= { gbnL3IgmpProxyGroup 1 }      
       
     igmpProxyIfIndex OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
            "The interface from which all IP multicast datagrams are received, 
             or 0 if the upstream interface is not configged."   
-            --ÉÏÐÐ½Ó¿ÚË÷Òý£¬IGMP´ò¿ª´úÀí¹¦ÄÜºó£¬×÷ÎªÒ»¸öÖ÷»úÏò´Ë
-            --½Ó¿Ú·¢ËÍ±¨¸æºÍÀë¿ª±¨ÎÄ¡£
+            --ï¿½ï¿½ï¿½Ð½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IGMPï¿½ò¿ª´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üºï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            --ï¿½Ó¿Ú·ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½Ä¡ï¿½
       ::= { gbnL3IgmpProxyGroup 2 }        
       
     igmpGrpNum OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
            "The summation of group which is learned from IGMP and 
             configged statically."   
-            --Í¨¹ýIGMPÑ§Ï°ºÍ¾²Ì¬ÅäÖÃµÄ¶à²¥×éÊý
+            --Í¨ï¿½ï¿½IGMPÑ§Ï°ï¿½Í¾ï¿½Ì¬ï¿½ï¿½ï¿½ÃµÄ¶à²¥ï¿½ï¿½ï¿½ï¿½
       ::= { gbnL3IgmpProxyGroup 3 }  
       
     igmpGrpMembNum OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
            "The summation of group member which is learned from IGMP
             and configged statically."   
-            --Í¨¹ýIGMPÑ§Ï°ºÍ¾²Ì¬ÅäÖÃµÄ¶à²¥³ÉÔ±Êý
+            --Í¨ï¿½ï¿½IGMPÑ§Ï°ï¿½Í¾ï¿½Ì¬ï¿½ï¿½ï¿½ÃµÄ¶à²¥ï¿½ï¿½Ô±ï¿½ï¿½
       ::= { gbnL3IgmpProxyGroup 4 } 
 
 --  IGMP interface extend MIB 
@@ -95,7 +95,7 @@ PortList ::= TEXTUAL-CONVENTION
         DESCRIPTION
            "IGMP interface extend information including the configured  access control 
            list and querier timeout."    
-           --IGMPµÄ·ÃÎÊ¿ØÖÆÁÐ±í¶¨ÒåºÍ²éÑ¯ÕßÉú´æÊ±¼äµÈ
+           --IGMPï¿½Ä·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½
        ::= { gbnL3IgmpMib 2 }
 
     igmpIfExEntry OBJECT-TYPE
@@ -104,7 +104,7 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            "Information describing the configured ACL and querier timeout ." 
-           --·ÃÎÊ¿ØÖÆÁÐ±íÐÅÏ¢
+           --ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ï¢
        INDEX { igmpifIndex }
        ::= { igmpIfExTable 1 }
 
@@ -120,12 +120,12 @@ PortList ::= TEXTUAL-CONVENTION
 	              }
 
     igmpifIndex OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-only
         STATUS   current
         DESCRIPTION
            "the index of the interface receiving IGMP packets."       
-           --½ÓÊÕIGMP±¨ÎÄµÄ½Ó¿ÚË÷Òý
+           --ï¿½ï¿½ï¿½ï¿½IGMPï¿½ï¿½ï¿½ÄµÄ½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½
       ::= { igmpIfExEntry 1 }     
       
     igmpIfPortList OBJECT-TYPE
@@ -134,27 +134,27 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            "the ports filter IGMP packets in this interface."   
-           --¹ýÂËIGMP±¨ÎÄµÄ¶Ë¿ÚÁÐ±í
+           --ï¿½ï¿½ï¿½ï¿½IGMPï¿½ï¿½ï¿½ÄµÄ¶Ë¿ï¿½ï¿½Ð±ï¿½
       ::= { igmpIfExEntry 2 }
       
     igmpifAccessNum OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
            "the number of the access control list used to filter IGMP packet"  
-           --ÓÃÓÚ¹ýÂËIGMP±¨ÎÄµÄ·ÃÎÊ¿ØÖÆÁÐ±íºÅ
+           --ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½IGMPï¿½ï¿½ï¿½ÄµÄ·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
       ::= { igmpIfExEntry 3 }  
       
      igmpifQuerierExpire OBJECT-TYPE    
-        SYNTAX   Integer32 
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
            "The amount of time elapsed before the Other Querier
             Present Timer expires"  
-           --²éÑ¯Õß³¬Ê±Ê±¼ä£¬µ±ÆäËû²éÑ¯Õß´æÔÚÊ±±ØÐëÒªµÈÒ»¶ÎÊ±¼ä£¬ÔÚÕâ¶ÎÊ±¼äÄÚ
-           --Ã»ÓÐÊÕµ½ÆäËû²éÑ¯ÕßµÄ²éÑ¯±¨ÎÄºó£¬±¾µØ²ÅÄÜ³ÉÎª²éÑ¯Õß¡£
+           --ï¿½ï¿½Ñ¯ï¿½ß³ï¿½Ê±Ê±ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ß´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
+           --Ã»ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ßµÄ²ï¿½Ñ¯ï¿½ï¿½ï¿½Äºó£¬±ï¿½ï¿½Ø²ï¿½ï¿½Ü³ï¿½Îªï¿½ï¿½Ñ¯ï¿½ß¡ï¿½
       ::= { igmpIfExEntry 4 }
 
     igmpifV2QuerierTimer OBJECT-TYPE    
@@ -166,17 +166,17 @@ PortList ::= TEXTUAL-CONVENTION
             IGMPv2 routers present on the interface.  While this is non-
             zero and igmpInterfaceV1QuerierTimer is zero, the host will 
             reply to all queries with version 2 membership reports." 
-           --v2°æ±¾²éÑ¯Õß³¬Ê±¶¨Ê±Æ÷¡£µ±¸ÃÖµ²»Îª0£¬ÇÒv1°æ±¾²éÑ¯Õß³¬Ê±¶¨Ê±
-           --Æ÷Îª0Ê±£¬½«¶¨Ê±·¢ËÍv2µÄ²éÑ¯±¨ÎÄ¡£
+           --v2ï¿½æ±¾ï¿½ï¿½Ñ¯ï¿½ß³ï¿½Ê±ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½v1ï¿½æ±¾ï¿½ï¿½Ñ¯ï¿½ß³ï¿½Ê±ï¿½ï¿½Ê±
+           --ï¿½ï¿½Îª0Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½v2ï¿½Ä²ï¿½Ñ¯ï¿½ï¿½ï¿½Ä¡ï¿½
       ::= { igmpIfExEntry 5 } 
 
     igmpifLimiGroupNum OBJECT-TYPE    
-        SYNTAX   Integer32 
+        SYNTAX INTEGER
         MAX-ACCESS   read-write
         STATUS   current
         DESCRIPTION
             "the limit count of group for the interface" 
-           --ÏÞÖÆ½Ó¿Ú¼ÓÈëµÄ¶à²¥×é¸öÊý¡£Ä¬ÈÏÖµÎª²úÆ·ËùÖ§³ÖµÄ×î´ó¶à²¥×é¸öÊý£¬ÈçS3526Îª255£¬S3750Îª1024          
+           --ï¿½ï¿½ï¿½Æ½Ó¿Ú¼ï¿½ï¿½ï¿½Ä¶à²¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ÖµÎªï¿½ï¿½Æ·ï¿½ï¿½Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½à²¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½S3526Îª255ï¿½ï¿½S3750Îª1024          
       ::= { igmpIfExEntry 6 }
       
     igmpifSSMMappingEnable OBJECT-TYPE
@@ -185,7 +185,7 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            "The enabled status of igmp ssm-mapping on this interface."
-           --ÔÚ½Ó¿ÚÉÏ´ò¿ªigmp ssmÓ³ÉäµÄÊ¹ÄÜ×´Ì¬          
+           --ï¿½Ú½Ó¿ï¿½ï¿½Ï´ï¿½igmp ssmÓ³ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½×´Ì¬          
 	::= { igmpIfExEntry 7 }   
       
 
@@ -195,7 +195,7 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            " the list information of static group and ingress vlan."    
-           --¾²Ì¬¶à²¥×éºÍÈëvlanÐÅÏ¢±í
+           --ï¿½ï¿½Ì¬ï¿½à²¥ï¿½ï¿½ï¿½ï¿½ï¿½vlanï¿½ï¿½Ï¢ï¿½ï¿½
        	::= { gbnL3IgmpMib 3 }
   	
     igmpGroupVlanEntry OBJECT-TYPE
@@ -204,7 +204,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 		" entry of information about static group and ingress vlan"
-		--¾²Ì¬¶à²¥×éºÍÈëvlan±íÏî
+		--ï¿½ï¿½Ì¬ï¿½à²¥ï¿½ï¿½ï¿½ï¿½ï¿½vlanï¿½ï¿½ï¿½ï¿½
 	INDEX { igmpGroupIP, igmpVlanID }
 	::= { igmpGroupVlanTable 1 }
 				
@@ -220,15 +220,15 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			" the static multicast group ip "
-			--¾²Ì¬¶à²¥×é
+			--ï¿½ï¿½Ì¬ï¿½à²¥ï¿½ï¿½
 	::= { igmpGroupVlanEntry 1 }      
     igmpVlanID OBJECT-TYPE
-	SYNTAX Integer32
+	SYNTAX INTEGER
 	MAX-ACCESS read-write
 	STATUS current
 	DESCRIPTION
 			"the specific ingress vlan"
-			--Ö¸¶¨Èëvlan
+			--Ö¸ï¿½ï¿½ï¿½ï¿½vlan
 	::= { igmpGroupVlanEntry 2 }
     igmpGroupVlanStatus OBJECT-TYPE
 	SYNTAX RowStatus
@@ -236,12 +236,12 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			"The status of this entry."
-			--±íÏî×´Ì¬
+			--ï¿½ï¿½ï¿½ï¿½×´Ì¬
 	::= { igmpGroupVlanEntry 3 }	
               
       
 --  igmpCacheExTable extend MIB
---  igmp¶à²¥×é±íÀ©Õ¹.added by xzy (2006-8-2 for igmpv3)
+--  igmpï¿½à²¥ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹.added by xzy (2006-8-2 for igmpv3)
 
     FilterMode ::= INTEGER {
     	include(1),
@@ -254,7 +254,7 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            "IGMP cache extend information including the configured filter mode and source list."    
-           --IGMPµÄ×é¹ýÂËÄ£Ê½ºÍÔ´µØÖ·ÁÐ±íµÈ
+           --IGMPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½Ð±ï¿½ï¿½ï¿½
        ::= { gbnL3IgmpMib 4 }
 
        
@@ -264,7 +264,7 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            "Information describing the configured filter mode and source list." 
-           --×é¹ýÂËÄ£Ê½ºÍÔ´µØÖ·ÁÐ±íÐÅÏ¢
+           --ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½Ð±ï¿½ï¿½ï¿½Ï¢
        INDEX      { igmpCacheAddressEx, igmpCacheIfIdxEx }
        ::= { igmpCacheExTable 1 } 
        
@@ -285,17 +285,17 @@ PortList ::= TEXTUAL-CONVENTION
 	DESCRIPTION
 	        "The IP multicast group address for which this entry
 	        contains information."
-	        --¶à²¥×éµØÖ·
+	        --ï¿½à²¥ï¿½ï¿½ï¿½Ö·
 	::= { igmpCacheExEntry 1 }
 	 
     igmpCacheIfIdxEx OBJECT-TYPE
-	    	SYNTAX     Integer32
+	    	SYNTAX INTEGER
 	    	MAX-ACCESS not-accessible
 	    	STATUS     current
 	    	DESCRIPTION
             	"The interface for which this entry contains information for
             	an IP multicast group address."
-            	--½Ó¿ÚË÷Òý
+            	--ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	::= { igmpCacheExEntry 2 }
 
     igmpCacheVersion2HostTimer OBJECT-TYPE
@@ -308,7 +308,7 @@ PortList ::= TEXTUAL-CONVENTION
 	    	subnet attached to this interface.  Upon hearing any IGMPv2
 	    	Membership Report, this value is reset to the group
 	    	membership timer."
-	    	--v2Ö÷»ú´æÔÚÊ±¼ä¶¨Ê±Æ÷
+	    	--v2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä¶¨Ê±ï¿½ï¿½
 	::= { igmpCacheExEntry 3 }
 
     igmpCacheFilterMode OBJECT-TYPE
@@ -317,7 +317,7 @@ PortList ::= TEXTUAL-CONVENTION
     	STATUS     current
     	DESCRIPTION
             "The Filter Mode for the IP multicast group address."
-            --×éµÄ¹ýÂËÄ£Ê½
+            --ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½Ä£Ê½
 	::= { igmpCacheExEntry 4 }
 	
     igmpCacheStatic OBJECT-TYPE
@@ -337,7 +337,7 @@ PortList ::= TEXTUAL-CONVENTION
         STATUS   current
         DESCRIPTION
            " the list information of specific source ip addres."    
-           --Ô´µØÖ·ÁÐ±íÐÅÏ¢
+           --Ô´ï¿½ï¿½Ö·ï¿½Ð±ï¿½ï¿½ï¿½Ï¢
        	::= { gbnL3IgmpMib 5 }
   	
     igmpSrcInfoEntry OBJECT-TYPE
@@ -346,7 +346,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			" entry of information about specific source"
-			--Ö¸¶¨Ô´µØÖ·±íÏî
+			--Ö¸ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
 	INDEX { igmpCacheAddressEx, igmpCacheIfIdxEx, igmpSrcAddress }
 	::= { igmpSrcInfoTable 1 }
 				
@@ -362,7 +362,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			"the specific source address"
-			--Ö¸¶¨Ô´µØÖ·
+			--Ö¸ï¿½ï¿½Ô´ï¿½ï¿½Ö·
 	::= { igmpSrcInfoEntry 1 }
 	
     igmpSrcTimer OBJECT-TYPE
@@ -371,7 +371,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			" the timer of the specific source address"
-			--Ö¸¶¨Ô´¶¨Ê±Æ÷
+			--Ö¸ï¿½ï¿½Ô´ï¿½ï¿½Ê±ï¿½ï¿½
 	::= { igmpSrcInfoEntry 2 } 
 
     igmpSrcInfoStatus OBJECT-TYPE
@@ -380,7 +380,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			"The status of this entry."
-			--±íÏî×´Ì¬
+			--ï¿½ï¿½ï¿½ï¿½×´Ì¬
 	::= { igmpSrcInfoEntry 3 } 	
 	
 
@@ -405,7 +405,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			" entry of information about MFIB"
-			--Ö¸¶¨Ô´µØÖ·±íÏî
+			--Ö¸ï¿½ï¿½Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½
 	INDEX { igmpGrpAddress }
 	::= { igmpMFIBTable 1 }
 
@@ -423,16 +423,16 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			"the IP address of multicast group"
-			--×éµØÖ·
+			--ï¿½ï¿½ï¿½Ö·
 	::= { igmpMFIBEntry 1 }
 	
     igmpGrpMembIdx OBJECT-TYPE
-	SYNTAX Integer32
+	SYNTAX INTEGER
 	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 			"the first group member's index "
-			--ÓÃ»§²àµÚÒ»¸ö¶à²¥½Ó¿Ú³ÉÔ±Ë÷Òý
+			--ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½à²¥ï¿½Ó¿Ú³ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 	::= { igmpMFIBEntry 2 } 
 
     igmpProxyState OBJECT-TYPE
@@ -441,16 +441,16 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			"The status of Igmp-proxy."
-			--¶à²¥×éproxy×´Ì¬
+			--ï¿½à²¥ï¿½ï¿½proxy×´Ì¬
 	::= { igmpMFIBEntry 3 }
 		  
     igmpGrpMembCount OBJECT-TYPE
-	SYNTAX Integer32
+	SYNTAX INTEGER
 	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 			"The count of this multicast group's member."
-			--¼ÓÈë´Ë¶à²¥×éµÄ¶Ë¿ÚÊý
+			--ï¿½ï¿½ï¿½ï¿½Ë¶à²¥ï¿½ï¿½Ä¶Ë¿ï¿½ï¿½ï¿½
 	::= { igmpMFIBEntry 4 }	      
 	
 --  IGMP SSM-Mapping information
@@ -480,39 +480,39 @@ PortList ::= TEXTUAL-CONVENTION
 	              }
 
     igmpSSMMappingGrp OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
            "Group Address of the SSM-Mapping Entry"   
-           --SSM-Mapping±íÏîµÄ×éIPµØÖ·
+           --SSM-Mappingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·
 	::= { igmpSSMMappingEntry 1 }
 
     igmpSSMMappingGrpPrefixLen OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
            "Group Address Prefix Length of the SSM-Mapping Entry"   
-           --SSM-Mapping±íÏîµÄ×éIPµØÖ·Ç°×º³¤¶È
+           --SSM-Mappingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·Ç°×ºï¿½ï¿½ï¿½ï¿½
 	::= { igmpSSMMappingEntry 2 }
 
     igmpSSMMappingACL OBJECT-TYPE
-       SYNTAX     Integer32(1..99)
+       SYNTAX INTEGER (1..99)
        MAX-ACCESS not-accessible
        STATUS     current
        DESCRIPTION
                "ACL of SSM-Mapping Entry"
-		--SSM-MappingµÄ·ÃÎÊ¿ØÖÆÁÐ±íºÅ¡£±ê×¼·ÃÎÊ¿ØÖÆÁÐ±í1~99
+		--SSM-Mappingï¿½Ä·ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Å¡ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ð±ï¿½1~99
 	::= { igmpSSMMappingEntry 3}
 	
     igmpSSMMappingSrc OBJECT-TYPE
-        SYNTAX   Integer32
+        SYNTAX INTEGER
         MAX-ACCESS   not-accessible
         STATUS   current
         DESCRIPTION
            "Source Address of the SSM-Mapping Entry"   
-           --SSM-Mapping±íÏîµÄÔ´IPµØÖ·
+           --SSM-Mappingï¿½ï¿½ï¿½ï¿½ï¿½Ô´IPï¿½ï¿½Ö·
 	::= { igmpSSMMappingEntry 4 }	
 
     igmpSSMMappingStatus  OBJECT-TYPE
@@ -521,7 +521,7 @@ PortList ::= TEXTUAL-CONVENTION
 	STATUS current
 	DESCRIPTION
 			"The status of this entry."
-			--±íÏî×´Ì¬
+			--ï¿½ï¿½ï¿½ï¿½×´Ì¬
 	::= { igmpSSMMappingEntry 5 }
 
   END

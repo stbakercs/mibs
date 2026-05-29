@@ -10,7 +10,7 @@
 NMS-POWER-MIB DEFINITIONS ::= BEGIN
 
 IMPORTS
-    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE,INTEGER,
+    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE,
     Integer32, Unsigned32                       FROM SNMPv2-SMI
     MODULE-COMPLIANCE, OBJECT-GROUP,
     NOTIFICATION-GROUP                          FROM SNMPv2-CONF
@@ -28,7 +28,7 @@ IMPORTS
                           power-A-B-normal(3),
                           other(4)
                           }
-              ACCESS  read-only
+              MAX-ACCESS  read-only
               STATUS  mandatory
               DESCRIPTION
                       "Power status, power-A-normal(1), power-B-normal(2), power-A-B-normal(3), other(4)."
@@ -41,7 +41,7 @@ IMPORTS
                           power-A-B-normal(3),
                           other(4)
                           }
-              ACCESS  not-accessible
+              MAX-ACCESS  not-accessible
               STATUS  mandatory
               DESCRIPTION
                       "Power status before change, power-A-normal(1), power-B-normal(2), power-A-B-normal(3), other(4)."
@@ -54,7 +54,7 @@ IMPORTS
                           power-A-B-normal(3),
                           other(4)
                           }
-              ACCESS  not-accessible
+              MAX-ACCESS  not-accessible
               STATUS  mandatory
               DESCRIPTION
                       "Power status after change, power-A-normal(1), power-B-normal(2), power-A-B-normal(3), other(4)."

@@ -2153,7 +2153,7 @@
 
     RaidControllerEntry ::= SEQUENCE {
             controllerIndex       INTEGER,
-            ctrlName              DisplayString,  
+            raidCtrlName          DisplayString,  
             ctrlVPDProdName       DisplayString,
             ctrlFWPkgVersion      DisplayString,
             ctrlBatBCK            INTEGER,
@@ -2199,7 +2199,7 @@
             DESCRIPTION     "This column is used to identify a particular RAID controller."
             ::= { raidControllerEntry 1 }
             
-    ctrlName     OBJECT-TYPE
+    raidCtrlName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -2701,8 +2701,8 @@
       
     RaidFirmwareEntry ::= SEQUENCE {
             firmwareIndex     INTEGER,
-            fwName            DisplayString,
-            ctrlName          DisplayString,            
+            raidFwName        DisplayString,
+            fwCtrlName        DisplayString,
             fwDescription     DisplayString,
             fwManufacture     DisplayString,
             fwVersion         DisplayString,
@@ -2716,14 +2716,14 @@
             DESCRIPTION     "This column is used to identify a particular RAID Controller firmware."
             ::= { raidFirmwareEntry 1 }
   
-    fwName     OBJECT-TYPE
+    raidFwName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "The Name of a particular RAID Controller firmware."
             ::= { raidFirmwareEntry 2 }
    
-    ctrlName    OBJECT-TYPE
+    fwCtrlName    OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -2777,62 +2777,62 @@
             STATUS     mandatory
             DESCRIPTION
             "RAID Drive Firmware Entry."
-            INDEX { firmwareIndex }
+            INDEX { driveFirmwareIndex }
             ::= { raidDriveFirmwareTable 1 }
       
     RaidDriveFirmwareEntry ::= SEQUENCE {
-            firmwareIndex     INTEGER,
-            fwName            DisplayString,
-            driveName         DisplayString,
-            fwDescription     DisplayString,
-            fwManufacture     DisplayString,
-            fwVersion         DisplayString,
-            fwReleaseDate     DisplayString
+            driveFirmwareIndex     INTEGER,
+            driveFwName            DisplayString,
+            driveSlotName     DisplayString,
+            driveFwDescription     DisplayString,
+            driveFwManufacture     DisplayString,
+            driveFwVersion         DisplayString,
+            driveFwReleaseDate     DisplayString
      }
    
-    firmwareIndex     OBJECT-TYPE
+    driveFirmwareIndex     OBJECT-TYPE
             SYNTAX     INTEGER
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "This column is used to identify a particular RAID Drive firmware."
             ::= { raidDriveFirmwareEntry 1 }
   
-    fwName     OBJECT-TYPE
+    driveFwName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "The Name of a particular RAID Drive firmware."
             ::= { raidDriveFirmwareEntry 2 }
 
-    driveName     OBJECT-TYPE
+    driveSlotName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "The drive name of the firmwares."
             ::= { raidDriveFirmwareEntry 3 }
 
-    fwDescription     OBJECT-TYPE
+    driveFwDescription     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "The Description of a particular RAID Drive firmware."
             ::= { raidDriveFirmwareEntry 4 }
 
-    fwManufacture     OBJECT-TYPE
+    driveFwManufacture     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "The Manufacture of a particular RAID Drive firmware."
             ::= { raidDriveFirmwareEntry 5 }
 
-    fwVersion     OBJECT-TYPE
+    driveFwVersion     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
             DESCRIPTION     "The Version of a particular RAID Drive firmware."
             ::= { raidDriveFirmwareEntry 6 }
 
-    fwReleaseDate     OBJECT-TYPE
+    driveFwReleaseDate     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -2864,7 +2864,7 @@
     RaidStoragepoolEntry ::= SEQUENCE {
             storagepoolIndex        INTEGER,
             storagepoolName         DisplayString,
-			controllerName          DisplayString,
+			storagepoolControllerName          DisplayString,
             storagepoolState        DisplayString,
             storagepoolCapacity     DisplayString,
             storagepoolVols         DisplayString,
@@ -2884,7 +2884,7 @@
             STATUS     mandatory
             DESCRIPTION     "The name of a particular RAID storagepool."
             ::= { raidStoragepoolEntry 2 }
-    controllerName      OBJECT-TYPE
+    storagepoolControllerName      OBJECT-TYPE
 			SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -2942,7 +2942,7 @@
     RaidVolumeEntry ::= SEQUENCE {
             volumeIndex      INTEGER,
             volumeName       DisplayString,
-			controllerName   DisplayString,
+			volumeControllerName   DisplayString,
             volumeStatus     DisplayString,
             volumeCapacity   DisplayString,
 			volumeStripSize  DisplayString,
@@ -2963,7 +2963,7 @@
             DESCRIPTION     "The Name of a particular RAID volume."
             ::= { raidVolumeEntry 2 }
     
-	controllerName    OBJECT-TYPE
+	volumeControllerName    OBJECT-TYPE
 			SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -3240,7 +3240,7 @@
     AdapterNetworkFunctionEntry ::= SEQUENCE {
             networkAdapterIndex         INTEGER,
             networkVPDProdName          DisplayString,
-            adapterVPDProdName          DisplayString,
+            networkAdapterVPDProdName   DisplayString,
             networkVPDManufacturer      DisplayString,
             networkVPDUUID              DisplayString,
             networkVPDModel             DisplayString,
@@ -3280,7 +3280,7 @@
             DESCRIPTION     "The Product Name and PFA of a particular network function and PFA is in HEX."
             ::= { adapterNetworkFunctionEntry 2 }
 
-    adapterVPDProdName     OBJECT-TYPE
+    networkAdapterVPDProdName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -3474,7 +3474,7 @@
       
     AdapterNetworkPortEntry ::= SEQUENCE {
             portIndex                  INTEGER,
-            networkVPDProdName         DisplayString,
+            portNetworkVPDProdName     DisplayString,
             phyPortNo                  INTEGER,
             phyPortConnector           DisplayString,
             phyPortBurnedinAddress     DisplayString,
@@ -3503,7 +3503,7 @@
             DESCRIPTION     "This column is used to identify a particular network port."
             ::= { adapterNetworkPortEntry 1 }
     
-    networkVPDProdName     OBJECT-TYPE
+    portNetworkVPDProdName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -3669,7 +3669,7 @@
     AdapterGPUFunctionEntry ::= SEQUENCE {
             gpuAdapterIndex             INTEGER,
             gpuVPDProdName              DisplayString,
-            adapterVPDProdName          DisplayString,
+            gpuAdapterVPDProdName       DisplayString,
             gpuVPDManufacturer          DisplayString,
             gpuVPDUUID                  DisplayString,
             gpuVPDModel                 DisplayString,
@@ -3709,7 +3709,7 @@
             DESCRIPTION     "The Product Name and PFA of a particular GPU function and PFA is in HEX."
             ::= { adapterGPUFunctionEntry 2 }
 
-    adapterVPDProdName     OBJECT-TYPE
+    gpuAdapterVPDProdName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -3928,7 +3928,7 @@
             DESCRIPTION     "This column is used to identify a particular GPU chip"
             ::= { adapterGPUChipEntry 1 }
     
-    gpuVPDProdName     OBJECT-TYPE
+    chipGpuVPDProdName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory
@@ -4064,7 +4064,7 @@
     AdapterRAIDFunctionEntry ::= SEQUENCE {
             raidAdapterIndex             INTEGER,
             raidVPDProdName              DisplayString,
-            adapterVPDProdName           DisplayString,
+            raidAdapterVPDProdName       DisplayString,
             raidVPDManufacturer          DisplayString,
             raidVPDUUID                  DisplayString,
             raidVPDModel                 DisplayString,
@@ -4101,7 +4101,7 @@
             DESCRIPTION     "The Product Name and PFA of a particular RAID function and PFA is in HEX."
             ::= { adapterRAIDFunctionEntry 2 }
 
-    adapterVPDProdName     OBJECT-TYPE
+    raidAdapterVPDProdName     OBJECT-TYPE
             SYNTAX     DisplayString
             ACCESS     read-only
             STATUS     mandatory

@@ -744,7 +744,7 @@ hwMgmdGmpAddressType OBJECT-TYPE
 
 hwMgmdGlobalLimit  NOTIFICATION-TYPE
     OBJECTS   { hwMgmdGmpAddressType,
-    ????       hwMgmdSource,
+                hwMgmdSource,
                 hwMgmdGroup,
                 hwMgmdGlobalEntries }
     STATUS    current
@@ -758,7 +758,7 @@ hwMgmdGlobalLimit  NOTIFICATION-TYPE
     
 hwMgmdInterfaceLimit NOTIFICATION-TYPE
     OBJECTS  { hwMgmdGmpAddressType,
-    ????      hwMgmdSource,
+                hwMgmdSource,
                hwMgmdGroup, 
                hwMgmdLimitInterfaceIfIndex,
                hwMgmdInterfaceEntries }
@@ -773,7 +773,7 @@ hwMgmdInterfaceLimit NOTIFICATION-TYPE
 
 hwMgmdTotalLimit  NOTIFICATION-TYPE
     OBJECTS   { hwMgmdGmpAddressType,
-    ????       hwMgmdSource,
+                hwMgmdSource,
                 hwMgmdGroup,
                 hwMgmdTotalEntries }
     STATUS    current

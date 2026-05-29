@@ -155,7 +155,7 @@ fbSipPhoneName OBJECT-TYPE
         "The name of this telephone"
     ::= { fbSipPhoneEntry 1 }
 
-fbSipCarrierIndex OBJECT-TYPE
+fbSipPhoneIndex OBJECT-TYPE
     SYNTAX Integer32 (0..255)
     MAX-ACCESS not-accessible
     STATUS current

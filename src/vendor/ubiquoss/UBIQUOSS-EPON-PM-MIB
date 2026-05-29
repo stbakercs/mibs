@@ -12,25 +12,17 @@
 
 UBIQUOSS-EPON-PM-MIB	DEFINITIONS ::= BEGIN
 	IMPORTS
-		
-		DisplayString 
+		MODULE-IDENTITY, OBJECT-TYPE, Counter64
+		FROM SNMPv2-SMI
+		DisplayString
 		FROM RFC1213-MIB
-		
-		IANAifType                               
-		FROM IANAifType-MIB
-		
 		RowStatus, TruthValue
-		FROM SNMPv2-TC           -- [RFC2579]
-        
-        ubiSysIndex
+		FROM SNMPv2-TC
+        ubiSysIndex,
+        ubiPortIndex
         FROM UBQS-INTERFACE-MIB
-        
-        HCPerfIntervalThreshold,
-      	HCPerfTimeElapsed,
-      	HCPerfValidIntervals,
-      	HCPerfInvalidIntervals
-         FROM  HC-PerfHist-TC-MIB   -- [RFC3705]
-         
+        ubiEponOnuIndex
+        FROM UBIQUOSS-EPON-MIB
 		ubiMgmt
 		FROM UBQS-SMI;     
 
@@ -61,16 +53,15 @@ ubiEponPMMIB  MODULE-IDENTITY
    				
 	ubiEponPMMIBObjects OBJECT IDENTIFIER ::= { ubiEponPMMIB  1 }
     
-    ubiEponPhysSide ::= TEXTUAL-CONVENTION
+    UbiEponPhysSide ::= TEXTUAL-CONVENTION
        STATUS       current
        DESCRIPTION
            "switch(1)  -- switch side of port
             pon(2)     -- pon side of port"
-       SYNTAX  INTEGER
-           {
+       SYNTAX  INTEGER {
            switch(1),
            pon(2)
-           }
+       }
            
 -- ***********************************************************
 --          PM line current total Counters          
@@ -85,21 +76,7 @@ ubiEponPMMIB  MODULE-IDENTITY
           Monitoring results of DSL line."
       ::= { ubiEponPMMIBObjects 1 }
 
-   ubiEponPMOltCurrTotalCntEntry  OBJECT-TYPE
-      SYNTAX      UbiEponPMOltCurrTotalCntEntry
-      MAX-ACCESS  not-accessible
-      STATUS      current
-      DESCRIPTION
-         "The table ubiEponPMOltCurrTable contains current Performance
-          Monitoring results of DSL line.
-          The index of this table is an interface index where the
-          interface has an ifType of vdsl and the termination
-          unit."
-      INDEX  { ubiSysIndex, ubiPortIndex, ubiEponPhysSide }
-      ::= { ubiEponPMOltCurrTotalCntTable 1 }
-
-   UbiEponPMOltCurrTotalCntEntry  ::=
-      SEQUENCE {
+   UbiEponPMOltCurrTotalCntEntry ::= SEQUENCE {
       	 ubiEponPMOltCurrInTotalBytes                 	Counter64,
          ubiEponPMOltCurrInTotalFrames                	Counter64,
          ubiEponPMOltCurrInUnicastFrames              	Counter64,
@@ -115,8 +92,21 @@ ubiEponPMMIB  MODULE-IDENTITY
          ubiEponPMOltCurrOutMulticastFrames            Counter64,
          ubiEponPMOltCurrOutErrorFrames                Counter64,
          ubiEponPMOltCurrOutDropedFrames         		Counter64,
-         ubiEponPMOltCurrOutPausedFrames         		Counter64         
+         ubiEponPMOltCurrOutPausedFrames         		Counter64
    }
+
+   ubiEponPMOltCurrTotalCntEntry  OBJECT-TYPE
+      SYNTAX      UbiEponPMOltCurrTotalCntEntry
+      MAX-ACCESS  not-accessible
+      STATUS      current
+      DESCRIPTION
+         "The table ubiEponPMOltCurrTable contains current Performance
+          Monitoring results of DSL line.
+          The index of this table is an interface index where the
+          interface has an ifType of vdsl and the termination
+          unit."
+      INDEX  { ubiSysIndex, ubiPortIndex }
+      ::= { ubiEponPMOltCurrTotalCntTable 1 }
    
    ubiEponPMOltCurrInTotalBytes  OBJECT-TYPE
       SYNTAX      Counter64
@@ -264,7 +254,7 @@ ubiEponPMMIB  MODULE-IDENTITY
       STATUS      current
       DESCRIPTION
          ""
-      INDEX  { ubiSysIndex, ubiPortIndex, ubiEponOnuIndex, ubiEponPhysSide }
+      INDEX  { ubiSysIndex, ubiPortIndex, ubiEponOnuIndex }
       ::= { ubiEponPMOnuCurrTotalCntTable 1 }
 
    UbiEponPMOnuCurrTotalCntEntry  ::=
@@ -483,7 +473,7 @@ ubiEponPMMIBCompliance MODULE-COMPLIANCE
 -- ports of conformance
 ubiEponPMMIBGroup OBJECT-GROUP
         OBJECTS {
-							   
+                ubiEponPMOltCurrInTotalBytes
         }
         STATUS  current
         DESCRIPTION

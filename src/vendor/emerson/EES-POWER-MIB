@@ -32,7 +32,7 @@ powerMIB MODULE-IDENTITY
 
 ees OBJECT IDENTIFIER ::= { enterprises 6302 }
 
-global OBJECT IDENTIFIER ::= { ees 2 }
+eesGlobalBranch OBJECT IDENTIFIER ::= { ees 2 }
 
 ------------------------------------------------------------
 -- Textual conventions

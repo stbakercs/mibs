@@ -107,7 +107,7 @@ fsm7326p                OBJECT IDENTIFIER ::= { managedSwitch 9 }
 -- new post-NMS100 SNMP-enabled products. These products will have their 
 -- functions defined under each generic product category.
 --
-lb6m     OBJECT IDENTIFIER ::= { netgear 10 }
+netgearLb6m     OBJECT IDENTIFIER ::= { netgear 10 }
 ng700smartswitch        OBJECT IDENTIFIER ::= { netgear 11 }
 ngrouter                OBJECT IDENTIFIER ::= { netgear 12 }
 ngfirewall              OBJECT IDENTIFIER ::= { netgear 13 }

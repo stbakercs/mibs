@@ -802,16 +802,16 @@ e3IpmAlarmCritHigh OBJECT-TYPE
 --
 
 e3IpmRcmTable OBJECT-TYPE
-	SYNTAX		Integer32
-	MAX-ACCESS	read-only
+	SYNTAX		SEQUENCE OF E3IpmRcmEntry
+	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION
 		"Table holding all residual current monitoring (RCM)
 		data of this IPS."
 	::= { e3Ipm 7 }
 
-e3IpmRcmTableEntry OBJECT-TYPE
-	SYNTAX		E3IpmRcmTableEntry
+e3IpmRcmEntry OBJECT-TYPE
+	SYNTAX		E3IpmRcmEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION
@@ -819,7 +819,7 @@ e3IpmRcmTableEntry OBJECT-TYPE
 	INDEX		{ e3IpmRcmChannel }
 	::=		{ e3IpmRcmTable 1 }
 
-E3IpmRcmTableEntry ::= SEQUENCE {
+E3IpmRcmEntry ::= SEQUENCE {
 		e3IpmRcmChannel		Integer32,
 		e3IpmRcmAcLimit		MilliAmperes,
 		e3IpmRcmDcLimit		MilliAmperes,
@@ -836,7 +836,7 @@ e3IpmRcmChannel OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION
 		"RCM channel: 0 (total) is the total of all phases in this IPS."
-	::= { e3IpmRcmTableEntry 1 }
+	::= { e3IpmRcmEntry 1 }
 
 e3IpmRcmAcLimit OBJECT-TYPE
 	SYNTAX		MilliAmperes
@@ -846,7 +846,7 @@ e3IpmRcmAcLimit OBJECT-TYPE
 	DESCRIPTION
 		"The factory configured AC RCM limit. Any measurement
 		higher than this limit is considered a critical problem."
-	::= { e3IpmRcmTableEntry 2 }
+	::= { e3IpmRcmEntry 2 }
 
 e3IpmRcmDcLimit OBJECT-TYPE
 	SYNTAX		MilliAmperes
@@ -856,7 +856,7 @@ e3IpmRcmDcLimit OBJECT-TYPE
 	DESCRIPTION
 		"The factory configured DC RCM limit. Any measurement
 		higher than this limit is considered a critical problem."
-	::= { e3IpmRcmTableEntry 3 }
+	::= { e3IpmRcmEntry 3 }
 
 e3IpmRcmStatus OBJECT-TYPE
 	SYNTAX		INTEGER {
@@ -869,7 +869,7 @@ e3IpmRcmStatus OBJECT-TYPE
 		"Status of the RcmAc/RcmDc data. If the residual
 		current cannot be measured, 0 (unknown) is signalled
 		here, otherwise 1 (valid)."
-	::= { e3IpmRcmTableEntry 4 }
+	::= { e3IpmRcmEntry 4 }
 
 e3IpmRcmAc OBJECT-TYPE
 	SYNTAX		MilliAmperes
@@ -878,7 +878,7 @@ e3IpmRcmAc OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION
 		"The latest AC RCM measurement."
-	::= { e3IpmRcmTableEntry 5 }
+	::= { e3IpmRcmEntry 5 }
 
 e3IpmRcmDc OBJECT-TYPE
 	SYNTAX		MilliAmperes
@@ -887,7 +887,7 @@ e3IpmRcmDc OBJECT-TYPE
 	STATUS		current
 	DESCRIPTION
 		"The latest DC RCM measurement."
-	::= { e3IpmRcmTableEntry 6 }
+	::= { e3IpmRcmEntry 6 }
 
 -- ===========================================================================
 -- IPM Traps

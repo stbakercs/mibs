@@ -17,7 +17,7 @@ IMPORTS
 	enterprises 
 		FROM SNMPv2-SMI
 	TEXTUAL-CONVENTION, 
-	DisplayString 
+	DisplayString, MacAddress
 		FROM SNMPv2-TC
 	mwWncVarsHostName
 		FROM MERU-CONFIG-CONTROLLER-MIB
@@ -49,7 +49,7 @@ meruWlanMibModule MODULE-IDENTITY
        REVISION      "200301281851Z"
        DESCRIPTION
                "Initial revision"
-::= { meru-wlan 1 }
+::= { meruWlan 1 }
 
 
 ActionStatus ::= TEXTUAL-CONVENTION
@@ -85,33 +85,33 @@ meru  OBJECT-IDENTITY
 	DESCRIPTION 
 		"OID assigned by the IANA. All Meru MIBs are located under this subtree."
 	::= { enterprises 15983 }
-meru-reg             OBJECT IDENTIFIER ::= { meru 1 }
+meruReg             OBJECT IDENTIFIER ::= { meru 1 }
 
-meru-wlan  OBJECT-IDENTITY
+meruWlan  OBJECT-IDENTITY
 	STATUS     current
 	DESCRIPTION 
 		""
-	::= { meru-reg 1 }
+	::= { meruReg 1 }
 
 -- This OBJECT IDENTIFIER is used to set sysObjectId
 
-mwlWncNodeReg        OBJECT IDENTIFIER ::= { meru-wlan 2 }
-meru-generic         OBJECT IDENTIFIER ::= { meru 2 }
-meru-products        OBJECT IDENTIFIER ::= { meru 3 }
+mwlWncNodeReg        OBJECT IDENTIFIER ::= { meruWlan 2 }
+meruGeneric         OBJECT IDENTIFIER ::= { meru 2 }
+meruProducts        OBJECT IDENTIFIER ::= { meru 3 }
 
 -- ======================================================================
 -- MERU WLAN MIB SUBTREE
 -- ======================================================================
 
-meru-wlan-MIB        OBJECT IDENTIFIER ::= { meru-products 1 }
-meru-wlan-conf       OBJECT IDENTIFIER ::= { meru-wlan-MIB 1 }
-meru-wlan-groups     OBJECT IDENTIFIER ::= { meru-wlan-conf 1 }
-meru-wlan-compls     OBJECT IDENTIFIER ::= { meru-wlan-conf 2 }
-meru-wlan-objs       OBJECT IDENTIFIER ::= { meru-wlan-MIB 2 }
-mwlGlobalObjects     OBJECT IDENTIFIER ::= { meru-wlan-objs 1 }
-meru-wlan-events     OBJECT IDENTIFIER ::= { meru-wlan-MIB 3 }
-meru-caps            OBJECT IDENTIFIER ::= { meru 4 }
-meru-expr            OBJECT IDENTIFIER ::= { meru 6 }
+meruWlan-MIB        OBJECT IDENTIFIER ::= { meruProducts 1 }
+meruWlan-conf       OBJECT IDENTIFIER ::= { meruWlan-MIB 1 }
+meruWlan-groups     OBJECT IDENTIFIER ::= { meruWlan-conf 1 }
+meruWlan-compls     OBJECT IDENTIFIER ::= { meruWlan-conf 2 }
+meruWlan-objs       OBJECT IDENTIFIER ::= { meruWlan-MIB 2 }
+mwlGlobalObjects     OBJECT IDENTIFIER ::= { meruWlan-objs 1 }
+meruWlan-events     OBJECT IDENTIFIER ::= { meruWlan-MIB 3 }
+meruCaps            OBJECT IDENTIFIER ::= { meru 4 }
+meruExpr            OBJECT IDENTIFIER ::= { meru 6 }
 
 -- ======================================================================
 -- Organized in a manner similar to the IOSCLI Configuration modes
@@ -119,7 +119,7 @@ meru-expr            OBJECT IDENTIFIER ::= { meru 6 }
 -- Configuration mode, initially capitalized. Submodes are in the 
 -- same classification as the main mode
 -- ======================================================================
-meruWlanApObjects 	OBJECT IDENTIFIER ::= { meru-wlan-conf 3 }
+meruWlanApObjects 	OBJECT IDENTIFIER ::= { meruWlan-conf 3 }
 
 -- This variable defines the polling period used between WNC-ASC and  ASC-ATS 
 -- to refresh the statistic caches
@@ -408,7 +408,7 @@ mwlTopoStaAtsAdd  NOTIFICATION-TYPE
 
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 7 }
+	::= { meruWlan-events 7 }
 
 mwlTopoStaAtsRemove  NOTIFICATION-TYPE
 	OBJECTS { mwTopoStaapApId, 
@@ -421,7 +421,7 @@ mwlTopoStaAtsRemove  NOTIFICATION-TYPE
 
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 8 }
+	::= { meruWlan-events 8 }
 
 mwlTopoStaAtsModify  NOTIFICATION-TYPE
 	OBJECTS { mwTopoStaapApId, 
@@ -434,7 +434,7 @@ mwlTopoStaAtsModify  NOTIFICATION-TYPE
 
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 9 }
+	::= { meruWlan-events 9 }
 
 mwlRogueApDetected  NOTIFICATION-TYPE
 	OBJECTS { mwlApMacAddr, mwlTrapContent }
@@ -446,7 +446,7 @@ mwlRogueApDetected  NOTIFICATION-TYPE
 
                The AP id, mac address, and other information are described
                in mwlTraContent."
-	::= { meru-wlan-events 13 }
+	::= { meruWlan-events 13 }
 
 mwlRogueApRemoved  NOTIFICATION-TYPE
 	OBJECTS { mwlApMacAddr, mwlTrapContent }
@@ -458,7 +458,7 @@ mwlRogueApRemoved  NOTIFICATION-TYPE
 
                The AP id, mac address, and other information are described
                in mwlTraContent."
-	::= { meru-wlan-events 14 }
+	::= { meruWlan-events 14 }
 
 mwlAtsDown  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -470,7 +470,7 @@ mwlAtsDown  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 18 }
+	::= { meruWlan-events 18 }
 
 mwlAtsUp  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -482,7 +482,7 @@ mwlAtsUp  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 19 }
+	::= { meruWlan-events 19 }
 
 mwlWatchdogFailure  NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName, mwlTrapContent }
@@ -494,7 +494,7 @@ mwlWatchdogFailure  NOTIFICATION-TYPE
  
                The controller is identified by mwWncVarsHostName and the 
                details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 22 }
+	::= { meruWlan-events 22 }
 
 mwlWatchdogUp  NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName, mwlTrapContent } 
@@ -506,7 +506,7 @@ mwlWatchdogUp  NOTIFICATION-TYPE
  
                The controller is identified by mwWncVarsHostName and the 
                details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 23 }
+	::= { meruWlan-events 23 }
 
 mwlCertificateError  NOTIFICATION-TYPE
 	OBJECTS { mwlTrapContent }
@@ -517,7 +517,7 @@ mwlCertificateError  NOTIFICATION-TYPE
                certificate is corrupted or expired.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 24 }
+	::= { meruWlan-events 24 }
 
 mwlCertificateInstalled  NOTIFICATION-TYPE
 	OBJECTS { mwlTrapContent }
@@ -528,7 +528,7 @@ mwlCertificateInstalled  NOTIFICATION-TYPE
                certificate is installed.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 25 }
+	::= { meruWlan-events 25 }
 
 mwlApSoftwareVersionMismatch  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlApMacAddr, mwlWncSoftwareVersion, mwlApSoftwareVersion, mwlTrapContent }
@@ -541,7 +541,7 @@ mwlApSoftwareVersionMismatch  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 26 }
+	::= { meruWlan-events 26 }
 
 mwlApSoftwareVersionMatch  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlApMacAddr, mwlWncSoftwareVersion, mwlApSoftwareVersion, mwlTrapContent }
@@ -553,7 +553,7 @@ mwlApSoftwareVersionMatch  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 27 }
+	::= { meruWlan-events 27 }
 
 mwlApInitFailure  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlTrapContent }
@@ -565,7 +565,7 @@ mwlApInitFailure  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 28 }
+	::= { meruWlan-events 28 }
 
 mwlApInitFailureCleared  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlTrapContent }
@@ -577,7 +577,7 @@ mwlApInitFailureCleared  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 29 }
+	::= { meruWlan-events 29 }
 
 mwlApRadioCardFailure  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfMacAddr, mwlTrapContent }
@@ -589,7 +589,7 @@ mwlApRadioCardFailure  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 30 }
+	::= { meruWlan-events 30 }
 
 mwlApRadioCardFailureCleared  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfMacAddr, mwlTrapContent }
@@ -601,7 +601,7 @@ mwlApRadioCardFailureCleared  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 31 }
+	::= { meruWlan-events 31 }
 
 mwlAuthFailure  NOTIFICATION-TYPE
 	OBJECTS { mwlStationMacAddr, mwlEssProfileName, mwlSecProfileName, mwlAttemptNumber, mwlTrapContent }
@@ -613,7 +613,7 @@ mwlAuthFailure  NOTIFICATION-TYPE
                due to an authtication failure.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 32 }
+	::= { meruWlan-events 32 }
 
 mwlRadiusServerSwitchover  NOTIFICATION-TYPE
 	OBJECTS { mwlOldIpAddr, mwlNewIpAddr, mwlRadiusSvrType, mwlTrapContent }
@@ -625,7 +625,7 @@ mwlRadiusServerSwitchover  NOTIFICATION-TYPE
                secondary one.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 33 }
+	::= { meruWlan-events 33 }
 
 mwlRadiusServerSwitchoverFailure  NOTIFICATION-TYPE
 	OBJECTS { mwlOldIpAddr, mwlRadiusSvrType, mwlTrapContent }
@@ -637,7 +637,7 @@ mwlRadiusServerSwitchoverFailure  NOTIFICATION-TYPE
                radius server to the secondary one.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 34 }
+	::= { meruWlan-events 34 }
 
 mwlRadiusServerRestored  NOTIFICATION-TYPE
 	OBJECTS { mwlNewIpAddr, mwlRadiusSvrType, mwlTrapContent }
@@ -649,7 +649,7 @@ mwlRadiusServerRestored  NOTIFICATION-TYPE
                and reverted to the primary radius server.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 35 }
+	::= { meruWlan-events 35 }
 
 mwlAcctRadiusServerSwitchover  NOTIFICATION-TYPE
 	OBJECTS { mwlTrapContent }
@@ -661,7 +661,7 @@ mwlAcctRadiusServerSwitchover  NOTIFICATION-TYPE
                server to the secondary one.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 36 }
+	::= { meruWlan-events 36 }
 
 mwlAcctRadiusServerSwitchoverFailure  NOTIFICATION-TYPE
 	OBJECTS { mwlTrapContent }
@@ -673,7 +673,7 @@ mwlAcctRadiusServerSwitchoverFailure  NOTIFICATION-TYPE
                the primary accounting radius server to the secondary one.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 37 }
+	::= { meruWlan-events 37 }
 
 mwlMicFailure  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlStationMacAddr, mwlEssProfileName, mwlSecProfileName, mwlTrapContent }
@@ -685,7 +685,7 @@ mwlMicFailure  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 38 }
+	::= { meruWlan-events 38 }
 
 mwlMicCounterMeasureActivated  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlTrapContent }
@@ -699,7 +699,7 @@ mwlMicCounterMeasureActivated  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 39 }
+	::= { meruWlan-events 39 }
 
 mwlMasterDown  NOTIFICATION-TYPE
         OBJECTS { mwWncVarsHostName, mwlIpAddr, mwlTrapContent }
@@ -711,7 +711,7 @@ mwlMasterDown  NOTIFICATION-TYPE
  
                The Master controller is identified by mwWncVarsHostName and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 40 }
+	::= { meruWlan-events 40 }
 
 mwlMasterUp  NOTIFICATION-TYPE
         OBJECTS { mwWncVarsHostName, mwlIpAddr, mwlTrapContent }
@@ -723,7 +723,7 @@ mwlMasterUp  NOTIFICATION-TYPE
  
                The Master controller is identified by mwWncVarsHostName and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 41 }
+	::= { meruWlan-events 41 }
 
 mwlAtsNeighborLoss NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId }
@@ -733,7 +733,7 @@ mwlAtsNeighborLoss NOTIFICATION-TYPE
                entity, acting in an agent role, has detected the ats neighbor
 			   loss."
 			  
-	::= { meru-wlan-events 42 }
+	::= { meruWlan-events 42 }
 
 mwlAtsNeighborLossCleared NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId }
@@ -743,7 +743,7 @@ mwlAtsNeighborLossCleared NOTIFICATION-TYPE
                entity, acting in an agent role, has detected the ats neighbor
 			   loss which was detected earlier has been cleared."
 			  
-	::= { meru-wlan-events 43 }
+	::= { meruWlan-events 43 }
 
 mwlHandoffFail NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId }
@@ -753,7 +753,7 @@ mwlHandoffFail NOTIFICATION-TYPE
                entity, acting in an agent role, has detected failure in
 			   hand off."
 			  
-	::= { meru-wlan-events 44 }
+	::= { meruWlan-events 44 }
 
 mwlHandoffFailCleared NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId }
@@ -763,7 +763,7 @@ mwlHandoffFailCleared NOTIFICATION-TYPE
                entity, acting in an agent role, has detected failure in
 			   hand off is cleared."
 			  
-	::= { meru-wlan-events 45 }
+	::= { meruWlan-events 45 }
 
 mwlResourceThresholdExceed NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName }
@@ -775,7 +775,7 @@ mwlResourceThresholdExceed NOTIFICATION-TYPE
 			   
                The system is identified by mwWncVarsHostName."
 			  
-	::= { meru-wlan-events 46 }
+	::= { meruWlan-events 46 }
 
 mwlResourceThresholdExceedCleared NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName }
@@ -787,7 +787,7 @@ mwlResourceThresholdExceedCleared NOTIFICATION-TYPE
 			   
                The system is identified by mwWncVarsHostName." 
 			  
-	::= { meru-wlan-events 47 }
+	::= { meruWlan-events 47 }
 
 mwlSystemFailure NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName }
@@ -799,7 +799,7 @@ mwlSystemFailure NOTIFICATION-TYPE
 			   
                The system is identified by mwWncVarsHostName." 
 			  
-	::= { meru-wlan-events 48 }
+	::= { meruWlan-events 48 }
 
 mwlSystemFailureCleared NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName }
@@ -811,7 +811,7 @@ mwlSystemFailureCleared NOTIFICATION-TYPE
 			   
                The system is identified by mwWncVarsHostName." 
 			  
-	::= { meru-wlan-events 49 }
+	::= { meruWlan-events 49 }
 
 mwlApBootimageVersionMismatch  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, 
@@ -825,7 +825,7 @@ mwlApBootimageVersionMismatch  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 50 }
+	::= { meruWlan-events 50 }
 
 mwlApBootimageVersionMatch NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, 
@@ -838,7 +838,7 @@ mwlApBootimageVersionMatch NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 51 }
+	::= { meruWlan-events 51 }
 
 mwlMacFilterDeny NOTIFICATION-TYPE
 	OBJECTS { mwlTrapContent }
@@ -850,7 +850,7 @@ mwlMacFilterDeny NOTIFICATION-TYPE
 			   
                Details of the trap is described by mwlTrapContent." 
 			  
-	::= { meru-wlan-events 52 }
+	::= { meruWlan-events 52 }
 
 mwlMacFilterDenyCleared NOTIFICATION-TYPE
 	OBJECTS { mwlTrapContent }
@@ -862,7 +862,7 @@ mwlMacFilterDenyCleared NOTIFICATION-TYPE
 			   
                Details of the trap is described by mwlTrapContent." 
 			  
-	::= { meru-wlan-events 53 }
+	::= { meruWlan-events 53 }
 
 mwlSoftwareLicenseExpired NOTIFICATION-TYPE
 	OBJECTS { mwlLicenseFeatureName, mwlTimeStamp, mwlTrapContent }
@@ -873,7 +873,7 @@ mwlSoftwareLicenseExpired NOTIFICATION-TYPE
 			   has expired.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 54 }
+	::= { meruWlan-events 54 }
 
 mwlSoftwareLicenseInstalled NOTIFICATION-TYPE
 	OBJECTS { mwlLicenseFeatureName, mwlTimeStamp, mwlTrapContent }
@@ -884,7 +884,7 @@ mwlSoftwareLicenseInstalled NOTIFICATION-TYPE
 			   has been installed.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 55 }
+	::= { meruWlan-events 55 }
 
 mwlApTemperature NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId,
@@ -897,7 +897,7 @@ mwlApTemperature NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 56 }
+	::= { meruWlan-events 56 }
 
 mwlApTemperatureCleared  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId,
@@ -910,7 +910,7 @@ mwlApTemperatureCleared  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 57 }
+	::= { meruWlan-events 57 }
 
 mwlHardwareDiagnostic NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName }
@@ -921,7 +921,7 @@ mwlHardwareDiagnostic NOTIFICATION-TYPE
 			   
                The system is identified by mwWncVarsHostName." 
 			  
-	::= { meru-wlan-events 58 }
+	::= { meruWlan-events 58 }
 
 mwlHardwareDiagnosticCleared NOTIFICATION-TYPE
 	OBJECTS { mwWncVarsHostName }
@@ -932,7 +932,7 @@ mwlHardwareDiagnosticCleared NOTIFICATION-TYPE
 			   
                The system is identified by mwWncVarsHostName." 
 			  
-	::= { meru-wlan-events 59 }
+	::= { meruWlan-events 59 }
 
 mwlCacLimitReached NOTIFICATION-TYPE
     OBJECTS { mwlLimitNumber, mwlTrapContent }
@@ -944,7 +944,7 @@ mwlCacLimitReached NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 60 }
+    ::= { meruWlan-events 60 }
 
 mwlRadarDetected NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -956,7 +956,7 @@ mwlRadarDetected NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 61 }
+    ::= { meruWlan-events 61 }
 
 mwlOperationalChannelChange NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfIndex, mwlChannelNumber, mwlTrapContent }
@@ -968,7 +968,7 @@ mwlOperationalChannelChange NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 62 }
+    ::= { meruWlan-events 62 }
 
 mwlLicensingServerDown NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -979,7 +979,7 @@ mwlLicensingServerDown NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 63 }
+    ::= { meruWlan-events 63 }
 
 mwlNUpgradeLicenseCheckoutFail NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -991,7 +991,7 @@ mwlNUpgradeLicenseCheckoutFail NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 64 }
+    ::= { meruWlan-events 64 }
 
 mwlNoLicenseEnforcementExpired NOTIFICATION-TYPE
     OBJECTS { mwWncVarsHostName, mwlIpAddr, mwlDaysLeft, mwlTrapContent }
@@ -1004,7 +1004,7 @@ mwlNoLicenseEnforcementExpired NOTIFICATION-TYPE
                The Master controller is identified by mwWncVarsHostName and details of
                the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 65 }
+    ::= { meruWlan-events 65 }
 
 mwlApWirelessIfDown NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfIndex, mwlWirelessIfMacAddr, mwlTrapContent }
@@ -1016,7 +1016,7 @@ mwlApWirelessIfDown NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 66 }
+    ::= { meruWlan-events 66 }
 
 mwlApWirelessIfUp NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfIndex, mwlWirelessIfMacAddr, mwlTrapContent }
@@ -1028,7 +1028,7 @@ mwlApWirelessIfUp NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 67 }
+    ::= { meruWlan-events 67 }
 
 mwlApWirelessStaCapacityFull NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlWirelessIfIndex, mwlApMacAddr, mwlApModelName, mwlStationCapacity, mwlTrapContent }
@@ -1040,7 +1040,7 @@ mwlApWirelessStaCapacityFull NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 68 }
+    ::= { meruWlan-events 68 }
 
 mwlApWirelessStaCapacityRecovered NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlWirelessIfIndex, mwlApMacAddr, mwlApModelName, mwlStationCapacity, mwlTrapContent }
@@ -1052,7 +1052,7 @@ mwlApWirelessStaCapacityRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 69 }
+    ::= { meruWlan-events 69 }
     
 mwlWncCpuUsageHigh NOTIFICATION-TYPE
     OBJECTS { mwlCpuId, mwlCpuUsage, mwlTrapContent }
@@ -1064,7 +1064,7 @@ mwlWncCpuUsageHigh NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 70 }
+    ::= { meruWlan-events 70 }
 
 mwlWncCpuUsageRecovered NOTIFICATION-TYPE
     OBJECTS { mwlCpuId, mwlCpuUsage, mwlTrapContent }
@@ -1076,7 +1076,7 @@ mwlWncCpuUsageRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 71 }
+    ::= { meruWlan-events 71 }
 
 mwlWncMemUsageHigh NOTIFICATION-TYPE
     OBJECTS { mwlMemoryUsage, mwlTrapContent }
@@ -1088,7 +1088,7 @@ mwlWncMemUsageHigh NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 72 }
+    ::= { meruWlan-events 72 }
 
 mwlWncMemUsageRecovered NOTIFICATION-TYPE
     OBJECTS { mwlMemoryUsage, mwlTrapContent }
@@ -1100,7 +1100,7 @@ mwlWncMemUsageRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 73 }
+    ::= { meruWlan-events 73 }
 
 mwlApCpuUsageHigh NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlCpuId, mwlCpuUsage, mwlTrapContent }
@@ -1112,7 +1112,7 @@ mwlApCpuUsageHigh NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 74 }
+    ::= { meruWlan-events 74 }
 
 mwlApCpuUsageRecovered NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlCpuId, mwlCpuUsage, mwlTrapContent }
@@ -1124,7 +1124,7 @@ mwlApCpuUsageRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 75 }
+    ::= { meruWlan-events 75 }
 
 mwlApMemUsageHigh NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlMemoryUsage, mwlTrapContent }
@@ -1136,7 +1136,7 @@ mwlApMemUsageHigh NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 76 }
+    ::= { meruWlan-events 76 }
 
 mwlApMemUsageRecovered NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlMemoryUsage, mwlTrapContent }
@@ -1148,7 +1148,7 @@ mwlApMemUsageRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 77 }
+    ::= { meruWlan-events 77 }
 
 mwlDhcpSvrPoolExhausted NOTIFICATION-TYPE
     OBJECTS { mwDhcpSvrPoolName, mwlTrapContent}
@@ -1160,7 +1160,7 @@ mwlDhcpSvrPoolExhausted NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 78 }
+    ::= { meruWlan-events 78 }
 
 mwlDhcpSvrPoolRecovered NOTIFICATION-TYPE
     OBJECTS { mwDhcpSvrPoolName, mwlTrapContent}
@@ -1172,7 +1172,7 @@ mwlDhcpSvrPoolRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 79 }
+    ::= { meruWlan-events 79 }
 
 mwlRadiusSvrFailure NOTIFICATION-TYPE
     OBJECTS { mwlIpAddr, mwlRadiusSvrType, mwlTrapContent }
@@ -1184,7 +1184,7 @@ mwlRadiusSvrFailure NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 80 }    
+    ::= { meruWlan-events 80 }    
 
 mwlRadiusSvrRecovered NOTIFICATION-TYPE
     OBJECTS { mwlIpAddr, mwlRadiusSvrType, mwlTrapContent }
@@ -1196,7 +1196,7 @@ mwlRadiusSvrRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 81 }  
+    ::= { meruWlan-events 81 }  
 
 
 mwlAlarmHistoryFull NOTIFICATION-TYPE
@@ -1209,7 +1209,7 @@ mwlAlarmHistoryFull NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 82 } 
+    ::= { meruWlan-events 82 } 
 
 mwlAlarmHistoryRecovered NOTIFICATION-TYPE
     OBJECTS { mwlRecordNumber, mwlTrapContent }
@@ -1221,7 +1221,7 @@ mwlAlarmHistoryRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 83 } 
+    ::= { meruWlan-events 83 } 
 
 mwlEventLogFull NOTIFICATION-TYPE
     OBJECTS { mwlRecordNumber, mwlTrapContent }
@@ -1233,7 +1233,7 @@ mwlEventLogFull NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 84 } 
+    ::= { meruWlan-events 84 } 
 
 mwlEventLogRecovered NOTIFICATION-TYPE
     OBJECTS { mwlRecordNumber, mwlTrapContent }
@@ -1245,7 +1245,7 @@ mwlEventLogRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 85 } 
+    ::= { meruWlan-events 85 } 
 
 mwlAdminLoginFailure NOTIFICATION-TYPE
     OBJECTS { mwlTimeStamp, mwlIpAddr, mwlAttemptNumber, mwlTrapContent }
@@ -1257,7 +1257,7 @@ mwlAdminLoginFailure NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 86 } 
+    ::= { meruWlan-events 86 } 
 
 mwlWncIpAddrChange NOTIFICATION-TYPE
     OBJECTS { mwlOldIpAddr, mwlNewIpAddr, mwlTrapContent }
@@ -1269,7 +1269,7 @@ mwlWncIpAddrChange NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 87 } 
+    ::= { meruWlan-events 87 } 
     
 mwlAlarmHistoryReachThreshold NOTIFICATION-TYPE
     OBJECTS { mwlRecordNumber, mwlTrapContent }
@@ -1281,7 +1281,7 @@ mwlAlarmHistoryReachThreshold NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 88 } 
+    ::= { meruWlan-events 88 } 
 
 mwlEventLogReachThreshold NOTIFICATION-TYPE
     OBJECTS { mwlRecordNumber, mwlTrapContent }
@@ -1293,7 +1293,7 @@ mwlEventLogReachThreshold NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 89 } 
+    ::= { meruWlan-events 89 } 
 
 mwlAtsRuntimeError  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlTrapContent }
@@ -1307,7 +1307,7 @@ mwlAtsRuntimeError  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 90 }
+	::= { meruWlan-events 90 }
 
 mwlAtsRuntimeErrorCleared  NOTIFICATION-TYPE
 	OBJECTS { mwApNodeId, mwlTrapContent }
@@ -1319,7 +1319,7 @@ mwlAtsRuntimeErrorCleared  NOTIFICATION-TYPE
  
                The AP (Ats) is identified by mwApNodeId and details of
                the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 91 }
+	::= { meruWlan-events 91 }
     
 mwlSystemIdChanged NOTIFICATION-TYPE
     OBJECTS { mwlIpAddr, mwlOldSystemId, mwlNewSystemId, mwlTrapContent }
@@ -1330,7 +1330,7 @@ mwlSystemIdChanged NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 92 } 
+    ::= { meruWlan-events 92 } 
 
 mwlSoftwareLicenseViolationRaised NOTIFICATION-TYPE
 	OBJECTS { mwlLicenseFeatureName, mwlTimeStamp, mwlTrapContent }
@@ -1341,7 +1341,7 @@ mwlSoftwareLicenseViolationRaised NOTIFICATION-TYPE
 			   has raised.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 93 }
+	::= { meruWlan-events 93 }
 
 mwlSoftwareLicenseViolationRecovered NOTIFICATION-TYPE
 	OBJECTS { mwlLicenseFeatureName, mwlTimeStamp, mwlTrapContent }
@@ -1352,7 +1352,7 @@ mwlSoftwareLicenseViolationRecovered NOTIFICATION-TYPE
 			   has recovered.
  
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 94 }
+	::= { meruWlan-events 94 }
 	
 mwlPowerModuleFailure NOTIFICATION-TYPE
 	OBJECTS { mwlModuleId, mwlTrapContent } 
@@ -1362,7 +1362,7 @@ mwlPowerModuleFailure NOTIFICATION-TYPE
                acting in an agent role, has detected that the power module is failed.
 
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 95 }
+	::= { meruWlan-events 95 }
 
 mwlPowerModuleClear NOTIFICATION-TYPE
 	OBJECTS { mwlModuleId, mwlTrapContent }
@@ -1372,7 +1372,7 @@ mwlPowerModuleClear NOTIFICATION-TYPE
                acting in an agent role, has detected that the power module is running.
                 
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 96 }
+	::= { meruWlan-events 96 }
    
 mwlFanModuleFailure NOTIFICATION-TYPE
 	OBJECTS { mwlModuleId, mwlTrapContent }
@@ -1382,7 +1382,7 @@ mwlFanModuleFailure NOTIFICATION-TYPE
                acting in an agent role, has detected that the fan module is failed.
 
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 97 }
+	::= { meruWlan-events 97 }
 
 mwlFanModuleClear NOTIFICATION-TYPE
 	OBJECTS { mwlModuleId, mwlTrapContent }
@@ -1392,7 +1392,7 @@ mwlFanModuleClear NOTIFICATION-TYPE
                acting in an agent role, has detected that the fan module is running.
 
                The details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 98 }
+	::= { meruWlan-events 98 }
 
 mwlApWirelessIfDownDuetoFallbackChanNotFound NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfIndex, mwlWirelessIfMacAddr, mwlTrapContent }
@@ -1404,7 +1404,7 @@ mwlApWirelessIfDownDuetoFallbackChanNotFound NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 99 }
+    ::= { meruWlan-events 99 }
 
 mwlApWirelessIfDownDuetoFallbackChanNotFoundRecovered NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlWirelessIfIndex, mwlWirelessIfMacAddr, mwlTrapContent }
@@ -1416,7 +1416,7 @@ mwlApWirelessIfDownDuetoFallbackChanNotFoundRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 100 }
+    ::= { meruWlan-events 100 }
 
 mwlAtsLicenseExceeded  NOTIFICATION-TYPE
 	OBJECTS { mwlApLicenseCount, mwlTrapContent }
@@ -1428,7 +1428,7 @@ mwlAtsLicenseExceeded  NOTIFICATION-TYPE
                License is completely Used.
  
                Details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 101 }
+	::= { meruWlan-events 101 }
 
 mwlAtsLicenseExceededCleared  NOTIFICATION-TYPE
 	OBJECTS { mwlApLicenseCount, mwlTrapContent }
@@ -1440,7 +1440,7 @@ mwlAtsLicenseExceededCleared  NOTIFICATION-TYPE
                License is completely Used.
  
                Details of the trap is described by mwlTrapContent."
-	::= { meru-wlan-events 102 }
+	::= { meruWlan-events 102 }
 
 mwlPowerNotAT NOTIFICATION-TYPE
     OBJECTS { mwApPowerSupplyType, mwlTrapContent }
@@ -1452,7 +1452,7 @@ mwlPowerNotAT NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 103}
+    ::= { meruWlan-events 103}
 
 mwlSwitchSupport NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -1464,7 +1464,7 @@ mwlSwitchSupport NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 104}
+    ::= { meruWlan-events 104}
 
 mwlApHwRevNotSupported NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -1476,7 +1476,7 @@ mwlApHwRevNotSupported NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 105}
+    ::= { meruWlan-events 105}
 
 mwlApHwRevNotSupportedRecovered NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -1488,7 +1488,7 @@ mwlApHwRevNotSupportedRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 106}
+    ::= { meruWlan-events 106}
 
 mwlPowerSupplyTypeNotAtForOAP832 NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -1500,7 +1500,7 @@ mwlPowerSupplyTypeNotAtForOAP832 NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 107}
+    ::= { meruWlan-events 107}
 
 mwlPowerSupplyTypeAtForOAP832 NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -1512,7 +1512,7 @@ mwlPowerSupplyTypeAtForOAP832 NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 108}
+    ::= { meruWlan-events 108}
 
 mwlReInitDB NOTIFICATION-TYPE
     OBJECTS { mwlRecordNumber, mwlTrapContent }
@@ -1524,7 +1524,7 @@ mwlReInitDB NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 109}
+    ::= { meruWlan-events 109}
 
 mwlApModelNotSupported NOTIFICATION-TYPE
     OBJECTS { mwlApMacAddr, mwlTrapContent }
@@ -1536,7 +1536,7 @@ mwlApModelNotSupported NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 110}
+    ::= { meruWlan-events 110}
 
 mwlServiceDown NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -1548,7 +1548,7 @@ mwlServiceDown NOTIFICATION-TYPE
 
                The details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 111}
+    ::= { meruWlan-events 111}
 
 mwlBadPlanningChannel NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -1560,7 +1560,7 @@ mwlBadPlanningChannel NOTIFICATION-TYPE
 
                The details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 112}
+    ::= { meruWlan-events 112}
 
 mwlImproperAPRFPositioning NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -1572,7 +1572,7 @@ mwlImproperAPRFPositioning NOTIFICATION-TYPE
 
                The details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 113}
+    ::= { meruWlan-events 113}
 
 mwlChannelChangeDynamicUpdateMCA NOTIFICATION-TYPE
     OBJECTS { mwlTrapContent }
@@ -1584,7 +1584,7 @@ mwlChannelChangeDynamicUpdateMCA NOTIFICATION-TYPE
 
                The details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 114}
+    ::= { meruWlan-events 114}
 
 mwlNewAPAfterChannelPlanning NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -1596,7 +1596,7 @@ mwlNewAPAfterChannelPlanning NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 115}
+    ::= { meruWlan-events 115}
 
 mwlNewAPAfterChannelPlanningRecovered NOTIFICATION-TYPE
     OBJECTS { mwApNodeId, mwlApMacAddr, mwlTrapContent }
@@ -1608,7 +1608,7 @@ mwlNewAPAfterChannelPlanningRecovered NOTIFICATION-TYPE
 
                Details of the trap is described by mwlTrapContent."
 
-    ::= { meru-wlan-events 116}
+    ::= { meruWlan-events 116}
 
 meru-reqs  OBJECT-TYPE
 	SYNTAX     Integer32

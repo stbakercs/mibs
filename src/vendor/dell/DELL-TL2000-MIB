@@ -1,5 +1,5 @@
 --
--- DELL-TL2000-MIB.mib
+-- DELL-dellTapeLib2000-MIB.mib
 --
 
 --
@@ -7,21 +7,17 @@
 --	Initial release
 --
 --	Version 1.1 - 02-Feb-2006
---	Re-defined TL2000 root OID;
+--	Re-defined dellTapeLib2000 root OID;
 --  Added comments in notifications to add directives for trap classification
 --
 
   DELL-TL2000-MIB DEFINITIONS ::= BEGIN
 
     IMPORTS 
-      OBJECT-TYPE      
-        FROM RFC-1212      
-      TRAP-TYPE      
-        FROM RFC-1215      
-      enterprises      
-        FROM RFC1155-SMI      
-      DisplayString      
-        FROM RFC1213-MIB;
+      OBJECT-TYPE, NOTIFICATION-TYPE, enterprises
+        FROM SNMPv2-SMI
+      DisplayString
+        FROM SNMPv2-TC;
 
 --
 -- Node definitions
@@ -33,67 +29,67 @@
     
     hardware OBJECT IDENTIFIER ::= { storage 2 }
     
-    TL2000 OBJECT IDENTIFIER ::= { hardware 102 }
+    dellTapeLib2000 OBJECT IDENTIFIER ::= { hardware 102 }
     
----
----	Product ID Group
----
-    TL2000Id OBJECT IDENTIFIER ::= { TL2000 1 }
+--
+--	Product ID Group
+--
+    dellTapeLib2000Id OBJECT IDENTIFIER ::= { dellTapeLib2000 1 }
     
-    TL2000IdDisplayName OBJECT-TYPE
+    dellTapeLib2000IdDisplayName OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Name of this product for display purposes."
-      ::= { TL2000Id 1 }
+      ::= { dellTapeLib2000Id 1 }
     
-    TL2000IdDescription OBJECT-TYPE
+    dellTapeLib2000IdDescription OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
-        "A short description of this product such as <LTO Tape Library>."
-      ::= { TL2000Id 2 }
+        "A short description of this product such as LTO Tape Library."
+      ::= { dellTapeLib2000Id 2 }
     
-    TL2000AgentVendor OBJECT-TYPE
+    dellTapeLib2000AgentVendor OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "The name of the product manufacturer."
-      ::= { TL2000Id 3 }
+      ::= { dellTapeLib2000Id 3 }
     
-    TL2000IdAgentVersion OBJECT-TYPE
+    dellTapeLib2000IdAgentVersion OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "The version of this product."
-      ::= { TL2000Id 4 }
+      ::= { dellTapeLib2000Id 4 }
     
-    TL2000IdBuildNumber OBJECT-TYPE
+    dellTapeLib2000IdBuildNumber OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "The software build number of the product."
-      ::= { TL2000Id 5 }
+      ::= { dellTapeLib2000Id 5 }
 
-    TL2000IdURL OBJECT-TYPE
+    dellTapeLib2000IdWebAddr OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "The URL of the web-based application to manage this product."
-      ::= { TL2000Id 6 }
+      ::= { dellTapeLib2000Id 6 }
 
----
----	Product Status Group
----
-    TL2000Status OBJECT IDENTIFIER ::= { TL2000 2 }
+--
+--	Product Status Group
+--
+    dellTapeLib2000Status OBJECT IDENTIFIER ::= { dellTapeLib2000 2 }
     
-    TL2000StatusGlobalStatus OBJECT-TYPE
+    dellTapeLib2000StatusGlobalStatus OBJECT-TYPE
       SYNTAX INTEGER
         {
         other(1),
@@ -103,17 +99,17 @@
         critical(5),
         non-Recoverable(6)
         }
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Current status of the product. 
         This is a rollup for the entire agent including any 
         monitored devices. The status is intended to give 
         initiative to a snmp monitor to get further data when 
         this status is abnormal."
-      ::= { TL2000Status 1 }
+      ::= { dellTapeLib2000Status 1 }
     
-    TL2000StatusLastGlobalStatus OBJECT-TYPE
+    dellTapeLib2000StatusLastGlobalStatus OBJECT-TYPE
       SYNTAX INTEGER
         {
         other(1),
@@ -123,71 +119,71 @@
         critical(5),
         non-recoverable(6)
         }
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "The status before the current status which induced an initiative 
         to issue a global status change trap."
-      ::= { TL2000Status 2 }
+      ::= { dellTapeLib2000Status 2 }
     
-    TL2000StatusTimeStamp OBJECT-TYPE
+    dellTapeLib2000StatusTimeStamp OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "The last time that the agent values have been updated.
         The time shoule be in a relative timestamp, such as SysUpTime."
-      ::= { TL2000Status 3 }
+      ::= { dellTapeLib2000Status 3 }
     
-    TL2000StatusGetTimeOut OBJECT-TYPE
+    dellTapeLib2000StatusGetTimeOut OBJECT-TYPE
       SYNTAX INTEGER (1..10000)
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Suggested time out value in milleseconds for how long the SNMP getter
         should wait while attempting to poll the product SNMP service."
-      ::= { TL2000Status 4 }
+      ::= { dellTapeLib2000Status 4 }
     
-    TL2000StatusRefreshRate OBJECT-TYPE
+    dellTapeLib2000StatusRefreshRate OBJECT-TYPE
       SYNTAX INTEGER (-1..1000000000)
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Rate in seconds at which the agent cached data is being updated. If the
         value is 0 then the data is not cached. If the value is -1 then the value does
         not apply."
-      ::= { TL2000Status 5 }
+      ::= { dellTapeLib2000Status 5 }
     
-    TL2000StatusGeneratingTrapFlag OBJECT-TYPE
+    dellTapeLib2000StatusGeneratingTrapFlag OBJECT-TYPE
       SYNTAX INTEGER
         {
         true(1),
         false(2),
         disabled(3)
         }
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Indicates id this SNMP agent is capable of and/or is generating SNMP traps."
-      ::= { TL2000Status 6 }
+      ::= { dellTapeLib2000Status 6 }
     
----
----	Physical Group
----
-    TL2000Physical OBJECT IDENTIFIER ::= { TL2000 3 }
+--
+--	Physical Group
+--
+    dellTapeLib2000Physical OBJECT IDENTIFIER ::= { dellTapeLib2000 3 }
 
     libraryTable OBJECT-TYPE
       SYNTAX SEQUENCE OF LibraryEntry
-      ACCESS not-accessible
-      STATUS mandatory
+      MAX-ACCESS not-accessible
+      STATUS current
       DESCRIPTION
         "A table of library status."
-      ::= { TL2000Physical 1 }
+      ::= { dellTapeLib2000Physical 1 }
     
     libraryEntry OBJECT-TYPE
       SYNTAX LibraryEntry
-      ACCESS not-accessible
-      STATUS mandatory
+      MAX-ACCESS not-accessible
+      STATUS current
       DESCRIPTION
         "Entry in the library Table. Each entry contains
         an index (libraryEntryId), and the values associated 
@@ -249,127 +245,127 @@
 
     libraryEntryId OBJECT-TYPE
       SYNTAX INTEGER (1..256)
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Table entry index value. Each unique physical device has a unique libraryEntryId."
       ::= { libraryEntry 1 }
     
     libraryState OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device state."
       ::= { libraryEntry 2 }
     
     libraryTimeStamp OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Relative time in sec from power-up."
       ::= { libraryEntry 3 }
     
     libraryType OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device type."
       ::= { libraryEntry 4 }
     
     libraryScsiId OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "SCSI ID of the device."
       ::= { libraryEntry 5}
     
     libraryScsiLun OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "SCSI Lun of the device."
       ::= { libraryEntry 6 }
     
     libraryVendorId OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Library Vendor ID string as reported in a SCSI Inquiry command."
       ::= { libraryEntry 7 }
     
     libraryProductId OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Library Product Id string as reported in a SCSI Inquiry command."
       ::= { libraryEntry 8 }
     
     libraryFwLevel OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Library Firmware level as reported in a SCSI Inquiry command."
       ::= { libraryEntry 9 }
     
     librarySerNum OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Library serial number as reported in SCSI Inquiry command, page 0x80."
       ::= { libraryEntry 10 }
     
     libraryDrvCnt OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Number of drives contained in this library."
       ::= { libraryEntry 11 }
     
     librarySlotCnt OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Number of cartridge slots contained in this library"
       ::= { libraryEntry 12 }
     
     libraryImpExpCnt OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Number of import/export elements (mail slots) contained in this library"
       ::= { libraryEntry 13 }
     
     libraryTranspCnt OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Number of transport elements (robots) contained in this library."
       ::= { libraryEntry 14 }
     
     libraryMoves OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Total number of move operations done by this library."
       ::= { libraryEntry 15 }
     
     librarySlotFetchRetries OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "Total number of slot fetch retries by this library."
@@ -377,7 +373,7 @@
     
     librarySlotStowRetries OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "Total number of slot stow retries by this library."
@@ -385,7 +381,7 @@
     
     libraryDrvFetchRetries OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "Total number of drive fetch retries by this library."
@@ -393,7 +389,7 @@
     
     libraryDrvStowRetries OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "Total number of drive stow retries by this library."
@@ -407,8 +403,8 @@
         closed(3),
         locked(4)
         }
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "State of the door(s) pf this library. The interpretation of this value is vendor specific."
       ::= { libraryEntry 20 }
@@ -421,15 +417,15 @@
         closed(3),
         locked(4)
         }
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "State of the Import/Export element(s) of this library. The interpretation of this value is vendor specific."
       ::= { libraryEntry 21 }   
       
     libraryFaultFSC OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "The library Fault error code."
@@ -443,7 +439,7 @@
         major(3),
         critical(4)
         }      
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "The library Fault severity."
@@ -451,7 +447,7 @@
                                
     libraryFaultDescr OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
+      MAX-ACCESS read-only
       STATUS optional
       DESCRIPTION
         "The library Fault description."
@@ -459,16 +455,16 @@
     
     driveTable OBJECT-TYPE
       SYNTAX SEQUENCE OF DriveEntry
-      ACCESS not-accessible
-      STATUS mandatory
+      MAX-ACCESS not-accessible
+      STATUS current
       DESCRIPTION
         "A table of all tape drive devices in this library."
-      ::= { TL2000Physical 2 }
+      ::= { dellTapeLib2000Physical 2 }
     
     driveEntry OBJECT-TYPE
       SYNTAX DriveEntry
-      ACCESS not-accessible
-      STATUS mandatory
+      MAX-ACCESS not-accessible
+      STATUS current
       DESCRIPTION
         "Entry in the device Table. Each entry contains
         an index (driveEntryId), and the values associated 
@@ -518,144 +514,144 @@
 
     driveEntryId OBJECT-TYPE
       SYNTAX INTEGER (1..512)
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Table entry index value. Each unique physical device has a unique driveEntryId."
       ::= { driveEntry 1 }
     
     driveState OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device SCSI State."
       ::= { driveEntry 2 }
     
     driveTimeStamp OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Universal time in sec since UTC 1/1/70 when the device data was last updated."
       ::= { driveEntry 3 }
     
     driveType OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "SCSI device type."
       ::= { driveEntry 4 }
     
     driveScsiId OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "SCSI ID of the device."
       ::= { driveEntry 5 }
     
     driveScsiLun OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "SCSI Lun of the device."
       ::= { driveEntry 6 }
 
     driveVendorId OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device Vendor as would be reported in a SCSI Inquiry command."
       ::= { driveEntry 7 }
     
     driveProductId OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device Model as would be reported in a SCSI Inquiry command."
       ::= { driveEntry 8 }
     
     driveFwlevel OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device firmware level as would be reported in a SCSI Inquiry command."
       ::= { driveEntry 9 }
     
     driveSerNum OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Device serial number as reported in SCSI Inquiry command, page 0x80."
       ::= { driveEntry 10 }
        
     driveLibrarySN OBJECT-TYPE
       SYNTAX DisplayString
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Serial Number of the library that this drive is in as reported in SCSI Inquiry command, page 0x80, for the media mover device."
       ::= { driveEntry 11 }
     
     driveTpHrs OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Total drive motion hours of this device."
       ::= { driveEntry 12 }
     
     driveClean OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Cleaning State of the device. The interpretation of this value is vendor specific."
       ::= { driveEntry 13 }
     
     driveLoads OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Total cartridge loads for the drive."
       ::= { driveEntry 14 }
     
     driveSoftWrtErrors OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Recovered soft write error count for current cartridge"
       ::= { driveEntry 15 }
     
     driveHardWrtErrors OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Hard write error count for current cartridge"
       ::= { driveEntry 16 }
     
     driveSoftReadErrors OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Recovered soft read error count for current cartridge"
       ::= { driveEntry 17 }
     
     driveHardReadErrors OBJECT-TYPE
       SYNTAX INTEGER
-      ACCESS read-only
-      STATUS mandatory
+      MAX-ACCESS read-only
+      STATUS current
       DESCRIPTION
         "Hard read error count for current cartridge"
       ::= { driveEntry 18 }
@@ -663,7 +659,7 @@
 --
 -- Trap definitions
 --
-    TL2000Event OBJECT IDENTIFIER ::= { TL2000 4 }
+    dellTapeLib2000Event OBJECT IDENTIFIER ::= { dellTapeLib2000 4 }
     
 	eventStatusChange NOTIFICATION-TYPE
 		STATUS current
@@ -673,7 +669,7 @@
 		--#SUMMARY "The library %s (Serial Number %s) status has changed from %s to %s"
 		--#ARGUMENTS {0,1,2,3}
 		--#SEVERITY INFORMATIONAL
-		::= {TL2000Event 1}
+		::= {dellTapeLib2000Event 1}
 
 	eventDoorOpen NOTIFICATION-TYPE
 		STATUS  current
@@ -683,7 +679,7 @@
 		--#SUMMARY "The library %s (Serial Number %s) door has been opened."
 		--#ARGUMENTS {0,1}
 		--#SEVERITY INFORMATIONAL
-		::= {TL2000Event 2}
+		::= {dellTapeLib2000Event 2}
 	
 	eventMailSlotAccessed NOTIFICATION-TYPE
 		STATUS  current
@@ -693,7 +689,7 @@
 		--#SUMMARY "The library %s (Serial Number %s) mail slot has been accessed."
 		--#ARGUMENTS {0,1}
 		--#SEVERITY INFORMATIONAL
-		::= {TL2000Event 3}
+		::= {dellTapeLib2000Event 3}
 	
 	eventFaultPosted NOTIFICATION-TYPE
 		STATUS  current
@@ -703,7 +699,7 @@
 		--#SUMMARY "The library %s (Serial Number %s) has posted a hard fault. Severity = %s, FSC = %s, Description = %s."
 		--#ARGUMENTS {0,1,2,3,4}
 		--#SEVERITY CRITICAL
-		::= {TL2000Event 4}
+		::= {dellTapeLib2000Event 4}
 	
 	eventRequestDriveClean NOTIFICATION-TYPE
 		STATUS  current
@@ -714,7 +710,7 @@
 		--#SUMMARY "One of the library %s (Serial Number %s) tape drives has requested a cleaning cycle."
 		--#ARGUMENTS {0,1}
 		--#SEVERITY INFORMATIONAL
-		::= {TL2000Event 5}
+		::= {dellTapeLib2000Event 5}
 	
 	eventDriveError NOTIFICATION-TYPE
 		STATUS  current
@@ -724,7 +720,7 @@
 		--#SUMMARY "One of the library %s (Serial Number %s) tape drives has reported an error condition."
 		--#ARGUMENTS {0,1}
 		--#SEVERITY MAJOR
-		::= {TL2000Event 6}
+		::= {dellTapeLib2000Event 6}
 	
 	eventLoaderRetriesExcessive NOTIFICATION-TYPE
 		STATUS  current
@@ -734,7 +730,7 @@
 		--#SUMMARY "The library %s (Serial Number %s) has detected excessive loader retries."
 		--#ARGUMENTS {0,1}
 		--#SEVERITY MINOR
-		::= {TL2000Event 7}
+		::= {dellTapeLib2000Event 7}
 	
 	eventLoaderOK NOTIFICATION-TYPE
 		STATUS  current
@@ -744,83 +740,12 @@
 		--#SUMMARY "The library %s (Serial Number %s) has reverted to normal operation."
 		--#ARGUMENTS {0,1}
 		--#SEVERITY INFORMATIONAL
-		::= {TL2000Event 8}    
+		::= {dellTapeLib2000Event 8}    
 		
-	--OLD Style Trap definitions      
-	
-	eventStatusChange TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum, 
-        			  TL2000StatusLastGlobalStatus,
-        			  TL2000StatusGlobalStatus	 }		
-    	DESCRIPTION 
-			"The library status has changed."	
-		::=  1
-		
-	eventDoorOpen  TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum	 }		
-		DESCRIPTION
-			"The library door has been opened."		
-		::= 2
-	
-	eventMailSlotAccessed TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum	 }
-   		DESCRIPTION
-			"The library mail slot has been accessed."	
-		::= 3
-	
-	eventFaultPosted TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum,
-        			  libraryFaultSev,
-        			  libraryFaultFSC,
-        			  libraryFaultDescr	 }
-   		DESCRIPTION
-			"The library has posted a hard fault."		
-		::= 4
-			
-	eventRequestDriveClean TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum	 }
-		DESCRIPTION
-			"One of the library tape drives has requested a cleaning cycle to ensure continued
-            data reliability."		
-        ::= 5
-	
-	eventDriveError TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum	 }
-		DESCRIPTION
-			"One of the library tape drives has reported an error condition."
-		::= 6
-	
-	eventLoaderRetriesExcessive TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum	 }
-		DESCRIPTION
-			"The library has detected excessive loader retries."
-		::= 7
-	
-	eventLoaderOK TRAP-TYPE    
-    	ENTERPRISE  TL2000Event
-        VARIABLES   { libraryProductId,
-        			  librarySerNum	 }
-		DESCRIPTION
-			"The library has reverted to normal operation."
-		::= 8  
   END
 
 --
--- DELL-TL2000-MIB.mib
+-- DELL-dellTapeLib2000-MIB.mib
 --
 
 

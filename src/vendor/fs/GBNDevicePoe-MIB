@@ -43,7 +43,7 @@ poePowerSupplyTable OBJECT-TYPE
    }
    
      powerindex OBJECT-TYPE
-       SYNTAX      Integer32
+       SYNTAX INTEGER
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -67,7 +67,7 @@ poePowerSupplyTable OBJECT-TYPE
        ::= { poePowerSupplyEntry 3 }
 
 	poeDevicePowerLimit OBJECT-TYPE
-		SYNTAX Integer32(37..806)
+		SYNTAX INTEGER (37..806)
 		MAX-ACCESS read-write
 		STATUS current
 		DESCRIPTION
@@ -75,7 +75,7 @@ poePowerSupplyTable OBJECT-TYPE
 		::= { poePowerSupplyEntry 4 }
 		
 	poeDevicePowerConsume OBJECT-TYPE
-		SYNTAX Integer32
+		SYNTAX INTEGER
 		MAX-ACCESS read-only
 		STATUS current
 		DESCRIPTION
@@ -109,7 +109,7 @@ poePortTable OBJECT-TYPE
    }
    
      portIndex OBJECT-TYPE
-       SYNTAX      Integer32
+       SYNTAX INTEGER
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -117,7 +117,7 @@ poePortTable OBJECT-TYPE
        ::= { poePortEntry 1 }
 
       powerlimit  OBJECT-TYPE
-       SYNTAX             Integer32
+       SYNTAX INTEGER
        MAX-ACCESS         read-write
        STATUS             current
        DESCRIPTION
@@ -125,7 +125,7 @@ poePortTable OBJECT-TYPE
        ::= { poePortEntry 2 }
        
       powerConsume  OBJECT-TYPE
-       SYNTAX             Integer32
+       SYNTAX INTEGER
        MAX-ACCESS         read-only
        STATUS             current
        DESCRIPTION
@@ -159,7 +159,7 @@ poePdPortTable OBJECT-TYPE
 }
    
      portPdIndex OBJECT-TYPE
-       SYNTAX      Integer32
+       SYNTAX INTEGER
        MAX-ACCESS  read-only
        STATUS      current
        DESCRIPTION
@@ -167,7 +167,7 @@ poePdPortTable OBJECT-TYPE
        ::= { poePdPortEntry 1 }
 
       portPoePdEnable  OBJECT-TYPE
-       SYNTAX             Integer32
+       SYNTAX INTEGER
        MAX-ACCESS         read-only
        STATUS             current
        DESCRIPTION
@@ -175,7 +175,7 @@ poePdPortTable OBJECT-TYPE
        ::= { poePdPortEntry 2 }
        
       portPoePdConfig  OBJECT-TYPE
-       SYNTAX             Integer32
+       SYNTAX INTEGER
        MAX-ACCESS         read-write
        STATUS             current
        DESCRIPTION
@@ -230,7 +230,7 @@ poeFanControlTable OBJECT-TYPE
        ::= { poeFanControlEntry 1 }
        
       poeFanlowVaule  OBJECT-TYPE
-       SYNTAX             Integer32(0..25)
+       SYNTAX INTEGER (0..25)
        MAX-ACCESS         read-write
        STATUS             current
        DESCRIPTION
@@ -238,7 +238,7 @@ poeFanControlTable OBJECT-TYPE
        ::= { poeFanControlEntry 2 }
 
 	  poeFanmiddleVaule  OBJECT-TYPE
-       SYNTAX             Integer32(26..60)
+       SYNTAX INTEGER (26..60)
        MAX-ACCESS         read-write
        STATUS             current
        DESCRIPTION
@@ -246,7 +246,7 @@ poeFanControlTable OBJECT-TYPE
        ::= { poeFanControlEntry 3 }
 
       poeFanhighVaule  OBJECT-TYPE
-       SYNTAX             Integer32(61..70)
+       SYNTAX INTEGER (61..70)
        MAX-ACCESS         read-write
        STATUS             current
        DESCRIPTION
@@ -264,14 +264,14 @@ poeFanControlTable OBJECT-TYPE
         "poe fan-control user defined set"
        ::= { poeFanControlEntry 5 } 
       poeFan1Speed  OBJECT-TYPE
-       SYNTAX             Integer32
+       SYNTAX INTEGER
        MAX-ACCESS         read-only
        STATUS             current
        DESCRIPTION
         "the fan1 speed of the switch"
        ::= { poeFanControlEntry 6 } 
      poeFan2Speed  OBJECT-TYPE
-       SYNTAX             Integer32
+       SYNTAX INTEGER
        MAX-ACCESS         read-only
        STATUS             current
        DESCRIPTION

@@ -776,7 +776,7 @@ sfosIPSecVpnConnDes OBJECT-TYPE
         "Descriptive of the tunnel"
     ::= { sfosIPSecVpnTunnelEntry 3 }
 
-sfosIPSecVpnPolicyName OBJECT-TYPE
+sfosIPSecVpnTunnelPolicyName OBJECT-TYPE
     SYNTAX      DisplayString
     MAX-ACCESS  read-only
     STATUS      current
@@ -945,7 +945,16 @@ sfosDeviceAPTable OBJECT-TYPE
     DESCRIPTION		"Table of objects that contain AP details"
     ::= { sfosXGWiFiInfo 1 }
 
-sfosDeviceAPEntry OBJECT-TYPE
+SfosDeviceAPEntry ::= SEQUENCE {
+	sfosDeviceAPName	DisplayString,
+	sfosDeviceAPModel	DisplayString,
+	sfosDeviceAPIPAddress	IpAddress,
+	sfosDeviceAPMacAddrCol	PhysAddress,
+	sfosDeviceAPStatus	APStatusType,
+	sfosDeviceAPClientCount	Integer32
+}
+
+sfosDeviceAPTableEntry OBJECT-TYPE
     SYNTAX		SfosDeviceAPEntry
     MAX-ACCESS		not-accessible
     STATUS		current
@@ -953,56 +962,47 @@ sfosDeviceAPEntry OBJECT-TYPE
     INDEX       	{ sfosDeviceAPName }
     ::= { sfosDeviceAPTable 1 }
 
-SfosDeviceAPEntry ::= SEQUENCE {
-	sfosDeviceAPName	DisplayString,
-	sfosDeviceAPModel	DisplayString,
-	sfosDeviceAPIPAddress	IpAddress,
-	sfosDeviceAPMacAddress	PhysAddress,
-	sfosDeviceAPStatus	APStatusType,
-	sfosDeviceAPClientCount	Integer32
-}
-
 sfosDeviceAPName OBJECT-TYPE
     SYNTAX			DisplayString (SIZE(0..128))
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"Device Name of AP"
-    ::= { sfosDeviceAPEntry 1 }
+    ::= { sfosDeviceAPTableEntry 1 }
 	
 sfosDeviceAPModel OBJECT-TYPE
     SYNTAX			DisplayString (SIZE(0..128))
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"Model Name of AP"
-    ::= { sfosDeviceAPEntry 2 }
+    ::= { sfosDeviceAPTableEntry 2 }
 
 sfosDeviceAPIPAddress OBJECT-TYPE
     SYNTAX			IpAddress
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"IP Address of AP"
-    ::= { sfosDeviceAPEntry 3 }
+    ::= { sfosDeviceAPTableEntry 3 }
 
-sfosDeviceAPMacAddress OBJECT-TYPE
-    SYNTAX			MacAddress
+sfosDeviceAPMacAddr OBJECT-TYPE
+    SYNTAX			PhysAddress
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"MAC address of AP"
-    ::= { sfosDeviceAPEntry 4 }
+    ::= { sfosDeviceAPTableEntry 4 }
 
 sfosDeviceAPStatus OBJECT-TYPE
     SYNTAX			APStatusType
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"Status of AP(up/down)"
-    ::= { sfosDeviceAPEntry 5 }
+    ::= { sfosDeviceAPTableEntry 5 }
 
 sfosDeviceAPClientCount OBJECT-TYPE
     SYNTAX		Integer32
     MAX-ACCESS		read-only
     STATUS		current
     DESCRIPTION		"Number of client connected to AP"
-    ::= { sfosDeviceAPEntry 6 }
+    ::= { sfosDeviceAPTableEntry 6 }
 
 sfosDeviceAPClientTable OBJECT-TYPE	
     SYNTAX		SEQUENCE OF SfosDeviceAPClientEntry
@@ -1011,7 +1011,17 @@ sfosDeviceAPClientTable OBJECT-TYPE
     DESCRIPTION		"Table of objects that contain AP client details"
     ::= { sfosXGWiFiInfo 2 }
 
-sfosDeviceAPClientEntry OBJECT-TYPE
+SfosDeviceAPClientEntry ::= SEQUENCE {
+	  clientIndex			Integer32,
+	  clientName			DisplayString,
+	  clientIPAddType		InetAddressType,
+	  clientIPAdd			InetAddress,
+	  clientMacAddrCol			PhysAddress,
+	  clientChannel			DisplayString,
+	  clientSSID			DisplayString
+}
+
+sfosDeviceAPClientTableEntry OBJECT-TYPE
     SYNTAX		SfosDeviceAPClientEntry
     MAX-ACCESS		not-accessible
     STATUS		current
@@ -1019,64 +1029,54 @@ sfosDeviceAPClientEntry OBJECT-TYPE
     INDEX       	{ clientIndex }
     ::= { sfosDeviceAPClientTable 1 }
 
-SfosDeviceAPClientEntry ::= SEQUENCE {
-	  clientIndex			Integer32,
-	  clientName			DisplayString,
-	  clientIPAddType		InetAddressType,
-	  clientIPAdd			InetAddress,
-	  clientMacAdd			MacAddress,
-	  clientChannel			DisplayString,
-	  clientSSID			DisplayString
-}
-
 clientIndex OBJECT-TYPE
     SYNTAX		Integer32 (1..65535)
     MAX-ACCESS		not-accessible
     STATUS		current
     DESCRIPTION		"Index of AP client"
-    ::= { sfosDeviceAPClientEntry 1 }
+    ::= { sfosDeviceAPClientTableEntry 1 }
 	
 clientName OBJECT-TYPE
     SYNTAX		DisplayString
     MAX-ACCESS		read-only
     STATUS		current
     DESCRIPTION		"Name of AP client"
-    ::= { sfosDeviceAPClientEntry 2 }
+    ::= { sfosDeviceAPClientTableEntry 2 }
 	
 clientIPAddType OBJECT-TYPE
     SYNTAX		InetAddressType
     MAX-ACCESS		read-only
     STATUS		current
     DESCRIPTION		"IP Address of AP client"
-    ::= { sfosDeviceAPClientEntry 3 }
+    ::= { sfosDeviceAPClientTableEntry 3 }
 
 clientIPAdd OBJECT-TYPE
     SYNTAX			InetAddress
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"IP Address of AP client"
-    ::= { sfosDeviceAPClientEntry 4 }
+    ::= { sfosDeviceAPClientTableEntry 4 }
 
-clientMacAdd OBJECT-TYPE
-    SYNTAX			MacAddress
+clientMacAddr OBJECT-TYPE
+    SYNTAX			PhysAddress
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"MAC Address of AP client"
-    ::= { sfosDeviceAPClientEntry 5 }
+    ::= { sfosDeviceAPClientTableEntry 5 }
 
 clientChannel OBJECT-TYPE
     SYNTAX			DisplayString (SIZE(0..128))
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"Name of the channel to which AP client is connected"
-    ::= { sfosDeviceAPClientEntry 6 }
+    ::= { sfosDeviceAPClientTableEntry 6 }
 
 clientSSID OBJECT-TYPE
     SYNTAX			DisplayString (SIZE(0..128))
     MAX-ACCESS		read-only
     STATUS			current
     DESCRIPTION		"Name of SSID to which AP client is connected"
-    ::= { sfosDeviceAPClientEntry 7 }
+    ::= { sfosDeviceAPClientTableEntry 7 }
 
 
 -- SFOS-XG MIB.sfosXGTrap
@@ -1248,13 +1248,13 @@ sfosWiFiInfoGroup OBJECT-GROUP
 		sfosDeviceAPName,
 		sfosDeviceAPModel,
 		sfosDeviceAPIPAddress,
-		sfosDeviceAPMacAddress,
+		sfosDeviceAPMacAddr,
 		sfosDeviceAPStatus,
 		sfosDeviceAPClientCount,
 		clientName,
 		clientIPAddType,
 		clientIPAdd,
-		clientMacAdd,
+		clientMacAddr,
 		clientChannel,
 		clientSSID }
 	STATUS current

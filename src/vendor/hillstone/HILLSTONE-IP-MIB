@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneIp
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212;	
+		FROM SNMPv2-SMI;	
 
           -- textual conventions
 

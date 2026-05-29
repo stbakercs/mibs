@@ -3,8 +3,9 @@ HP-OV-NETMON DEFINITIONS ::= BEGIN
 -- First cut at HP OpenView Netmon MIB
 
 IMPORTS
-	OBJECT-TYPE
-		FROM RFC-1212;
+	OBJECT-TYPE,
+	enterprises
+		FROM SNMPv2-SMI;
 
 hp		OBJECT IDENTIFIER ::= { enterprises 11 }
 nm		OBJECT IDENTIFIER ::= { hp 2 }

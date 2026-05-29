@@ -326,7 +326,7 @@
  			
 -- (3) tpPoeRecovery Objects
 			tpPoeRecoveryGlobal		OBJECT IDENTIFIER ::= {tpPoeRecovery 1}  
-			tpPoeRecoveryPort		OBJECT IDENTIFIER ::= {tpPoeRecovery 2}  
+			tpPoeRecoveryPortSubtree		OBJECT IDENTIFIER ::= {tpPoeRecovery 2}  
 			
 			tpPoeRecoveryGlobalStatus OBJECT-TYPE
             SYNTAX  INTEGER
@@ -346,7 +346,7 @@
             STATUS  current
             DESCRIPTION
                     "A list of PoE Auto Recovery entries. Here you can configure the PoE Auto Recovery feature on each port."
-            ::= { tpPoeRecoveryPort 1 }
+            ::= { tpPoeRecoveryPortSubtree 1 }
 
             tpPoeRecoveryPortEntry OBJECT-TYPE
             SYNTAX  POERECOVERYPORTENTRY
@@ -381,7 +381,7 @@
                                 tpPoeRecoveryTotal
                                         INTEGER            
                 }
-        tpPoeRecoveryPort OBJECT-TYPE
+        tpPoeRecoveryPortCol OBJECT-TYPE
             SYNTAX  INTEGER  
             MAX-ACCESS  read-only
             STATUS  current
@@ -465,7 +465,7 @@
             ::= { tpPoeRecoveryPortEntry 10 }
 			
 ---(4) tpPoeExtend Objects
-			tpPoeExtendPort			OBJECT IDENTIFIER ::= {tpPoeExtend 1}  
+			tpPoeExtendPortSubtree			OBJECT IDENTIFIER ::= {tpPoeExtend 1}  
 			
 			tpPoeExtendPortTable OBJECT-TYPE
             SYNTAX  SEQUENCE OF POEEXTENDPORTENTRY
@@ -473,7 +473,7 @@
             STATUS  current
             DESCRIPTION
                     "A list of PoE Extend Mode entries. Here you can configure the PoE Extend Mode feature on each port."
-            ::= { tpPoeExtendPort 1 }
+            ::= { tpPoeExtendPortSubtree 1 }
 
             tpPoeExtendPortEntry OBJECT-TYPE
             SYNTAX  POEEXTENDPORTENTRY
@@ -492,7 +492,7 @@
                                 tpPoeExtendStatus
                                         INTEGER            
                 }
-        tpPoeExtendPort OBJECT-TYPE
+        tpPoeExtendPortCol OBJECT-TYPE
             SYNTAX  INTEGER  
             MAX-ACCESS  read-only
             STATUS  current

@@ -817,5 +817,11 @@ serventIND1Aqe OBJECT-IDENTITY
         ::= { softwareIND1Services 1 }
 
 
+groupmobilityTraps OBJECT IDENTIFIER ::= { softentIND1GroupMobility 0 }
+pethTraps OBJECT IDENTIFIER ::= { softentIND1InLinePower 0 }
+alaLbdTraps OBJECT IDENTIFIER ::= { softentIND1Lbd 0 }
+wccpTraps OBJECT IDENTIFIER ::= { softentIND1Wccp 0 }
+
+
 END
 

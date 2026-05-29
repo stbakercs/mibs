@@ -6327,7 +6327,7 @@ pingHistoryEntry OBJECT-TYPE
     INDEX { pingHistoryIndex  }
     ::= { pingHistoryTable 1 }
 
-PingHistoryEntry::= SEQUENCE
+PingHistoryEntry ::= SEQUENCE
 {
     pingHistoryIndex          Integer32,
     pingHistoryResponse       Integer32
@@ -8965,7 +8965,7 @@ diffServIpAceSourcePortBitmask OBJECT-TYPE
     ::= { diffServIpAceEntry 15 }
 
 diffServIpAceDestPortOp OBJECT-TYPE
-    SYNTAX      INTEGER{
+    SYNTAX      INTEGER {
                 noOperator(1),
                 equal(2),
                 range(3)
@@ -9082,7 +9082,7 @@ diffServIpAceStatus OBJECT-TYPE
     ::= { diffServIpAceEntry 22 }
 
 diffServIpAceVidOp OBJECT-TYPE
-        SYNTAX      INTEGER{
+        SYNTAX      INTEGER {
                     noOperator(1),
                     equal(2)
         }
@@ -10607,7 +10607,7 @@ privateVlanSessionEntry   OBJECT-TYPE
     INDEX { privateVlanSessionId }
     ::= { privateVlanSessionTable 1 }
 
-PrivateVlanSessionEntry::= SEQUENCE
+PrivateVlanSessionEntry ::= SEQUENCE
 {
     privateVlanSessionId                            INTEGER,
     privateVlanSessionUplinkPorts                   PortList,
@@ -10875,7 +10875,7 @@ RadiusServerEntry ::= SEQUENCE
    radiusServerKey                    DisplayString,
    radiusServerRetransmit             Integer32,
    radiusServerTimeout                Integer32,
-   radiusServerStatus                 ValidStatus
+   radiusServerStatus                 ValidStatus,
    radiusServerType                    EnabledStatus  
 }
 
@@ -13027,7 +13027,7 @@ excludeVlanSessionEntry   OBJECT-TYPE
     INDEX { excludeVlanSessionId }
     ::= { excludeVlanSessionTable 1 }
 
-ExcludeVlanSessionEntry::= SEQUENCE
+ExcludeVlanSessionEntry ::= SEQUENCE
 {
     excludeVlanSessionId                            INTEGER,
     excludeVlanSessionVlans                         DisplayString,	
@@ -13036,7 +13036,7 @@ ExcludeVlanSessionEntry::= SEQUENCE
     excludeVlanSessionStatus                        ValidStatus
 }
 
-ExcludeVlanSessionId              OBJECT-TYPE
+excludeVlanSessionId              OBJECT-TYPE
     SYNTAX      INTEGER(1..4)
     MAX-ACCESS  not-accessible
     STATUS      current
@@ -13044,7 +13044,7 @@ ExcludeVlanSessionId              OBJECT-TYPE
                  VLAN session information."
     ::= { excludeVlanSessionEntry 1 }
 	
-ExcludeVlanSessionVlans              OBJECT-TYPE
+excludeVlanSessionVlans              OBJECT-TYPE
     SYNTAX      DisplayString (SIZE (1..32))
     MAX-ACCESS  read-create
     STATUS      current
@@ -14449,7 +14449,7 @@ ntpAuthKeyEntry OBJECT-TYPE
         INDEX       { ntpAuthKeyId }
         ::= { ntpAuthKeyTable 1 }
 
-NtpAuthKeyEntry::= SEQUENCE
+NtpAuthKeyEntry ::= SEQUENCE
         {
             ntpAuthKeyId        Integer32,
             ntpAuthKeyWord      OCTET STRING,

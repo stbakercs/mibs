@@ -55,10 +55,10 @@ f2FWDMacAddressEntry OBJECT-TYPE
     ::= { f2FWDTable 1 }
 
 F2FWDMacAddressEntry ::= SEQUENCE {
-    F2FWDMacAddress OCTET STRING
+    f2FwdMacAddressValue OCTET STRING
 }
 
-F2FWDMacAddress OBJECT-TYPE
+f2FwdMacAddress OBJECT-TYPE
     SYNTAX      MacAddress
     MAX-ACCESS  read-only
     STATUS      current

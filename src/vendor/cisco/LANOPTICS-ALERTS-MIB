@@ -99,13 +99,54 @@ IMPORTS
                     SYNTAX  LanOpticsAlertsRegisterEntry
                     ACCESS  not-accessible
                     STATUS  mandatory
-                    INDEX   { INTEGER ,INTEGER,INTEGER,INTEGER}
+                    INDEX   { lanOpticsAlertsRegisterIp1, lanOpticsAlertsRegisterIp2,
+                              lanOpticsAlertsRegisterIp3, lanOpticsAlertsRegisterIp4 }
                     ::= { lanOpticsAlertsRegisterTable 1 }
 
         LanOpticsAlertsRegisterEntry  ::= SEQUENCE {
+               lanOpticsAlertsRegisterIp1
+                        INTEGER,
+               lanOpticsAlertsRegisterIp2
+                        INTEGER,
+               lanOpticsAlertsRegisterIp3
+                        INTEGER,
+               lanOpticsAlertsRegisterIp4
+                        INTEGER,
                lanOpticsAlertsRegister
                         INTEGER
                }
+
+        lanOpticsAlertsRegisterIp1 OBJECT-TYPE
+                     SYNTAX  INTEGER (0..255)
+                     ACCESS  not-accessible
+                     STATUS  mandatory
+                     DESCRIPTION
+                        "First octet of the manager IP address."
+                     ::= { lanOpticsAlertsRegisterEntry 1 }
+
+        lanOpticsAlertsRegisterIp2 OBJECT-TYPE
+                     SYNTAX  INTEGER (0..255)
+                     ACCESS  not-accessible
+                     STATUS  mandatory
+                     DESCRIPTION
+                        "Second octet of the manager IP address."
+                     ::= { lanOpticsAlertsRegisterEntry 2 }
+
+        lanOpticsAlertsRegisterIp3 OBJECT-TYPE
+                     SYNTAX  INTEGER (0..255)
+                     ACCESS  not-accessible
+                     STATUS  mandatory
+                     DESCRIPTION
+                        "Third octet of the manager IP address."
+                     ::= { lanOpticsAlertsRegisterEntry 3 }
+
+        lanOpticsAlertsRegisterIp4 OBJECT-TYPE
+                     SYNTAX  INTEGER (0..255)
+                     ACCESS  not-accessible
+                     STATUS  mandatory
+                     DESCRIPTION
+                        "Fourth octet of the manager IP address."
+                     ::= { lanOpticsAlertsRegisterEntry 4 }
 
         lanOpticsAlertsRegister OBJECT-TYPE
                      SYNTAX  INTEGER {
@@ -118,7 +159,7 @@ IMPORTS
                         "A boolean variable that is set (to 1) if
                         the manager wants to be registered to receive
                         SNMP traps, and is set to 0 if not."
-                     ::= { lanOpticsAlertsRegisterEntry 1 }
+                     ::= { lanOpticsAlertsRegisterEntry 5 }
 
         lanOpticsAlertsTable  OBJECT-TYPE
                      SYNTAX  SEQUENCE OF LanOpticsAlertsEntry

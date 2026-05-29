@@ -348,19 +348,17 @@
        ::= { ubiServicePolicyMIBCompliances 1 }
 	                            
 -- compliance statements
-   	ubiServicePolicyMIBGroup  OBJECT-GROUP
-		OBJECTS {     
-			-- TODO 
-               }
+   	ubiServicePolicyMIBGroup  OBJECT-GROUP        OBJECTS {
+                oltServicePolicyTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss service policy information MIB"
         ::= { ubiServicePolicyMIBGroups 1 }
      
-     ubiServicePolicyMIBNotificationGroup    OBJECT-GROUP
-      	OBJECTS {     
-			-- TODO 
-               }
+     ubiServicePolicyMIBNotificationGroup    OBJECT-GROUP        OBJECTS {
+                oltServicePolicyTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss service policy information Notifications"

@@ -62,7 +62,7 @@ jnxProducts OBJECT-IDENTITY
     -- Juniper products.
     --
     jnxReservedProducts1            OBJECT IDENTIFIER ::= { jnxProducts 2 }
-    jnxReservedProducts2            OBJECT IDENTIFIER ::= { jnxProducts 3 }
+    jnxJunosSpace                   OBJECT IDENTIFIER ::= { jnxProducts 3 }
     jnxReservedProducts3            OBJECT IDENTIFIER ::= { jnxProducts 4 }
     jnxReservedProducts4            OBJECT IDENTIFIER ::= { jnxProducts 5 }
     jnxReservedProducts5            OBJECT IDENTIFIER ::= { jnxProducts 6 }
@@ -87,7 +87,7 @@ jnxMibs OBJECT-IDENTITY
     jnxJsMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 39 }
     jnxExMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 40 }
     jnxWxMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 41 }
-    jnxReservedMibs4           OBJECT IDENTIFIER ::= { jnxMibs 42 }
+    jnxDcfMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 42 }
     jnxReservedMibs5           OBJECT IDENTIFIER ::= { jnxMibs 43 }
 
     -- PFE data
@@ -129,6 +129,40 @@ jnxMibs OBJECT-IDENTITY
     -- juniper OTN MIB
     jnxOtnMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 56 }
 
+    jnxPsuMIBRoot                OBJECT IDENTIFIER ::= { jnxMibs 58 }
+    jnxSvcsMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 59 }
+    jnxDomMibRoot                OBJECT IDENTIFIER ::= { jnxMibs 60 }
+    jnxJdhcpMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 61 }
+    jnxJdhcpv6MibRoot            OBJECT IDENTIFIER ::= { jnxMibs 62 }
+    jnxLicenseMibRoot            OBJECT IDENTIFIER ::= { jnxMibs 63 }
+    jnxSubscriberMibRoot         OBJECT IDENTIFIER ::= { jnxMibs 64 }
+    jnxMagMibRoot                OBJECT IDENTIFIER ::= { jnxMibs 65 }
+    jnxMobileGatewayMibRoot      OBJECT IDENTIFIER ::= { jnxMibs 66 }
+    jnxPppoeMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 67 }
+    jnxPppMibRoot                OBJECT IDENTIFIER ::= { jnxMibs 68 }
+    jnxJVAEMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 69 }
+    jnxIfOtnMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 70 }
+    jnxOpticsMibRoot             OBJECT IDENTIFIER ::= { jnxMibs 71 }
+    jnxAlarmExtMibRoot           OBJECT IDENTIFIER ::= { jnxMibs 72 }
+    jnxoptIfMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 73 }
+    jnxFruMibRoot                OBJECT IDENTIFIER ::= { jnxMibs 74 }
+    jnxTimingNotfnsMIBRoot       OBJECT IDENTIFIER ::= { jnxMibs 75 }
+    jnxSnmpSetMibRoot            OBJECT IDENTIFIER ::= { jnxMibs 76 }
+    jnxTwampMibRoot              OBJECT IDENTIFIER ::= { jnxMibs 77 }
+    jnxVmonMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 79 }
+    jnxSGMibRoot                 OBJECT IDENTIFIER ::= { jnxMibs 80 }
+    jnxFabricMibRoot             OBJECT IDENTIFIER ::= { jnxMibs 81 }
+    jnxSRDMibRoot                OBJECT IDENTIFIER ::= { jnxMibs 82 }
+    jnxOamMibRoot                OBJECT IDENTIFIER ::= { jnxMibs 83 }
+    jnxTunnelStatsMibRoot        OBJECT IDENTIFIER ::= { jnxMibs 84 }
+    jnxURLFMibRoot               OBJECT IDENTIFIER ::= { jnxMibs 85 }
+    jnxCustomMibRoot             OBJECT IDENTIFIER ::= { jnxMibs 86 }
+    jnxWirelessWANStatusMibRoot  OBJECT IDENTIFIER ::= { jnxMibs 87 }
+    jnxWlanWAPStatusMibRoot      OBJECT IDENTIFIER ::= { jnxMibs 88 }
+    jnxUserFirewallsRoot         OBJECT IDENTIFIER ::= { jnxMibs 89 }
+    jnxjSysmonMibRoot            OBJECT IDENTIFIER ::= { jnxMibs 90 }
+    jnxTLBMIBRoot                OBJECT IDENTIFIER ::= { jnxMibs 91 }
+
 
 
 
@@ -156,6 +190,24 @@ jnxTraps OBJECT-IDENTITY
     -- jnxSAIDPNotifications is for Stand alone IDP devices
     jnxSAIDPNotifications      OBJECT IDENTIFIER ::= { jnxTraps 16 }
     jnxCosNotifications        OBJECT IDENTIFIER ::= { jnxTraps 17 }
+    jnxDomNotifications          OBJECT IDENTIFIER ::= { jnxTraps 18 }
+    jnxFabricChassisTraps        OBJECT IDENTIFIER ::= { jnxTraps 19 }
+    jnxFabricChassisOKTraps      OBJECT IDENTIFIER ::= { jnxTraps 20 }
+    jnxIfOtnNotifications        OBJECT IDENTIFIER ::= { jnxTraps 21 }
+    jnxOpticsNotifications       OBJECT IDENTIFIER ::= { jnxTraps 22 }
+    jnxFruTraps                  OBJECT IDENTIFIER ::= { jnxTraps 23 }
+    jnxSnmpSetTraps              OBJECT IDENTIFIER ::= { jnxTraps 24 }
+    jnxDomLaneNotifications      OBJECT IDENTIFIER ::= { jnxTraps 25 }
+    jnxTwampNotificationPrefix   OBJECT IDENTIFIER ::= { jnxTraps 27 }
+    jnxIplcNotifications         OBJECT IDENTIFIER ::= { jnxTraps 28 }
+    jnxIlaNotifications          OBJECT IDENTIFIER ::= { jnxTraps 29 }
+    jnxCustomSyslogNotifications OBJECT IDENTIFIER ::= { jnxTraps 30 }
+    jnxjSysmonNotifications      OBJECT IDENTIFIER ::= { jnxTraps 31 }
+    jnxTLBNotifications          OBJECT IDENTIFIER ::= { jnxTraps 32 }
+    jnxAsicExtMemTraps           OBJECT IDENTIFIER ::= { jnxTraps 33 }
+    jnxAsicExtMemOKTraps         OBJECT IDENTIFIER ::= { jnxTraps 34 }
+    jnxPoeTraps                  OBJECT IDENTIFIER ::= { jnxTraps 35 }
+    jnxPoeOKTraps                OBJECT IDENTIFIER ::= { jnxTraps 36 }
 
 
 --  This is the top-level object identifier registry used by Juniper
@@ -193,5 +245,8 @@ jnxAAA OBJECT IDENTIFIER ::= { juniperMIB 8 }
 -- Advanced Insight Manager. 
 --
 jnxAdvancedInsightMgr OBJECT IDENTIFIER ::= { juniperMIB 9 }
+
+jnxBxMibRoot                 OBJECT IDENTIFIER ::= { juniperMIB 10 }
+jnxAgentCapability           OBJECT IDENTIFIER ::= { juniperMIB 11 }
 
 END

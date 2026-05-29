@@ -1,7 +1,7 @@
 SNR-ERD-4 DEFINITIONS ::= BEGIN
 
 IMPORTS
-	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE, Unsigned32
 		FROM SNMPv2-SMI
 	enterprises, IpAddress, Counter					
 		FROM RFC1155-SMI
@@ -23,16 +23,16 @@ snr MODULE-IDENTITY
 	::= { enterprises 40418 }
 
 
-snr-erd		OBJECT IDENTIFIER	::= { snr 2 }
-snr-erd-4	OBJECT IDENTIFIER	::= { snr-erd 6 }
+snrErd		OBJECT IDENTIFIER	::= { snr 2 }
+snrErd4	OBJECT IDENTIFIER	::= { snrErd 6 }
 
-measurements		OBJECT IDENTIFIER	 ::= { snr-erd-4 1 }
+measurements		OBJECT IDENTIFIER	 ::= { snrErd4 1 }
 
-dio			OBJECT IDENTIFIER	::= { snr-erd-4 2 }
-serial			OBJECT IDENTIFIER	::= { snr-erd-4 4 }
-modules			OBJECT IDENTIFIER	::= { snr-erd-4 5 }
-options			OBJECT IDENTIFIER	::= { snr-erd-4 10 }
-diffparams		OBJECT IDENTIFIER	::= { snr-erd-4 11 }
+dio			OBJECT IDENTIFIER	::= { snrErd4 2 }
+serial			OBJECT IDENTIFIER	::= { snrErd4 4 }
+modules			OBJECT IDENTIFIER	::= { snrErd4 5 }
+options			OBJECT IDENTIFIER	::= { snrErd4 10 }
+diffparams		OBJECT IDENTIFIER	::= { snrErd4 11 }
 
 
 oneWire		OBJECT IDENTIFIER	::= { measurements 1 }
@@ -49,7 +49,7 @@ upsStatus		OBJECT IDENTIFIER	::= { diffparams 1 }
 
 pid			OBJECT IDENTIFIER	::= { diffparams 10 }
 
-traps			OBJECT IDENTIFIER	::= { snr-erd-4 0 }
+traps			OBJECT IDENTIFIER	::= { snrErd4 0 }
 
 crit			OBJECT IDENTIFIER	::= { options 10 }
 
@@ -79,43 +79,43 @@ humidityDHT		OBJECT-TYPE
 -- dtsTable
 
 dtsTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF dtsEntry
+    SYNTAX      SEQUENCE OF DtsEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION	"A list of temperature sensors values"
     ::= { oneWire 1 }
 
-dtsEntry OBJECT-TYPE
-    SYNTAX      dtsEntry
+DtsEntry ::=
+    SEQUENCE {
+        dtsId           	Unsigned32,
+	dtsName			OCTET STRING,
+        dtsTemp            	Integer,
+		tempCritNotif		Integer,
+		tempCritMinVal			Integer,
+		tempCritMaxVal			Integer
+    }
+
+dtsTableEntry OBJECT-TYPE
+    SYNTAX      DtsEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION	"An entry (conceptual row) in the dtsTable"
     INDEX   { dtsId } 
 ::= { dtsTable 1 }
 
-dtsEntry ::=
-    SEQUENCE {
-        dtsId           	UInteger32,
-	dtsName			OctetString,
-        dtsTemp            	Integer,
-		tempCritNotif		Integer,
-		tempCritMin			Integer,
-		tempCritMax			Integer
-    }
-
 dtsId 		OBJECT-TYPE
-    SYNTAX      UInteger32
+    SYNTAX      Unsigned32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION	"Temperature sensor id"
-    ::= { dtsEntry 1 }
+    ::= { dtsTableEntry 1 }
 
 dtsName 	OBJECT-TYPE
     SYNTAX      OCTET STRING
     MAX-ACCESS  read-write
     STATUS      current
     DESCRIPTION	"Name (max 20)"
-    ::= { dtsEntry 2 }
+    ::= { dtsTableEntry 2 }
 
 dtsTemp 	OBJECT-TYPE
     SYNTAX      INTEGER
@@ -123,7 +123,7 @@ dtsTemp 	OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Temperature value"
-    ::= { dtsEntry 3 }
+    ::= { dtsTableEntry 3 }
 	
 tempCritNotif	OBJECT-TYPE
 	SYNTAX		INTEGER
@@ -134,66 +134,57 @@ tempCritNotif	OBJECT-TYPE
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Enable notifications on the critical temperature"
-::= { dtsEntry 10 }
+::= { dtsTableEntry 10 }
 	
-tempCritMin		OBJECT-TYPE
+tempCritMinVal		OBJECT-TYPE
 	SYNTAX		INTEGER
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Minimal critical temperature. 
-Up to -55 °C"
-::= { dtsEntry 15 }
+Up to -55 ï¿½C"
+::= { dtsTableEntry 15 }
 
-tempCritMax	OBJECT-TYPE
+tempCritMaxVal	OBJECT-TYPE
 	SYNTAX		INTEGER
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Maximum critical temperature. 
-Up to +125°C"
-::= { dtsEntry 16 }
+Up to +125ï¿½C"
+::= { dtsTableEntry 16 }
 
 -- shuntTable
 
 shuntTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF shuntEntry
+    SYNTAX      SEQUENCE OF ShuntEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
             "A list of SNR-SHUNT values"
     ::= { oneWire 2 }
 
-shuntEntry OBJECT-TYPE
-    SYNTAX      shuntEntry
-    MAX-ACCESS  not-accessible
-    STATUS      current
-    DESCRIPTION
-            "An entry (conceptual row) in the shuntTable"
-    INDEX   { shuntId }
-    ::= { shuntTable 1 }
-
-shuntEntry ::=
+ShuntEntry ::=
     SEQUENCE {
-        shuntId      	UInteger32,
-	shuntName	OctetString,
+        shuntId      	Unsigned32,
+	shuntName	OCTET STRING,
         shuntTemp       Integer,
         shuntVolt       Integer,
 	shuntCurrent	Integer,
 	shuntCapacity	Integer,
 	shuntChrgCap	Integer,
 	shuntDischCap	Integer,
-	shuntEndOfChrg	OctetString,
-	shuntDiscn	OctetString,
+	shuntEndOfChrg	OCTET STRING,
+	shuntDiscn	OCTET STRING,
 	shuntBatLive	TimeTicks,
 	shuntDischTime	TimeTicks
     }
 
 shuntId 	OBJECT-TYPE
-    SYNTAX      UInteger32
+    SYNTAX      Unsigned32
     MAX-ACCESS  read-only
     STATUS      current
     DESCRIPTION
             "SNR-SHUNT id"
-    ::= { shuntEntry 1 }
+    ::= { shuntTableEntry 1 }
 
 shuntName OBJECT-TYPE
     SYNTAX      OCTET STRING
@@ -201,7 +192,7 @@ shuntName OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Name (max 20)"
-    ::= { shuntEntry 2 }
+    ::= { shuntTableEntry 2 }
 
 shuntTemp OBJECT-TYPE
     SYNTAX      INTEGER
@@ -209,7 +200,7 @@ shuntTemp OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Temperature value"
-    ::= { shuntEntry 3 }
+    ::= { shuntTableEntry 3 }
 
 shuntVolt OBJECT-TYPE
     SYNTAX      INTEGER
@@ -217,7 +208,7 @@ shuntVolt OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Voltage"
-    ::= { shuntEntry 4 }
+    ::= { shuntTableEntry 4 }
 
 shuntCurrent OBJECT-TYPE
     SYNTAX      INTEGER
@@ -225,7 +216,7 @@ shuntCurrent OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Current"
-    ::= { shuntEntry 5 }
+    ::= { shuntTableEntry 5 }
 
 shuntChrgLvl OBJECT-TYPE
     SYNTAX      INTEGER
@@ -233,7 +224,7 @@ shuntChrgLvl OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Battery charge level (0..100%)"
-    ::= { shuntEntry 6 }
+    ::= { shuntTableEntry 6 }
 
 shuntChrgCap 	OBJECT-TYPE
     SYNTAX      INTEGER
@@ -241,7 +232,7 @@ shuntChrgCap 	OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Charge capacity"
-    ::= { shuntEntry 7 }
+    ::= { shuntTableEntry 7 }
 
 shuntDischCap OBJECT-TYPE
     SYNTAX      INTEGER
@@ -249,7 +240,7 @@ shuntDischCap OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Discharge capacity"
-    ::= { shuntEntry 8 }
+    ::= { shuntTableEntry 8 }
 
 shuntEndOfChrg OBJECT-TYPE
     SYNTAX      OCTET STRING
@@ -257,7 +248,7 @@ shuntEndOfChrg OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "End of charge time"
-    ::= { shuntEntry 9 }
+    ::= { shuntTableEntry 9 }
 
 shuntDiscn OBJECT-TYPE
     SYNTAX      OCTET STRING
@@ -265,7 +256,7 @@ shuntDiscn OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Disconnect time"
-    ::= { shuntEntry 10 }
+    ::= { shuntTableEntry 10 }
 
 shuntBatLive OBJECT-TYPE
     SYNTAX      TimeTicks
@@ -273,7 +264,7 @@ shuntBatLive OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Battery using period"
-    ::= { shuntEntry 11 }
+    ::= { shuntTableEntry 11 }
 
 shuntDischTime OBJECT-TYPE
     SYNTAX      TimeTicks
@@ -281,13 +272,13 @@ shuntDischTime OBJECT-TYPE
     STATUS      current
     DESCRIPTION
             "Time to full discharge"
-    ::= { shuntEntry 12 }
+    ::= { shuntTableEntry 12 }
 
 
 -- wirelessSensors
 
 rfshtpTable OBJECT-TYPE
-    SYNTAX      SEQUENCE OF rfshtpEntry
+    SYNTAX      SEQUENCE OF RfshtpEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -295,7 +286,7 @@ rfshtpTable OBJECT-TYPE
     ::= { measurements 10 }
 
 rfshtpEntry OBJECT-TYPE
-    SYNTAX      rfshtpEntry
+    SYNTAX RfshtpEntry
     MAX-ACCESS  not-accessible
     STATUS      current
     DESCRIPTION
@@ -304,10 +295,10 @@ in the wrlssSensTable"
     INDEX   { wrlssSensIdent }
     ::= { rfshtpTable 1 }
 
-rfshtpEntry ::=
+RfshtpEntry ::=
     SEQUENCE {
-        rfshtpId           OctetString,
-        rfshtpName         OctetString,
+        rfshtpId           OCTET STRING,
+        rfshtpName         OCTET STRING,
         rfshtpTemp         Integer,
 	rfshtpHum	   Integer,
 	rfshtpPres	   Integer
@@ -357,14 +348,28 @@ rfshtpPres OBJECT-TYPE
 
 -- rsshtpTable
 rsshtpTable		OBJECT-TYPE
-	SYNTAX		SEQUENCE OF rsshtpEntry
+	SYNTAX		SEQUENCE OF RsshtpEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A list of SNR-RSsensor-H/T/P values"
 ::= { sp 1 }
 
-rsshtpEntry OBJECT-TYPE
-	SYNTAX		rsshtpEntry
+RsshtpEntry ::= SEQUENCE 
+{
+    rsshtpIdent	OCTET STRING,
+	rsshtpName	OCTET STRING,
+    rsshtpTemp	Integer,
+	rsshtpHum	Integer,
+	rsshtpPssr	Integer,
+	tempCritNotif2		Integer,
+	tempCritMin2			Integer,
+	tempCritMax2			Integer
+}
+
+
+
+rsshtpTableEntry OBJECT-TYPE
+	SYNTAX RsshtpEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"An entry (conceptual row) 
@@ -372,54 +377,51 @@ in the rsshtpTable"
 	INDEX		{ rsshtpIdent }
 ::= { rsshtpTable 1 }
 
-rsshtpEntry ::= SEQUENCE 
-{
-    rsshtpIdent	OctetString,
-	rsshtpName	OctetString,
-    rsshtpTemp	Integer,
-	rsshtpHum	Integer,
-	rsshtpPssr	Integer,
-	tempCritNotif		Integer,
-	tempCritMin			Integer,
-	tempCritMax			Integer
-}
+shuntTableEntry OBJECT-TYPE
+    SYNTAX ShuntEntry
+    MAX-ACCESS  not-accessible
+    STATUS      current
+    DESCRIPTION
+            "An entry (conceptual row) in the shuntTable"
+    INDEX   { shuntId }
+    ::= { shuntTable 1 }
 
 rsshtpIdent		OBJECT-TYPE
 	SYNTAX		OCTET STRING
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"SNR-RSsensor-H/T/P id"
-::= { rsshtpEntry 1 }
+::= { rsshtpTableEntry 1 }
 
 rsshtpName		OBJECT-TYPE
     	SYNTAX      	OCTET STRING
     	MAX-ACCESS  	read-write
     	STATUS      	current
     	DESCRIPTION 	"Name (max 20)"
-::= { rsshtpEntry 2 }
+::= { rsshtpTableEntry 2 }
 
 rsshtpTemp		OBJECT-TYPE
 	SYNTAX		INTEGER
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"Temperature value 1"
-::= { rsshtpEntry 3 }
+::= { rsshtpTableEntry 3 }
 
 rsshtpHum		OBJECT-TYPE
 	SYNTAX		INTEGER
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"Humidity value"
-::= { rsshtpEntry 4 }
+::= { rsshtpTableEntry 4 }
 
 rsshtpPssr		OBJECT-TYPE
 	SYNTAX		INTEGER
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"Pressure value"
-::= { rsshtpEntry 6 }
+::= { rsshtpTableEntry 6 }
 
-tempCritNotif	OBJECT-TYPE
+tempCritNotif2	OBJECT-TYPE
 	SYNTAX		INTEGER
 		{
 				No	(0),
@@ -428,35 +430,35 @@ tempCritNotif	OBJECT-TYPE
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Enable notifications on the critical temperature"
-::= { rsshtpEntry 10 }
+::= { rsshtpTableEntry 10 }
 	
-tempCritMin		OBJECT-TYPE
+tempCritMin2		OBJECT-TYPE
 	SYNTAX		INTEGER
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Minimal critical temperature. 
-Up to -55 °C"
-::= { rsshtpEntry 15 }
+Up to -55 ï¿½C"
+::= { rsshtpTableEntry 15 }
 
-tempCritMax	OBJECT-TYPE
+tempCritMax2	OBJECT-TYPE
 	SYNTAX		INTEGER
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Maximum critical temperature. 
-Up to +125°C"
-::= { rsshtpEntry 16 }
+Up to +125ï¿½C"
+::= { rsshtpTableEntry 16 }
 
 -- rscounterTable
 
 rscounterTable		OBJECT-TYPE
-	SYNTAX		SEQUENCE OF rscounterEntry
+	SYNTAX		SEQUENCE OF RscounterEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A list of SNR-RS-Counter"
 ::= { sp 5 }
 
 rscounterEntry OBJECT-TYPE
-	SYNTAX		rscounterEntry
+	SYNTAX RscounterEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"An entry (conceptual row) 
@@ -464,10 +466,10 @@ in the rscounterTable"
 	INDEX		{ rscounterIdent }
 ::= { rscounterTable 1 }
 
-rscounterEntry ::= SEQUENCE 
+RscounterEntry ::= SEQUENCE 
 {
-    rscounterIdent	OctetString,
-	rscounterName	OctetString,
+    rscounterIdent	OCTET STRING,
+	rscounterName	OCTET STRING,
 }
 
 rscounterIdent		OBJECT-TYPE
@@ -487,7 +489,7 @@ rscounterName		OBJECT-TYPE
 
 -- rsshtp1WTable
 rsshtp1WTable		OBJECT-TYPE
-	SYNTAX		SEQUENCE OF rsshtp1WEntry
+	SYNTAX		SEQUENCE OF Rsshtp1WEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A list of temperature sensors 
@@ -495,7 +497,7 @@ are connected to SNR-RSsensor-H/T/P"
 ::= { sp 100 }
 
 rsshtp1WEntry 		OBJECT-TYPE
-	SYNTAX		rsshtp1WEntry
+	SYNTAX Rsshtp1WEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"An entry (conceptual row) 
@@ -503,19 +505,19 @@ in the rsshtp1WTable"
 	INDEX		{ rsshtp1WIdent }
 ::= { rsshtp1WTable 1 }
 
-rsshtp1WEntry ::= SEQUENCE 
+Rsshtp1WEntry ::= SEQUENCE 
 {
-        rsshtp1WIdent	UInteger32,
-	rsshtp1WName	OctetString,
+        rsshtp1WIdent	Unsigned32,
+	rsshtp1WName	OCTET STRING,
         rsshtp1WTemp	Integer,
-	rsshtp1WMaster	OctetString,
-	tempCritNotif		Integer,
-	tempCritMin			Integer,
-	tempCritMax			Integer
+	rsshtp1WMaster	OCTET STRING,
+	tempCritNotif3		Integer,
+	tempCritMin3			Integer,
+	tempCritMax3			Integer
 }
 
 rsshtp1WIdent		OBJECT-TYPE
-	SYNTAX		UInteger32
+	SYNTAX		Unsigned32
 	MAX-ACCESS	read-only
 	STATUS		current
 	DESCRIPTION	"Temperature sensor id"
@@ -544,7 +546,7 @@ which this temperature sensor
 is connected to"
 ::= { rsshtp1WEntry 4 }
 
-tempCritNotif	OBJECT-TYPE
+tempCritNotif3	OBJECT-TYPE
 	SYNTAX		INTEGER
 		{
 				No	(0),
@@ -555,33 +557,33 @@ tempCritNotif	OBJECT-TYPE
         DESCRIPTION	"Enable notifications on the critical temperature"
 ::= { rsshtp1WEntry 10 }
 	
-tempCritMin		OBJECT-TYPE
+tempCritMin3		OBJECT-TYPE
 	SYNTAX		INTEGER
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Minimal critical temperature. 
-Up to -55 °C"
+Up to -55 ï¿½C"
 ::= { rsshtp1WEntry 15 }
 
-tempCritMax	OBJECT-TYPE
+tempCritMax3	OBJECT-TYPE
 	SYNTAX		INTEGER
         MAX-ACCESS	read-write
         STATUS		current
         DESCRIPTION	"Maximum critical temperature. 
-Up to +125°C"
+Up to +125ï¿½C"
 ::= { rsshtp1WEntry 16 }
 
 -- sensorsTemplate
 
 sensorsTemplateTable		OBJECT-TYPE
-	SYNTAX		SEQUENCE OF sensorsTemplateEntry
+	SYNTAX		SEQUENCE OF SensorsTemplateEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A list of sensors values"
 ::= { sensorsTemplate 1 }
 
 sensorsTemplateEntry 		OBJECT-TYPE
-	SYNTAX		sensorsTemplateEntry
+	SYNTAX SensorsTemplateEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"An entry (conceptual row) 
@@ -589,10 +591,10 @@ in the rsshtp1WTable"
 	INDEX		{ sensorsTemplateValue }
 ::= { sensorsTemplateTable 1 }
 
-sensorsTemplateEntry ::= SEQUENCE 
+SensorsTemplateEntry ::= SEQUENCE 
 {
     sensorsTemplateValue	Integer,
-	sensorsTemplateName		OctetString
+	sensorsTemplateName		OCTET STRING
 }
 
 sensorsTemplateValue		OBJECT-TYPE
@@ -619,24 +621,24 @@ sensorsTemplateTotalConnected		OBJECT-TYPE
 -- dio
 
 diTable			OBJECT-TYPE
-	SYNTAX		SEQUENCE OF diEntry
+	SYNTAX		SEQUENCE OF DiEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A list of digital inputs values"
 ::= { dio 1 }
 
 diEntry 		OBJECT-TYPE
-	SYNTAX		diEntry
+	SYNTAX DiEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"An entry (conceptual row) 
 in the diTable"
 ::= { diTable 1 }
 
-diEntry ::= SEQUENCE 
+DiEntry ::= SEQUENCE 
 {
-	diName		OctetString,
-    diAlarmName	OctetString,
+	diName		OCTET STRING,
+    diAlarmName	OCTET STRING,
 	diState		Integer,
 	diCnt		Counter
 }
@@ -677,24 +679,24 @@ diCnt			OBJECT-TYPE
 
 
 doTable			OBJECT-TYPE
-	SYNTAX		SEQUENCE OF doEntry
+	SYNTAX		SEQUENCE OF DoEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"A list of digital outputs values"
 ::= { dio 2 }
 
 doEntry 		OBJECT-TYPE
-	SYNTAX		doEntry
+	SYNTAX DoEntry
 	MAX-ACCESS	not-accessible
 	STATUS		current
 	DESCRIPTION	"An entry (conceptual row) 
 in the doTable"
 ::= { doTable 1 }
 
-doEntry ::= SEQUENCE 
+DoEntry ::= SEQUENCE 
 {
-	doName			OctetString,
-	doDeviceName	OctetString,
+	doName			OCTET STRING,
+	doDeviceName	OCTET STRING,
 	doState			Integer,
 	doResetTime		Integer
 }
@@ -1316,6 +1318,6 @@ erd4Group		NOTIFICATION-GROUP
 	}
 	STATUS			current
 	DESCRIPTION		"Notifications"
-::= { snr-erd-4 99 }
+::= { snrErd4 99 }
 
 END

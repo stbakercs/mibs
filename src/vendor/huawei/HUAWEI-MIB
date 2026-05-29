@@ -1808,7 +1808,7 @@ HUAWEI-MIB DEFINITIONS ::= BEGIN
         sm                      OBJECT IDENTIFIER ::= { hwProducts 35 }
             mmsc                OBJECT IDENTIFIER ::= { sm 1 }
 
-        as                      OBJECT IDENTIFIER ::= { hwProducts 36 }
+        hwAsBranch              OBJECT IDENTIFIER ::= { hwProducts 36 }
         p3                      OBJECT IDENTIFIER ::= { hwProducts 37 }
 
         iad                     OBJECT IDENTIFIER ::= { hwProducts 38 }

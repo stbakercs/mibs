@@ -67,7 +67,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
       		
 	ubiArpTable		OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiArpEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"The Table of arp cache list entrys"
@@ -75,7 +75,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpEntry		OBJECT-TYPE
 		SYNTAX		UbiArpEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"The entry of arp cache entry"
@@ -96,7 +96,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 
 	ubiArpIpAddress		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION  
 			"arp cache ip address"
@@ -104,7 +104,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpMacAddress	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"arp cache mac address"
@@ -116,7 +116,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			dynamic(0),
 			static(1)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"arp cache type"
@@ -124,7 +124,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 
 	ubiArpPortIndex		OBJECT-TYPE
 		SYNTAX		Integer32
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"arp cache port index"
@@ -132,7 +132,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 				
 	ubiArpRowStatus		OBJECT-TYPE
 		SYNTAX		RowStatus
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"arp cache row status"
@@ -140,7 +140,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 
 	ubiClearArpCache		OBJECT-TYPE
     	SYNTAX		Integer32
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"command to clear arp-cache.
@@ -158,7 +158,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 	
 	ubiArpGetPonInfoIpAddress		OBJECT-TYPE
 		SYNTAX		IpAddress
-		ACCESS      read-write
+		MAX-ACCESS      read-write
 		STATUS		current
 		DESCRIPTION
 			"IP address to be used to get pon information in arp table"
@@ -166,7 +166,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 
 	ubiArpGetPonInfoOnuId			OBJECT-TYPE
 		SYNTAX		Integer32
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"Searched ONU ID"
@@ -174,7 +174,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 				
 	ubiArpGetPonInfoOnuMacAddress	OBJECT-TYPE
 		SYNTAX		MacAddress 
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"Searched ONU MAC Address"
@@ -182,7 +182,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpGetTotalCount		OBJECT-TYPE
     	SYNTAX		Unsigned32
-    	ACCESS		read-only
+    	MAX-ACCESS		read-only
     	STATUS		current
     	DESCRIPTION
     		"Total Count of arp-cache"
@@ -199,7 +199,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			disable(0),
 			enable(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop enable status"
@@ -211,7 +211,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			disable(0),
 			enable(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop gratuitous-arp-update"
@@ -223,7 +223,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			disable(0),
 			enable(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop health-check"
@@ -235,29 +235,23 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			disable(0),
 			enable(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop probe"
 		::= { ubiArpSnoopGlobal 4 }
 		
 	ubiArpSnoopProbeInterval	OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			noProbeInterval(0)
-		}(10..120)
-		ACCESS		read-write
+		SYNTAX INTEGER (10..120)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop probe-interval"
 		::= { ubiArpSnoopGlobal 5 }
 		
 	ubiArpSnoopWaitTime		OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			noWaitTime(0)
-		}(1..5)
-		ACCESS		read-write
+		SYNTAX INTEGER (1..5)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop wait-time"
@@ -269,7 +263,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 -- ***********************************************************
 	ubiArpSnoopTable		OBJECT-TYPE	
 		SYNTAX		SEQUENCE OF UbiArpSnoopEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"The table of arp snoop entrys"
@@ -277,7 +271,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopEntry		OBJECT-TYPE
 		SYNTAX		UbiArpSnoopEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"The entry representing arp snoop entry"
@@ -293,7 +287,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 	
 	ubiArpSnoopBeginAddress		OBJECT-TYPE
 		SYNTAX		IpAddress
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"arp snoop begin address"
@@ -301,18 +295,15 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopEndAddress		OBJECT-TYPE
 		SYNTAX		IpAddress
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"arp snoop end address"
 		::= { ubiArpSnoopEntry 2 }
 		
 	ubiArpSnoopAgingTime		OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			defaultAgingTime(80)
-		}(0..300)
-		ACCESS		read-write
+		SYNTAX INTEGER (0..300)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 			"arp snoop aging time"
@@ -320,7 +311,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopRowStatus		OBJECT-TYPE
 		SYNTAX		RowStatus
-		ACCESS		read-create
+		MAX-ACCESS		read-create
 		STATUS		current
 		DESCRIPTION
 			"arp snoop row status"
@@ -332,7 +323,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 
 	ubiArpSnoopBindingTable		OBJECT-TYPE
 		SYNTAX		SEQUENCE OF UbiArpSnoopBindingEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"The table of arp snoop binding information"
@@ -340,7 +331,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopBindingEntry		OBJECT-TYPE
 		SYNTAX		UbiArpSnoopBindingEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 			"The entry of arp snoop binding information"
@@ -361,7 +352,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 	
 	ubiArpSnoopBindingIpAddr		OBJECT-TYPE
 		SYNTAX		IpAddress
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding ip address"
@@ -369,7 +360,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopBindingMacAddr		OBJECT-TYPE
 		SYNTAX		MacAddress	
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding mac address"
@@ -377,7 +368,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopBindingInterface		OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding vlan interface"
@@ -385,7 +376,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopBindingPort			OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-only			
+		MAX-ACCESS		read-only			
 		STATUS		current
 		DESCRIPTION
 			"binding physical port"
@@ -401,19 +392,15 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			unsolicited(4),
 			threeWay(5)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding state"
 		::= { ubiArpSnoopBindingEntry 5 }
 		
 	ubiArpSnoopBindingAge			OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			noAge(301),
-			n/a(302)
-		}(0..300)
-		ACCESS		read-only
+		SYNTAX INTEGER (0..300)
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding age time"
@@ -427,7 +414,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 			inactive(2),
 			active(3)
 		}
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding analysis"
@@ -435,7 +422,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopBindingRcvRequest	OBJECT-TYPE
 		SYNTAX		Integer32
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding statistics - received ARP request"
@@ -443,7 +430,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
 		
 	ubiArpSnoopBindingReply			OBJECT-TYPE
 		SYNTAX		Integer32 
-		ACCESS		read-only
+		MAX-ACCESS		read-only
 		STATUS		current
 		DESCRIPTION
 			"binding statistices - ARP reply"
@@ -457,7 +444,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
    	
     ubiClearArpSnoopBinding		OBJECT-TYPE
     	SYNTAX		IpAddress
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"command to clear arp snoop binding.
@@ -473,7 +460,7 @@ ubiArpSnoopMIBObjects			OBJECT IDENTIFIER	::= { ubiArpMIBObjects 3 }
     		none(0),
     		clear(1)
     	}
-    	ACCESS		read-write
+    	MAX-ACCESS		read-write
     	STATUS		current
     	DESCRIPTION
     		"command to clear arp snoop statistics"

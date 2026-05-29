@@ -141,7 +141,7 @@ ubiEntityAlarmNotificationEnables  		OBJECT IDENTIFIER		::= { ubiEntityAlarmMIBO
         ubiAlarmContactSeverity             		AlarmSeverity,
         ubiAlarmContactTrigger   					INTEGER,
         ubiAlarmContactLastAlarmStatus			  	INTEGER, 
-        ubiAlarmContactLastAlarmStamp     			DisplayString,
+        ubiAlarmContactLastAlarmStamp     			DisplayString
        }
  
    	ubiAlarmContactIndex OBJECT-TYPE
@@ -258,7 +258,7 @@ ubiEntityAlarmMIBGroups  OBJECT IDENTIFIER			::= { ubiEntityAlarmMIBConformance 
 --
 -- compliance statements
 --
-	ubiEntityAlarmMIBCompliances MODULE-COMPLIANCE
+	ubiEntityAlarmMIBCompliance MODULE-COMPLIANCE
     	STATUS          current
     	DESCRIPTION
         	"An Entity-Alarm-MIB implementation can implement this group to
@@ -283,8 +283,9 @@ ubiEntityAlarmMIBGroups  OBJECT IDENTIFIER			::= { ubiEntityAlarmMIBConformance 
 -- units of conformance
 
 	ubiEntityAlarmMIBContactGroup OBJECT-GROUP
-    	OBJECTS         {
-                    	}
+    	OBJECTS {
+                ubiAlarmContactTable
+        }
     	STATUS          current
     	DESCRIPTION
         	"The collection of objects which are used to get the
@@ -292,8 +293,9 @@ ubiEntityAlarmMIBGroups  OBJECT IDENTIFIER			::= { ubiEntityAlarmMIBConformance 
     	::= { ubiEntityAlarmMIBGroups 1 }
 
 	ubiEntityAlarmMIBNotificationGroup OBJECT-GROUP
-    	OBJECTS         {
-                    	}
+    	OBJECTS {
+                ubiAlarmContactTable
+        }
         STATUS          current
     	DESCRIPTION
         	"The collection of objects which are 

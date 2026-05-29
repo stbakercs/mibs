@@ -57,4 +57,59 @@ jnxBgpM2Experiment OBJECT-IDENTITY
             draft-ietf-idr-bgp4-mibv2-03.txt"
     ::= { jnxExperiment 1 }
 
+
+jnxL2L3VpnMcastExperiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 11 }
+
+jnxMvpnExperiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 12 }
+
+jnxMldpExperiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 13 }
+
+jnxLdapExperiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 2 }
+
+jnxBfdExperiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 3 }
+
+jnxOspfv3Experiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 4 }
+
+jnxExampleMibRoot OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 5 }
+
+jnxInternalMibRoot OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 6 }
+
+jnxP2mpExperiment OBJECT-IDENTITY
+    STATUS  current
+    DESCRIPTION
+        "Experimental OID registry entry."
+    ::= { jnxExperiment 7 }
+
 END

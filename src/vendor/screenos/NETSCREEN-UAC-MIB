@@ -101,7 +101,7 @@ nsUACControlerHost OBJECT-TYPE
     ::= { nsUACControlerStatusEntry 3 }
 
 nsUACConnectionStatus OBJECT-TYPE
-    SYNTAX        Integer32 {
+    SYNTAX        INTEGER {
         disconnected(0),
         connected(1)
     }
@@ -112,7 +112,7 @@ nsUACConnectionStatus OBJECT-TYPE
     ::= { nsUACControlerStatusEntry 4 }
     
 nsUACGlobalStatus OBJECT-TYPE
-    SYNTAX        Integer32 {
+    SYNTAX        INTEGER {
         disconnected(0),
         connected(1)
     }

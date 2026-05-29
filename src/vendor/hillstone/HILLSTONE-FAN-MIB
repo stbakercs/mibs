@@ -15,7 +15,7 @@ IMPORTS
 	hillstoneFan
 		FROM HILLSTONE-SMI
 	OBJECT-TYPE
-		FROM RFC-1212	
+		FROM SNMPv2-SMI	
         RowStatus		
 		FROM SNMPv2-TC;
 
@@ -32,30 +32,13 @@ IMPORTS
 hillstoneFanObjects OBJECT IDENTIFIER ::= { hillstoneFan 1 }
 
 hillstoneFanNumber OBJECT-TYPE
-    SYNTAX Integer32
+    SYNTAX INTEGER
     MAX-ACCESS read-only
     STATUS current
     DESCRIPTION
 	"The number of fans."
     ::= { hillstoneFanObjects 1 } 
 
-hillstoneFanTable OBJECT-TYPE
-	SYNTAX SEQUENCE OF HillstoneFanEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-	    "This table contains all the FAN data."
-::= { hillstoneFanObjects 2 }
-
-HillstoneFanEntry OBJECT-TYPE
-	SYNTAX HillstoneFanEntry
-	MAX-ACCESS not-accessible
-	STATUS current
-	DESCRIPTION
-		"Define the parameters of FAN."
-INDEX { hillstoneFanIndex }
-::= { hillstoneFanTable 1 }
-	
 HillstoneFanEntry ::=
 SEQUENCE { 
 	hillstoneFanIndex
@@ -69,22 +52,39 @@ SEQUENCE {
 	hillstoneFanState
 		INTEGER
 	}
+hillstoneFanTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF HillstoneFanEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+	    "This table contains all the FAN data."
+::= { hillstoneFanObjects 2 }
+
+hillstoneFanEntry OBJECT-TYPE
+	SYNTAX HillstoneFanEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"Define the parameters of FAN."
+INDEX { hillstoneFanIndex }
+::= { hillstoneFanTable 1 }
+	
 
 hillstoneFanIndex OBJECT-TYPE
 	SYNTAX INTEGER 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot index of the FAN."
-::= { HillstoneFanEntry 1 }
+::= { hillstoneFanEntry 1 }
 
 hillstoneFanDescr OBJECT-TYPE
 	SYNTAX DisplayString
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot description of the FAN."
-::= { HillstoneFanEntry 2 }
+::= { hillstoneFanEntry 2 }
 
 hillstoneFanType OBJECT-TYPE
 	SYNTAX INTEGER
@@ -92,19 +92,19 @@ hillstoneFanType OBJECT-TYPE
 		speed(0),
 		state(1)
 	} 
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot type of the FAN.When type is 0,please watch hillstoneFanSpeed.When type is 1,please watch hillstoneFanState.."
-::= { HillstoneFanEntry 3 }
+::= { hillstoneFanEntry 3 }
 
 hillstoneFanSpeed OBJECT-TYPE
 	SYNTAX INTEGER
-	ACCESS read-only
+	MAX-ACCESS read-only
 	STATUS current
 	DESCRIPTION
 	    "The slot speed of the FAN."
-::= { HillstoneFanEntry 4 }
+::= { hillstoneFanEntry 4 }
 
 hillstoneFanState OBJECT-TYPE
 	SYNTAX INTEGER
@@ -115,11 +115,11 @@ hillstoneFanState OBJECT-TYPE
 		fail(3),
 		fail-or-nopower(4)
 	}
-	ACCESS  read-only
+	MAX-ACCESS  read-only
 	STATUS current
 	DESCRIPTION
 	    "The FAN state."
-::= { HillstoneFanEntry 5 }
+::= { hillstoneFanEntry 5 }
 
 
 END

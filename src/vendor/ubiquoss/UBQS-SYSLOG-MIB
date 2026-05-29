@@ -333,10 +333,9 @@ ubiSyslogMIBGroups      	OBJECT IDENTIFIER ::= { ubiSyslogMIBConformance 2 }
 
  
 -- units of conformance
-	syslogMIBGroup OBJECT-GROUP
-        OBJECTS {      
-        	-- TODO  
-           		}
+	syslogMIBGroup OBJECT-GROUP        OBJECTS {
+                ubiSyslogConsoleEnable
+        }
     	STATUS          current
     	DESCRIPTION
         	"A collection of objects providing the syslog MIB."

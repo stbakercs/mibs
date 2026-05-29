@@ -45,7 +45,7 @@ ibmElanMIB OBJECT IDENTIFIER ::= { mssServerLanE 4 }
 --       Updated some of the description fields.
 --    
 --       Corrected SYNTAX on idleVccTime and lecsMaxVccs it was
---       Counter32 but is now UInteger32. Added range definition
+--       Counter32 but is now Counter32. Added range definition
 --       for idleVccTime, lecsMaxVccs and configDirectMaxReservedBw.
 --    
 --       Corrected idleVccTime and lecsMaxVccs OID values. This
@@ -153,9 +153,9 @@ IbmLecsConfEntry ::= SEQUENCE {
     lecsConfiguredSelector AtmSelector,
     lecsValidateBestEffortPcr TruthValue,
     configDirectMaxReservedBw Integer32,
-    atmDevLineSpeed UInteger32,
-    idleVccTime UInteger32,
-    lecsMaxVccs UInteger32,
+    atmDevLineSpeed Counter32,
+    idleVccTime Counter32,
+    lecsMaxVccs Counter32,
     lecsDomainName DisplayString
     }
 
@@ -233,7 +233,7 @@ configDirectMaxReservedBw OBJECT-TYPE
     ::= { ibmLecsConfEntry 5 }
 
 atmDevLineSpeed OBJECT-TYPE
-    SYNTAX UInteger32
+    SYNTAX Counter32
     ACCESS read-only
     STATUS mandatory
     DESCRIPTION
@@ -242,7 +242,7 @@ atmDevLineSpeed OBJECT-TYPE
     ::= { ibmLecsConfEntry 6 }
 
 idleVccTime OBJECT-TYPE
-    SYNTAX UInteger32(3..43200)
+    SYNTAX Counter32(3..43200)
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION
@@ -254,7 +254,7 @@ idleVccTime OBJECT-TYPE
     ::= { ibmLecsConfEntry 7 }
 
 lecsMaxVccs OBJECT-TYPE
-    SYNTAX UInteger32(1..65535)
+    SYNTAX Counter32(1..65535)
     ACCESS read-write
     STATUS mandatory
     DESCRIPTION

@@ -593,16 +593,4 @@ cyberArkTrapGroup NOTIFICATION-GROUP
         "Group of notifications" 
     ::= { cyberArkMIB 5 } 
 
--- 1.3.6.1.4.1.11536.6 
-cyberArkTrapGroup NOTIFICATION-GROUP 
-    NOTIFICATIONS { osDiskFreeSpaceNotification, osCpuUsageNotification, osEventLogInfoNotification, 
-					osMemoryUsageNotification, osServiceNameNotification, paVaultLogInfoNotification, 
-					paVaultServiceNameNotification, paCVMLogInfoNotification, osCVMServiceNameNotification, 
-					paCIFSLogInfoNotification, osCIFSServiceNameNotification, paFTPLogInfoNotification, 
-					paSMTPLogInfoNotification } 
-    STATUS  current 
-    DESCRIPTION 
-        "Group of notifications" 
-    ::= { cyberArkMIB 6 } 
-    
-END
+

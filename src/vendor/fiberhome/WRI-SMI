@@ -16,7 +16,7 @@ IMPORTS
 	MODULE-IDENTITY,OBJECT-IDENTITY,enterprises
 		FROM SNMPv2-SMI;
 
-wri MODULE-IDENTITY
+wriMib MODULE-IDENTITY
 	LAST-UPDATED "0304230000Z"
 	ORGANIZATION "FiberHome Networks Co.,Ltd."
 	CONTACT-INFO
@@ -24,6 +24,11 @@ wri MODULE-IDENTITY
 	DESCRIPTION
 		"The Structure of Management Information for the Wri enterprise."
 	::= { enterprises 3807 }	-- assigned by IANA
+
+wri OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION "WRI enterprise root."
+	::= { wriMib 0 }
 
 	wriProducts OBJECT IDENTIFIER ::= { wri 1 }
 --	"wriProducts is the root OBJECT IDENTIFIER from
@@ -36,11 +41,8 @@ wri MODULE-IDENTITY
 --	"Define the PUBLIC information about hardware,system,etc in the PRIVATE mibs."
 
 	
-fhn MODULE-IDENTITY
-	LAST-UPDATED "0304230000Z"
-	ORGANIZATION "FiberHome Networks Co.,Ltd."
-	CONTACT-INFO
-		"http://www.fhn.com.cn"
+fhn OBJECT-IDENTITY
+	STATUS current
 	DESCRIPTION
 		"The Structure of Management Information for the FHN enterprise."
 	::= { enterprises 11408 }	-- assigned by IANA

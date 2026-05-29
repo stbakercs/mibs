@@ -63,8 +63,8 @@ HaModeType ::= TEXTUAL-CONVENTION
         DESCRIPTION		"enumerated type for HA Modes"
         SYNTAX INTEGER	{
 							standalone     ( 1 ),
-							active-passive ( 2 ),
-							active-active  ( 3 )
+							activePassive ( 2 ),
+							activeActive  ( 3 )
 						}
 ServiceStatsType ::= TEXTUAL-CONVENTION
         STATUS				current
@@ -384,7 +384,7 @@ sslvpnService OBJECT-TYPE
     DESCRIPTION		" "
     ::= { serviceStats 14 }
 
-DataBaseService OBJECT-TYPE
+dataBaseService OBJECT-TYPE
     SYNTAX			ServiceStatsType
     MAX-ACCESS		read-only
     STATUS			current

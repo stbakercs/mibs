@@ -1522,7 +1522,7 @@ BpduIndex ::= TEXTUAL-CONVENTION
                         STATUS current
                         DESCRIPTION
                             "Whether the statistic function is enabled."
-                        DEFVAL{ DISABLE }
+                        DEFVAL{ disabled }
                         ::= { hwQinQGroupCfgEntry 4 }
                         
                         

@@ -2303,7 +2303,7 @@
 --  onuTxPowerOffTable                        
 -- ***********************************************************
  				              
-		TxPowerOltPortId OBJECT-TYPE
+		txPowerOltPortId OBJECT-TYPE
 			SYNTAX Integer32
 			MAX-ACCESS read-write
 			STATUS current
@@ -2311,7 +2311,7 @@
 				"TX-Power PortIndex"
 			::= { onuTxPowerOff 1 }
                
-        TxPowerOnuId OBJECT-TYPE
+        txPowerOnuId OBJECT-TYPE
 			SYNTAX Integer32
 			MAX-ACCESS read-write
 			STATUS current
@@ -2319,7 +2319,7 @@
 				"TX-Power OnuId"
 			::= { onuTxPowerOff 2 }
 			
-		TxPowerTimeOut OBJECT-TYPE
+		txPowerTimeOut OBJECT-TYPE
 			SYNTAX Integer32
 			MAX-ACCESS read-write
 			STATUS current
@@ -3149,10 +3149,9 @@
        ::= { ubiPonMacMIBCompliances 1 }
 	                            
 -- compliance statements
-   	ubiPonMacMIBGroup  OBJECT-GROUP
-		OBJECTS {     
-			-- TODO 
-               }
+   	ubiPonMacMIBGroup  OBJECT-GROUP        OBJECTS {
+                oltPonMacTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss pon mac information MIB"
@@ -3170,7 +3169,7 @@
         	ubiEponOnuRegistrationErrorNotification,
         	ubiEponOnuRegistrationOverloadNotification,
         	ubiEponSoftwareErrorNotification,
-        	ubiEponBadEncriptionKeyNotification, 
+        	ubiEponBadEncriptionKeyNotification 
                }
         STATUS  current
         DESCRIPTION

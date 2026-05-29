@@ -159,16 +159,11 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
   	}                                    
       			 			
    	ubiCmMatchType	OBJECT-TYPE
-   		SYNTAX		INTEGER
-   		{
-   			match-all(0),
-   			match-any(1)
-   		}(0..1)
+   		SYNTAX INTEGER (0..1)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
    		"Matching entry type"       
-   		DEFVAL 		{ match_all }
    		::= { ubiClassMapMatchEntry 1 }
    		
    	ubiCmMatchAcl				OBJECT-TYPE
@@ -181,10 +176,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiClassMapMatchEntry 2 }
    		
    	ubiCmMatchCos				OBJECT-TYPE
-   		SYNTAX		Integer32
-   		{
-   			none(-1)
-   		}(-1..7)
+   		SYNTAX INTEGER (-1..7)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -201,10 +193,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiClassMapMatchEntry 4 }   		                               
    		
    	ubiCmMatchIpDscp			OBJECT-TYPE
-   		SYNTAX		Integer32
-   		{
-   			none(-1)
-   		}(-1..63)       
+   		SYNTAX INTEGER (-1..63)       
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -213,10 +202,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		
    		
    	ubiCmMatchIpPrecedence			OBJECT-TYPE
-   		SYNTAX		Integer32
-   		{
-   			none(-1)
-   		}(-1..7)
+   		SYNTAX INTEGER (-1..7)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -225,10 +211,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		                  
    		
    	ubiCmMatchSourcePort		OBJECT-TYPE
-   		SYNTAX		Integer32   		
-   		{
-   			none(0)
-   		}(0..65535)
+   		SYNTAX INTEGER (0..65535)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -236,10 +219,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiClassMapMatchEntry 7 }
    		
    	ubiCmMatchDestPort		OBJECT-TYPE
-   		SYNTAX		Integer32
-   		{
-   			none(0)
-   		}(0..65535)
+   		SYNTAX INTEGER (0..65535)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -247,10 +227,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiClassMapMatchEntry 8 }
    		
    	ubiCmMatchMplsExp			OBJECT-TYPE
-   		SYNTAX		Integer32
-   		{
-   			none(-1)
-   		}(-1..7)
+   		SYNTAX INTEGER (-1..7)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -258,10 +235,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiClassMapMatchEntry 9 }
    		
    	ubiCmMatchProtocol		OBJECT-TYPE
-		SYNTAX		Integer32
-		{
-   			none(-1)
-   		}(-1..255)
+		SYNTAX INTEGER (-1..255)
 		MAX-ACCESS	read-write
 		STATUS		current
 		DESCRIPTION
@@ -331,10 +305,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
   
    		   
    	ubiCmMatchVlan	OBJECT-TYPE
-   		SYNTAX		Integer32 
-		{
-   			none(0)
-   		}(0..4094)
+   		SYNTAX INTEGER (0..4094)
    		MAX-ACCESS	read-write
    		STATUS		deprecated
    		DESCRIPTION
@@ -342,10 +313,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiClassMapMatchEntry 14 }  	     
    		                                       
 	ubiCmMatchVlanInner	OBJECT-TYPE
-   		SYNTAX		Integer32 
-		{
-   			none(0)
-   		}(0..4094)
+   		SYNTAX INTEGER (0..4094)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -642,11 +610,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
    		::= { ubiPolicyMapActionEntry 8 }
    		
    	ubiPmActionCos			OBJECT-TYPE
-   		SYNTAX		Integer32
-   		{       
-   			none(-1),
-   			cos_inner(100)
-   		}(-1..8)
+   		SYNTAX INTEGER (-1..8)
    		MAX-ACCESS	read-write
    		STATUS		current
    		DESCRIPTION
@@ -670,10 +634,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
   		::= { ubiPolicyMapActionEntry 10 }
   		
   	ubiPmActionIpDscp		OBJECT-TYPE
-  		SYNTAX		Integer32
-  		{
-  			none(-1)
-  		}(-1..63)
+  		SYNTAX INTEGER (-1..63)
   		MAX-ACCESS	read-write
   		STATUS		current
   		DESCRIPTION 
@@ -682,10 +643,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
   		::= { ubiPolicyMapActionEntry 11 }
   		
   	ubiPmActionIpPrecedence		OBJECT-TYPE
-  		SYNTAX		Integer32
-  		{
-  			none(-1)
-  		}(-1..7)
+  		SYNTAX INTEGER (-1..7)
   		MAX-ACCESS	read-write
   		STATUS		current
   		DESCRIPTION
@@ -694,10 +652,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
   		::= { ubiPolicyMapActionEntry 12 }
   
   	ubiPmActionQueueing	OBJECT-TYPE
-  		SYNTAX		Integer32
-  		{
-  			none(-1)
-  		}(-1..7)
+  		SYNTAX INTEGER (-1..7)
   		MAX-ACCESS	read-write
   		STATUS		current
   		DESCRIPTION
@@ -1227,7 +1182,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 
 	ubiVlanPriorityOverrideTable	OBJECT-TYPE	
 		SYNTAX		SEQUENCE OF VlanPriorityOverrideEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"vlan-priority-override table"
@@ -1235,7 +1190,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 		
 	ubiVlanPriorityOverrideEntry	OBJECT-TYPE	
 		SYNTAX		VlanPriorityOverrideEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"vlan-priority-override entry"
@@ -1247,11 +1202,8 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	}	
 	                                 
 	ubiVlanPriority		OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			unset(8)
-		}(0..7)
-		ACCESS		read-write
+		SYNTAX INTEGER (0..7)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"vlan-priority-override priority"
@@ -1263,7 +1215,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 
 	ubiMinReserveTable	OBJECT-TYPE	
 		SYNTAX		SEQUENCE OF MinReserveEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"min-reserve table"
@@ -1271,7 +1223,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiMinReserveEntry	OBJECT-TYPE	
 		SYNTAX		MinReserveEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"min-reserve entry"
@@ -1285,18 +1237,15 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 				
 	ubiMinReserveLevelID		OBJECT-TYPE
 		SYNTAX		Integer32(1..8)
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"min-reserve level-id"
 		::= { ubiMinReserveEntry 1 }
 		
 	ubiMinReserveHoldingPacket	OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			unset(0)
-		}(10..170)
-		ACCESS		read-write
+		SYNTAX INTEGER (10..170)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"min-reserve holding-packet"
@@ -1307,7 +1256,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 -- *********************************************************** 
     ubiInterfaceQosTable	OBJECT-TYPE	
 		SYNTAX		SEQUENCE OF UbiInterfaceQosEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		""
@@ -1315,7 +1264,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiInterfaceQosEntry	OBJECT-TYPE	
 		SYNTAX		UbiInterfaceQosEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		""
@@ -1336,11 +1285,8 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	}      
 	
 	ubiInterfaceQosCos	OBJECT-TYPE
-		SYNTAX		INTEGER
-		{
-			unset(8)
-		}(0..7)
-		ACCESS		read-write
+		SYNTAX INTEGER (0..7)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos cos"
@@ -1348,7 +1294,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 		
     ubiInterfaceCosDscp	OBJECT-TYPE
 		SYNTAX		TruthValue
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos cos-dscp"
@@ -1356,7 +1302,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiInterfaceCosMutation	OBJECT-TYPE
 		SYNTAX		TruthValue
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos cos-mutation"
@@ -1370,7 +1316,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 			queue(2),
 			both(3)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos da-priority-override"
@@ -1378,7 +1324,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiInterfaceDscpCos	OBJECT-TYPE
 		SYNTAX		TruthValue
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos dscp-cos"
@@ -1386,7 +1332,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 		
 	ubiInterfaceDscpMutation	OBJECT-TYPE
 		SYNTAX		TruthValue
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos dscp-mutation"
@@ -1394,7 +1340,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 		
 	ubiInterfaceForceTrustCos	OBJECT-TYPE
 		SYNTAX		TruthValue
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos force-trust cos"
@@ -1408,7 +1354,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 			dscp(2),
 			both(3)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos trust (cos[1]|dscp[2]|both[3])"
@@ -1416,7 +1362,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiInterfaceTxScheduling	OBJECT-TYPE
 		SYNTAX		DisplayString
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		""
@@ -1430,7 +1376,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 			queue(2),
 			both(3)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"mls qos vlan-priority-override (cos[1]|queue[2]|both[3])"
@@ -1442,7 +1388,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 -- *********************************************************** 
     ubiQueueBufferTable	OBJECT-TYPE	
 		SYNTAX		SEQUENCE OF UbiQueueBufferEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"Queue Buffer Table"
@@ -1450,7 +1396,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiQueueBufferEntry	OBJECT-TYPE	
 		SYNTAX		UbiQueueBufferEntry
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"Queue Buffer Entry"
@@ -1466,7 +1412,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	
 	ubiQueueBufferID	OBJECT-TYPE
 		SYNTAX		INTEGER (1..8)
-		ACCESS		not-accessible
+		MAX-ACCESS		not-accessible
 		STATUS		current
 		DESCRIPTION
 		"Queue Buffer identity."
@@ -1474,7 +1420,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 		
 	ubiQueueBufferSize	OBJECT-TYPE
 		SYNTAX		INTEGER (0..4096)
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"Queue Buffer size."
@@ -1482,7 +1428,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 		
 	ubiQueueBufferDesc	OBJECT-TYPE
 		SYNTAX		INTEGER (0..7680)
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"Queue Buffer description."
@@ -1493,7 +1439,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 			unset(0),
 			set(1)
 		}
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"Queue Buffer status. 
@@ -1508,7 +1454,7 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 			disable(0),
 			enable(1)
 		}            
-		ACCESS		read-write
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"qos enable"
@@ -1522,44 +1468,32 @@ ubiTxSchedule 						OBJECT IDENTIFIER ::= { ubiQosMap  3 }
 	ubiFrameTypePriorityOverride	OBJECT IDENTIFIER ::= { ubiQosGlobal 2 }
 	
 	ubiBpduToCpu		OBJECT-TYPE
-		SYNTAX		INTEGER
-		{     
-			disable(4)
-		}(0..3)
-		ACCESS		read-write
+		SYNTAX INTEGER (0..3)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"frame-type-priority-override bpdu-to-cpu"
 		::= { ubiFrameTypePriorityOverride 1 }
 
 	ubiUcastMgmtToCpu	OBJECT-TYPE
-		SYNTAX		INTEGER
-		{     
-			disable(4)
-		}(0..3)
-		ACCESS		read-write
+		SYNTAX INTEGER (0..3)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"fream-type-priority-override ucast-mgmt-to-cpu"
 		::= { ubiFrameTypePriorityOverride 2 }
 		
 	ubiFromCpu			OBJECT-TYPE
-		SYNTAX		INTEGER
-		{     
-			disable(4)
-		}(0..3)
-		ACCESS		read-write  
+		SYNTAX INTEGER (0..3)
+		MAX-ACCESS		read-write  
 		STATUS		current
 		DESCRIPTION
 		"frame-type-priority-override from-cpu"
 		::= { ubiFrameTypePriorityOverride 3 }
 		
 	ubiPortEtypeMatch	OBJECT-TYPE   
-		SYNTAX		INTEGER
-		{     
-			disable(4)
-		}(0..3)
-		ACCESS		read-write
+		SYNTAX INTEGER (0..3)
+		MAX-ACCESS		read-write
 		STATUS		current
 		DESCRIPTION
 		"fream-type-priority-override port-etype-match"
@@ -1608,24 +1542,27 @@ ubiQosMIBGroups  		OBJECT IDENTIFIER		::= { ubiQosMIBConformance 2 }
 -- units of conformance
 
 	ubiQosMIBClassGroup OBJECT-GROUP
-    	OBJECTS         {
-                    	}
+    	OBJECTS {
+                ubiClassMapTable
+        }
     	STATUS          current
     	DESCRIPTION
         	""
     	::= { ubiQosMIBGroups 1 }
 
-	ubiQosMIBPolicyGroup NOTIFICATION-GROUP
-   		NOTIFICATIONS    { 
-   		 }
+	ubiQosMIBPolicyGroup OBJECT-GROUP
+    	OBJECTS {
+                ubiPolicyMapTable
+        }
     	STATUS          current
     	DESCRIPTION
         	""
     	::= { ubiQosMIBGroups 2 }    
  
 	ubiQosMIBQosMapGroup OBJECT-GROUP
-    	OBJECTS         { 
-    					}
+    	OBJECTS {
+                ubiClassMapTable
+        }
     	STATUS          current
     	DESCRIPTION
         	""

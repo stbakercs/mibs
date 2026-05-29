@@ -34,7 +34,7 @@ netscreenTrapMibModule MODULE-IDENTITY
     REVISION      "200510170000Z" -- Oct 17, 2005
     DESCRIPTION
         "Added 4 new trap types - ipv6 ip conflicts(101), dip util raise(102) and clear(103), 
-         ids-icmp-ping-id-zero(441)."
+        idsIcmpPingIdZero(441)."
     REVISION      "200503030000Z" -- March 03, 2005
     DESCRIPTION
         "Trap MIB"
@@ -148,57 +148,57 @@ netscreenTrapType OBJECT-TYPE
     SYNTAX        INTEGER {
 
 	-- Traffic per-second threshold
-	traffic-sec(1),
+        trafficSec(1),
 	-- Traffic per-minute threshold
-	traffic-min(2),
+        trafficMin(2),
 	-- Multiple user auth fail alarm type
-	multi-auth-fail(3),
+        multiAuthFail(3),
         -- Winnuke pak
         winnuke(4),
         -- Syn attack
-        syn-attack(5),
+        synAttack(5),
         -- tear-drop attack
-        tear-drop(6),
+        tearDrop(6),
         -- Ping of Death attack
-        ping-death(7),
+        pingDeath(7),
         -- IP spoofing attack
-        ip-spoofing(8),
+        ipSpoofing(8),
         -- IP source routing attack
-        ip-src-route(9),
+        ipSrcRoute(9),
         -- land attack
         land(10),
         -- ICMP flooding attack
-        icmp-flood(11),
+        icmpFlood(11),
         -- UDP flooding attack
-        udp-flood(12),
+        udpFlood(12),
         -- Illegal server IP to connect to CMS port
-        illegal-cms-svr(13),
+        illegalCmsSvr(13),
         -- URL blocking server connection alarm
-        url-block-srv(14),
+        urlBlockSrv(14),
         -- high availability
-        high-availability(15),
+        highAvailability(15),
         -- Port Scan attack
-        port-scan(16),
+        portScan(16),
         -- address sweep attack
-        addr-sweep(17),
+        addrSweep(17),
         -- deny by policy attack
-        deny-policy(18),
+        denyPolicy(18),
         -- device is dead
-        device-dead(19)
+        deviceDead(19),
         -- memory low
-        low-memory(20),
+        lowMemory(20),
         -- DNS server unreachable
-        dns-srv-down(21),
+        dnsSrvDown(21),
         -- Fan, Power Supply failure
         generic-HW-fail(22),
         -- Load balance server unreachable
-        lb-srv-down(23),
+        lbSrvDown(23),
         -- log buffer overflow
-        log-full(24),
+        logFull(24),
         -- X509 related
         x509(25),
         -- VPN and IKE related
-        vpn-ike(26),
+        vpnIke(26),
         -- admin realted
         admin(27),
         -- Illegal src ip to connect to sme port
@@ -206,327 +206,328 @@ netscreenTrapType OBJECT-TYPE
         -- DHCP related
         dhcp(29),
         -- CPU usage is high
-        cpu-usage-high(30),
+        cpuUsageHigh(30),
         -- Interface IP conflict
-        ip-conflict(31),
+        ipConflict(31),
         -- Microsoft IIS server vulnerability
-        attact-malicious-url(32),
+        attactMaliciousUrl(32),
         -- session threshold is exceeded
-        session-threshold(33),
+        sessionThreshold(33),
         -- SSH related alarms
-        ssh-alarm(34),
+        sshAlarm(34),
         -- Audit storage related alarms
-        audit-storage(35),
+        auditStorage(35),
         -- memory normal
-        memory-normal(36),
+        memoryNormal(36),
         -- cpu usage normal
-        cpu-usage-normal(37)
+        cpuUsageNormal(37),
+        reserved38(38),
         -- driver's rx bd shortage
-        rxbd-low-alarm(39),
+        rxbdLowAlarm(39),
         -- VPN tunnel from down to up
-        vpn-tunnel-up(40),
+        vpnTunnelUp(40),
         -- VPN tunnel from up to down
-        vpn-tunnel-down(41),
+        vpnTunnelDown(41),
         -- VPN replay detected
-        vpn-replay-attack(42),
+        vpnReplayAttack(42),
         -- VPN tunnel removed
-        vpn-l2tp-tunnel-remove(43),    
+        vpnL2tpTunnelRemove(43),    
         -- VPN tunnel removed and error detected 
-        vpn-l2tp-tunnel-remove-err(44), 
+        vpnL2tpTunnelRemoveErr(44), 
         -- VPN call removed
-        vpn-l2tp-call-remove(45), 
+        vpnL2tpCallRemove(45), 
         -- VPN call removed and error detected
-        vpn-l2tp-call-remove-err(46),   
+        vpnL2tpCallRemoveErr(46),   
         -- Number of IAS exceeds configured maximum
-   		vpn-ias-too-many(47),
+        vpnIasTooMany(47),
         -- Number of IAS crossed configured upper threshold
-		vpn-ias-over-threshold(48),	
+        vpnIasOverThreshold(48),	
         -- Number of IAS crossed configured lower threshold
-		vpn-ias-under-threshold(49),	
+        vpnIasUnderThreshold(49),	
         -- IKE error occured for the IAS session
-		vpn-ias-ike-error(50),	
+        vpnIasIkeError(50),	
         -- allocated session exceed threshold
-        allocated-session-threshold(51),
+        allocatedSessionThreshold(51),
         -- av-csp related alarm
-        av-csp-alarm(52),
+        avCspAlarm(52),
         -- av related alarm
-        av-alarm(53),
+        avAlarm(53),
         -- apppry related alarm
-        apppry-alarm(54),
+        apppryAlarm(54),
         -- NSRP rto self unit status change from up to down
-        nsrp-rto-up(60),
+        nsrpRtoUp(60),
         -- NSRP rto self unit status change from down to up
-        nsrp-rto-down(61),
+        nsrpRtoDown(61),
         -- NSRP track ip successed
-        nsrp-trackip-success(62),
+        nsrpTrackipSuccess(62),
         -- NSRP track ip failed
-        nsrp-trackip-failed(63),
+        nsrpTrackipFailed(63),
         -- NSRP track ip fail over
-        nsrp-trackip-failover(64),
+        nsrpTrackipFailover(64),
         -- NSRP inconsistent configuration between master and backup
-        nsrp-inconsistent-configuration(65),
+        nsrpInconsistentConfiguration(65),
         -- track ip status related alarm
-        trackip-status(66),
+        trackipStatus(66),
         -- NSRP vsd group status change to elect
-        nsrp-vsd-init(70),
+        nsrpVsdInit(70),
         -- NSRP vsd group status change to master
-        nsrp-vsd-master(71),
+        nsrpVsdMaster(71),
         -- NSRP vsd group status change to primary backup
-        nsrp-vsd-pbackup(72),
+        nsrpVsdPbackup(72),
         -- NSRP vsd group status change to backup
-        nsrp-vsd-backup(73),
+        nsrpVsdBackup(73),
         -- NSRP vsd group status change to ineligible
-        nsrp-vsd-ineligible(74),
+        nsrpVsdIneligible(74),
         -- NSRP VSD group status change to inoperable
-        nsrp-vsd-inoperable(75),
+        nsrpVsdInoperable(75),
         -- NSRP VSD request heartbeat from 2nd HA path
-        nsrp-vsd-req-hearbeat-2nd(76),
+        nsrpVsdReqHearbeat2nd(76),
         -- NSRP VSD reply to 2nd path request
-        nsrp-vsd-reply-2nd(77),
+        nsrpVsdReply2nd(77),
         -- NSRP duplicated RTO group found
-        nsrp-rto-duplicated(78),
+        nsrpRtoDuplicated(78),
         -- NSRP duplicated VSD group master
-        ip-dup-master(79),
+        ipDupMaster(79),
         -- MEM cannot find usable memory for current pool
-        di-heap-create-fail(80),
+        diHeapCreateFail(80),
         -- MEM cannot find usable in any pool
-        mem-alloc-fail(81),
+        memAllocFail(81),
         -- VRRP status related alarm
-        vrrp-status-alarm(82),
+        vrrpStatusAlarm(82),
         -- SCCP related alarm
-        sccp-alarm(83),
+        sccpAlarm(83),
         -- MGCP related alarm
-        mgcp-reinit(84),
+        mgcpReinit(84),
         -- MLFR related alarm
-        mlfr-alarm(85),
+        mlfrAlarm(85),
         -- FR related alarm
-        fr-alarm(86),
+        frAlarm(86),
         -- CISCO HDLC related alarm
-        cisco-hdlc-alarm(87),
+        ciscoHdlcAlarm(87),
         -- PPPOW related alarm
-        pppow-alarm(88),
+        pppowAlarm(88),
         -- H323 related alarm
-        h323-alarm(89),
+        h323Alarm(89),
         -- ISDN related alarm
-        isdn-alarm(90),
+        isdnAlarm(90),
   		-- interface backup 
-		interface-backup(91), 
+        interfaceBackup(91), 
   		-- Card function is abnormal 
-		wan-card-function(92), 
+        wanCardFunction(92), 
   		-- A USB key is plug/unplug from USB port 
-		usb-device-operation(93), 
+        usbDeviceOperation(93), 
   		-- interface failure 
-		interface-failure(94), 
+        interfaceFailure(94), 
         -- No ppp IP pool configured 
-        ppp-no-ip-cfg(95),   
+        pppNoIpCfg(95),   
         -- IP pool exhausted. No ip to assign
-        ppp-no-ip-in-pool(96), 
+        pppNoIpInPool(96), 
         -- Any change to interface IP address can use the type 
-       	ip-addr-event(101),			
+        ipAddrEvent(101),			
         -- DIP utilization reaches raised threshold limit
-		dip-util-raise(102),		
+        dipUtilRaise(102),		
         -- DIP utilization reaches clear threshold limit
-		dip-util-clear(103),	
+        dipUtilClear(103),	
         -- DOT1X related alarm
-        dot1x-alarm(105),
+        dot1xAlarm(105),
         -- VPN IAS radius error
-        vpn-ias-radius-error(110),
+        vpnIasRadiusError(110),
         -- VPN IKEID enum attack
-        vpn-ikeid-enum-attack(111),
+        vpnIkeidEnumAttack(111),
         -- VPN soft limit reached
-        vpn-softlimit-reached(112),
+        vpnSoftlimitReached(112),
         -- VPN IKE dos attack
-        vpn-ikedos-attack(113),
+        vpnIkedosAttack(113),
         -- VPN acvpn profile error
-        vpn-acvpn-profile-error(114),
+        vpnAcvpnProfileError(114),
 	-- exceed maximum routing entry allowed for the system 
-	route-sys-entry-ex(200),
+        routeSysEntryEx(200),
 	-- exceed maximum routing entry allowed for a vr
-	route-vr-entry-ex(201),
+        routeVrEntryEx(201),
 	-- exceed the hello packet threshold per hello interval 
-	route-ospf-hello-flood(202),
+        routeOspfHelloFlood(202),
 	-- exceed the lsa packet threshold per lsa threshold 
-	route-ospf-lsa-flood(203),
+        routeOspfLsaFlood(203),
 	-- exceed the update4 packet threshold per update time in rip
-	route-rip-update-flood(204),
+        routeRipUpdateFlood(204),
 	-- Errors in route module (exceed limit, malloc failure, add-perfix failure etc) 
-	route-alarm(205),
+        routeAlarm(205),
 	-- LSA/Hello packets flood in OSPF, route redistribution exceed limit, 
-	ospf-flood(206),
+        ospfFlood(206),
 	-- Update packet floods in RIP 
-	rip-flood(207),
+        ripFlood(207),
 	-- Peer forms adjacency completely
-	bgp-established(208),
+        bgpEstablished(208),
 	-- Peer's adjacency is torn down, goes to Idle state
-	bgp-backwardtransition(209),
+        bgpBackwardtransition(209),
 	-- change in virtual link's state (down, point-to-point etc)
-	ospf-virtifstatechange(210),
+        ospfVirtifstatechange(210),
 	-- change in neighbor's state on regular interface (down, 2way, full etc)
-	ospf-nbrstatechange(211),
+        ospfNbrstatechange(211),
 	-- change in neighbor's state on virtual link (down, full etc)
-	ospf-virtnbrstatechange(212),
+        ospfVirtnbrstatechange(212),
 	-- authentication mismatch/area mismatch etc on regular interface
-	ospf-ifconfigerror(213),
+        ospfIfconfigerror(213),
 	-- authentication mismatch/area mismatch etc on virtual link
-	ospf-virtifconfigerror(214),
+        ospfVirtifconfigerror(214),
 	-- Authentication eror on regular interface
-	ospf-ifauthfailure(215),
+        ospfIfauthfailure(215),
 	-- Authentication eror on virtual link
-	ospf-virtifauthfailure(216),
+        ospfVirtifauthfailure(216),
 	-- lsa received with invalid lsa-type on regular interface
-	ospf-ifrxbadpacket(217),
+        ospfIfrxbadpacket(217),
 	-- lsa received with invalid lsa-type on virtual link
-	ospf-virtifrxbadpacket(218),
+        ospfVirtifrxbadpacket(218),
 	-- retransmission to neighbor on regular interface
-	ospf-txretransmit(219),
+        ospfTxretransmit(219),
 	-- retransmission to neighbor on virtual link
-	ospf-virtiftxretransmit(220),
+        ospfVirtiftxretransmit(220),
 	-- new LSA generated by local router
-	ospf-originatelsa(221),
+        ospfOriginatelsa(221),
 	-- LSA aged out
-	ospf-maxagelsa(222),
+        ospfMaxagelsa(222),
 	-- when total LSAs in database exceed predefined limit
-	ospf-lsdboverflow(223),
+        ospfLsdboverflow(223),
 	-- when total LSAs in database approach predefined limit
-	ospf-lsdbapproachingoverflow(224),
+        ospfLsdbapproachingoverflow(224),
 	-- change in regular interface state (up/down, dr/bdr etc)
-	ospf-ifstatechange(225),
+        ospfIfstatechange(225),
 	-- BGP related alarm  
-	bgp-alarm(226),
+        bgpAlarm(226),
 	-- packet floods in RIPng 
-	ripng-flood(227),
+        ripngFlood(227),
 	-- exceed the update4 packet threshold per update time in ripng
-	route-ripng-update-flood(228),
+        routeRipngUpdateFlood(228),
 	-- PBR related alarm  
-	pbr-alarm(229),
+        policyRouteAlarm(233),
 	-- NHRP related alarm  
-	nhrp-alarm(230),
+        nhrpAlarm(230),
 	-- OSPFV3 related alarm  
-	ospfv3-alarm(231),
+        ospfv3Alarm(231),
         -- block java/active-x component
-        ids-component(400),
+        idsComponent(400),
         -- icmp flood attack
-        ids-icmp-flood(401),
+        idsIcmpFlood(401),
         -- udp flood attack
-        ids-udp-flood(402),
+        idsUdpFlood(402),
         -- winnuke attack
-        ids-winnuke(403),
+        idsWinnuke(403),
         -- port scan attack
-        ids-port-scan(404),
+        idsPortScan(404),
         -- address sweep attack
-        ids-addr-sweep(405),
+        idsAddrSweep(405),
         -- tear drop attack
-        ids-tear-drop(406),
+        idsTearDrop(406),
         -- syn flood attack
-        ids-syn(407),
+        idsSyn(407),
         -- ip spoofing attack
-        ids-ip-spoofing(408),
+        idsIpSpoofing(408),
         -- ping of death attack
-        ids-ping-death(409),
+        idsPingDeath(409),
         -- filter ip packet with source route option
-        ids-ip-source-route(410),
+        idsIpSourceRoute(410),
         -- land attack
-        ids-land(411),
+        idsLand(411),
         -- screen syn fragment attack
-        syn-frag-attack(412),
+        synFragAttack(412),
         -- screen tcp packet without flag attack
-        tcp-without-flag(413),
+        tcpWithoutFlag(413),
         -- screen unknown ip packet
-        unknow-ip-packet(414),
+        unknowIpPacket(414),
         -- screen bad ip option
-        bad-ip-option(415),
+        badIpOption(415),
         -- screen ip option record
-        ip-option-record(416),
+        ipOptionRecord(416),
         -- screen ip option timestamp 
-        ip-option-timestamp(417),
+        ipOptionTimestamp(417),
         -- screen ip option scht
-        ip-option-scht(418),
+        ipOptionScht(418),
         -- screen ip option lsr
-        ip-option-lsr(419),
+        ipOptionLsr(419),
         -- screen ip option ssr
-        ip-option-ssr(420),
+        ipOptionSsr(420),
         -- screen ip option stream
-        ip-option-stream(421),
+        ipOptionStream(421),
         -- screen icmp fragment packet
-        icmp-fragment(422),
+        icmpFragment(422),
         -- screen too large icmp packet
-        too-large-icmp(423),
+        tooLargeIcmp(423),
         -- screen tcp flag syn-fin set
-        tcp-syn-fin(424),
+        tcpSynFin(424),
         -- screen tcp fin without ack
-        tcp-fin-no-ack(425),
+        tcpFinNoAck(425),
         -- screen mal url
-        tcp-mal-url(426),
+        tcpMalUrl(426),
         -- screen sess mal num
-        tcp-sess-mal-num(427),
+        tcpSessMalNum(427),
         -- avoid replying to syns after excessive 3 way TCP handshakes from
         -- same src ip but not proceeding with user auth. (not replying to
         -- username/password)..
-        ids-tcp-syn-ack-ack(428),
+        idsTcpSynAckAck(428),
         -- ip fragment
-        ids-ip-block-frag(429),
+        idsIpBlockFrag(429),
         -- Dst IP-based session limiting
-        dst-ip-session-limit(430),
+        dstIpSessionLimit(430),
         -- HTTP component blocking for .zip files
-        ids-block-zip(431),
+        idsBlockZip(431),
         -- HTTP component blocking for Java applets
-        ids-block-jar(432),
+        idsBlockJar(432),
         -- HTTP component blocking for .exe files
-        ids-block-exe(433),
+        idsBlockExe(433),
         -- HTTP component blocking for ActiveX controls
-        ids-block-activex(434),
+        idsBlockActivex(434),
         -- screenos tcp syn mac
-        tcp-syn-mac(435),
+        tcpSynMac(435),
         -- screenos nac attack
-        ids-nac-attack(436),
+        idsNacAttack(436),
         -- icmp ping id 0
-        ids-icmp-ping-id-zero(441),
+        idsIcmpPingIdZero(441),
         -- tcp sweep
-        tcp-sweep(442),
+        tcpSweep(442),
         -- udp sweep
-        udp-sweep(443),
+        udpSweep(443),
 		-- AV Scan Manager Alarm, sofeware trap 
-		av-scan-mgr(554), 
+        avScanMgr(554), 
         -- starting value for multicast alarm
-        mcast-base(600),
+        mcastBase(600),
         -- mcore related alarm
-        mcore-alarm(601),
+        mcoreAlarm(601),
         -- spim related alarm
-        spim-alarm(602),
+        spimAlarm(602),
         -- starting value for Security Module alarm
-        sm-base(700),
+        smBase(700),
         -- Security Module down detected
-        sm-down(701),
+        smDown(701),
         -- Security Module packet droped detected
-        sm-packet-drop(702),
+        smPacketDrop(702),
         -- Security Module memory, CPU and session detected
-        sm-overload(703),
+        smOverload(703),
         -- Security Module CPU unresponsive detected
-        sm-cpu-unresponsive(704),
+        smCpuUnresponsive(704),
         -- Security Module Engine unresponisve
-        sm-cpu-unresponsive(705),
+        smCpuUnresponsive(705),
         -- Secruity Module Policy Abnormal
-        sm-policy-abnormal(706),
+        smPolicyAbnormal(706),
         -- switch alarm
         switch(751),
         -- sfp alarm
         sfp(752), 
         --Shared to fair transition forced
-        cpu-limit-s2f-forced(800),   
+        cpuLimitS2fForced(800),   
         --Shared to fair transition auto
-        cpu-limit-s2f-auto(801),     
+        cpuLimitS2fAuto(801),     
         --Fair to shared transition forced
-        cpu-limit-f2s-forced(802),   
+        cpuLimitF2sForced(802),   
         --Fair to shared transition because of timeout
-        cpu-limit-f2s-timeout(803),  
+        cpuLimitF2sTimeout(803),  
         --Fair to shared transition auto 
-        cpu-limit-f2s-auto(804),      
+        cpuLimitF2sAuto(804),      
         --Flow potential violation
-        sec-potential-voilation(805),  
+        secPotentialVoilation(805),  
         --Flow session cache alarm 
-        flow-sess-cache(806),      
+        flowSessCache(806),      
         --vsys session limit alarm 
-        vsys-session-limit(850)      
+        vsysSessionLimit(850)      
     }
     MAX-ACCESS    accessible-for-notify
     STATUS        current

@@ -109,7 +109,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	    ::= { portSecurityPortEntry 2 }
 
      portSecurityMaxNum OBJECT-TYPE
-        SYNTAX Integer32 (0..4000)
+        SYNTAX INTEGER (0..4000)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -117,7 +117,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	    ::= { portSecurityPortEntry 3 }
 
      portSecurityCurrentNum OBJECT-TYPE
-        SYNTAX Integer32 (0..4000)
+        SYNTAX INTEGER (0..4000)
         MAX-ACCESS read-only
         STATUS current
         DESCRIPTION
@@ -145,7 +145,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	    ::= { portSecurityPortEntry 6 }
 
      portSecurityAgingTime OBJECT-TYPE
-        SYNTAX Integer32 (1..1440)
+        SYNTAX INTEGER (1..1440)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -177,7 +177,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	    ::= { portSecurityPortEntry 10 }
 
      portSecurityRecoveryTime OBJECT-TYPE
-        SYNTAX Integer32 (1..3660)
+        SYNTAX INTEGER (1..3660)
         MAX-ACCESS read-write
         STATUS current
         DESCRIPTION
@@ -250,7 +250,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	    ::= { portSecurityMacRuleEntry 3 }
 
 	portSecurityMacRuleVid OBJECT-TYPE
-	    SYNTAX      Integer32 (0..4094)
+	    SYNTAX INTEGER (0..4094)
 	    MAX-ACCESS  read-write
 	    STATUS      current
 	    DESCRIPTION
@@ -403,7 +403,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	        }
 
 	portSecurityActiveMacDevice OBJECT-TYPE
-	    SYNTAX      Integer32 (0..7)
+	    SYNTAX INTEGER (0..7)
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION
@@ -438,7 +438,7 @@ portSecurityNotifications OBJECT IDENTIFIER ::= { gbnL2PortSecurityMib 0 }
 	    ::= { portSecurityActiveMacEntry 3 }
 
 	portSecurityActiveMacVid OBJECT-TYPE
-	    SYNTAX      Integer32 (1..4094)
+	    SYNTAX INTEGER (1..4094)
 	    MAX-ACCESS  read-only
 	    STATUS      current
 	    DESCRIPTION

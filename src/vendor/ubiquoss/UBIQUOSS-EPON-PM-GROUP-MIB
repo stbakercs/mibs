@@ -2255,7 +2255,7 @@
 				pmOltQueueStatsDroppedBytes
 					Counter64,
 				pmOltQueueStatsDroppedFrames
-					Counter64,
+					Counter64
 			 }      
 			 
 		pmOltQueueStatsRxOctets OBJECT-TYPE
@@ -3032,19 +3032,17 @@
        ::= { ubiPmMIBCompliances 1 }
 	                            
 -- compliance statements
-   	ubiPmMIBGroup  OBJECT-GROUP
-		OBJECTS {     
-			-- TODO 
-               }
+   	ubiPmMIBGroup  OBJECT-GROUP        OBJECTS {
+                portAvgOltCounterResetTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss pm information MIB"
         ::= { ubiPmMIBGroups 1 }
      
-     ubiPmMIBNotificationGroup    OBJECT-GROUP
-      	OBJECTS {     
-			-- TODO 
-               }
+     ubiPmMIBNotificationGroup    OBJECT-GROUP        OBJECTS {
+                portAvgOltCounterResetTable
+        }
         STATUS  current
         DESCRIPTION
                 "ubiquoss pm information Notifications"

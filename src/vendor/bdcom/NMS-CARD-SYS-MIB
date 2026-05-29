@@ -11,7 +11,7 @@
 NMS-CARD-SYS-MIB DEFINITIONS ::= BEGIN 
 
 IMPORTS
-    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE,INTEGER,
+    MODULE-IDENTITY, OBJECT-TYPE, NOTIFICATION-TYPE,
                                                 FROM SNMPv2-SMI
     TEXTUAL-CONVENTION, TimeStamp
                                                 FROM SNMPv2-TC
@@ -29,7 +29,7 @@ IMPORTS
 
                cardSystemSetTable OBJECT-TYPE
                    SYNTAX  SEQUENCE OF CardSystemSetEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "A list of cards system related set value entries."
@@ -37,7 +37,7 @@ IMPORTS
 
                cardSystemSetEntry OBJECT-TYPE
                    SYNTAX  CardSystemSetEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "A collection of cards to be reset."
@@ -66,14 +66,14 @@ IMPORTS
                        	   INTEGER,
                        cardMemUtilThresholdMax
                        	   INTEGER,
-                      cardSystemTemptureNodeNumber 
-                      `	   INTEGER
+                      cardSystemTemptureNodeNumber
+                           INTEGER
                   }
 
 
                cardSysIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Index into cardTable (not physical chassis
@@ -82,7 +82,7 @@ IMPORTS
 
                cardSysDescr OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "the same with the nmscardDescr of nmscardTable in NMS-CHASSIS-MIB."
@@ -90,7 +90,7 @@ IMPORTS
 
                cardSysType OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "the same with the nmscardType of nmscardTable in NMS-CHASSIS-MIB."
@@ -98,7 +98,7 @@ IMPORTS
 
                cardCPUUtilThreshold OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-write
+                   MAX-ACCESS  read-write
                    STATUS  mandatory
                    DESCRIPTION
                            "Card CPU utilization upper limit value."
@@ -106,7 +106,7 @@ IMPORTS
 
                cardMemUtilThreshold OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-write
+                   MAX-ACCESS  read-write
                    STATUS  mandatory
                    DESCRIPTION
                            "Card memory utilization upper limit value."
@@ -115,7 +115,7 @@ IMPORTS
 
                cardCPUTempThreshold OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-write
+                   MAX-ACCESS  read-write
                    STATUS  mandatory
                    DESCRIPTION
                            "Card CPU temperature upper limit value."
@@ -123,7 +123,7 @@ IMPORTS
 
                cardCPUTempCurr OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Card CPU current temperature."
@@ -131,7 +131,7 @@ IMPORTS
 
                cardCPUTempThresholdLow OBJECT-TYPE
                    SYNTAX  INTEGER(-125..125)
-                   ACCESS  read-write
+                   MAX-ACCESS  read-write
                    STATUS  mandatory
                    DESCRIPTION
                            "Minimal threshold of card CPU temperature. The range is (-125~+125)."
@@ -139,11 +139,11 @@ IMPORTS
 
 
                cardCPUTempStatus OBJECT-TYPE
-                   SYNTAX  INTEGER{ 
+                   SYNTAX  INTEGER { 
                                    normal(1),
                                    alarm(2)
                                   }
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "The card CPU temperature status, 1 means normal, 2 means alarm. "
@@ -152,7 +152,7 @@ IMPORTS
 
                cardMemUtilThresholdMax OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Maximal value of card memory utilization . For example, 60 means the maxmial value of memory utilization is 60%, maximal value is 100."
@@ -160,7 +160,7 @@ IMPORTS
 
                cardSystemTemptureNodeNumber OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Total number of  tempture Node."
@@ -170,23 +170,23 @@ IMPORTS
 
 	        
                cardElementStatus OBJECT-TYPE
-                   SYNTAX  INTEGER{
+                   SYNTAX  INTEGER {
                    		normal(1),
                    		warning(2)
                    }
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                            "Card element status, only use for variable binding in card system notifications."
                    ::= { cardSys 2 }
 
                cardElementType OBJECT-TYPE
-                   SYNTAX  INTEGER{
+                   SYNTAX  INTEGER {
                    		cpu(1),
                    		memory(2),
-                   		cpu-temperature(3)
+                   		cpuTemperature(3)
                    }
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                            "Card element status, only use for variable binding in card system notifications."
@@ -212,12 +212,12 @@ IMPORTS
     		::= { cardSysNotifications 1 }
 
 
--- cardSystemTemptureNodeTable(板卡温度节点温度列表)
+-- cardSystemTemptureNodeTable(???????????????)
 
 
                cardSystemTemptureNodeTable OBJECT-TYPE
                    SYNTAX  SEQUENCE OF CardSystemTemptureNodeEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "A list of cards system temparature related set value entries."
@@ -225,7 +225,7 @@ IMPORTS
 
                cardSystemTemptureNodeEntry OBJECT-TYPE
                    SYNTAX  CardSystemTemptureNodeEntry
-                   ACCESS  not-accessible
+                   MAX-ACCESS  not-accessible
                    STATUS  mandatory
                    DESCRIPTION
                             "A collection of cards to be reset."
@@ -245,9 +245,9 @@ IMPORTS
                   }
 
 
-               cardSysIndex OBJECT-TYPE
+               cardSysTempIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Index of slot. "
@@ -255,7 +255,7 @@ IMPORTS
 
                temptureNodeIndex OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Index of tempture node. "
@@ -263,7 +263,7 @@ IMPORTS
 
                temptureNodeDescr OBJECT-TYPE
                    SYNTAX  DisplayString
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Descript of tempture node. "
@@ -271,7 +271,7 @@ IMPORTS
 
                temptureNodeCur OBJECT-TYPE
                    SYNTAX  INTEGER
-                   ACCESS  read-only
+                   MAX-ACCESS  read-only
                    STATUS  mandatory
                    DESCRIPTION
                            "Current tempture of tempture node. "
