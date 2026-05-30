@@ -1,5 +1,8 @@
 # mibs
 
+> **Not the official MIB repository.** This is a fork/working copy for build and compatibility testing. MIBs in this tree are **not supported or endorsed by their vendors**. For vendor-maintained, released MIBs, use the official [pysnmp/mibs](https://github.com/pysnmp/mibs) project and its published artifacts at [pysnmp.github.io/mibs](https://pysnmp.github.io/mibs/).
+
+
 This MIB Repository is based on the original repository provided by snmplabs with updates from the mib collection from librenms.
 
 In addition, an index is published allowing remote clients to identify a MIB based on OID alone. All hosted on GitHub Pages.
