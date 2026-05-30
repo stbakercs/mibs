@@ -32,10 +32,7 @@ CatalogStats = namedtuple(
     ],
 )
 
-_TRAP_LINE = re.compile(
-    r"^(\w+)\s*=\s*NotificationType\(\(([^)]+)\)\)"
-    r"(?:\.setObjects\((.*)\))?\s*$"
-)
+_ASSIGN_START = re.compile(r"^(\w+)\s*=\s*NotificationType\(")
 _OID_TUPLE = re.compile(r"\d+")
 _VENDOR_PATH = re.compile(r"/vendor/([^/\s]+)/", re.I)
 _STANDARD_PATH = re.compile(r"/standard/", re.I)
@@ -70,8 +67,61 @@ def build_module_vendor_map(mibs_src_vendor: Optional[str] = None) -> Dict[str, 
     return mapping
 
 
+def _balanced_paren_content(text: str, open_paren: int) -> Optional[Tuple[int, int]]:
+    """Return (start, end) slice indices for parenthesized content at open_paren."""
+    if open_paren >= len(text) or text[open_paren] != "(":
+        return None
+    depth = 0
+    for i in range(open_paren, len(text)):
+        ch = text[i]
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+            if depth == 0:
+                return open_paren + 1, i
+    return None
+
+
+def _parse_notification_line(line: str) -> Optional[Tuple[str, str, Optional[str]]]:
+    """
+    Parse one compiled MIB assignment line for NotificationType.
+
+    Handles OIDs written as (a, b, c) + (d, e), trailing .setObjects(...),
+    and .setLabel(...) without objects.
+    """
+    stripped = line.strip()
+    m = _ASSIGN_START.match(stripped)
+    if not m:
+        return None
+
+    symbol = m.group(1)
+    nt_idx = stripped.index("NotificationType(") + len("NotificationType")
+    oid_span = _balanced_paren_content(stripped, nt_idx)
+    if oid_span is None:
+        return None
+
+    oid_text = stripped[oid_span[0] : oid_span[1]]
+    rest = stripped[oid_span[1] + 1 :].lstrip()
+
+    label_match = re.search(r'\.setLabel\("([^"]+)"\)', rest)
+    if label_match:
+        symbol = label_match.group(1)
+
+    objects_text: Optional[str] = None
+    if rest.startswith(".setObjects("):
+        obj_open = stripped.index(".setObjects(", oid_span[1]) + len(".setObjects")
+        obj_span = _balanced_paren_content(stripped, obj_open)
+        if obj_span is not None:
+            objects_text = stripped[obj_span[0] : obj_span[1]]
+
+    return symbol, oid_text, objects_text
+
+
 def _parse_oid_tuple(text: str) -> Tuple[int, ...]:
     parts = _OID_TUPLE.findall(text)
+    if not parts:
+        raise ValueError("no OID components")
     return tuple(int(p) for p in parts)
 
 
@@ -93,10 +143,9 @@ def _detect_vendor(
     key = module.upper()
     if key in fallback_map:
         return fallback_map[key]
-    # Heuristic: CISCO-FOO-MIB -> cisco if in fallback by prefix
-    for mod, vendor in fallback_map.items():
-        if module.upper().startswith(mod.split("-")[0] + "-"):
-            return vendor
+    for mod in sorted(fallback_map):
+        if module.upper().startswith(mod.split("-", 1)[0] + "-"):
+            return fallback_map[mod]
     return "unknown"
 
 
@@ -122,11 +171,10 @@ def scan_mib_dir(
             for i, line in enumerate(fh):
                 if i < 20:
                     header.append(line)
-                stripped = line.strip()
-                m = _TRAP_LINE.match(stripped)
-                if not m:
+                parsed = _parse_notification_line(line)
+                if not parsed:
                     continue
-                symbol, oid_text, objects_text = m.group(1), m.group(2), m.group(3)
+                symbol, oid_text, objects_text = parsed
                 try:
                     oid = _parse_oid_tuple(oid_text)
                 except ValueError:
@@ -147,18 +195,15 @@ def scan_mib_dir(
 
 
 def catalog_stats(entries: Iterable[NotificationEntry]) -> CatalogStats:
-    modules = set()
-    modules_with_traps = set()
+    modules_with_traps: Set[str] = set()
     vendors: Dict[str, int] = {}
     count = 0
     for e in entries:
         count += 1
         modules_with_traps.add(e.module)
         vendors[e.vendor] = vendors.get(e.vendor, 0) + 1
-    for e in entries:
-        modules.add(e.module)
     return CatalogStats(
-        modules_scanned=len(modules) or len(modules_with_traps),
+        modules_scanned=len(modules_with_traps),
         modules_with_traps=len(modules_with_traps),
         trap_count=count,
         vendors=vendors,

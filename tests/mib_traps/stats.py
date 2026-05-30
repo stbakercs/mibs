@@ -42,7 +42,9 @@ class RunTotals:
     modules_scanned: int = 0
     modules_loaded: int = 0
     modules_skipped: int = 0
+    traps_planned: int = 0
     traps_tested: int = 0
+    traps_untested_module_skip: int = 0
     trap_pass: int = 0
     trap_fail: int = 0
     objects_ok: int = 0
@@ -55,7 +57,9 @@ class VendorTotals:
     modules: int = 0
     modules_loaded: int = 0
     modules_skipped: int = 0
+    traps_planned: int = 0
     traps_tested: int = 0
+    traps_untested_module_skip: int = 0
     trap_pass: int = 0
     trap_fail: int = 0
     objects_ok: int = 0
@@ -93,7 +97,11 @@ def build_report(
 
         if not mod.loaded:
             t.modules_skipped += 1
+            t.traps_planned += mod.traps_planned
+            t.traps_untested_module_skip += mod.traps_planned
             vt.modules_skipped += 1
+            vt.traps_planned += mod.traps_planned
+            vt.traps_untested_module_skip += mod.traps_planned
             if len(report.failures) < max_failures:
                 report.failures.append(
                     {
@@ -107,6 +115,8 @@ def build_report(
 
         t.modules_loaded += 1
         vt.modules_loaded += 1
+        t.traps_planned += mod.traps_planned
+        vt.traps_planned += mod.traps_planned
 
         for tr in mod.traps:
             t.traps_tested += 1
@@ -180,7 +190,12 @@ def format_text_report(
     lines.append(f"  Modules scanned:  {t.modules_scanned}")
     lines.append(f"  Modules loaded:   {t.modules_loaded}")
     lines.append(f"  Modules skipped:  {t.modules_skipped}")
+    lines.append(f"  Traps planned:    {t.traps_planned}")
     lines.append(f"  Trap OIDs tested: {t.traps_tested}")
+    if t.traps_untested_module_skip:
+        lines.append(
+            f"  Traps untested (module load skip): {t.traps_untested_module_skip}"
+        )
     lines.append(f"  Trap pass/fail:   {t.trap_pass} / {t.trap_fail}")
     lines.append(
         f"  Object pass/fail/skip: {t.objects_ok} / {t.objects_fail} / {t.objects_skip}"

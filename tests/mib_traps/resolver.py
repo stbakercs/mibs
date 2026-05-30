@@ -43,6 +43,7 @@ class ModuleResult:
     vendor: str
     loaded: bool
     skip_reason: str = ""
+    traps_planned: int = 0
     traps: List[TrapResult] = field(default_factory=list)
 
 
@@ -53,19 +54,26 @@ def _is_symbolic(name: str) -> bool:
 def _check_trap_oid(
     mib_view: view.MibViewController, entry: NotificationEntry
 ) -> Tuple[bool, str]:
+    """Resolve the catalogued NOTIFICATION-TYPE by module/symbol (not numeric OID).
+
+    Many vendor MIBs assign the same OID to a v1 TRAP-TYPE and v2 NOTIFICATION-TYPE,
+    or to both a notification and a sibling OBJECT IDENTIFIER subtree. Numeric OID
+    lookup is ambiguous in those cases; symbolic resolution is what trap decoding uses.
+    """
     try:
-        oi = ObjectIdentity(entry.oid).resolveWithMib(mib_view)
+        oi = ObjectIdentity(entry.module, entry.symbol).resolveWithMib(mib_view)
         node = oi.getMibNode()
-        sym = oi.getMibSymbol()
-        if sym[1] != entry.symbol:
-            return (
-                False,
-                f"symbol mismatch: got {sym[1]!r}, expected {entry.symbol!r}",
-            )
         if type(node).__name__ != "NotificationType":
             return (
                 False,
                 f"node type {type(node).__name__!r}, expected NotificationType",
+            )
+        resolved_oid = tuple(oi.getOid())
+        if resolved_oid != entry.oid:
+            return (
+                False,
+                f"OID mismatch: got {'.'.join(str(x) for x in resolved_oid)}, "
+                f"expected {'.'.join(str(x) for x in entry.oid)}",
             )
         pretty = oi.prettyPrint()
         if not _is_symbolic(pretty):
@@ -239,7 +247,12 @@ def run_resolution_tests(
         module_entries = grouped[module_name]
         vendor = module_entries[0].vendor if module_entries else "unknown"
         mb, skip_reason = _load_module(mib_dir, module_name)
-        mod_result = ModuleResult(module=module_name, vendor=vendor, loaded=not skip_reason)
+        mod_result = ModuleResult(
+            module=module_name,
+            vendor=vendor,
+            loaded=not skip_reason,
+            traps_planned=len(module_entries),
+        )
 
         if skip_reason:
             mod_result.skip_reason = skip_reason

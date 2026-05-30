@@ -59,7 +59,7 @@ def build_arg_parser():
     p.add_argument(
         "--all",
         action="store_true",
-        help="Test all vendors (may take a long time for ~18k traps)",
+        help="Test all vendors (may take a long time for ~45k traps)",
     )
     p.add_argument(
         "--module",
